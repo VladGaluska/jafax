@@ -1,23 +1,17 @@
 package jafax.utils;
 
-import org.junit.BeforeClass;
 import org.junit.Test;
 import utils.filefinder.FileFinder;
 import utils.filefinder.JavaFiles;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
 
 public class FileFinderTest {
-
-    private static JavaFiles files;
 
     private static final Set<String> EXPECTED_FILE_NAMES = new HashSet<>(Arrays.asList(
             "Empty.java",
@@ -28,17 +22,28 @@ public class FileFinderTest {
             "Provider.java"
     ));
 
-    @BeforeClass
-    public static void initFiles() {
-        files = FileFinder.findFiles(Paths.get("src/test/resources/src/org/radum"));
-    }
+    private static final Set<String> EXPECTED_SINGLE_FILE_NAME = new HashSet<>(Collections.singletonList(
+            "Empty.java"
+    ));
 
     @Test
     public void shouldFindJavaFiles() {
+        JavaFiles files = FileFinder.findFiles(Paths.get("src/test/resources/src/org/radum"));
         List<String> javaFiles = files.javaFiles;
         assertEquals(6, javaFiles.size());
+        assertEquals(0, files.jarFiles.size());
         Set<String> classNames = getSimpleFileNames(javaFiles);
         assertEquals(EXPECTED_FILE_NAMES, classNames);
+    }
+
+    @Test
+    public void shouldFindSingleJavaFile() {
+        JavaFiles files = FileFinder.findFiles(Paths.get("src/test/resources/src/org/radum/empty/empty1"));
+        List<String> javaFiles = files.javaFiles;
+        assertEquals(1, javaFiles.size());
+        assertEquals(0, files.jarFiles.size());
+        Set<String> classNames = getSimpleFileNames(javaFiles);
+        assertEquals(EXPECTED_SINGLE_FILE_NAME, classNames);
     }
 
     private Set<String> getSimpleFileNames(List<String> fileNames) {
