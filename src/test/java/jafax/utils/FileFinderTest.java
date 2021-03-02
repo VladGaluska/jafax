@@ -28,7 +28,7 @@ public class FileFinderTest {
 
     @Test
     public void shouldFindJavaFiles() {
-        JavaFiles files = FileFinder.findFiles(Paths.get("src/test/resources/src/org/radum"));
+        JavaFiles files = FileFinder.findFiles(Paths.get("src/test/resources/org/radum"));
         List<String> javaFiles = files.javaFiles;
         assertEquals(6, javaFiles.size());
         assertEquals(0, files.jarFiles.size());
@@ -38,7 +38,7 @@ public class FileFinderTest {
 
     @Test
     public void shouldFindSingleJavaFile() {
-        JavaFiles files = FileFinder.findFiles(Paths.get("src/test/resources/src/org/radum/empty/empty1"));
+        JavaFiles files = FileFinder.findFiles(Paths.get("src/test/resources/org/radum/empty/empty1"));
         List<String> javaFiles = files.javaFiles;
         assertEquals(1, javaFiles.size());
         assertEquals(0, files.jarFiles.size());
@@ -56,7 +56,7 @@ public class FileFinderTest {
 
     @Test
     public void shouldNotFindAnything() {
-        JavaFiles emptyFiles = FileFinder.findFiles(Paths.get("src/test/resources/src/org/radum/empty/empty2"));
+        JavaFiles emptyFiles = FileFinder.findFiles(Paths.get("src/test/resources/org/radum/empty/empty2"));
         assertEquals(0, emptyFiles.javaFiles.size());
         assertEquals(0, emptyFiles.jarFiles.size());
     }
