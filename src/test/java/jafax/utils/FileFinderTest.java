@@ -61,4 +61,10 @@ public class FileFinderTest {
         assertEquals(0, emptyFiles.jarFiles.size());
     }
 
+    @Test
+    public void shouldFindJarFiles() {
+        var files = FileFinder.findFiles(Paths.get("src/test/resources/insider"));
+        assertEquals(2, files.jarFiles.size());
+    }
+
 }
