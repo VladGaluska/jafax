@@ -1,0 +1,44 @@
+{
+  "useProjectPrefix": true,
+  "technologies": [
+    {
+      "category": "External Libraries",
+      "name": "Mockito",
+      "languages": [
+        "java"
+      ],
+      "extensions": [],
+      "fingerprints": [
+        "org.mockito.AdditionalMatchers",
+        "org.mockito"
+      ],
+      "wrapAsImports": true
+    },
+    {
+      "category": "External Libraries",
+      "name": "Junit1",
+      "languages": [
+        "java"
+      ],
+      "extensions": [],
+      "fingerprints": [
+        "org.junit.runners.Parameterized",
+        "org.junit.runners"
+      ],
+      "wrapAsImports": true
+    },
+    {
+      "category": "External Libraries",
+      "name": "Junit",
+      "languages": [
+        "java"
+      ],
+      "extensions": [],
+      "fingerprints": [
+        "org.junit.runners.Parameterized",
+        "org.junit.runners"
+      ],
+      "wrapAsImports": true
+    }
+  ]
+}

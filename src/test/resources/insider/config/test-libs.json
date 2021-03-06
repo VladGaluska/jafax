@@ -1,0 +1,18 @@
+{
+  "useProjectPrefix": true,
+  "technologies": [
+    {
+      "category": "Test",
+      "name": "TestStuff",
+      "languages": [
+        "java"
+      ],
+      "extensions": [],
+      "fingerprints": [
+        "java.util",
+        "lombok"
+      ],
+      "wrapAsImports": true
+    }
+  ]
+}

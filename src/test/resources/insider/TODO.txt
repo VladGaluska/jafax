@@ -1,0 +1,7 @@
+vezi sa nu existe un slash la inceputul fqn-urilor fisierelor
+
+la techFinder sa spui pe ce fisier lucreaza (poate fa-le in paralel)
+
+loguie ce comanda face tot timpul
+
+loguie la final ce output gaseste si unde.

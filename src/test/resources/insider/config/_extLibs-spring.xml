@@ -1,0 +1,1014 @@
+<config>
+    <name>system</name>
+    <version>1</version>
+    <data>
+        <languages>
+            <language>
+                <name>java</name>
+                <version></version>
+                <technology>
+                    <name>External Libraries</name>
+                    <category>
+                        <name>openjpa-parent-2.2.1</name>
+                        <fingerprint>(org\.apache\.openjpa)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>batik-css-1.7</name>
+                        <fingerprint>(org\.apache\.batik\.css)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+                    <category>
+                        <name>jndi</name>
+                        <fingerprint>(com\.sun\.jndi)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>antlr</name>
+                        <fingerprint>(org\.antlr)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>CORBA</name>
+                        <fingerprint>(org\.omg\.CORBA)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>aopalliance</name>
+                        <fingerprint>(org\.aopalliance)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>asm</name>
+                        <fingerprint>(org\.objectweb\.asm)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>apache-wicket</name>
+                        <fingerprint>(org\.apacke\.wicket)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>aspectj</name>
+                        <fingerprint>(org\.aspectj)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>apache-axis</name>
+                        <fingerprint>(org\.apache\.axis)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>apache-axiom</name>
+                        <fingerprint>(org\.apache\.axiom)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>bouncycastle</name>
+                        <fingerprint>(org\.bouncycastle)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>c3p0</name>
+                        <fingerprint>(com\.mchange)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>testng</name>
+                        <fingerprint>(bsh)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>cglib</name>
+                        <fingerprint>(net\.sf\.cglib)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>commons-beanutils</name>
+                        <fingerprint>
+                            (org\.apache\.commons\.beanutils)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>commons-codec</name>
+                        <fingerprint>(org\.apache\.commons\.codec)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>commons-collections</name>
+                        <fingerprint>
+                            (org\.apache\.commons\.collections)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>commons-configuration</name>
+                        <fingerprint>
+                            (org\.apache\.commons\.configuration)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>commons-csv</name>
+                        <fingerprint>(org\.apache\.commons\.csv)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>commons-daemon</name>
+                        <fingerprint>
+                            (org\.apache\.commons\.daemon)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>commons-dbcp</name>
+                        <fingerprint>(org\.apache\.commons\.dbcp)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                        <fingerprint>(org\.apache\.commons\.jocl)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>commons-digester</name>
+                        <fingerprint>
+                            (org\.apache\.commons\.digester)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>commons-discovery</name>
+                        <fingerprint>
+                            (org\.apache\.commons\.discovery)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>commons-fileupload</name>
+                        <fingerprint>
+                            (org\.apache\.commons\.fileupload)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>commons-httpclient</name>
+                        <fingerprint>
+                            (org\.apache\.commons\.httpclient)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>commons-io</name>
+                        <fingerprint>(org\.apache\.commons\.io)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>commons-lang</name>
+                        <fingerprint>(org\.apache\.commons\.lang)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>commons-lang3</name>
+                        <fingerprint>(org\.apache\.commons\.lang3)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>commons-logging</name>
+                        <fingerprint>
+                            (org\.apache\.commons\.logging)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>commons-pool</name>
+                        <fingerprint>(org\.apache\.commons\.pool)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>commons-validator</name>
+                        <fingerprint>
+                            (org\.apache\.commons\.validator)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>cxf</name>
+                        <fingerprint>(org\.apache\.cxf)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>dozer</name>
+                        <fingerprint>(org\.dozer)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                        <fingerprint>(net\.sf\.dozer)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>ehcache</name>
+                        <fingerprint>(net\.sf\.ehcache)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>findbugs</name>
+                        <fingerprint>(com\.google\.code\.findbugs)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>json</name>
+                        <fingerprint>(net\.sf\.flexjson)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                        <fingerprint>(net\.sf\.json)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                        <fingerprint>(net\.sf\.oval)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                        <fingerprint>(org\.json)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>modelmapper</name>
+                        <fingerprint>(org\.modelmapper)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>jsoup</name>
+                        <fingerprint>(org\.jsoup)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>geronimo</name>
+                        <fingerprint>(org\.apache\.geronimo)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>opensymphony</name>
+                        <fingerprint>(com\.opensymphony)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>ognl</name>
+                        <fingerprint>(ognl)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>google-collections</name>
+                        <fingerprint>(com\.google\.collections)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>google-gxp</name>
+                        <fingerprint>(com\.google\.gxp)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>gson</name>
+                        <fingerprint>(com\.google\.gson)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>guava</name>
+                        <fingerprint>(com\.google\.common)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>h2database</name>
+                        <fingerprint>(org\.h2)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>directwebremoting</name>
+                        <fingerprint>(org\.directwebremoting)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>ha-api</name>
+                        <fingerprint>(org\.glassfish\.ha)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>hibernate</name>
+                        <fingerprint>(org\.hibernate)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>ibatis</name>
+                        <fingerprint>(com\.ibatis)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>ibm-ejs</name>
+                        <fingerprint>(com\.ibm\.ejs)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>ibm-etools</name>
+                        <fingerprint>(ibm\.etools)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>ibm-mqjms</name>
+                        <fingerprint>(com\.ibm\.mq)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                        <fingerprint>(com\.ibm\.msg)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                        <fingerprint>(com\.ibm\.mqjms)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                        <fingerprint>(com\.ibm\.jms)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>ibm-ws</name>
+                        <fingerprint>(com\.ibm\.websphere)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                        <fingerprint>(com\.ibm\.ws)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>emory-mathcs</name>
+                        <fingerprint>(edu\.emory\.mathcs)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>ibm-wsspi</name>
+                        <fingerprint>(com\.ibm\.wsspi)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>itext</name>
+                        <fingerprint>(com\.lowagie)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>itextpdf</name>
+                        <fingerprint>(com\.itextpdf)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>jacoco</name>
+                        <fingerprint>(org\.jacoco)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>jackson</name>
+                        <fingerprint>(org\.codehaous\.jackson)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>plexus</name>
+                        <fingerprint>(org\.codehaous\.plexus)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>jmock</name>
+                        <fingerprint>(org\.jmock)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>easymock</name>
+                        <fingerprint>(org\.easymock)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                        <fingerprint>(org\.unitils)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>apache-axis2</name>
+                        <fingerprint>(org\.apache\.axis2)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>jakarta-oro</name>
+                        <fingerprint>(org\.apache\.oro)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>jakarta-regexp</name>
+                        <fingerprint>(org\.apache\.regexp)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>jasperreports</name>
+                        <fingerprint>(net\.sf\.jasperreports)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>jwebunit</name>
+                        <fingerprint>(net\.sourceforge\.jwebunit)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>java.sql</name>
+                        <fingerprint>(java\.sql)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                        <fingerprint>(javax\.sql)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>javassist</name>
+                        <fingerprint>(javassist)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>javax-portelet</name>
+                        <fingerprint>(javax\.portlet)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>javax-activation</name>
+                        <fingerprint>(javax\.activation)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>javax-annotation</name>
+                        <fingerprint>(javax\.annotation)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>javax-jms</name>
+                        <fingerprint>(javax\.jms)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>javax-jndi</name>
+                        <fingerprint>(javax\.naming)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>javax-jws</name>
+                        <fingerprint>(javax\.jws)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>javax-mail</name>
+                        <fingerprint>(javax\.mail)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>javax-persistence</name>
+                        <fingerprint>(javax\.persistence)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>javax-servlet</name>
+                        <fingerprint>(javax\.servlet)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>javax-validation</name>
+                        <fingerprint>(javax\.validation)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>jaxb</name>
+                        <fingerprint>(javax\.xml)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>jaxp-ri</name>
+                        <fingerprint>
+                            (com\.sun\.org\.apache\.)([a-zA-Z_0-9]*\.)+(internal)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>jaxws</name>
+                        <fingerprint>(com\.sun\.org\.apache\.xml)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                        <fingerprint>(com\.sun\.xml)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>jaxws-api</name>
+                        <fingerprint>(javax\.xml\.ws)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>jaxws-rt</name>
+                        <fingerprint>(com\.sun\.xml\.ws\.api)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>jaxws-spring</name>
+                        <fingerprint>(org\.jvnet\.jax_ws_commons)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                        <fingerprint>
+                            (com\.sun\.xml\.ws\.transport)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>jaxws-tools</name>
+                        <fingerprint>(com\.sun\.tools)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>jboss</name>
+                        <fingerprint>(org\.jboss)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>jdbi</name>
+                        <fingerprint>(org\.skife\.jdbi)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>apache-felix</name>
+                        <fingerprint>(org\.apache\.felix)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>jettison</name>
+                        <fingerprint>(org\.codehaus\.jettison)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>jetty</name>
+                        <fingerprint>(org\.mortaby)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>jfreechart</name>
+                        <fingerprint>(org\.jfree)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>freemaker</name>
+                        <fingerprint>(freemaker)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>joda-time</name>
+                        <fingerprint>(org\.joda\.time)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>jsr181-api</name>
+                        <fingerprint>(javax\.jws)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>junit</name>
+                        <fingerprint>(org\.junit)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                        <fingerprint>(junit\.framework)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                        <fingerprint>(org\.hamcrest)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>log4j</name>
+                        <fingerprint>(org\.apache\.log4j)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                        <fingerprint>(org\.apache\.logging)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>mysema-query</name>
+                        <fingerprint>(com\.mysema\.query)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>myfaces</name>
+                        <fingerprint>(org\.apache\.myfaces)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>myfaces-jsf-api</name>
+                        <fingerprint>(javax\.faces)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>fest-assert</name>
+                        <fingerprint>(org\.fest\.assertions)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>mockito</name>
+                        <fingerprint>(org\.mockito)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>mockobjects</name>
+                        <fingerprint>(com\.mockobjects)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>mvel2</name>
+                        <fingerprint>(org\.mvel2)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>apache-ibatis</name>
+                        <fingerprint>(org\.apache\.ibatis)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>mybatis-spring</name>
+                        <fingerprint>(org\.mybatis\.spring)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>oapache-soap</name>
+                        <fingerprint>(org\.apache\.soap)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>objectlab-kit</name>
+                        <fingerprint>(net\.objectlab\.kit)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>ojdbc</name>
+                        <fingerprint>(oracle\.jdbc)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                        <fingerprint>(oracle\.security\.o3logon)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                        <fingerprint>(oracle\.sql)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                        <fingerprint>(oracle\.net)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                        <fingerprint>(oracle\.jpub)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>opencsv</name>
+                        <fingerprint>(net\.sf\.opencsv)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>owasp-csrfguard</name>
+                        <fingerprint>(org\.owasp\.csrfguard)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>owasp-esapi</name>
+                        <fingerprint>(org\.owasp\.esapi)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>apache-poi</name>
+                        <fingerprint>(org\.apache\.poi)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>powermock</name>
+                        <fingerprint>(org\.powermock)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>quartz</name>
+                        <fingerprint>(org\.quartz)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>saaj-api</name>
+                        <fingerprint>(javax\.xml\.soap)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>saaj-impl</name>
+                        <fingerprint>
+                            (com\.sun\.xml\.messaging\.saaj)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>saxon</name>
+                        <fingerprint>(net\.sf\.saxon)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                        <fingerprint>(net\.sourceforge\.saxon)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>slf4j</name>
+                        <fingerprint>(org\.slf4j)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>soap-api</name>
+                        <fingerprint>(org\.apache\.soap)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>stax-ex</name>
+                        <fingerprint>(org\.jvnet\.staxex)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>stax2</name>
+                        <fingerprint>(org\.codehaus\.stax2)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>streambuffer</name>
+                        <fingerprint>
+                            (com\.sun\.xml\.stream\.buffer)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>struts</name>
+                        <fingerprint>(org\.apache\.struts)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>sun-xml</name>
+                        <fingerprint>(com\.sun\.xml)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>surefire-junit4</name>
+                        <fingerprint>
+                            (org\.apache\.maven\.surefire)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>tiles</name>
+                        <fingerprint>(org\.apache\.tiles)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>tridion</name>
+                        <fingerprint>(com\.tridion)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>velocity</name>
+                        <fingerprint>(org\.apache\.velocity)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>woodstox-core-asl</name>
+                        <fingerprint>(com\.ctc\.wstx)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>axis-wsdl4j-1.2</name>
+                        <fingerprint>(com\.ibm\.wsdl)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                        <fingerprint>(javax\.wsdl)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>xalan</name>
+                        <fingerprint>(org\.apache\.xalan)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                        <fingerprint>
+                            (org\.apache\.xml\.serializer)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>xbean-spring</name>
+                        <fingerprint>(org\.apache\.xbean\.spring)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>getahead-dwr</name>
+                        <fingerprint>(uk\.ltd\.getahead\.dwr)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>taglibs</name>
+                        <fingerprint>(org\.apache\.taglibs)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>xerces</name>
+                        <fingerprint>(com\.xerces)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>xml-apis</name>
+                        <fingerprint>(org\.xml\.sax)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                        <fingerprint>(org\.w3c\.dom)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>xmlschema</name>
+                        <fingerprint>(org\.apache\.ws\.xmlschema)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>xom</name>
+                        <fingerprint>(nu\.xom)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>xstream</name>
+                        <fingerprint>(com\.thoughtworks\.xstream)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>apache-activemq</name>
+                        <fingerprint>(org\.apache\.activemq)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>tomcat</name>
+                        <fingerprint>(org\.apache\.tomcat)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>xmlbeans</name>
+                        <fingerprint>(org\.apache\.xmlbeans)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>jxl</name>
+                        <fingerprint>(jxl)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>emma</name>
+                        <fingerprint>(com\.vladium)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>dom4j</name>
+                        <fingerprint>(org\.dom4j)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>displaytag</name>
+                        <fingerprint>(org\.displaytag)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>eclipse-jdtcore</name>
+                        <fingerprint>(com\.eclipse\.jdtcore)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>eclipse-jetty</name>
+                        <fingerprint>(org\.eclipse\.jetty)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>glassfish-jersey</name>
+                        <fingerprint>(org\.glassfish\.jersey)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>fasterxml</name>
+                        <fingerprint>(com\.fasterxml)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>reflections</name>
+                        <fingerprint>(org\.reflections)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>openjdk-jmh</name>
+                        <fingerprint>(org\.openjdk\.jmh)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>argparse4j</name>
+                        <fingerprint>
+                            (net\.sourceforge\.argparse4j)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>lz4</name>
+                        <fingerprint>(net\.jpountz\.lz4)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>rocksdb</name>
+                        <fingerprint>(org.rocksdb)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>zkclient</name>
+                        <fingerprint>(org\.I0Itec\.zkclient)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>selenium</name>
+                        <fingerprint>(org\.openqa\.selenium)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>lombok</name>
+                        <fingerprint>(lombok)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>dbunit</name>
+                        <fingerprint>(org\.dbunit)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                        <fingerprint>
+                            (com\.github\.springtestdbunit)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>drools</name>
+                        <fingerprint>(org\.drools)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>snmp4j</name>
+                        <fingerprint>(org\.snmp4j)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                    </category>
+
+                    <category>
+                        <name>qos-logback</name>
+                        <fingerprint>(ch\.qos\.logback)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>bytecode</name>
+                        <fingerprint>(au\.com\.bytecode)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>zaxxer-hikari</name>
+                        <fingerprint>(com\.zaxxer\.hikari)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>jira-api</name>
+                        <fingerprint>(com\.atlassian\.jira)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+
+                    <category>
+                        <name>quickfix</name>
+                        <fingerprint>(quickfix)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}</fingerprint>
+                        <fingerprint>(org\.quickfixj\.jmx)([\.;])([a-zA-Z_0-9]*\.)*([a-zA-Z_0-9]*|\*)*(;){0,1}
+                        </fingerprint>
+                    </category>
+                </technology>
+            </language>
+        </languages>
+    </data>
+</config>
