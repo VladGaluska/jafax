@@ -8,7 +8,7 @@ public class FileFinder {
 
     public static JavaFiles findFiles(Path path) {
         try {
-            FileVisitor fileVisitor = new FileVisitor();
+            var fileVisitor = new FileVisitor();
             Files.walkFileTree(path, fileVisitor);
             return JavaFiles.builder()
                             .jarFiles(fileVisitor.getJarFiles())

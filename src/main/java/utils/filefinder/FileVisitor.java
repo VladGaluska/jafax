@@ -31,7 +31,7 @@ public class FileVisitor extends SimpleFileVisitor<Path> {
 
     @Override
     public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) {
-        Path name = file.getFileName();
+        var name = file.getFileName();
         if (name != null && attrs.isRegularFile()) {
             if (javaMatcher.matches(name)) {
                 javaFiles.add(file.toString());
