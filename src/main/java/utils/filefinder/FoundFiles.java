@@ -10,7 +10,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class JavaFiles {
+public class FoundFiles {
 
     public List<String> javaFiles = new ArrayList<>();
 

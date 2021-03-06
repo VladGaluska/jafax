@@ -1,4 +1,4 @@
-import AST.ASTCreator;
+import ast.ASTCreator;
 import utils.filefinder.FileFinder;
 
 import java.nio.file.Path;

@@ -1,4 +1,4 @@
-package AST;
+package ast;
 
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.dom.AST;
@@ -15,7 +15,9 @@ public class ASTCreator {
         parser.setKind(ASTParser.K_COMPILATION_UNIT);
         setParserOptions(parser);
         parser.setEnvironment(jarFiles, new String[0], new String[0], true);
-        String[] encodings = Arrays.stream(javaFiles).map(path -> "UTF-8").toArray(String[]::new);
+        String[] encodings = Arrays.stream(javaFiles)
+                                   .map(path -> "UTF-8")
+                                   .toArray(String[]::new);
         parser.createASTs(javaFiles, encodings, new String[0], new ASTRequester(), null);
     }
 
