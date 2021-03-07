@@ -1,4 +1,5 @@
 import ast.ASTCreator;
+import ast.ASTVisitor;
 import utils.filefinder.FileFinder;
 
 import java.nio.file.Path;
@@ -17,6 +18,7 @@ public class Main {
         var javaFiles = files.javaFiles.toArray(new String[0]);
         var jarFiles = files.jarFiles.toArray(new String[0]);
         ASTCreator.createAst(javaFiles, jarFiles);
+        ASTVisitor.getInstance().getClassNames().forEach(System.out::println);
     }
 
 }
