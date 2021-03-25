@@ -1,23 +1,13 @@
 package ast;
 
+import ast.service.ContextService;
+import com.google.inject.Inject;
 import org.eclipse.jdt.core.dom.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ASTVisitor extends org.eclipse.jdt.core.dom.ASTVisitor {
 
-    private static ASTVisitor currentInstance;
-
-    private ASTVisitor() {
-    }
-
-    public static ASTVisitor getInstance() {
-        if (currentInstance == null) {
-            currentInstance = new ASTVisitor();
-        }
-        return currentInstance;
-    }
+    @Inject
+    private ContextService contextService;
 
     @Override
     public boolean visit(TypeDeclaration typeDeclaration) {
@@ -41,6 +31,8 @@ public class ASTVisitor extends org.eclipse.jdt.core.dom.ASTVisitor {
 
     @Override
     public boolean visit(MethodInvocation node) {
+        this.contextService.doSomething();
+        System.out.println("Did something!");
         return true;
     }
 
