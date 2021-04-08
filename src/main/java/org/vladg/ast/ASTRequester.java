@@ -1,4 +1,4 @@
-package ast;
+package org.vladg.ast;
 
 import com.google.inject.Guice;
 import lombok.extern.slf4j.Slf4j;

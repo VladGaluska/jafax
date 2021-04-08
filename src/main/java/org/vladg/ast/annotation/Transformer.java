@@ -1,4 +1,4 @@
-package ast.annotation;
+package org.vladg.ast.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

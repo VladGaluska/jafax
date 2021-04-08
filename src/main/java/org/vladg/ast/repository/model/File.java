@@ -1,4 +1,4 @@
-package ast.repository.model;
+package org.vladg.ast.repository.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,7 +1,7 @@
-package ast.service;
+package org.vladg.ast.service;
 
-import ast.repository.NonPersistentRepository;
-import ast.repository.model.File;
+import org.vladg.ast.repository.NonPersistentRepository;
+import org.vladg.ast.repository.model.File;
 import com.google.inject.Inject;
 
 public class FileService {

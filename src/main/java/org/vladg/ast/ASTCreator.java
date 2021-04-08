@@ -1,4 +1,4 @@
-package ast;
+package org.vladg.ast;
 
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.dom.AST;

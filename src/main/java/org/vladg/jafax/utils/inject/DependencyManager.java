@@ -1,11 +1,11 @@
 package org.vladg.jafax.utils.inject;
 
-import ast.ASTVisitor;
-import ast.repository.NonPersistentRepository;
-import ast.repository.model.Class;
-import ast.repository.model.File;
-import ast.repository.model.Method;
-import ast.service.FileService;
+import org.vladg.ast.ASTVisitor;
+import org.vladg.ast.repository.NonPersistentRepository;
+import org.vladg.ast.repository.model.Class;
+import org.vladg.ast.repository.model.File;
+import org.vladg.ast.repository.model.Method;
+import org.vladg.ast.service.FileService;
 import com.google.inject.AbstractModule;
 import com.google.inject.Scopes;
 import com.google.inject.TypeLiteral;

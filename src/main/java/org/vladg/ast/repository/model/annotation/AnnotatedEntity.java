@@ -1,6 +1,6 @@
-package ast.repository.model.annotation;
+package org.vladg.ast.repository.model.annotation;
 
-import ast.repository.model.ASTObject;
+import org.vladg.ast.repository.model.ASTObject;
 import lombok.Getter;
 
 import java.util.ArrayList;

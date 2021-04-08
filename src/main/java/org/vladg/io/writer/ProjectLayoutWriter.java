@@ -1,4 +1,4 @@
-package io.writer;
+package org.vladg.io.writer;
 
 
 public class ProjectLayoutWriter {

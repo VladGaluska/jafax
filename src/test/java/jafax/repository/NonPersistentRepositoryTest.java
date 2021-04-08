@@ -1,10 +1,9 @@
 package jafax.repository;
 
-import ast.repository.NonPersistentRepository;
-import ast.repository.model.ASTObject;
-import ast.repository.model.Class;
-import ast.repository.model.File;
-import ast.repository.model.Method;
+import org.vladg.ast.repository.NonPersistentRepository;
+import org.vladg.ast.repository.model.Class;
+import org.vladg.ast.repository.model.File;
+import org.vladg.ast.repository.model.Method;
 import com.google.inject.Inject;
 import org.junit.Test;
 

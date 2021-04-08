@@ -1,4 +1,6 @@
-import io.scanner.ProjectScanner;
+package org.vladg;
+
+import org.vladg.io.scanner.ProjectScanner;
 import lombok.extern.slf4j.Slf4j;
 
 import java.nio.file.Path;

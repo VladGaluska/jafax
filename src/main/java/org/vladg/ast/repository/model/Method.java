@@ -1,6 +1,6 @@
-package ast.repository.model;
+package org.vladg.ast.repository.model;
 
-import ast.repository.model.annotation.AnnotatedEntity;
+import org.vladg.ast.repository.model.annotation.AnnotatedEntity;
 import lombok.Builder;
 
 @Builder

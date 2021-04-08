@@ -1,6 +1,6 @@
-package io.scanner;
+package org.vladg.io.scanner;
 
-import ast.ASTCreator;
+import org.vladg.ast.ASTCreator;
 import org.vladg.jafax.utils.filefinder.FileFinder;
 
 import java.nio.file.Path;

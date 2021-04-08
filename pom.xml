@@ -9,7 +9,7 @@
     <version>0.1.0-SNAPSHOT</version>
 
     <properties>
-        <main.class>Main</main.class>
+        <main.class>org.vladg.Main</main.class>
     </properties>
 
     <dependencies>

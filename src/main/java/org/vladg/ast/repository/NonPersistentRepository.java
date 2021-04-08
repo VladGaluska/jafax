@@ -1,8 +1,7 @@
-package ast.repository;
+package org.vladg.ast.repository;
 
-import ast.repository.model.ASTObject;
-import ast.repository.model.Container;
-import lombok.Getter;
+import org.vladg.ast.repository.model.ASTObject;
+import org.vladg.ast.repository.model.Container;
 
 import java.util.HashMap;
 import java.util.Map;
