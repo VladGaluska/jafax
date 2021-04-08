@@ -5,24 +5,23 @@ import org.eclipse.jdt.core.dom.AST;
 import org.eclipse.jdt.core.dom.ASTParser;
 
 import java.util.Arrays;
-import java.util.Map;
 
 public class ASTCreator {
 
     public static void createAst(String[] javaFiles, String[] jarFiles) {
-        ASTParser parser = ASTParser.newParser(AST.JLS14);
+        var parser = ASTParser.newParser(AST.JLS14);
         parser.setResolveBindings(true);
         parser.setKind(ASTParser.K_COMPILATION_UNIT);
         setParserOptions(parser);
         parser.setEnvironment(jarFiles, new String[0], new String[0], true);
-        String[] encodings = Arrays.stream(javaFiles)
-                                   .map(path -> "UTF-8")
-                                   .toArray(String[]::new);
+        var encodings = Arrays.stream(javaFiles)
+                                      .map(path -> "UTF-8")
+                                      .toArray(String[]::new);
         parser.createASTs(javaFiles, encodings, new String[0], new ASTRequester(), null);
     }
 
     private static void setParserOptions(ASTParser parser) {
-        Map<String, String> options = JavaCore.getOptions();
+        var options = JavaCore.getOptions();
         options.put(JavaCore.COMPILER_COMPLIANCE, JavaCore.VERSION_1_8);
         options.put(JavaCore.COMPILER_CODEGEN_TARGET_PLATFORM, JavaCore.VERSION_1_8);
         options.put(JavaCore.COMPILER_SOURCE, JavaCore.VERSION_1_8);

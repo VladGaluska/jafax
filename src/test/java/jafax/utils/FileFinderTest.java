@@ -1,7 +1,7 @@
 package jafax.utils;
 
 import org.junit.Test;
-import utils.filefinder.FileFinder;
+import org.vladg.jafax.utils.filefinder.FileFinder;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;

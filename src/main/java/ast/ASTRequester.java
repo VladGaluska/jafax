@@ -1,25 +1,25 @@
 package ast;
 
 import com.google.inject.Guice;
-import com.google.inject.Inject;
-import com.google.inject.Injector;
+import lombok.extern.slf4j.Slf4j;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.FileASTRequestor;
-import utils.inject.DependencyManager;
+import org.vladg.jafax.utils.inject.DependencyManager;
 
+@Slf4j
 public class ASTRequester extends FileASTRequestor {
 
-    @Inject
     private final ASTVisitor astVisitor;
 
     public ASTRequester() {
-        Injector injector = Guice.createInjector(new DependencyManager());
+        var injector = Guice.createInjector(new DependencyManager());
         this.astVisitor = injector.getInstance(ASTVisitor.class);
     }
 
     @Override
     public void acceptAST(String sourceFilePath, CompilationUnit ast) {
-        System.out.println("Scanning file " + sourceFilePath);
+        log.info("Scanning file: " + sourceFilePath);
+        astVisitor.setCurrentFileName(sourceFilePath);
         ast.accept(astVisitor);
     }
 

@@ -1,4 +1,11 @@
 package ast.repository.model;
 
-public class Method extends ASTObject{
+import ast.repository.model.annotation.AnnotatedEntity;
+import lombok.Builder;
+
+@Builder
+public class Method extends AnnotatedEntity implements Container{
+
+    public String name;
+
 }

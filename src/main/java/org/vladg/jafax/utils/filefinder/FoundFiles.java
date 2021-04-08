@@ -1,4 +1,4 @@
-package utils.filefinder;
+package org.vladg.jafax.utils.filefinder;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

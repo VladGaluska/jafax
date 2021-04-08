@@ -1,4 +1,4 @@
-package utils.filefinder;
+package org.vladg.jafax.utils.filefinder;
 
 import java.io.IOException;
 import java.nio.file.*;

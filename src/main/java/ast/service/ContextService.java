@@ -1,17 +1,12 @@
 package ast.service;
 
 import ast.repository.NonPersistentRepository;
-import ast.repository.model.Class;
+import ast.repository.model.File;
+import com.google.inject.Inject;
 
 public class ContextService {
 
-/*
     @Inject
-    private NonPersistentRepository<Class> classRepository;
-*/
-
-    public void doSomething() {
-        /*this.classRepository.findById(0L);*/
-    }
+    private NonPersistentRepository<File> fileNonPersistentRepository;
 
 }

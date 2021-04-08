@@ -1,8 +1,10 @@
 import io.scanner.ProjectScanner;
+import lombok.extern.slf4j.Slf4j;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+@Slf4j
 public class Main {
 
     private static Path getPathFromName(String pathName) {
@@ -11,7 +13,7 @@ public class Main {
 
     public static void main(String[] args) {
         var path = args.length > 0 ? getPathFromName(args[0]) : getPathFromName(".");
-        System.out.println("Scanning for files...");
+        log.info("Scanning for files...");
         ProjectScanner.beginScan(path);
     }
 

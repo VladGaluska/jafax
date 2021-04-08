@@ -1,16 +1,33 @@
 package ast;
 
-import ast.service.ContextService;
+import ast.repository.NonPersistentRepository;
+import ast.repository.model.Class;
+import ast.repository.model.File;
+import ast.repository.model.Method;
+import ast.service.FileService;
 import com.google.inject.Inject;
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 import org.eclipse.jdt.core.dom.*;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+@Slf4j
 public class ASTVisitor extends org.eclipse.jdt.core.dom.ASTVisitor {
 
+    @Setter
+    private String currentFileName;
+
     @Inject
-    private ContextService contextService;
+    private FileService fileService;
 
     @Override
     public boolean visit(TypeDeclaration typeDeclaration) {
+        return true;
+    }
+
+    public boolean visit(PackageDeclaration packageDeclaration) {
         return true;
     }
 
@@ -31,8 +48,28 @@ public class ASTVisitor extends org.eclipse.jdt.core.dom.ASTVisitor {
 
     @Override
     public boolean visit(MethodInvocation node) {
-        this.contextService.doSomething();
-        System.out.println("Did something!");
+        return true;
+    }
+
+    @Override
+    public boolean visit(CompilationUnit node) {
+        if (node.getModule() != null) {
+            return true;
+        }
+        var imports = ((List<ImportDeclaration>)node.imports())
+                                                               .stream()
+                                                               .map(it -> it.getName().getFullyQualifiedName())
+                                                               .collect(Collectors.toList());
+        var astPackage = node.getPackage();
+        var packageName = "";
+        if (astPackage != null) {
+            packageName = astPackage.getName().getFullyQualifiedName();
+        }
+        this.fileService.addFile(File.builder()
+                                     .name(this.currentFileName)
+                                     .packageName(packageName)
+                                     .imports(imports)
+                                     .build());
         return true;
     }
 
