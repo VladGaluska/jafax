@@ -1,13 +1,11 @@
-package org.vladg.ast.repository.model;
+package org.vladg.ast.repository.model
 
-public abstract class ASTObject {
+abstract class ASTObject {
 
-    private static long lastId = 0;
+    var id: Long = lastId++
 
-    public long id;
-
-    public ASTObject() {
-        this.id = lastId ++;
+    companion object {
+        private var lastId: Long = 0
     }
 
 }

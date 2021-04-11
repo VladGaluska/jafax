@@ -1,18 +1,14 @@
-package org.vladg.ast.repository.model.annotation;
+package org.vladg.ast.repository.model.annotation
 
-import org.vladg.ast.repository.model.ASTObject;
-import lombok.Getter;
+import org.vladg.ast.repository.model.ASTObject
 
-import java.util.ArrayList;
-import java.util.List;
 
-public abstract class AnnotatedEntity extends ASTObject {
+abstract class AnnotatedEntity : ASTObject() {
 
-    @Getter
-    public List<Annotation> annotationList = new ArrayList<>();
+    var annotationList: MutableList<Annotation> = ArrayList()
 
-    public void addAnnotation(Annotation annotation) {
-        this.annotationList.add(annotation);
+    fun addAnnotation(annotation: Annotation) {
+        annotationList.add(annotation)
     }
 
 }

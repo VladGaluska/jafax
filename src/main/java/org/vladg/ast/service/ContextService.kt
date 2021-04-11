@@ -1,12 +1,12 @@
-package org.vladg.ast.service;
+package org.vladg.ast.service
 
-import org.vladg.ast.repository.NonPersistentRepository;
-import org.vladg.ast.repository.model.File;
-import com.google.inject.Inject;
+import com.google.inject.Inject
+import org.vladg.ast.repository.NonPersistentRepository
+import org.vladg.ast.repository.model.File
 
-public class ContextService {
+class ContextService {
 
     @Inject
-    private NonPersistentRepository<File> fileNonPersistentRepository;
+    private lateinit var fileNonPersistentRepository: NonPersistentRepository<File>
 
 }

@@ -1,60 +1,37 @@
-package jafax.repository;
+package jafax.repository
 
-import org.vladg.ast.repository.NonPersistentRepository;
-import org.vladg.ast.repository.model.Class;
-import org.vladg.ast.repository.model.File;
-import org.vladg.ast.repository.model.Method;
-import com.google.inject.Inject;
-import org.junit.Test;
+import com.google.inject.Inject
+import org.junit.Test
+import org.vladg.ast.repository.NonPersistentRepository
+import org.vladg.ast.repository.model.Class
+import org.vladg.ast.repository.model.File
+import org.vladg.ast.repository.model.Method
+import org.junit.Assert.*
 
-import static org.junit.Assert.assertEquals;
-
-public class NonPersistentRepositoryTest {
-
-    @Inject
-    private NonPersistentRepository<File> fileRepository;
+class NonPersistentRepositoryTest {
 
     @Inject
-    private NonPersistentRepository<Class> classRepository;
+    private lateinit var fileRepository: NonPersistentRepository<File>
 
     @Inject
-    private NonPersistentRepository<Method> methodRepository;
+    private lateinit var classRepository: NonPersistentRepository<Class>
+
+    @Inject
+    private lateinit var methodRepository: NonPersistentRepository<Method>
 
     @Test
-    public void savingObjectsIncreasesIndex() {
-        this.populateRepositories();
-        assertEquals(3, ASTObject);
+    fun `should increase index on new object save`() {
+        populateRepositories()
     }
 
-    @Test
-    public void containerStackIsProperlyPopulated() {
-        this.populateRepositories();
+    private fun populateRepositories() {
+        val file1 = File("File1")
+        fileRepository.addObject(file1)
+        val clazz = Class("Class", file1)
+        classRepository.addObject(clazz)
+        val method = Method("Method")
+        methodRepository.addObject(method)
+        val file2 = File("File2")
+        fileRepository.addObject(file2)
     }
-
-    @Test
-    public void containerPopUntilDoesNotBreakWhenEmpty() {
-        NonPersistentRepository.popUntilInstance(Method.class);
-    }
-
-    @Test
-    public void containerPopUntilReturnsProperContainer() {
-        this.populateRepositories();
-    }
-
-    @Test
-    public void containerPopUntilReturnsNullWhenNoneFound() {
-        this.populateRepositories();
-    }
-
-    private void populateRepositories() {
-        File file1 = File.builder().name("File1").build();
-        this.fileRepository.addObject(file1);
-        Class clazz = Class.builder().name("Class").build();
-        this.classRepository.addObject(clazz);
-        Method method = Method.builder().name("Method").build();
-        this.methodRepository.addObject(method);
-        File file2 = File.builder().name("File2").build();
-        this.fileRepository.addObject(file2);
-    }
-
 }

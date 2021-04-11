@@ -1,16 +1,16 @@
-package org.vladg.ast.service;
+package org.vladg.ast.service
 
-import org.vladg.ast.repository.NonPersistentRepository;
-import org.vladg.ast.repository.model.File;
-import com.google.inject.Inject;
+import com.google.inject.Inject
+import org.vladg.ast.repository.NonPersistentRepository
+import org.vladg.ast.repository.model.File
 
-public class FileService {
+class FileService {
 
     @Inject
-    private NonPersistentRepository<File> fileRepository;
+    private lateinit var fileRepository: NonPersistentRepository<File>
 
-    public void addFile(File file) {
-        fileRepository.addObject(file);
+    fun addFile(file: File) {
+        fileRepository.addObject(file)
     }
 
 }
