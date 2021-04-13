@@ -21,15 +21,19 @@ class NonPersistentRepository<T : ASTObject?> {
     }
 
     companion object {
-        private val containersSaved = Stack<Container>()
-        fun popUntilInstance(toCheck: Class<out Container?>): Container? {
+
+        val containersSaved = Stack<Container>()
+
+        inline fun <reified T : Container> popUntilTypeAnd(accept: (container: T) -> Boolean): T? {
             while (!containersSaved.isEmpty()) {
-                val container = containersSaved.pop()
-                if (container.javaClass == toCheck) {
+                val container = containersSaved.peek()
+                if (container is T && accept(container)) {
                     return container
                 }
+                containersSaved.pop()
             }
             return null
         }
+
     }
 }

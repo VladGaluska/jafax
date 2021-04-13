@@ -6,22 +6,53 @@ import org.vladg.ast.repository.NonPersistentRepository
 import org.vladg.ast.repository.model.Class
 import org.vladg.ast.repository.model.File
 import org.vladg.ast.repository.model.Method
-import org.junit.Assert.*
+import kotlin.test.*
 
 class NonPersistentRepositoryTest {
 
-    @Inject
-    private lateinit var fileRepository: NonPersistentRepository<File>
+    private val fileRepository: NonPersistentRepository<File> = NonPersistentRepository()
 
-    @Inject
-    private lateinit var classRepository: NonPersistentRepository<Class>
+    private val classRepository: NonPersistentRepository<Class> = NonPersistentRepository()
 
-    @Inject
-    private lateinit var methodRepository: NonPersistentRepository<Method>
+    private val methodRepository: NonPersistentRepository<Method> = NonPersistentRepository()
 
     @Test
     fun `should increase index on new object save`() {
+        val file1 = File("File1")
+        val file2 = File("File2")
+        assertEquals(file1.id + 1, file2.id)
+    }
+
+    @Test
+    fun `should find proper container`() {
         populateRepositories()
+        assertNotNull(NonPersistentRepository.popUntilTypeAnd<File> { it.name == "File1" })
+    }
+
+    @Test
+    fun `container stack should be empty upon none found`() {
+        populateRepositories()
+        NonPersistentRepository.popUntilTypeAnd<Class> { it.name == "Not found" }
+        assertTrue { NonPersistentRepository.containersSaved.empty() }
+    }
+
+    @Test
+    fun `should not fail upon container not found in stack`() {
+        populateRepositories()
+        assertNull(NonPersistentRepository.popUntilTypeAnd<Class> { it.name == "Not found" })
+    }
+
+    @Test
+    fun `should not find container that is not of instance`() {
+        populateRepositories()
+        assertNull(NonPersistentRepository.popUntilTypeAnd<File> { it.name == "Class" })
+    }
+
+    @Test
+    fun `should not pop found container`() {
+        populateRepositories()
+        NonPersistentRepository.popUntilTypeAnd<File> { it.name == "File1" }
+        assertNotNull(NonPersistentRepository.popUntilTypeAnd<File> { it.name == "File1" })
     }
 
     private fun populateRepositories() {
