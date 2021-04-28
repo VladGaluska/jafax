@@ -2,7 +2,7 @@ package bla.bla;
 
 //#### ### #### #######
 
-class Test1 { //####### #######
+class Test1 extends Test2{ //####### #######
 
 
     /*#
@@ -16,6 +16,10 @@ class Test1 { //####### #######
     #### ##### #### #######
      */
     public void amethod() {
+
+    }
+
+    class Test3 {
 
     }
 }

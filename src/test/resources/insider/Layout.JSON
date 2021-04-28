@@ -1,0 +1,2988 @@
+[
+    {
+        "type": "Class",
+        "id": 0,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "Object",
+        "fileName": null,
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": null,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 1,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+            2,
+            3
+        ],
+        "name": "Test1",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/build/resources/test/Test1.java",
+        "isInterface": false,
+        "modifiers": [
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 2,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "main",
+        "signature": "main(java.lang.String[])",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 3,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "amethod",
+        "signature": "amethod()",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 4,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "InsiderCommand",
+        "fileName": null,
+        "isInterface": true,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": null,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 5,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "NoFilesCommand",
+        "fileName": null,
+        "isInterface": true,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": null,
+        "superInterfaces": [
+            4
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 6,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+            16,
+            13,
+            14,
+            15
+        ],
+        "name": "ConvertCommand",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/src/main/java/org/dxworks/dxplatform/plugins/insider/commands/ConvertCommand.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+            5
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 7,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+            8,
+            9,
+            10,
+            11,
+            12
+        ],
+        "name": "AddCommand",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/src/main/java/org/dxworks/dxplatform/plugins/insider/commands/AddCommand.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 6,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 8,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "parse",
+        "signature": "parse(java.lang.String[])",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 9,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "execute",
+        "signature": "execute(java.util.List<org.dxworks.dxplatform.plugins.insider.InsiderFile>, java.lang.String[])",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 10,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "printFingerPrintsReport",
+        "signature": "printFingerPrintsReport(java.util.List<org.dxworks.dxplatform.plugins.insider.utils.LibraryImportInOtherTechnology>)",
+        "isConstructor": false,
+        "modifiers": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 11,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "printFingerPrintReport",
+        "signature": "printFingerPrintReport(java.util.List<org.dxworks.dxplatform.plugins.insider.utils.LibraryImport>, java.lang.String)",
+        "isConstructor": false,
+        "modifiers": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 12,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "usage",
+        "signature": "usage()",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 13,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "parse",
+        "signature": "parse(java.lang.String[])",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 14,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "execute",
+        "signature": "execute(java.util.List<org.dxworks.dxplatform.plugins.insider.InsiderFile>, java.lang.String[])",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 15,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "transformJsonFileToCsv",
+        "signature": "transformJsonFileToCsv(java.lang.String, java.lang.String)",
+        "isConstructor": false,
+        "modifiers": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 16,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "usage",
+        "signature": "usage()",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 17,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+            18,
+            19,
+            20
+        ],
+        "name": "DetectCommand",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/src/main/java/org/dxworks/dxplatform/plugins/insider/commands/DetectCommand.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+            4
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 18,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "parse",
+        "signature": "parse(java.lang.String[])",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 19,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "execute",
+        "signature": "execute(java.util.List<org.dxworks.dxplatform.plugins.insider.InsiderFile>, java.lang.String[])",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 20,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "usage",
+        "signature": "usage()",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 21,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+            22,
+            23,
+            24
+        ],
+        "name": "DiagnoseCommand",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/src/main/java/org/dxworks/dxplatform/plugins/insider/commands/DiagnoseCommand.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+            5
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 22,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "parse",
+        "signature": "parse(java.lang.String[])",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 23,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "execute",
+        "signature": "execute(java.util.List<org.dxworks.dxplatform.plugins.insider.InsiderFile>, java.lang.String[])",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 24,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "usage",
+        "signature": "usage()",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 25,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+            26,
+            27,
+            28
+        ],
+        "name": "FindCommand",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/src/main/java/org/dxworks/dxplatform/plugins/insider/commands/FindCommand.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+            4
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 26,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "parse",
+        "signature": "parse(java.lang.String[])",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 27,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "execute",
+        "signature": "execute(java.util.List<org.dxworks.dxplatform.plugins.insider.InsiderFile>, java.lang.String[])",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 28,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "usage",
+        "signature": "usage()",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 29,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+            32,
+            30,
+            31
+        ],
+        "name": "HelpCommand",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/src/main/java/org/dxworks/dxplatform/plugins/insider/commands/HelpCommand.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+            5
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 30,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "parse",
+        "signature": "parse(java.lang.String[])",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 31,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "execute",
+        "signature": "execute(java.util.List<org.dxworks.dxplatform.plugins.insider.InsiderFile>, java.lang.String[])",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 32,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "usage",
+        "signature": "usage()",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 33,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "parse",
+        "signature": "parse(java.lang.String[])",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 34,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "fileExists",
+        "signature": "fileExists(java.lang.String)",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 35,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "execute",
+        "signature": "execute(java.util.List<org.dxworks.dxplatform.plugins.insider.InsiderFile>, java.lang.String[])",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 36,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "usage",
+        "signature": "usage()",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 37,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+            38,
+            39,
+            40
+        ],
+        "name": "VersionCommand",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/src/main/java/org/dxworks/dxplatform/plugins/insider/commands/VersionCommand.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+            5
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 38,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "parse",
+        "signature": "parse(java.lang.String[])",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 39,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "execute",
+        "signature": "execute(java.util.List<org.dxworks.dxplatform.plugins.insider.InsiderFile>, java.lang.String[])",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 40,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "usage",
+        "signature": "usage()",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 41,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+            42,
+            43,
+            44,
+            45,
+            46,
+            47
+        ],
+        "name": "InsiderConfiguration",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/src/main/java/org/dxworks/dxplatform/plugins/insider/configuration/InsiderConfiguration.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 42,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "InsiderConfiguration",
+        "signature": "InsiderConfiguration()",
+        "isConstructor": true,
+        "modifiers": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 43,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "getInstance",
+        "signature": "getInstance()",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 44,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "getRootFolder",
+        "signature": "getRootFolder()",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 45,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "loadProperties",
+        "signature": "loadProperties(java.util.Properties)",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 46,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "getProperty",
+        "signature": "getProperty(java.lang.String)",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 47,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "getListProperty",
+        "signature": "getListProperty(java.lang.String)",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 48,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "PluginAddCommand",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/src/main/java/org/dxworks/dxplatform/plugins/insider/dxplatform/commands/PluginAddCommand.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 49,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "PluginCommand",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/src/main/java/org/dxworks/dxplatform/plugins/insider/dxplatform/commands/PluginCommand.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 50,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+            51
+        ],
+        "name": "InsiderDxPlugin",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/src/main/java/org/dxworks/dxplatform/plugins/insider/dxplatform/InsiderDxPlugin.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 51,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "main",
+        "signature": "main(java.lang.String[])",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 52,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "Serializable",
+        "fileName": null,
+        "isInterface": true,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": null,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 53,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "Throwable",
+        "fileName": null,
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+            52
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 54,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "Exception",
+        "fileName": null,
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 53,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 55,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "RuntimeException",
+        "fileName": null,
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 54,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 56,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+            57
+        ],
+        "name": "InsiderException",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/src/main/java/org/dxworks/dxplatform/plugins/insider/exceptions/InsiderException.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 55,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 57,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "InsiderException",
+        "signature": "InsiderException(java.lang.String)",
+        "isConstructor": true,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 58,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+            64,
+            59,
+            60,
+            61,
+            62,
+            63
+        ],
+        "name": "Insider",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/src/main/java/org/dxworks/dxplatform/plugins/insider/Insider.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 59,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "main",
+        "signature": "main(java.lang.String[])",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 60,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "getInsiderCommand",
+        "signature": "getInsiderCommand(java.lang.String)",
+        "isConstructor": false,
+        "modifiers": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 61,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "readInsiderConfiguration",
+        "signature": "readInsiderConfiguration()",
+        "isConstructor": false,
+        "modifiers": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 62,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "reportUnknownExtensions",
+        "signature": "reportUnknownExtensions()",
+        "isConstructor": false,
+        "modifiers": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 63,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "readProjectFiles",
+        "signature": "readProjectFiles(java.lang.String)",
+        "isConstructor": false,
+        "modifiers": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 64,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "hasAcceptedExtension",
+        "signature": "hasAcceptedExtension(java.nio.file.Path)",
+        "isConstructor": false,
+        "modifiers": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 65,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "analyze",
+        "signature": "analyze(org.dxworks.dxplatform.plugins.insider.InsiderFile)",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 66,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "accepts",
+        "signature": "accepts(java.lang.String)",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 67,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+            68,
+            69,
+            70
+        ],
+        "name": "InsiderFile",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/src/main/java/org/dxworks/dxplatform/plugins/insider/InsiderFile.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 68,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "InsiderFile",
+        "signature": "InsiderFile()",
+        "isConstructor": true,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 69,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "getLine",
+        "signature": "getLine(java.lang.Integer)",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 70,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "extractLineBreaks",
+        "signature": "extractLineBreaks(java.lang.String)",
+        "isConstructor": false,
+        "modifiers": [
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 71,
+        "containedClasses": [
+            72,
+            73,
+            74,
+            75,
+            76
+        ],
+        "containedMethods": [
+        ],
+        "name": "InsiderOptions",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/src/main/java/org/dxworks/dxplatform/plugins/insider/InsiderOptions.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 72,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "TechnologyFinderOptions",
+        "fileName": null,
+        "isInterface": false,
+        "modifiers": [
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 73,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "AddOptions",
+        "fileName": null,
+        "isInterface": false,
+        "modifiers": [
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 74,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "DiagnoseOptions",
+        "fileName": null,
+        "isInterface": false,
+        "modifiers": [
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 75,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "LibraryDetectorOptions",
+        "fileName": null,
+        "isInterface": false,
+        "modifiers": [
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 76,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "InsiderCommands",
+        "fileName": null,
+        "isInterface": false,
+        "modifiers": [
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 77,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "InsiderResult",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/src/main/java/org/dxworks/dxplatform/plugins/insider/InsiderResult.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 78,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+            96,
+            97,
+            98,
+            99,
+            86,
+            87,
+            88,
+            89,
+            90,
+            91,
+            92,
+            93,
+            94,
+            95
+        ],
+        "name": "ImportsContainer",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/src/main/java/org/dxworks/dxplatform/plugins/insider/library/detector/ImportsContainer.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 79,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+            80,
+            81,
+            82,
+            83,
+            84,
+            85
+        ],
+        "name": "C_ImportsContainer",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/src/main/java/org/dxworks/dxplatform/plugins/insider/library/detector/C_ImportsContainer.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 78,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 80,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "configure",
+        "signature": "configure()",
+        "isConstructor": false,
+        "modifiers": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 81,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "getImportsResultFilePath",
+        "signature": "getImportsResultFilePath()",
+        "isConstructor": false,
+        "modifiers": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 82,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "getFilesWithImportsResultFile",
+        "signature": "getFilesWithImportsResultFile()",
+        "isConstructor": false,
+        "modifiers": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 83,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "getPackagingUnitResultFilePath",
+        "signature": "getPackagingUnitResultFilePath()",
+        "isConstructor": false,
+        "modifiers": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 84,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "accepts",
+        "signature": "accepts(java.lang.String)",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 85,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "getPackagingUnitFor",
+        "signature": "getPackagingUnitFor(java.lang.String)",
+        "isConstructor": false,
+        "modifiers": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 86,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "ImportsContainer",
+        "signature": "ImportsContainer()",
+        "isConstructor": true,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 87,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "configure",
+        "signature": "configure()",
+        "isConstructor": false,
+        "modifiers": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 88,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "addImport",
+        "signature": "addImport(java.lang.String)",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 89,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "addFile",
+        "signature": "addFile(java.lang.String, int)",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 90,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "writeImportsToFile",
+        "signature": "writeImportsToFile()",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 91,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "getContentFromMap",
+        "signature": "getContentFromMap(java.util.Map<java.lang.String,java.lang.Integer>)",
+        "isConstructor": false,
+        "modifiers": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 92,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "getImportsResultFilePath",
+        "signature": "getImportsResultFilePath()",
+        "isConstructor": false,
+        "modifiers": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 93,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "writeFilesWithImports",
+        "signature": "writeFilesWithImports()",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 94,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "getFilesWithImportsResultFile",
+        "signature": "getFilesWithImportsResultFile()",
+        "isConstructor": false,
+        "modifiers": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 95,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "writePackagingUnits",
+        "signature": "writePackagingUnits()",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 96,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "getPackagingUnitResultFilePath",
+        "signature": "getPackagingUnitResultFilePath()",
+        "isConstructor": false,
+        "modifiers": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 97,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "accepts",
+        "signature": "accepts(java.lang.String)",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 98,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "createPackagingUnitList",
+        "signature": "createPackagingUnitList()",
+        "isConstructor": false,
+        "modifiers": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 99,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "getPackagingUnitFor",
+        "signature": "getPackagingUnitFor(java.lang.String)",
+        "isConstructor": false,
+        "modifiers": [
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 100,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+            101,
+            102,
+            103,
+            104,
+            105,
+            106,
+            107
+        ],
+        "name": "JavaImportsContainer",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/src/main/java/org/dxworks/dxplatform/plugins/insider/library/detector/JavaImportsContainer.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 78,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 101,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "configure",
+        "signature": "configure()",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 102,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "getImportsResultFilePath",
+        "signature": "getImportsResultFilePath()",
+        "isConstructor": false,
+        "modifiers": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 103,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "getFilesWithImportsResultFile",
+        "signature": "getFilesWithImportsResultFile()",
+        "isConstructor": false,
+        "modifiers": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 104,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "getPackagingUnitResultFilePath",
+        "signature": "getPackagingUnitResultFilePath()",
+        "isConstructor": false,
+        "modifiers": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 105,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "accepts",
+        "signature": "accepts(java.lang.String)",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 106,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "getPackagingUnitFor",
+        "signature": "getPackagingUnitFor(java.lang.String)",
+        "isConstructor": false,
+        "modifiers": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 107,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "getPackageName",
+        "signature": "getPackageName(java.lang.String)",
+        "isConstructor": false,
+        "modifiers": [
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 108,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "InsiderAnalysis",
+        "fileName": null,
+        "isInterface": true,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": null,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 109,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+            112,
+            113,
+            114,
+            115,
+            116,
+            110,
+            111
+        ],
+        "name": "LibraryDetector",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/src/main/java/org/dxworks/dxplatform/plugins/insider/library/detector/LibraryDetector.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+            108
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 110,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "LibraryDetector",
+        "signature": "LibraryDetector(org.dxworks.dxplatform.plugins.insider.library.detector.LibraryDetectorLanguage)",
+        "isConstructor": true,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 111,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "analyze",
+        "signature": "analyze(org.dxworks.dxplatform.plugins.insider.InsiderFile)",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 112,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "analyzeForC_Like",
+        "signature": "analyzeForC_Like(java.lang.String)",
+        "isConstructor": false,
+        "modifiers": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 113,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "getImportNumberForC_Like",
+        "signature": "getImportNumberForC_Like(java.lang.String, java.lang.String, org.dxworks.dxplatform.plugins.insider.library.detector.LibraryDetector.C_LikeImportExtractor)",
+        "isConstructor": false,
+        "modifiers": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 114,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "analyzeForJava",
+        "signature": "analyzeForJava(java.lang.String, java.lang.String)",
+        "isConstructor": false,
+        "modifiers": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 115,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "accepts",
+        "signature": "accepts(java.lang.String)",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 116,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "generateResults",
+        "signature": "generateResults()",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 117,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "getImportedHeaderFromLine",
+        "signature": "getImportedHeaderFromLine(java.lang.String)",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 118,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+            119,
+            120
+        ],
+        "name": "PackagingUnit",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/src/main/java/org/dxworks/dxplatform/plugins/insider/library/detector/model/PackagingUnit.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 119,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "PackagingUnit",
+        "signature": "PackagingUnit(java.lang.String, int)",
+        "isConstructor": true,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 120,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "increment",
+        "signature": "increment(int)",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 121,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+            122,
+            123
+        ],
+        "name": "XmlToJsonConverter",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/src/main/java/org/dxworks/dxplatform/plugins/insider/technology/finder/converters/XmlToJsonConverter.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 122,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "main",
+        "signature": "main(java.lang.String[])",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 123,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "convertXmlFileTOJson",
+        "signature": "convertXmlFileTOJson(java.lang.String)",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 124,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+            125
+        ],
+        "name": "FingerprintParseException",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/src/main/java/org/dxworks/dxplatform/plugins/insider/technology/finder/exceptions/FingerprintParseException.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 55,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 125,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "FingerprintParseException",
+        "signature": "FingerprintParseException(java.lang.Throwable)",
+        "isConstructor": true,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 126,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+            128,
+            129,
+            130,
+            131,
+            127
+        ],
+        "name": "LanguageRegistry",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/src/main/java/org/dxworks/dxplatform/plugins/insider/technology/finder/LanguageRegistry.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 127,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "LanguageRegistry",
+        "signature": "LanguageRegistry()",
+        "isConstructor": true,
+        "modifiers": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 128,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "getInstance",
+        "signature": "getInstance()",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 129,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "loadLanguagesToExtensionsFromConfigurationFile",
+        "signature": "loadLanguagesToExtensionsFromConfigurationFile()",
+        "isConstructor": false,
+        "modifiers": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 130,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "isOfLanguage",
+        "signature": "isOfLanguage(java.lang.String, java.lang.String)",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 131,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "containsLanguage",
+        "signature": "containsLanguage(java.lang.String)",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 132,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "JsonConfigurationDTO",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/src/main/java/org/dxworks/dxplatform/plugins/insider/technology/finder/model/json/JsonConfigurationDTO.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 133,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+            134,
+            135,
+            136
+        ],
+        "name": "TechnologyJsonDTO",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/src/main/java/org/dxworks/dxplatform/plugins/insider/technology/finder/model/json/TechnologyJsonDTO.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 134,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "fromTechnology",
+        "signature": "fromTechnology(org.dxworks.dxplatform.plugins.insider.technology.finder.model.Technology)",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 135,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "toTechnology",
+        "signature": "toTechnology()",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 136,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "fingerprintsWrappedAsImports",
+        "signature": "fingerprintsWrappedAsImports()",
+        "isConstructor": false,
+        "modifiers": [
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 137,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+            138,
+            139,
+            140,
+            141,
+            142,
+            143
+        ],
+        "name": "Technology",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/src/main/java/org/dxworks/dxplatform/plugins/insider/technology/finder/model/Technology.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+            108
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 138,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "Technology",
+        "signature": "Technology(java.lang.String, java.lang.String, java.util.List<java.lang.String>, java.util.List<java.lang.String>, java.util.List<java.lang.String>)",
+        "isConstructor": true,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 139,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "analyze",
+        "signature": "analyze(org.dxworks.dxplatform.plugins.insider.InsiderFile)",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 140,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "getFullyQualifiedName",
+        "signature": "getFullyQualifiedName(org.dxworks.dxplatform.plugins.insider.InsiderFile)",
+        "isConstructor": false,
+        "modifiers": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 141,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "accepts",
+        "signature": "accepts(java.lang.String)",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 142,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "getPatternOccurrencesInFile",
+        "signature": "getPatternOccurrencesInFile(org.dxworks.dxplatform.plugins.insider.InsiderFile, java.util.regex.Pattern)",
+        "isConstructor": false,
+        "modifiers": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 143,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "setFingerprints",
+        "signature": "setFingerprints(java.util.List<java.lang.String>)",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 144,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "CategoryXmlDTO",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/src/main/java/org/dxworks/dxplatform/plugins/insider/technology/finder/model/xml/old/CategoryXmlDTO.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 145,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "ConfigurationDataXmlDTO",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/src/main/java/org/dxworks/dxplatform/plugins/insider/technology/finder/model/xml/old/ConfigurationDataXmlDTO.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 146,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "FingerprintXmlDTO",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/src/main/java/org/dxworks/dxplatform/plugins/insider/technology/finder/model/xml/old/FingerprintXmlDTO.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 147,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "LanguagesXmlDTO",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/src/main/java/org/dxworks/dxplatform/plugins/insider/technology/finder/model/xml/old/LanguagesXmlDTO.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 148,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "LanguageXmlDTO",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/src/main/java/org/dxworks/dxplatform/plugins/insider/technology/finder/model/xml/old/LanguageXmlDTO.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 149,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "TechnologyXmlDTO",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/src/main/java/org/dxworks/dxplatform/plugins/insider/technology/finder/model/xml/old/TechnologyXmlDTO.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 150,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "XmlConfigurationDTO",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/src/main/java/org/dxworks/dxplatform/plugins/insider/technology/finder/model/xml/old/XmlConfigurationDTO.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 151,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "parseTechnologiesFile",
+        "signature": "parseTechnologiesFile(java.lang.String)",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 152,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "writeTechnologiesToFile",
+        "signature": "writeTechnologiesToFile(java.util.List<org.dxworks.dxplatform.plugins.insider.technology.finder.model.Technology>, java.nio.file.Path)",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 153,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "FingerprintsParser",
+        "fileName": null,
+        "isInterface": true,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": null,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 154,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+            155,
+            156
+        ],
+        "name": "FingerprintsXmlParser",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/src/main/java/org/dxworks/dxplatform/plugins/insider/technology/finder/parsers/FingerprintsXmlParser.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+            153
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 155,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "parseTechnologiesFile",
+        "signature": "parseTechnologiesFile(java.lang.String)",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 156,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "writeTechnologiesToFile",
+        "signature": "writeTechnologiesToFile(java.util.List<org.dxworks.dxplatform.plugins.insider.technology.finder.model.Technology>, java.nio.file.Path)",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 157,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+            158,
+            159
+        ],
+        "name": "JavaLibrariesCsvParser",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/src/main/java/org/dxworks/dxplatform/plugins/insider/technology/finder/parsers/JavaLibrariesCsvParser.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+            153
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 158,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "parseTechnologiesFile",
+        "signature": "parseTechnologiesFile(java.lang.String)",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 159,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "writeTechnologiesToFile",
+        "signature": "writeTechnologiesToFile(java.util.List<org.dxworks.dxplatform.plugins.insider.technology.finder.model.Technology>, java.nio.file.Path)",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 160,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+            161,
+            162,
+            163
+        ],
+        "name": "JsonFingerprintParser",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/src/main/java/org/dxworks/dxplatform/plugins/insider/technology/finder/parsers/JsonFingerprintParser.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+            153
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 161,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "parseTechnologiesFile",
+        "signature": "parseTechnologiesFile(java.lang.String)",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 162,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "writeTechnologiesToFile",
+        "signature": "writeTechnologiesToFile(java.util.List<org.dxworks.dxplatform.plugins.insider.technology.finder.model.Technology>, java.nio.file.Path)",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 163,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "getConfigurationDTO",
+        "signature": "getConfigurationDTO(java.lang.String)",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 164,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+            165,
+            166,
+            167,
+            168
+        ],
+        "name": "TechnologyFinder",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/src/main/java/org/dxworks/dxplatform/plugins/insider/technology/finder/TechnologyFinder.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+            108
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 165,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "TechnologyFinder",
+        "signature": "TechnologyFinder(java.util.List<java.lang.String>)",
+        "isConstructor": true,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 166,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "loadFingerPrints",
+        "signature": "loadFingerPrints()",
+        "isConstructor": false,
+        "modifiers": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 167,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "analyze",
+        "signature": "analyze(org.dxworks.dxplatform.plugins.insider.InsiderFile)",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 168,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "accepts",
+        "signature": "accepts(java.lang.String)",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 169,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+            170
+        ],
+        "name": "FileUtils",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/src/main/java/org/dxworks/dxplatform/plugins/insider/utils/FileUtils.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 170,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "removeComments",
+        "signature": "removeComments(java.lang.String)",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 171,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+            172,
+            173
+        ],
+        "name": "ImportUtils",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/src/main/java/org/dxworks/dxplatform/plugins/insider/utils/ImportUtils.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 172,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "wrapImportPackage",
+        "signature": "wrapImportPackage(java.lang.String)",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 173,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "unwrapImportPackage",
+        "signature": "unwrapImportPackage(java.lang.String)",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 174,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+            175
+        ],
+        "name": "LibraryImport",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/src/main/java/org/dxworks/dxplatform/plugins/insider/utils/LibraryImport.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 175,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "toStringArray",
+        "signature": "toStringArray()",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 176,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+            177,
+            178,
+            179
+        ],
+        "name": "LibraryImportInOtherTechnology",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/src/main/java/org/dxworks/dxplatform/plugins/insider/utils/LibraryImportInOtherTechnology.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 174,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 177,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "LibraryImportInOtherTechnology",
+        "signature": "LibraryImportInOtherTechnology(java.lang.String, java.lang.String, java.lang.String)",
+        "isConstructor": true,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 178,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "equals",
+        "signature": "equals(java.lang.Object)",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 179,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "hashCode",
+        "signature": "hashCode()",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 180,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+            181
+        ],
+        "name": "MapUtils",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/src/main/java/org/dxworks/dxplatform/plugins/insider/utils/MapUtils.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 181,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "sortMapByValuesDesc",
+        "signature": "sortMapByValuesDesc(java.util.Map<java.lang.String,java.lang.Integer>)",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 182,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "FingerprintsXmlParserTest",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/src/test/java/org/dxworks/dxplatform/plugins/insider/technology/finder/parsers/FingerprintsXmlParserTest.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 183,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+            184,
+            185
+        ],
+        "name": "FileUtilsTest",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/src/test/java/org/dxworks/dxplatform/plugins/insider/utils/FileUtilsTest.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 184,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "removeComments",
+        "signature": "removeComments()",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 185,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "getContentOfResourceFile",
+        "signature": "getContentOfResourceFile(java.lang.String)",
+        "isConstructor": false,
+        "modifiers": [
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 186,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+            187,
+            188
+        ],
+        "name": "ImportUtilsTest",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/src/test/java/org/dxworks/dxplatform/plugins/insider/utils/ImportUtilsTest.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 187,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "fingerprintsWrappedAsImports",
+        "signature": "fingerprintsWrappedAsImports()",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 188,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "testUnwrapImport",
+        "signature": "testUnwrapImport()",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 189,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+            192,
+            190,
+            191
+        ],
+        "name": "JsonToCsvTransformerTest",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/insider/src/test/java/org/dxworks/dxplatform/plugins/insider/utils/transformers/JsonToCsvTransformerTest.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 190,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "transformJsonFileToCsv",
+        "signature": "transformJsonFileToCsv()",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 191,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "addCsvFileToJson",
+        "signature": "addCsvFileToJson()",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 192,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "diagnoseJsonFile",
+        "signature": "diagnoseJsonFile()",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    }
+]

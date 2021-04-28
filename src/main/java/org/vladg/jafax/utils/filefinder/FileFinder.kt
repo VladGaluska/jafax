@@ -5,10 +5,10 @@ import java.nio.file.Path
 
 object FileFinder {
 
-    fun findFiles(path: Path): FoundFiles {
+    fun findFiles(path: Path): JavaSourceFiles {
         val fileVisitor = FileVisitor()
         Files.walkFileTree(path, fileVisitor)
-        return FoundFiles(fileVisitor.javaFiles, fileVisitor.jarFiles)
+        return JavaSourceFiles(fileVisitor.javaFiles, fileVisitor.jarFiles)
     }
 
 }

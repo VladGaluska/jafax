@@ -1,0 +1,286 @@
+[
+    {
+        "type": "Class",
+        "id": 0,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "Object",
+        "fileName": null,
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": null,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 1,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+            2,
+            3,
+            4,
+            5
+        ],
+        "name": "Client",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/org/radum/Client.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 2,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "useObject",
+        "signature": "useObject(org.radum.Provider)",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 3,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "anotherFunction",
+        "signature": "anotherFunction(org.radum.ExtendedData)",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 4,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "client",
+        "signature": "client()",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 5,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "main",
+        "signature": "main(java.lang.String[])",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 6,
+        "containedClasses": [
+            7
+        ],
+        "containedMethods": [
+        ],
+        "name": "Empty",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/org/radum/Client.java",
+        "isInterface": false,
+        "modifiers": [
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 7,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "SubEmpty",
+        "fileName": null,
+        "isInterface": false,
+        "modifiers": [
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 8,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "DataObject",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/org/radum/DataObject.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 9,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+            10,
+            11
+        ],
+        "name": "ExtendedData",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/org/radum/ExtendedData.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 8,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 10,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "ExtendedData",
+        "signature": "ExtendedData()",
+        "isConstructor": true,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 11,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "setProvider",
+        "signature": "setProvider(org.radum.Provider)",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 12,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "anotherFunction",
+        "signature": "anotherFunction()",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 13,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "IProvider",
+        "fileName": null,
+        "isInterface": true,
+        "modifiers": [
+        ],
+        "superClass": null,
+        "superInterfaces": [
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 14,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+            16,
+            17,
+            15
+        ],
+        "name": "Provider",
+        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/org/radum/Provider.java",
+        "isInterface": false,
+        "modifiers": [
+            "public"
+        ],
+        "superClass": 0,
+        "superInterfaces": [
+            13
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 15,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "measureComplexity",
+        "signature": "measureComplexity(int, int)",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 16,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "anotherFunction",
+        "signature": "anotherFunction()",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    },
+    {
+        "type": "Method",
+        "id": 17,
+        "containedClasses": [
+        ],
+        "containedMethods": [
+        ],
+        "name": "getData",
+        "signature": "getData()",
+        "isConstructor": false,
+        "modifiers": [
+            "public"
+        ]
+    }
+]

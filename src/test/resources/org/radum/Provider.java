@@ -1,6 +1,11 @@
 package org.radum;
 
 public class Provider implements IProvider {
+
+    public Provider(int a) {
+        int x = 2;
+    }
+
     public int measureComplexity(int i, int j) {
         int result;
         if(i % 2 == 0) {
@@ -31,6 +36,14 @@ public class Provider implements IProvider {
 
     public DataObject getData() {
         return data;
+    }
+
+}
+
+class ProviderFactory {
+
+    public static Provider getProvider() {
+        return new Provider(2);
     }
 
 }

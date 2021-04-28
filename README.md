@@ -1,8 +1,8 @@
-#Java FAct eXtractor
-Java Fact Extractor (***Jafax***) is a code analysis tool used to find irregularities with Java based software
+# Java Fact eXtractor
+Java Fact Extractor (***JaFaX***) is a code analysis tool used to find irregularities with Java based software
 projects.
 
-##Start Up
+## Start Up
 
 - Import project with Maven
 - Run `mvn clean install`
@@ -11,45 +11,45 @@ projects.
 - It will then continue to parse the JSON and calculate the relations and metrics. The JSON creation is done 
   in order to allow the user to modify the JSON in case there are multiple projects with classes with the same signature.
   
-#Results
+# Results
 
-##JSON structure
-###Class
+## JSON structure
+### Class
 - id: Represents the id of the class
 
-###Method
+### Method
 - id: Represents the id of the method
 
-###Field
+### Field
 - id: Represents the id of the field
 
-###Parameter
+### Parameter
 - id: Represents the id of the parameter
 
-###Local variable
+### Local variable
 - id: Represents the id of the local variable
 
-###Annotation
+### Annotation
 - id: Represents the id of the annotation
 
-###Method call
+### Method call
 - id: Represents the id of the method call
 
-###Class Accesses
+### Class Accesses
 - id: Represents the id of the class access
 
-###Annotation set
+### Annotation set
 - id: Represents the id of the annotation setting
 
-##Relations
+## Relations
 
 |name|calculation level|calculation formula| 
 |----|-----------------|-------------------|
 
-##Metrics
+## Metrics
 |name|calculation level|calculation formula|
 |----|-----------------|-------------------|
 
-##Anti-Patterns
+## Anti-Patterns
 |name|calculation level|calculation formula|
 |----|-----------------|-------------------|

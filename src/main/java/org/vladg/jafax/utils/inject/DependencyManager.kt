@@ -2,24 +2,28 @@ package org.vladg.jafax.utils.inject
 
 import com.google.inject.AbstractModule
 import com.google.inject.Scopes
-import com.google.inject.TypeLiteral
-import org.vladg.ast.ASTVisitor
-import org.vladg.ast.repository.NonPersistentRepository
-import org.vladg.ast.repository.model.Class
-import org.vladg.ast.repository.model.File
-import org.vladg.ast.repository.model.Method
-import org.vladg.ast.service.FileService
+import org.vladg.jafax.ast.ASTRequester
+import org.vladg.jafax.ast.ASTVisitor
+import org.vladg.jafax.ast.repository.AttributeRepository
+import org.vladg.jafax.ast.repository.ClassRepository
+import org.vladg.jafax.ast.repository.MethodRepository
+import org.vladg.jafax.ast.service.*
+import org.vladg.jafax.io.writer.ProjectLayoutWriter
 
 class DependencyManager : AbstractModule() {
 
     override fun configure() {
         bind(ASTVisitor::class.java).`in`(Scopes.SINGLETON)
-        bind(FileService::class.java).`in`(Scopes.SINGLETON)
-        bind(typeLiteral<NonPersistentRepository<File>>()).`in`(Scopes.SINGLETON)
-        bind(typeLiteral<NonPersistentRepository<Method>>()).`in`(Scopes.SINGLETON)
-        bind(typeLiteral<NonPersistentRepository<Class>>()).`in`(Scopes.SINGLETON)
+        bind(ClassRepository::class.java).`in`(Scopes.SINGLETON)
+        bind(MethodRepository::class.java).`in`(Scopes.SINGLETON)
+        bind(AttributeRepository::class.java).`in`(Scopes.SINGLETON)
+        bind(ClassService::class.java).`in`(Scopes.SINGLETON)
+        bind(MethodService::class.java).`in`(Scopes.SINGLETON)
+        bind(AttributeService::class.java).`in`(Scopes.SINGLETON)
+        bind(ContainerService::class.java).`in`(Scopes.SINGLETON)
+        bind(MethodInvocationService::class.java).`in`(Scopes.SINGLETON)
+        bind(ASTRequester::class.java).`in`(Scopes.SINGLETON)
+        bind(ProjectLayoutWriter::class.java).`in`(Scopes.SINGLETON)
     }
-
-    private inline fun <reified T> typeLiteral() = object : TypeLiteral<T>() {}
 
 }

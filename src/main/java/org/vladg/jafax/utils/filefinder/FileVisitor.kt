@@ -26,11 +26,13 @@ class FileVisitor : SimpleFileVisitor<Path?>() {
 
     override fun visitFile(file: Path?, attrs: BasicFileAttributes?): FileVisitResult {
         val name = file?.fileName
-        if (name != null && attrs != null && attrs.isRegularFile) {
-            if (javaMatcher.matches(name)) {
-                javaFiles.add(file.toString())
-            } else if (jarMatcher.matches(name)) {
-                jarFiles.add(file.toString())
+        name?.let {
+            if (attrs != null && attrs.isRegularFile) {
+                if (javaMatcher.matches(it)) {
+                    javaFiles.add(file.toString())
+                } else if (jarMatcher.matches(it)) {
+                    jarFiles.add(file.toString())
+                }
             }
         }
         return FileVisitResult.CONTINUE

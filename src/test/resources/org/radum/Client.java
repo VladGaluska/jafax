@@ -1,7 +1,8 @@
 package org.radum;
 
 public class Client {
-    Provider dataMember = new Provider();
+
+    Provider dataMember = ProviderFactory.getProvider();
 
     ExtendedData extendedData = new ExtendedData();
 
@@ -17,6 +18,8 @@ public class Client {
     }
 
     public void client() {
+        int unused;
+        unused = 3;
         int result = dataMember.anotherFunction();
 
         if(result > 2) System.err.println("high");
