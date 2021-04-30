@@ -4,6 +4,8 @@ public class Client {
 
     Provider dataMember = ProviderFactory.getProvider();
 
+    Provider[] providers;
+
     ExtendedData extendedData = new ExtendedData();
 
 

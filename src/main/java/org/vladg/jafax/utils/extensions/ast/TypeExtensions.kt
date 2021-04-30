@@ -21,3 +21,8 @@ fun ITypeBinding.getParent(): IBinding? {
         else -> declaringMember
     }
 }
+
+fun ITypeBinding.getActualType(): ITypeBinding {
+    return if(isArray) this.elementType
+           else this
+}

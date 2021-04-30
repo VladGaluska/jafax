@@ -1,5 +1,6 @@
 package org.vladg.jafax.ast.repository
 
+import com.google.inject.Inject
 import org.eclipse.jdt.core.dom.IBinding
 import org.vladg.jafax.ast.repository.model.ASTObject
 import org.vladg.jafax.ast.repository.model.Class
@@ -10,10 +11,14 @@ import java.util.*
 
 open class NonPersistentRepository<T : ASTObject?> {
 
+    @Inject
+    private lateinit var commonRepository: CommonRepository
+
     private val objects: MutableMap<Long, T> = HashMap()
 
     open fun addObject(obj: T) {
         objects[obj!!.id] = obj
+        this.commonRepository.addObject(obj)
     }
 
     fun findById(id: Long): T? {

@@ -1,10 +1,14 @@
 package org.vladg.jafax.io.writer
 
+import com.google.inject.Inject
+import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.modules.SerializersModule
 import kotlinx.serialization.modules.polymorphic
 import kotlinx.serialization.modules.subclass
+import org.vladg.jafax.ast.repository.CommonRepository
 import org.vladg.jafax.ast.repository.model.*
+import java.io.File
 import java.nio.file.Path
 
 class ProjectLayoutWriter {
@@ -27,8 +31,18 @@ class ProjectLayoutWriter {
         encodeDefaults = true
     }
 
+    @Inject
+    private lateinit var commonRepository: CommonRepository
+
     fun writeClasses(path: Path) {
-        //file.writeText(format.encodeToString(this.commonRepository.findAll()))
+        val file = this.getLayoutFile(path)
+        file.writeText(encodeObjects())
     }
+
+    private fun encodeObjects(): String =
+        format.encodeToString(this.commonRepository.getAll())
+
+    private fun getLayoutFile(path: Path) =
+        File("$path/Layout.JSON")
 
 }

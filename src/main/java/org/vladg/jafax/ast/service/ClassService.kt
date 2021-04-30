@@ -6,6 +6,7 @@ import org.vladg.jafax.ast.repository.ClassRepository
 import org.vladg.jafax.ast.repository.NonPersistentRepository
 import org.vladg.jafax.ast.repository.model.Container
 import org.vladg.jafax.ast.repository.model.Class
+import org.vladg.jafax.utils.extensions.ast.getActualType
 import org.vladg.jafax.utils.extensions.ast.getParent
 import org.vladg.jafax.utils.extensions.ast.modifierSet
 
@@ -61,11 +62,11 @@ class ClassService {
     }
 
     fun findOrCreateClassForBinding(binding: ITypeBinding?, useStack: Boolean = false): Class? {
-        binding ?: return null
-        return this.findByKey(binding.key)
-            ?: this.createAndSaveClass(binding) {
-                if(!useStack) containerService.getOrCreateContainerForBinding(binding.getParent())
-                else NonPersistentRepository.popUntilBindingObject(binding.getParent())
+        val arrayCheckedBinding = binding?.getActualType() ?: return null
+        return this.findByKey(arrayCheckedBinding.key)
+            ?: this.createAndSaveClass(arrayCheckedBinding) {
+                if(!useStack) containerService.getOrCreateContainerForBinding(arrayCheckedBinding.getParent())
+                else NonPersistentRepository.popUntilBindingObject(arrayCheckedBinding.getParent())
             }
     }
 
