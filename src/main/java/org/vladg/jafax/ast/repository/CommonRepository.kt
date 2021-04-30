@@ -2,13 +2,18 @@ package org.vladg.jafax.ast.repository
 
 import org.vladg.jafax.ast.repository.model.ASTObject
 
-class CommonRepository {
+object CommonRepository {
 
-    private val objects: MutableList<ASTObject> = ArrayList()
+    private val objects: MutableMap<Long, ASTObject> = HashMap()
 
-    fun addObject(obj: ASTObject) =
-        this.objects.add(obj)
+    fun addObject(obj: ASTObject) {
+        objects[obj.id] = obj
+    }
 
-    fun getAll(): List<ASTObject> = objects
+    fun findById(id: Long): ASTObject? =
+        objects[id]
+
+    fun getAll(): List<ASTObject> =
+        objects.values.toList()
 
 }

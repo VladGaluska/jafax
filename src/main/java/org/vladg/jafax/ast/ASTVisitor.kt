@@ -32,13 +32,13 @@ class ASTVisitor : ASTVisitor() {
         val binding = typeDeclaration.resolveBinding()
         if (binding == null) {
             logger.warn("Could not resolve binding for type: ${typeDeclaration.name.fullyQualifiedName}" +
-                        " in file: ${this.currentFileName}, will ignore...")
+                        " in file: ${currentFileName}, will ignore...")
             return false
         }
         if (!binding.isClass) return true
-        val clazz = this.classService.findOrCreateClassForBinding(binding, true)!!
+        val clazz = classService.findOrCreateClassForBinding(binding, true)!!
         if (typeDeclaration.parent.nodeType == ASTNode.COMPILATION_UNIT) {
-            clazz.fileName = this.currentFileName
+            clazz.fileName = currentFileName
         }
         NonPersistentRepository.addToContainer(clazz)
         return true
@@ -48,41 +48,41 @@ class ASTVisitor : ASTVisitor() {
         val binding = methodDeclaration.resolveBinding()
         if (binding == null) {
             logger.warn("Could not resolve binding for method:  ${methodDeclaration.name.fullyQualifiedName}" +
-                        " in file:  ${this.currentFileName}, will ignore...")
+                        " in file:  ${currentFileName}, will ignore...")
             return false
         }
-        val method = this.methodService.findOrCreateMethodForBinding(binding, true)!!
+        val method = methodService.findOrCreateMethodForBinding(binding, true)!!
         NonPersistentRepository.addToContainer(method)
         return true
     }
 
     override fun visit(node: MethodInvocation): Boolean {
-        this.methodInvocationService.registerInvocation(node)
+        methodInvocationService.registerInvocation(node)
         return true
     }
 
     override fun visit(node: SuperMethodInvocation): Boolean {
-        this.methodInvocationService.registerInvocation(node)
+        methodInvocationService.registerInvocation(node)
         return true
     }
 
     override fun visit(node: ClassInstanceCreation): Boolean {
-        this.methodInvocationService.registerInvocation(node)
+        methodInvocationService.registerInvocation(node)
         return true
     }
 
     override fun visit(node: VariableDeclarationStatement): Boolean {
-        this.attributeService.findOrCreateAttribute(node, true)
+        attributeService.findOrCreateAttribute(node, true)
         return true
     }
 
     override fun visit(node: SingleVariableDeclaration): Boolean {
-        this.attributeService.findOrCreateAttribute(node, true)
+        attributeService.findOrCreateAttribute(node, true)
         return true
     }
 
     override fun visit(node: FieldDeclaration): Boolean {
-        this.attributeService.findOrCreateAttribute(node, true)
+        attributeService.findOrCreateAttribute(node, true)
         return true
     }
 
@@ -90,10 +90,10 @@ class ASTVisitor : ASTVisitor() {
         val binding = node.resolveFieldBinding()
         if (binding == null) {
             logger.warn("Could not resolve binding for field:  ${node.name}" +
-                    " in file:  ${this.currentFileName}, will ignore...")
+                    " in file:  ${currentFileName}, will ignore...")
             return false
         }
-        this.attributeService.findOrCreateFieldFromBinding(binding)
+        attributeService.createFieldAccess(binding, node)
         return true
     }
 

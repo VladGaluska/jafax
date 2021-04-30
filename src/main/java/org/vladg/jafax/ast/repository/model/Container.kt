@@ -1,26 +1,25 @@
 package org.vladg.jafax.ast.repository.model
 
-import kotlinx.serialization.Serializable
-import org.vladg.jafax.io.ASTPropertySerializer
+abstract class Container(
+    name: String,
+    modifiers: Set<Modifier>
+) : ASTObject(name, modifiers) {
 
-@Serializable
-abstract class Container : ASTObject() {
+    val containedClasses: MutableSet<Class> = HashSet()
 
-    private val containedClasses: MutableSet<@Serializable(with = ASTPropertySerializer::class) Class> = HashSet()
+    val containedMethods: MutableSet<Method> = HashSet()
 
-    private val containedMethods: MutableSet<@Serializable(with = ASTPropertySerializer::class) Method> = HashSet()
+    val calledMethods: MutableSet<Method> = HashSet()
 
-    private val calledMethods: MutableSet<@Serializable(with = ASTPropertySerializer::class) Method> = HashSet()
+    val accessedFields: MutableSet<Attribute> = HashSet()
 
-    private val accessedFields: MutableSet<@Serializable(with = ASTPropertySerializer::class) Attribute> = HashSet()
+    fun addToContainedClasses(clazz: Class) = containedClasses.add(clazz)
 
-    fun addToContainedClasses(clazz: Class) = this.containedClasses.add(clazz)
+    fun addToContainedMethods(method: Method) = containedMethods.add(method)
 
-    fun addToContainedMethods(method: Method) = this.containedMethods.add(method)
+    fun addToCalledMethods(method: Method) = calledMethods.add(method)
 
-    fun addToCalledMethods(method: Method) = this.calledMethods.add(method)
-
-    fun addToAccessedFields(attribute: Attribute) = this.accessedFields.add(attribute)
+    fun addToAccessedFields(attribute: Attribute) = accessedFields.add(attribute)
 
     abstract fun addToContainedAttributes(attribute: Attribute)
 

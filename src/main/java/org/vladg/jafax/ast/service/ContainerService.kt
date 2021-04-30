@@ -20,8 +20,8 @@ class ContainerService {
     fun getOrCreateContainerForBinding(binding: IBinding?, useStack: Boolean = false): Container? {
         binding ?: return null
         return when (binding.kind) {
-            IBinding.METHOD -> this.methodService.findOrCreateMethodForBinding(binding as IMethodBinding, useStack)
-            IBinding.TYPE -> this.classService.findOrCreateClassForBinding(binding as ITypeBinding, useStack)
+            IBinding.METHOD -> methodService.findOrCreateMethodForBinding(binding as IMethodBinding, useStack)
+            IBinding.TYPE -> classService.findOrCreateClassForBinding(binding as ITypeBinding, useStack)
             else -> throw IllegalStateException("Containers of type: " + bindingNameFromType(binding.kind) + " not supported!")
         }
     }
@@ -37,8 +37,8 @@ class ContainerService {
     }
 
      fun findContainer(node: ASTNode): Container? {
-        val containerBinding = this.getContainerBindingForNode(node)
-        return this.getOrCreateContainerForBinding(containerBinding, true)
+        val containerBinding = getContainerBindingForNode(node)
+        return getOrCreateContainerForBinding(containerBinding, true)
     }
 
 }

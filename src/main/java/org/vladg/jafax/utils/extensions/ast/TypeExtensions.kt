@@ -1,16 +1,10 @@
 package org.vladg.jafax.utils.extensions.ast
 
-import org.eclipse.jdt.core.dom.*
-import kotlin.streams.toList
+import org.eclipse.jdt.core.dom.IBinding
+import org.eclipse.jdt.core.dom.ITypeBinding
+import org.vladg.jafax.ast.repository.model.Modifier
 
-fun TypeDeclaration.modifierSet(): List<String> {
-    return (modifiers() as List<IExtendedModifier>).stream()
-                      .filter { it.isModifier }
-                      .map { (it as Modifier).toStringValue() }
-                      .toList()
-}
-
-fun ITypeBinding.modifierSet(): Set<String> {
+fun ITypeBinding.modifierSet(): Set<Modifier> {
     return modifierSetForValue(modifiers)
 }
 
@@ -23,6 +17,6 @@ fun ITypeBinding.getParent(): IBinding? {
 }
 
 fun ITypeBinding.getActualType(): ITypeBinding {
-    return if(isArray) this.elementType
+    return if(isArray) elementType
            else this
 }

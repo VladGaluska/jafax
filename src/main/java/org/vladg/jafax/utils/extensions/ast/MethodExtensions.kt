@@ -1,14 +1,8 @@
 package org.vladg.jafax.utils.extensions.ast
 
 import org.eclipse.jdt.core.dom.*
+import org.vladg.jafax.ast.repository.model.Modifier
 import kotlin.streams.toList
-
-fun MethodDeclaration.modifierSet(): List<String> {
-    return (modifiers() as List<IExtendedModifier>).stream()
-        .filter { it.isModifier }
-        .map { (it as Modifier).toStringValue() }
-        .toList()
-}
 
 fun MethodDeclaration.signature(): String {
     return name.fullyQualifiedName + "(" + parametersString() + ")"
@@ -26,7 +20,7 @@ fun IMethodBinding.parametersString(): String {
     return parameterTypes.joinToString(", ") { it.qualifiedName }
 }
 
-fun IMethodBinding.modifierSet(): Set<String> {
+fun IMethodBinding.modifierSet(): Set<Modifier> {
     return modifierSetForValue(modifiers)
 }
 

@@ -1,15 +1,15 @@
 package org.vladg.jafax.ast.repository.model
 
-import kotlinx.serialization.Serializable
-
-@Serializable
-abstract class ASTObject {
+abstract class ASTObject(
+    var name: String,
+    var modifiers: Set<Modifier>
+) {
 
     var id: Long = lastId++
 
     override fun equals(other: Any?): Boolean {
         return when(other) {
-            is ASTObject -> other.id == this.id
+            is ASTObject -> other.id == id
             else -> false
         }
     }

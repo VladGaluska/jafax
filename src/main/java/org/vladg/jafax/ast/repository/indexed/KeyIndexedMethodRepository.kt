@@ -1,18 +1,19 @@
-package org.vladg.jafax.ast.repository
+package org.vladg.jafax.ast.repository.indexed
 
+import org.vladg.jafax.ast.repository.NonPersistentRepository
 import org.vladg.jafax.ast.repository.model.Method
 
-class MethodRepository: NonPersistentRepository<Method>() {
+object KeyIndexedMethodRepository: NonPersistentRepository<Method>() {
 
     private val methodsByKey: MutableMap<String, Method> = HashMap()
 
     override fun addObject(obj: Method) {
-        this.methodsByKey[obj.key] = obj
+        methodsByKey[obj.key] = obj
         super.addObject(obj)
     }
 
     fun findByKey(key: String): Method? {
-        return this.methodsByKey[key]
+        return methodsByKey[key]
     }
 
 }

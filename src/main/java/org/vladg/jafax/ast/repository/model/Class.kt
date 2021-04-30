@@ -1,29 +1,28 @@
 package org.vladg.jafax.ast.repository.model
 
-import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.Transient
-import org.vladg.jafax.io.ASTPropertySerializer
+import org.vladg.jafax.io.serializers.ClassSerializer
 
-@Serializable
-@SerialName("Class")
+@Serializable(with = ClassSerializer::class)
 class Class(
-    val name: String,
+    name: String = "",
     var fileName: String? = null,
-    val isInterface: Boolean,
-    val modifiers: Set<String>,
-    @Transient
+    var isInterface: Boolean = false,
+    modifiers: Set<Modifier> = HashSet(),
     val key: String = "",
-    @Serializable(with = ASTPropertySerializer::class)
-    val superClass: Class?,
-    val superInterfaces: Set<@Serializable(with = ASTPropertySerializer::class) Class?>,
-    val isFromSource: Boolean
-) : Container() {
+    var superClass: Class? = null,
+    var superInterfaces: MutableSet<Class> = HashSet(),
+    var isExternal: Boolean = false
+) : Container(name, modifiers) {
 
-    val fields: MutableSet<@Serializable(with = ASTPropertySerializer::class) Attribute?> = HashSet()
+    val containedFields: MutableSet<Attribute> = HashSet()
 
     override fun addToContainedAttributes(attribute: Attribute) {
-        this.fields.add(attribute)
+        containedFields.add(attribute)
+    }
+
+    fun addToInterfaces(clazz: Class) {
+        superInterfaces.add(clazz)
     }
 
     override fun uniqueContainerIdentifier(): String = key

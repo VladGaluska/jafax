@@ -1,8 +1,9 @@
-package org.vladg.jafax.ast.repository
+package org.vladg.jafax.ast.repository.indexed
 
+import org.vladg.jafax.ast.repository.NonPersistentRepository
 import org.vladg.jafax.ast.repository.model.Class
 
-class ClassRepository : NonPersistentRepository<Class>() {
+object KeyIndexedClassRepository : NonPersistentRepository<Class>() {
 
     private val classesByKey: MutableMap<String, Class> = HashMap()
 
@@ -12,7 +13,7 @@ class ClassRepository : NonPersistentRepository<Class>() {
     }
 
     fun findByKey(key: String): Class? {
-        return this.classesByKey[key]
+        return classesByKey[key]
     }
 
 }

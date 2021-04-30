@@ -2,6 +2,7 @@ package org.vladg.jafax.utils.extensions.ast
 
 import org.eclipse.jdt.core.dom.*
 import org.vladg.jafax.ast.repository.model.Attribute.AttributeKind
+import org.vladg.jafax.ast.repository.model.Modifier
 
 fun FieldDeclaration.getName(): String? = getNameFromFragment(fragments()[0])
 
@@ -11,15 +12,15 @@ private fun getNameFromFragment(fragment: Any?): String? {
     return (fragment as VariableDeclarationFragment).name.fullyQualifiedName
 }
 
-fun VariableDeclarationStatement.modifierSet(): Set<String> {
+fun VariableDeclarationStatement.modifierSet(): Set<Modifier> {
     return modifierSetForValue(modifiers)
 }
 
-fun FieldDeclaration.modifierSet(): Set<String> {
+fun FieldDeclaration.modifierSet(): Set<Modifier> {
     return modifierSetForValue(modifiers)
 }
 
-fun SingleVariableDeclaration.modifierSet(): Set<String> {
+fun SingleVariableDeclaration.modifierSet(): Set<Modifier> {
     return modifierSetForValue(modifiers)
 }
 
@@ -35,6 +36,6 @@ fun SingleVariableDeclaration.getAttributeKind(): AttributeKind {
            else AttributeKind.LocalVariable
 }
 
-fun IVariableBinding.modifierSet(): Set<String> {
+fun IVariableBinding.modifierSet(): Set<Modifier> {
     return modifierSetForValue(modifiers)
 }
