@@ -2,9 +2,7 @@ package org.vladg.jafax.utils.extensions
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import org.vladg.jafax.ast.repository.model.ASTObject
-import org.vladg.jafax.ast.repository.model.Class
-import org.vladg.jafax.ast.repository.model.Modifier
+import org.vladg.jafax.repository.model.Modifier
 import java.util.*
 import java.util.stream.Stream
 

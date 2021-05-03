@@ -1,7 +1,7 @@
-package org.vladg.jafax.ast.repository.model
+package org.vladg.jafax.repository.model
 
 import kotlinx.serialization.Transient
-import org.vladg.jafax.ast.repository.model.Attribute.AttributeKind
+import org.vladg.jafax.repository.model.Attribute.AttributeKind
 
 class Method(
     name: String,
@@ -10,8 +10,9 @@ class Method(
     val key: String = "",
     val isConstructor: Boolean,
     modifiers: Set<Modifier>,
+    container: Container?,
     val returnType: Class?
-) : Container(name, modifiers) {
+) : Container(name, modifiers, container) {
 
     val parameters: MutableSet<Attribute> = HashSet()
 

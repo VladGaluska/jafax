@@ -1,13 +1,13 @@
-package org.vladg.jafax.ast.service
+package org.vladg.jafax.ast.unwrapper
 
 import com.google.inject.Inject
 import org.eclipse.jdt.core.dom.*
-import org.vladg.jafax.ast.repository.model.Method
+import org.vladg.jafax.repository.model.Method
 
-class MethodInvocationService {
+class MethodInvocationUnwrapper {
 
     @Inject
-    private lateinit var methodService: MethodService
+    private lateinit var methodUnwrapper: MethodUnwrapper
 
     @Inject
     private lateinit var containerService: ContainerService
@@ -37,6 +37,6 @@ class MethodInvocationService {
         getMethod(superMethodInvocation.resolveMethodBinding())
 
     private fun getMethod(methodBinding: IMethodBinding?): Method? =
-        methodService.findOrCreateMethodForBinding(methodBinding)
+        methodUnwrapper.findOrCreateMethodForBinding(methodBinding)
 
 }

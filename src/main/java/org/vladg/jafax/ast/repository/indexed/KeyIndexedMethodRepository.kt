@@ -1,7 +1,7 @@
 package org.vladg.jafax.ast.repository.indexed
 
-import org.vladg.jafax.ast.repository.NonPersistentRepository
-import org.vladg.jafax.ast.repository.model.Method
+import org.vladg.jafax.repository.NonPersistentRepository
+import org.vladg.jafax.repository.model.Method
 
 object KeyIndexedMethodRepository: NonPersistentRepository<Method>() {
 

@@ -1,24 +1,24 @@
-package org.vladg.jafax.ast.service
+package org.vladg.jafax.ast.unwrapper
 
 import com.google.inject.Inject
 import org.eclipse.jdt.core.dom.*
+import org.vladg.jafax.ast.repository.ContainerStack
 import org.vladg.jafax.ast.repository.indexed.KeyIndexedAttributeRepository
-import org.vladg.jafax.ast.repository.NonPersistentRepository
-import org.vladg.jafax.ast.repository.model.Attribute
-import org.vladg.jafax.ast.repository.model.Attribute.AttributeKind
-import org.vladg.jafax.ast.repository.model.Container
+import org.vladg.jafax.repository.model.Attribute
+import org.vladg.jafax.repository.model.Attribute.AttributeKind
+import org.vladg.jafax.repository.model.Container
 import org.vladg.jafax.utils.extensions.ast.findParentOfType
 import org.vladg.jafax.utils.extensions.ast.getAttributeKind
 import org.vladg.jafax.utils.extensions.ast.getName
 import org.vladg.jafax.utils.extensions.ast.modifierSet
 import org.vladg.jafax.utils.extensions.logger
 
-class AttributeService {
+class AttributeUnwrapper {
 
     private val logger = logger()
 
     @Inject
-    private lateinit var classService: ClassService
+    private lateinit var classUnwrapper: ClassUnwrapper
 
     @Inject
     private lateinit var containerService: ContainerService
@@ -32,14 +32,17 @@ class AttributeService {
 
     private fun addAttribute(attribute: Attribute): Attribute {
         KeyIndexedAttributeRepository.addAttribute(attribute)
-        attribute.container?.addToContainedAttributes(attribute)
+        setAttributeToItsContainer(attribute)
         return attribute
     }
+
+    private fun setAttributeToItsContainer(attribute: Attribute) =
+        attribute.container?.addToContainedAttributes(attribute)
 
     private fun createAccessedField(fieldBinding: IVariableBinding): Attribute {
         return addAttribute(Attribute(
             name = fieldBinding.name,
-            type = classService.findOrCreateClassForBinding(fieldBinding.type),
+            type = classUnwrapper.findOrCreateClassForBinding(fieldBinding.type),
             modifiers = fieldBinding.modifierSet(),
             container = containerService.getOrCreateContainerForBinding(fieldBinding.declaringClass),
             kind = AttributeKind.Field
@@ -76,13 +79,13 @@ class AttributeService {
         ))
     }
 
-    private fun findClass(type: Type) = classService.findOrCreateClassForBinding(type.resolveBinding())
+    private fun findClass(type: Type) = classUnwrapper.findOrCreateClassForBinding(type.resolveBinding())
 
     fun findOrCreateAttribute(node: VariableDeclarationStatement, useStack: Boolean = false): Attribute? {
         val parentBinding = getBindingForContainer(node.findParentOfType<MethodDeclaration>() ?: return null)
         return findAttributeByParentAndName(parentBinding?.key, node.getName()) ?:
                createAttribute(node) {
-                   if (useStack) NonPersistentRepository.popUntilBindingObject(parentBinding)
+                   if (useStack) ContainerStack.popUntilBindingObject(parentBinding)
                    else containerService.getOrCreateContainerForBinding(parentBinding)
                }
     }
@@ -91,7 +94,7 @@ class AttributeService {
         val parentBinding = getBindingForContainer(node.findParentOfType<TypeDeclaration>() ?: return null)
         return findAttributeByParentAndName(parentBinding?.key, node.getName()) ?:
                createAttribute(node) {
-                    if (useStack) NonPersistentRepository.popUntilBindingObject(parentBinding)
+                    if (useStack) ContainerStack.popUntilBindingObject(parentBinding)
                     else containerService.getOrCreateContainerForBinding(parentBinding)
                }
     }
@@ -100,7 +103,7 @@ class AttributeService {
         val parentBinding = getBindingForContainer(node.findParentOfType<MethodDeclaration>() ?: return null)
         return findAttributeByParentAndName(parentBinding?.key, node.name.fullyQualifiedName) ?:
                createAttribute(node) {
-                   if (useStack) NonPersistentRepository.popUntilBindingObject(parentBinding)
+                   if (useStack) ContainerStack.popUntilBindingObject(parentBinding)
                    else containerService.getOrCreateContainerForBinding(parentBinding)
                }
     }

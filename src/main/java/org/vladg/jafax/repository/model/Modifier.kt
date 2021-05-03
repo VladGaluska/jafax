@@ -1,4 +1,4 @@
-package org.vladg.jafax.ast.repository.model
+package org.vladg.jafax.repository.model
 
 enum class Modifier {
     Static,

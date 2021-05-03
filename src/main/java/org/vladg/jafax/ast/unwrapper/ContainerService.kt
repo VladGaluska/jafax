@@ -1,8 +1,8 @@
-package org.vladg.jafax.ast.service
+package org.vladg.jafax.ast.unwrapper
 
 import com.google.inject.Inject
 import org.eclipse.jdt.core.dom.*
-import org.vladg.jafax.ast.repository.model.Container
+import org.vladg.jafax.repository.model.Container
 import org.vladg.jafax.utils.extensions.ast.bindingNameFromType
 import org.vladg.jafax.utils.extensions.ast.immediateContainerBinding
 import org.vladg.jafax.utils.extensions.logger
@@ -12,16 +12,16 @@ class ContainerService {
     private val logger = logger()
 
     @Inject
-    private lateinit var classService: ClassService
+    private lateinit var classUnwrapper: ClassUnwrapper
 
     @Inject
-    private lateinit var methodService: MethodService
+    private lateinit var methodUnwrapper: MethodUnwrapper
 
     fun getOrCreateContainerForBinding(binding: IBinding?, useStack: Boolean = false): Container? {
         binding ?: return null
         return when (binding.kind) {
-            IBinding.METHOD -> methodService.findOrCreateMethodForBinding(binding as IMethodBinding, useStack)
-            IBinding.TYPE -> classService.findOrCreateClassForBinding(binding as ITypeBinding, useStack)
+            IBinding.METHOD -> methodUnwrapper.findOrCreateMethodForBinding(binding as IMethodBinding, useStack)
+            IBinding.TYPE -> classUnwrapper.findOrCreateClassForBinding(binding as ITypeBinding, useStack)
             else -> throw IllegalStateException("Containers of type: " + bindingNameFromType(binding.kind) + " not supported!")
         }
     }

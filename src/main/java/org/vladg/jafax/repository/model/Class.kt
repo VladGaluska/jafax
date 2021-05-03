@@ -1,4 +1,4 @@
-package org.vladg.jafax.ast.repository.model
+package org.vladg.jafax.repository.model
 
 import kotlinx.serialization.Serializable
 import org.vladg.jafax.io.serializers.ClassSerializer
@@ -10,10 +10,11 @@ class Class(
     var isInterface: Boolean = false,
     modifiers: Set<Modifier> = HashSet(),
     val key: String = "",
+    container: Container?,
     var superClass: Class? = null,
     var superInterfaces: MutableSet<Class> = HashSet(),
     var isExternal: Boolean = false
-) : Container(name, modifiers) {
+) : Container(name, modifiers, container) {
 
     val containedFields: MutableSet<Attribute> = HashSet()
 

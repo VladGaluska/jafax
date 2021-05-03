@@ -5,8 +5,8 @@ import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.builtins.serializer
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.CompositeDecoder
-import org.vladg.jafax.ast.repository.model.ASTObject
-import org.vladg.jafax.ast.repository.model.Modifier
+import org.vladg.jafax.repository.model.ASTObject
+import org.vladg.jafax.repository.model.Modifier
 import org.vladg.jafax.utils.extensions.stringToModifiers
 
 class CollectionDecoder(

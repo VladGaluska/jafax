@@ -6,9 +6,8 @@ import kotlinx.serialization.json.Json
 import kotlinx.serialization.modules.SerializersModule
 import kotlinx.serialization.modules.polymorphic
 import kotlinx.serialization.modules.subclass
-import org.vladg.jafax.ast.repository.CommonRepository
-import org.vladg.jafax.ast.repository.model.*
-import org.vladg.jafax.ast.service.ClassService
+import org.vladg.jafax.repository.model.*
+import org.vladg.jafax.ast.unwrapper.ClassUnwrapper
 import java.io.File
 import java.nio.file.Path
 
@@ -33,7 +32,7 @@ class ProjectLayoutWriter {
     }
 
     @Inject
-    private lateinit var classService: ClassService
+    private lateinit var classUnwrapper: ClassUnwrapper
 
     fun writeClasses(path: Path) {
         val file = getLayoutFile(path)
@@ -41,7 +40,7 @@ class ProjectLayoutWriter {
     }
 
     private fun encodeObjects(): String =
-        format.encodeToString(this.classService.findAll().toList())
+        format.encodeToString(this.classUnwrapper.findAll().toList())
 
     private fun getLayoutFile(path: Path) =
         File("$path/Layout.JSON")

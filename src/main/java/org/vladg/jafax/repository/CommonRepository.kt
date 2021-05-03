@@ -1,6 +1,6 @@
-package org.vladg.jafax.ast.repository
+package org.vladg.jafax.repository
 
-import org.vladg.jafax.ast.repository.model.ASTObject
+import org.vladg.jafax.repository.model.ASTObject
 
 object CommonRepository {
 

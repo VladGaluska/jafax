@@ -1,8 +1,7 @@
 package org.vladg.jafax.utils.extensions.ast
 
 import org.eclipse.jdt.core.dom.*
-import org.vladg.jafax.ast.repository.model.Modifier
-import kotlin.streams.toList
+import org.vladg.jafax.repository.model.Modifier
 
 fun MethodDeclaration.signature(): String {
     return name.fullyQualifiedName + "(" + parametersString() + ")"

@@ -1,7 +1,7 @@
 package org.vladg.jafax.utils.extensions.ast
 
 import org.eclipse.jdt.core.dom.Modifier
-import org.vladg.jafax.ast.repository.model.Modifier as ASTModifier
+import org.vladg.jafax.repository.model.Modifier as ASTModifier
 
 fun modifierSetForValue(modifiers: Int): Set<ASTModifier> {
     val modifierSet = HashSet<ASTModifier>()

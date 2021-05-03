@@ -2,7 +2,7 @@ package org.vladg.jafax.utils.extensions.ast
 
 import org.eclipse.jdt.core.dom.IBinding
 import org.eclipse.jdt.core.dom.ITypeBinding
-import org.vladg.jafax.ast.repository.model.Modifier
+import org.vladg.jafax.repository.model.Modifier
 
 fun ITypeBinding.modifierSet(): Set<Modifier> {
     return modifierSetForValue(modifiers)

@@ -3,19 +3,15 @@ package org.vladg.jafax.io.serializers
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializer
-import kotlinx.serialization.builtins.ListSerializer
-import kotlinx.serialization.builtins.serializer
 import kotlinx.serialization.descriptors.*
-import kotlinx.serialization.encoding.CompositeDecoder
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
-import org.vladg.jafax.ast.repository.model.Attribute
-import org.vladg.jafax.ast.repository.model.Class
-import org.vladg.jafax.ast.repository.model.Method
+import org.vladg.jafax.repository.model.Attribute
+import org.vladg.jafax.repository.model.Class
+import org.vladg.jafax.repository.model.Method
 import org.vladg.jafax.io.serializers.decoder.AstDecoder
 import org.vladg.jafax.io.serializers.decoder.CollectionDecoder
 import org.vladg.jafax.io.serializers.encoder.CollectionEncoder
-import org.vladg.jafax.utils.extensions.stringToModifiers
 
 @OptIn(ExperimentalSerializationApi::class)
 @Serializer(forClass = Class::class)

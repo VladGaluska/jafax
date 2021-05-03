@@ -1,9 +1,10 @@
-package org.vladg.jafax.ast.repository.model
+package org.vladg.jafax.repository.model
 
 abstract class Container(
     name: String,
-    modifiers: Set<Modifier>
-) : ASTObject(name, modifiers) {
+    modifiers: Set<Modifier>,
+    container: Container?
+) : ASTObject(name, modifiers, container) {
 
     val containedClasses: MutableSet<Class> = HashSet()
 

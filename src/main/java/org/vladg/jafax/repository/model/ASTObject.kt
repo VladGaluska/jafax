@@ -1,8 +1,9 @@
-package org.vladg.jafax.ast.repository.model
+package org.vladg.jafax.repository.model
 
 abstract class ASTObject(
     var name: String,
-    var modifiers: Set<Modifier>
+    var modifiers: Set<Modifier>,
+    var container: Container?
 ) {
 
     var id: Long = lastId++

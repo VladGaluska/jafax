@@ -1,6 +1,6 @@
 package org.vladg.jafax.io.serializers.decoder
 
-import org.vladg.jafax.ast.repository.model.ASTObject
+import org.vladg.jafax.repository.model.ASTObject
 
 class LinkUpdater {
 

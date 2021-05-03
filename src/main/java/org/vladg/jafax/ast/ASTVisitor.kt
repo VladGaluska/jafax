@@ -3,11 +3,11 @@ package org.vladg.jafax.ast
 import com.google.inject.Inject
 import org.eclipse.jdt.core.dom.*
 import org.eclipse.jdt.core.dom.ASTVisitor
-import org.vladg.jafax.ast.repository.NonPersistentRepository
-import org.vladg.jafax.ast.service.AttributeService
-import org.vladg.jafax.ast.service.ClassService
-import org.vladg.jafax.ast.service.MethodInvocationService
-import org.vladg.jafax.ast.service.MethodService
+import org.vladg.jafax.ast.repository.ContainerStack
+import org.vladg.jafax.ast.unwrapper.AttributeUnwrapper
+import org.vladg.jafax.ast.unwrapper.ClassUnwrapper
+import org.vladg.jafax.ast.unwrapper.MethodInvocationUnwrapper
+import org.vladg.jafax.ast.unwrapper.MethodUnwrapper
 import org.vladg.jafax.utils.extensions.logger
 
 class ASTVisitor : ASTVisitor() {
@@ -15,16 +15,16 @@ class ASTVisitor : ASTVisitor() {
     private val logger = logger()
 
     @Inject
-    private lateinit var classService: ClassService
+    private lateinit var classUnwrapper: ClassUnwrapper
 
     @Inject
-    private lateinit var methodService: MethodService
+    private lateinit var methodUnwrapper: MethodUnwrapper
 
     @Inject
-    private lateinit var attributeService: AttributeService
+    private lateinit var attributeUnwrapper: AttributeUnwrapper
 
     @Inject
-    private lateinit var methodInvocationService: MethodInvocationService
+    private lateinit var methodInvocationUnwrapper: MethodInvocationUnwrapper
 
     var currentFileName: String = ""
 
@@ -36,11 +36,11 @@ class ASTVisitor : ASTVisitor() {
             return false
         }
         if (!binding.isClass) return true
-        val clazz = classService.findOrCreateClassForBinding(binding, true)!!
+        val clazz = classUnwrapper.findOrCreateClassForBinding(binding, true)!!
         if (typeDeclaration.parent.nodeType == ASTNode.COMPILATION_UNIT) {
             clazz.fileName = currentFileName
         }
-        NonPersistentRepository.addToContainer(clazz)
+        ContainerStack.addToContainer(clazz)
         return true
     }
 
@@ -51,38 +51,38 @@ class ASTVisitor : ASTVisitor() {
                         " in file:  ${currentFileName}, will ignore...")
             return false
         }
-        val method = methodService.findOrCreateMethodForBinding(binding, true)!!
-        NonPersistentRepository.addToContainer(method)
+        val method = methodUnwrapper.findOrCreateMethodForBinding(binding, true)!!
+        ContainerStack.addToContainer(method)
         return true
     }
 
     override fun visit(node: MethodInvocation): Boolean {
-        methodInvocationService.registerInvocation(node)
+        methodInvocationUnwrapper.registerInvocation(node)
         return true
     }
 
     override fun visit(node: SuperMethodInvocation): Boolean {
-        methodInvocationService.registerInvocation(node)
+        methodInvocationUnwrapper.registerInvocation(node)
         return true
     }
 
     override fun visit(node: ClassInstanceCreation): Boolean {
-        methodInvocationService.registerInvocation(node)
+        methodInvocationUnwrapper.registerInvocation(node)
         return true
     }
 
     override fun visit(node: VariableDeclarationStatement): Boolean {
-        attributeService.findOrCreateAttribute(node, true)
+        attributeUnwrapper.findOrCreateAttribute(node, true)
         return true
     }
 
     override fun visit(node: SingleVariableDeclaration): Boolean {
-        attributeService.findOrCreateAttribute(node, true)
+        attributeUnwrapper.findOrCreateAttribute(node, true)
         return true
     }
 
     override fun visit(node: FieldDeclaration): Boolean {
-        attributeService.findOrCreateAttribute(node, true)
+        attributeUnwrapper.findOrCreateAttribute(node, true)
         return true
     }
 
@@ -93,7 +93,7 @@ class ASTVisitor : ASTVisitor() {
                     " in file:  ${currentFileName}, will ignore...")
             return false
         }
-        attributeService.createFieldAccess(binding, node)
+        attributeUnwrapper.createFieldAccess(binding, node)
         return true
     }
 

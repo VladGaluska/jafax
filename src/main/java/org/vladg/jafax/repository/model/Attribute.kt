@@ -1,12 +1,12 @@
-package org.vladg.jafax.ast.repository.model
+package org.vladg.jafax.repository.model
 
 class Attribute(
     name: String,
     val type: Class?,
     modifiers: Set<Modifier>,
-    val container: Container?,
+    container: Container?,
     val kind: AttributeKind
-): ASTObject(name, modifiers) {
+): ASTObject(name, modifiers, container) {
 
     enum class AttributeKind {
         Parameter, LocalVariable, Field

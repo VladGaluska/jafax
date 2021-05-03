@@ -1,8 +1,8 @@
 package org.vladg.jafax.utils.extensions.ast
 
 import org.eclipse.jdt.core.dom.*
-import org.vladg.jafax.ast.repository.model.Attribute.AttributeKind
-import org.vladg.jafax.ast.repository.model.Modifier
+import org.vladg.jafax.repository.model.Attribute.AttributeKind
+import org.vladg.jafax.repository.model.Modifier
 
 fun FieldDeclaration.getName(): String? = getNameFromFragment(fragments()[0])
 
