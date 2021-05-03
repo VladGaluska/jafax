@@ -44,11 +44,13 @@ class ClassSerializer : KSerializer<Class> {
             encodeLongElement(descriptor, 0, value.id)
             encodeStringElement(descriptor, 1, value.name)
             value.fileName?.let { encodeStringElement(descriptor, 2, it) }
-            encodeBooleanElement(descriptor, 3, value.isInterface)
+            if (value.isInterface) {
+                encodeBooleanElement(descriptor, 3, true)
+            }
             value.container?.let { encodeLongElement(descriptor, 5, it.id) }
             value.superClass?.let { encodeLongElement(descriptor, 6, it.id) }
             if (value.isExternal) {
-                encodeBooleanElement(descriptor, 8, value.isExternal)
+                encodeBooleanElement(descriptor, 8, true)
             }
             encodeCollections(value, collectionEncoder)
             endStructure(descriptor)
