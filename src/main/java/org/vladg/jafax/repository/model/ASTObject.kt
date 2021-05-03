@@ -1,8 +1,13 @@
 package org.vladg.jafax.repository.model
 
+import kotlinx.serialization.Contextual
+import kotlinx.serialization.Serializable
+
+@Serializable
 abstract class ASTObject(
     var name: String,
     var modifiers: Set<Modifier>,
+    @Contextual
     var container: Container?
 ) {
 

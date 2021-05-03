@@ -1,15 +1,15 @@
 package org.vladg.jafax.ast.repository.indexed
 
-import org.vladg.jafax.repository.NonPersistentRepository
+import org.vladg.jafax.repository.CommonRepository
 import org.vladg.jafax.repository.model.Attribute
 
-object KeyIndexedAttributeRepository : NonPersistentRepository<Attribute>() {
+object ContainerIndexedAttributeRepository {
 
     private val attributesByContainer: MutableMap<String, MutableMap<String, Attribute>> = HashMap()
 
     fun addAttribute(attribute: Attribute) {
         cacheAttributeByContainer(attribute)
-        super.addObject(attribute)
+        CommonRepository.addObject(attribute)
     }
 
     private fun cacheAttributeByContainer(attribute: Attribute) {

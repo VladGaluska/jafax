@@ -14,7 +14,7 @@ class CollectionDecoder(
     private val descriptor: SerialDescriptor
 ) {
 
-    fun decodeAstCollection(index: Int, adder: (ASTObject) -> Unit) =
+    private fun decodeAstCollection(index: Int, adder: (ASTObject) -> Unit) =
         AstDecoder.addObjectsOrAddForUpdate(
             decodeCollection(index, Long.serializer()),
             adder

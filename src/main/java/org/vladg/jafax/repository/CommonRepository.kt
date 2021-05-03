@@ -2,18 +2,13 @@ package org.vladg.jafax.repository
 
 import org.vladg.jafax.repository.model.ASTObject
 
-object CommonRepository {
+object CommonRepository : NonPersistentRepository<Long, ASTObject>() {
 
-    private val objects: MutableMap<Long, ASTObject> = HashMap()
-
-    fun addObject(obj: ASTObject) {
+    override fun addObject(obj: ASTObject) {
         objects[obj.id] = obj
     }
 
-    fun findById(id: Long): ASTObject? =
-        objects[id]
-
-    fun getAll(): List<ASTObject> =
-        objects.values.toList()
+    override fun objectIdentifier(obj: ASTObject): Long =
+        obj.id
 
 }

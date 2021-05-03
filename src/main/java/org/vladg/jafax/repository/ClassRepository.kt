@@ -1,5 +1,17 @@
 package org.vladg.jafax.repository
 
-class ClassRepository {
+import org.vladg.jafax.repository.model.Class
+
+object ClassRepository {
+
+    private val classes: MutableList<Class> = ArrayList()
+
+    fun addClass(clazz: Class) {
+        this.classes.add(clazz)
+        CommonRepository.addObject(clazz)
+    }
+
+    fun getAll(): List<Class> =
+        this.classes
 
 }

@@ -2,20 +2,22 @@ package org.vladg.jafax.repository
 
 import org.vladg.jafax.repository.model.ASTObject
 
-open class NonPersistentRepository<T : ASTObject?> {
+abstract class NonPersistentRepository<K, V : ASTObject> {
 
-    private val objects: MutableMap<Long, T> = HashMap()
+    protected val objects: MutableMap<K, V> = HashMap()
 
-    open fun addObject(obj: T) {
-        objects[obj!!.id] = obj
+    open fun addObject(obj: V) {
+        objects[this.objectIdentifier(obj)] = obj
         CommonRepository.addObject(obj)
     }
 
-    fun findById(id: Long): T? {
-        return objects[id]
+    abstract fun objectIdentifier(obj: V): K
+
+    fun findByIndex(index: K): V? {
+        return objects[index]
     }
 
-    fun findAll(): MutableCollection<T> {
+    fun findAll(): MutableCollection<V> {
         return objects.values
     }
 

@@ -3,6 +3,8 @@ package org.vladg.jafax.utils.extensions
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.vladg.jafax.repository.model.Modifier
+import java.io.File
+import java.nio.file.Path
 import java.util.*
 import java.util.stream.Stream
 
@@ -19,3 +21,6 @@ fun convertFilePathToUniversalPath(path: String): String = path.replace("\\", "/
 
 fun stringToModifiers(toDecode: List<String>): Set<Modifier> =
     toDecode.map { Modifier.valueOf(it) }.toSet()
+
+fun getLayoutFile(path: Path) =
+    File("$path/Layout.JSON")

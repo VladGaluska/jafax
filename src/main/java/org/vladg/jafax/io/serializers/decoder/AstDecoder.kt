@@ -8,7 +8,7 @@ object AstDecoder {
     private val linkUpdater = LinkUpdater()
 
     fun addObjectOrAddForUpdate(objectId: Long, adder: (ASTObject) -> Unit) {
-        val obj = CommonRepository.findById(objectId)
+        val obj = CommonRepository.findByIndex(objectId)
         if (obj != null) {
             adder(obj)
         } else {

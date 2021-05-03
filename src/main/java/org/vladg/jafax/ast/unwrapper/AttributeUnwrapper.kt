@@ -3,7 +3,7 @@ package org.vladg.jafax.ast.unwrapper
 import com.google.inject.Inject
 import org.eclipse.jdt.core.dom.*
 import org.vladg.jafax.ast.repository.ContainerStack
-import org.vladg.jafax.ast.repository.indexed.KeyIndexedAttributeRepository
+import org.vladg.jafax.ast.repository.indexed.ContainerIndexedAttributeRepository
 import org.vladg.jafax.repository.model.Attribute
 import org.vladg.jafax.repository.model.Attribute.AttributeKind
 import org.vladg.jafax.repository.model.Container
@@ -24,14 +24,14 @@ class AttributeUnwrapper {
     private lateinit var containerService: ContainerService
 
     private fun findAttributeByParentAndName(parentKey: String?, name: String?): Attribute? {
-        return KeyIndexedAttributeRepository.findByParentKeyAndName(
+        return ContainerIndexedAttributeRepository.findByParentKeyAndName(
             parentKey ?: return null,
             name ?: return null
         )
     }
 
     private fun addAttribute(attribute: Attribute): Attribute {
-        KeyIndexedAttributeRepository.addAttribute(attribute)
+        ContainerIndexedAttributeRepository.addAttribute(attribute)
         setAttributeToItsContainer(attribute)
         return attribute
     }

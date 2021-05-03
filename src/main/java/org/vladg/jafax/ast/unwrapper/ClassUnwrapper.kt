@@ -49,7 +49,7 @@ class ClassUnwrapper {
     }
 
     fun findByKey(key: String): Class? {
-        return KeyIndexedClassRepository.findByKey(key)
+        return KeyIndexedClassRepository.findByIndex(key)
     }
 
     fun findAll(): MutableCollection<Class> {

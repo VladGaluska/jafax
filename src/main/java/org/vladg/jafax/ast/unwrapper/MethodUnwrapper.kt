@@ -23,7 +23,7 @@ class MethodUnwrapper {
     }
 
     private fun findByKey(key: String): Method? {
-        return KeyIndexedMethodRepository.findByKey(key)
+        return KeyIndexedMethodRepository.findByIndex(key)
     }
 
     private fun createMethod(binding: IMethodBinding, containerSupplier: () -> Container?): Method {

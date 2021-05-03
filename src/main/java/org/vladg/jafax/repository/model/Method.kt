@@ -1,17 +1,18 @@
 package org.vladg.jafax.repository.model
 
-import kotlinx.serialization.Transient
+import kotlinx.serialization.Serializable
+import org.vladg.jafax.io.serializers.MethodSerializer
 import org.vladg.jafax.repository.model.Attribute.AttributeKind
 
+@Serializable(with = MethodSerializer::class)
 class Method(
-    name: String,
-    val signature: String,
-    @Transient
-    val key: String = "",
-    val isConstructor: Boolean,
-    modifiers: Set<Modifier>,
-    container: Container?,
-    val returnType: Class?
+    var signature: String = "",
+    var key: String = "",
+    var isConstructor: Boolean = false,
+    var returnType: Class? = null,
+    name: String = "",
+    modifiers: Set<Modifier> = HashSet(),
+    container: Container? = null
 ) : Container(name, modifiers, container) {
 
     val parameters: MutableSet<Attribute> = HashSet()

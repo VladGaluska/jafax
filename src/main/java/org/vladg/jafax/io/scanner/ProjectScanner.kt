@@ -28,7 +28,7 @@ object ProjectScanner {
         val javaFiles = files.javaFiles.toTypedArray()
         val jarFiles = files.jarFiles.toTypedArray()
         astCreator.createAst(javaFiles, jarFiles)
-        projectLayoutWriter.writeClasses(path)
+        projectLayoutWriter.writeLayout(path)
     }
 
 }
