@@ -14,15 +14,11 @@ class CollectionDecoder(
     private val descriptor: SerialDescriptor
 ) {
 
-    private fun decodeAstCollection(index: Int, adder: (ASTObject) -> Unit) =
+    fun decodeAstCollection(index: Int, adder: (ASTObject) -> Unit) =
         AstDecoder.addObjectsOrAddForUpdate(
             decodeCollection(index, Long.serializer()),
             adder
         )
-
-    fun decodeAstCollectionsByIndex(astCollectionsByIndex: Map<Int, (ASTObject) -> Unit>) {
-        astCollectionsByIndex.forEach { (key, value) -> this.decodeAstCollection(key, value) }
-    }
 
     private fun decodeStringCollection(index: Int): List<String> =
         decodeCollection(index, String.serializer())

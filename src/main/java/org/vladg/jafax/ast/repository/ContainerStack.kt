@@ -31,7 +31,7 @@ object ContainerStack {
         }
     }
 
-    fun addToContainer(container: Container) {
+    fun addToStack(container: Container) {
         containersSaved.push(container)
     }
 

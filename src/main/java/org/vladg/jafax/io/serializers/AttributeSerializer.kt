@@ -1,64 +1,70 @@
 package org.vladg.jafax.io.serializers
 
 import kotlinx.serialization.ExperimentalSerializationApi
-import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializer
-import kotlinx.serialization.descriptors.*
-import kotlinx.serialization.encoding.Decoder
-import kotlinx.serialization.encoding.Encoder
-import org.vladg.jafax.repository.model.Attribute
-import org.vladg.jafax.repository.model.Class
-import org.vladg.jafax.repository.model.Attribute.AttributeKind
+import kotlinx.serialization.descriptors.SerialDescriptor
+import kotlinx.serialization.descriptors.buildClassSerialDescriptor
+import kotlinx.serialization.descriptors.element
+import kotlinx.serialization.descriptors.listSerialDescriptor
+import kotlinx.serialization.encoding.CompositeDecoder
+import kotlinx.serialization.encoding.CompositeEncoder
 import org.vladg.jafax.io.serializers.decoder.AstDecoder
 import org.vladg.jafax.io.serializers.decoder.CollectionDecoder
 import org.vladg.jafax.io.serializers.encoder.CollectionEncoder
-import org.vladg.jafax.repository.CommonRepository
-import org.vladg.jafax.repository.model.Container
+import org.vladg.jafax.repository.model.Attribute
+import org.vladg.jafax.repository.model.Attribute.AttributeKind
+import org.vladg.jafax.repository.model.Class
 
 @OptIn(ExperimentalSerializationApi::class)
 @Serializer(forClass = Attribute::class)
-class AttributeSerializer : KSerializer<Attribute> {
+class AttributeSerializer : ASTSerializer<Attribute>() {
+
+    override val layoutPositions = linkedMapOf(
+        "id" to 0,
+        "name" to 1,
+        "class" to 2,
+        "modifiers" to 3,
+        "container" to 4,
+        "kind" to 5
+    ).toList().sortedBy { (_, value) -> value }.toMap()
 
     override val descriptor: SerialDescriptor =
         buildClassSerialDescriptor("Attribute") {
-            element<Long>("id")
-            element<String>("name")
-            element<Long>("class")
-            element("modifiers", listSerialDescriptor<String>())
-            element<Long>("container")
-            element<String>("kind")
+            layoutPositions.forEach { (name, _) ->
+                when(name) {
+                    "id" -> element<Long>("id")
+                    "name" -> element<String>("name")
+                    "class" -> element<Long>("class")
+                    "modifiers" -> element("modifiers", listSerialDescriptor<String>())
+                    "container" -> element<Long>("container")
+                    "kind" -> element<String>("kind")
+                }
+            }
         }
 
-    override fun serialize(encoder: Encoder, value: Attribute) {
-        val compositeEncoder = encoder.beginStructure(descriptor)
-        val collectionEncoder = CollectionEncoder(compositeEncoder, descriptor)
-        compositeEncoder.run {
-            encodeLongElement(descriptor, 0, value.id)
-            encodeStringElement(descriptor, 1, value.name)
-            value.type?.let { encodeLongElement(descriptor, 2, it.id) }
-            collectionEncoder.encodeModifiers(value.modifiers, 3)
-            value.container?.let { encodeLongElement(descriptor, 4, it.id) }
-            encodeStringElement(descriptor, 5, value.kind.toString())
-            endStructure(descriptor)
-        }
+    override fun createObject(): Attribute = Attribute()
+
+    override fun encodeExtraProperties(
+        compositeEncoder: CompositeEncoder,
+        collectionEncoder: CollectionEncoder,
+        value: Attribute
+    ) {
+        value.type?.let { compositeEncoder.encodeLongElement(descriptor, getIndex("class"), it.id) }
+        compositeEncoder.encodeStringElement(descriptor, getIndex("kind"), value.kind.toString())
     }
 
-    override fun deserialize(decoder: Decoder): Attribute {
-        val attribute = Attribute()
-        val compositeDecoder = decoder.beginStructure(descriptor)
-        val collectionDecoder = CollectionDecoder(compositeDecoder, descriptor)
-        attribute.id = compositeDecoder.decodeLongElement(descriptor, 0)
-        attribute.name = compositeDecoder.decodeStringElement(descriptor, 1)
-        AstDecoder.addObjectOrAddForUpdate(compositeDecoder.decodeLongElement(descriptor, 2)) {
-            attribute.type = it as Class
+    override fun decodeIndex(
+        index: Int,
+        compositeDecoder: CompositeDecoder,
+        collectionDecoder: CollectionDecoder,
+        obj: Attribute
+    ) {
+        when(index) {
+            getIndex("class") -> AstDecoder.addObjectOrAddForUpdate(compositeDecoder.decodeLongElement(descriptor, index)) {
+                obj.type = it as Class
+            }
+            getIndex("kind") -> obj.kind = AttributeKind.valueOf(compositeDecoder.decodeStringElement(descriptor, index))
         }
-        attribute.modifiers = collectionDecoder.decodeModifiers(3)
-        AstDecoder.addObjectOrAddForUpdate(compositeDecoder.decodeLongElement(descriptor, 4)) {
-            attribute.container = it as Container
-        }
-        attribute.kind = AttributeKind.valueOf(compositeDecoder.decodeStringElement(descriptor, 5))
-        CommonRepository.addObject(attribute)
-        return attribute
     }
 
 }

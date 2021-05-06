@@ -40,7 +40,7 @@ class ASTVisitor : ASTVisitor() {
         if (typeDeclaration.parent.nodeType == ASTNode.COMPILATION_UNIT) {
             clazz.fileName = currentFileName
         }
-        ContainerStack.addToContainer(clazz)
+        ContainerStack.addToStack(clazz)
         return true
     }
 
@@ -52,7 +52,7 @@ class ASTVisitor : ASTVisitor() {
             return false
         }
         val method = methodUnwrapper.findOrCreateMethodForBinding(binding, true)!!
-        ContainerStack.addToContainer(method)
+        ContainerStack.addToStack(method)
         return true
     }
 

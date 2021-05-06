@@ -18,8 +18,13 @@ object ContainerIndexedAttributeRepository {
             .computeIfAbsent(containerIdentifier) { HashMap() }[attribute.name] = attribute
     }
 
-    fun findByParentKeyAndName(key: String, name: String): Attribute? {
-        return attributesByContainer[key]?.get(name)
+    fun findByParentKeyAndName(key: String, name: String) =
+        attributesByContainer[key]?.get(name)
+
+    fun findAllForContainerKey(key: String) = attributesByContainer[key]
+
+    fun clear() {
+        attributesByContainer.clear()
     }
 
 }
