@@ -21,4 +21,6 @@ abstract class NonPersistentRepository<K, V : ASTObject> {
         return objects.values
     }
 
+    fun clear() = objects.clear()
+
 }

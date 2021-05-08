@@ -18,10 +18,10 @@ abstract class ContainerSerializer<T: Container>: ASTSerializer<T>() {
     ) {
         collectionEncoder.encodeAstCollectionsByIndex(
             mapOf(
-                layoutPositions["containedClasses"]!! to value.containedClasses,
-                layoutPositions["containedMethods"]!! to value.containedMethods,
-                layoutPositions["accessedFields"]!! to value.accessedFields,
-                layoutPositions["calledMethods"]!! to value.calledMethods
+                getIndex("containedClasses") to value.containedClasses,
+                getIndex("containedMethods") to value.containedMethods,
+                getIndex("accessedFields") to value.accessedFields,
+                getIndex("calledMethods") to value.calledMethods
             )
         )
     }
@@ -33,16 +33,16 @@ abstract class ContainerSerializer<T: Container>: ASTSerializer<T>() {
         obj: T
     ) {
         when(index) {
-            layoutPositions["containedClasses"]!! -> collectionDecoder.decodeAstCollection(index) {
+            getIndex("containedClasses") -> collectionDecoder.decodeAstCollection(index) {
                 obj.addToContainedClasses(it as Class)
             }
-            layoutPositions["containedMethods"]!! -> collectionDecoder.decodeAstCollection(index) {
+            getIndex("containedMethods") -> collectionDecoder.decodeAstCollection(index) {
                 obj.addToContainedMethods(it as Method)
             }
-            layoutPositions["accessedFields"]!! -> collectionDecoder.decodeAstCollection(index) {
+            getIndex("accessedFields") -> collectionDecoder.decodeAstCollection(index) {
                 obj.addToAccessedFields(it as Attribute)
             }
-            layoutPositions["calledMethods"]!! -> collectionDecoder.decodeAstCollection(index) {
+            getIndex("calledMethods") -> collectionDecoder.decodeAstCollection(index) {
                 obj.addToCalledMethods(it as Method)
             }
         }

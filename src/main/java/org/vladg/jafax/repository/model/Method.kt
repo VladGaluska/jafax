@@ -19,6 +19,13 @@ class Method(
 
     val localVariables: MutableSet<Attribute> = HashSet()
 
+    override fun isSame(value: ASTObject) =
+            value is Method &&
+            super.isSame(value) &&
+            signature == value.signature &&
+            isConstructor == value.isConstructor &&
+            returnType == value.returnType
+
     override fun addToContainedAttributes(attribute: Attribute) {
         when(attribute.kind) {
             AttributeKind.Parameter -> parameters.add(attribute)

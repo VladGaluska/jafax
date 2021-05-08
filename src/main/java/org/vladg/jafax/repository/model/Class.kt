@@ -26,6 +26,15 @@ class Class(
         superInterfaces.add(clazz)
     }
 
+    override fun isSame(value: ASTObject) =
+        value is Class &&
+        super.isSame(value) &&
+        fileName == value.fileName &&
+        isInterface == value.isInterface &&
+        superClass == value.superClass &&
+        superInterfaces == value.superInterfaces &&
+        isExternal == value.isExternal
+
     override fun uniqueContainerIdentifier(): String = key
 
     override fun toString(): String = "Class: $name"

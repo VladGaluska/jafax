@@ -60,8 +60,10 @@ class ClassSerializer : ContainerSerializer<Class>() {
 
     override fun createObject() = Class()
 
-    override fun saveObject(obj: Class) =
+    override fun saveObject(obj: Class) {
         ClassRepository.addClass(obj)
+        AstDecoder.doUpdate(obj)
+    }
 
     override fun encodeExtraProperties(
         compositeEncoder: CompositeEncoder,
@@ -86,7 +88,7 @@ class ClassSerializer : ContainerSerializer<Class>() {
     override fun decodeIndex(index: Int, compositeDecoder: CompositeDecoder, collectionDecoder: CollectionDecoder, obj: Class) {
         when(index){
             getIndex("fileName") -> obj.fileName = compositeDecoder.decodeStringElement(descriptor, index)
-            getIndex("isInterfaces") -> obj.isInterface = compositeDecoder.decodeBooleanElement(descriptor, index)
+            getIndex("isInterface") -> obj.isInterface = compositeDecoder.decodeBooleanElement(descriptor, index)
             getIndex("superClass") -> AstDecoder.addObjectOrAddForUpdate(compositeDecoder.decodeLongElement(descriptor, index)) {
                 obj.superClass = it as Class
             }
@@ -94,7 +96,7 @@ class ClassSerializer : ContainerSerializer<Class>() {
                 obj.addToInterfaces(it as Class)
             }
             getIndex("isExternal") -> obj.isExternal = compositeDecoder.decodeBooleanElement(descriptor, index)
-            getIndex("containedAttributes") -> collectionDecoder.decodeAstCollection(index) {
+            getIndex("containedFields") -> collectionDecoder.decodeAstCollection(index) {
                 obj.addToContainedAttributes(it as Attribute)
             }
             else -> super.decodeIndex(index, compositeDecoder, collectionDecoder, obj)

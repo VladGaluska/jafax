@@ -43,6 +43,7 @@ object AttributeGenerator {
     fun generateFilledAttribute() =
         Attribute(
             type = Class(),
+            kind = Attribute.AttributeKind.Field,
             modifiers = setOf(Modifier.Protected, Modifier.Static),
             container = Class()
         )

@@ -14,4 +14,6 @@ object ClassRepository {
     fun getAll(): List<Class> =
         this.classes
 
+    fun clear() = classes.clear()
+
 }

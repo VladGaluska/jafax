@@ -26,4 +26,12 @@ abstract class Container(
 
     abstract fun uniqueContainerIdentifier(): String
 
+    override fun isSame(value: ASTObject) =
+            value is Container &&
+            super.isSame(value) &&
+            containedClasses == value.containedClasses &&
+            containedMethods == value.containedMethods &&
+            calledMethods == value.calledMethods &&
+            accessedFields == value.accessedFields
+
 }

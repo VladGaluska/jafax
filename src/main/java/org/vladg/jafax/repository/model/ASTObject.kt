@@ -20,6 +20,11 @@ abstract class ASTObject(
         }
     }
 
+    open fun isSame(value: ASTObject) =
+            name == value.name &&
+            modifiers == value.modifiers &&
+            container == value.container
+
     override fun hashCode(): Int {
         return id.hashCode()
     }
@@ -27,5 +32,4 @@ abstract class ASTObject(
     companion object {
         private var lastId: Long = 0
     }
-
 }

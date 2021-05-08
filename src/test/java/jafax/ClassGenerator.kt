@@ -15,7 +15,7 @@ object ClassGenerator {
                 modifiers = setOf(Modifier.Static),
                 container = generateEmptyClass(),
                 superClass = generateEmptyClass(),
-                superInterfaces = mutableSetOf(generateEmptyClass()),
+                superInterfaces = mutableSetOf(generateEmptyClass(), generateEmptyClass()),
                 isExternal = true
             )
         )

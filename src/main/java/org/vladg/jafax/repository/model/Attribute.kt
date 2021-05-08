@@ -18,7 +18,13 @@ class Attribute(
 
     fun containerIdentifier(): String = container?.uniqueContainerIdentifier() ?: ""
 
+    override fun isSame(value: ASTObject) =
+            value is Attribute &&
+            super.isSame(value) &&
+            kind == value.kind &&
+            type == value.type
+
     override fun toString(): String {
-        return "Field $name"
+        return "Attribute $name"
     }
 }

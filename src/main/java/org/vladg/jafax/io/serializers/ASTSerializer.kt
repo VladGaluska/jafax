@@ -53,9 +53,9 @@ abstract class ASTSerializer<T: ASTObject>: KSerializer<T> {
         var index = compositeDecoder.decodeElementIndex(descriptor)
         while (index != CompositeDecoder.DECODE_DONE) {
             when(index) {
-                getIndex("id") -> compositeDecoder.decodeLongElement(descriptor, index)
-                getIndex("name") -> compositeDecoder.decodeStringElement(descriptor, index)
-                getIndex("modifiers") -> collectionDecoder.decodeModifiers(index)
+                getIndex("id") -> value.id = compositeDecoder.decodeLongElement(descriptor, index)
+                getIndex("name") -> value.name = compositeDecoder.decodeStringElement(descriptor, index)
+                getIndex("modifiers") -> value.modifiers = collectionDecoder.decodeModifiers(index)
                 getIndex("container") -> AstDecoder.addObjectOrAddForUpdate(
                     compositeDecoder.decodeLongElement(descriptor, index)
                 ) {
@@ -79,8 +79,10 @@ abstract class ASTSerializer<T: ASTObject>: KSerializer<T> {
 
     protected abstract fun createObject(): T
 
-    protected open fun saveObject(obj: T) =
+    protected open fun saveObject(obj: T) {
         CommonRepository.addObject(obj)
+        AstDecoder.doUpdate(obj)
+    }
 
     protected fun getIndex(name: String) =
         layoutPositions[name]!!

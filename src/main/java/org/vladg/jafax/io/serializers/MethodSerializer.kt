@@ -82,8 +82,8 @@ class MethodSerializer : ContainerSerializer<Method>() {
         obj: Method
     ) {
         when(index) {
-            getIndex("signature") -> compositeDecoder.decodeStringElement(descriptor, index)
-            getIndex("isConstructor") -> compositeDecoder.decodeBooleanElement(descriptor, index)
+            getIndex("signature") -> obj.signature = compositeDecoder.decodeStringElement(descriptor, index)
+            getIndex("isConstructor") -> obj.isConstructor = compositeDecoder.decodeBooleanElement(descriptor, index)
             getIndex("returnType") -> AstDecoder.addObjectOrAddForUpdate(compositeDecoder.decodeLongElement(descriptor, 4)) {
                 obj.returnType = it as Class
             }
