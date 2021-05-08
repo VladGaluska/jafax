@@ -1,0 +1,22 @@
+name: Test Project
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Tests Project
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+        distribution: 'adopt'
+    - name: Unit and Integration Test
+      run: mvn clean verify
