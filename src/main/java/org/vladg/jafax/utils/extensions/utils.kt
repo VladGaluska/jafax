@@ -7,6 +7,7 @@ import java.io.File
 import java.nio.file.Path
 import java.util.*
 import java.util.stream.Stream
+import kotlin.math.min
 
 inline fun <reified T> T.logger(): Logger {
     if (T::class.isCompanion) {

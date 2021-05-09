@@ -4,7 +4,9 @@ import com.google.inject.Guice
 import kotlinx.serialization.decodeFromString
 import org.vladg.jafax.ast.ASTCreator
 import org.vladg.jafax.io.LayoutFormat
+import org.vladg.jafax.io.NamePrefixTrimmer
 import org.vladg.jafax.io.writer.ProjectLayoutWriter
+import org.vladg.jafax.repository.ClassRepository
 import org.vladg.jafax.repository.model.ASTObject
 import org.vladg.jafax.utils.extensions.getLayoutFile
 import org.vladg.jafax.utils.extensions.logger
@@ -25,7 +27,7 @@ object ProjectScanner {
         projectLayoutWriter = injector.getInstance(ProjectLayoutWriter::class.java)
     }
 
-    private val logger = logger();
+    private val logger = logger()
 
     fun beginScan(path: Path) {
         val existentLayout = getLayout(path)
@@ -46,7 +48,13 @@ object ProjectScanner {
         val javaFiles = files.javaFiles.toTypedArray()
         val jarFiles = files.jarFiles.toTypedArray()
         astCreator.createAst(javaFiles, jarFiles)
+        trimFileNames()
         projectLayoutWriter.writeLayout(path)
+    }
+
+    private fun trimFileNames() {
+        ClassRepository.getAll()
+                .forEach { it.fileName = it.fileName?.let { name -> NamePrefixTrimmer.trimString(name) } }
     }
 
     private fun getLayout(path: Path): File? {

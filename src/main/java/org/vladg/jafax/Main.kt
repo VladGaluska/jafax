@@ -11,4 +11,5 @@ fun getPathFromName(pathName: String): Path {
 fun main(args: Array<String>) {
     val path = if (args.isNotEmpty()) getPathFromName(args[0]) else getPathFromName(".")
     ProjectScanner.beginScan(path)
+    RelationsCalculator.calculateRelations()
 }

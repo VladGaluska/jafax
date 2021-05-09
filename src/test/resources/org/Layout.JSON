@@ -25,7 +25,7 @@
             6,
             12
         ],
-        "fileName": "src/test/resources/org/radum/Client.java",
+        "fileName": "Client.java",
         "superClass": 0,
         "containedFields": [
             4,
@@ -40,7 +40,7 @@
         "containedMethods": [
             49
         ],
-        "fileName": "src/test/resources/org/radum/IProvider.java",
+        "fileName": "IProvider.java",
         "isInterface": true
     },
     {
@@ -56,7 +56,7 @@
             28,
             46
         ],
-        "fileName": "src/test/resources/org/radum/Provider.java",
+        "fileName": "Provider.java",
         "superClass": 0,
         "interfaces": [
             2
@@ -81,7 +81,7 @@
         "containedMethods": [
             6
         ],
-        "fileName": "src/test/resources/org/radum/Provider.java",
+        "fileName": "Provider.java",
         "superClass": 0
     },
     {
@@ -89,8 +89,8 @@
         "id": 6,
         "name": "getProvider",
         "modifiers": [
-            "Static",
-            "Public"
+            "Public",
+            "Static"
         ],
         "container": 5,
         "calledMethods": [
@@ -114,7 +114,7 @@
         "modifiers": [
             "Public"
         ],
-        "fileName": "src/test/resources/org/radum/DataObject.java",
+        "fileName": "DataObject.java",
         "superClass": 0,
         "containedFields": [
             27,
@@ -132,7 +132,7 @@
             12,
             47
         ],
-        "fileName": "src/test/resources/org/radum/ExtendedData.java",
+        "fileName": "ExtendedData.java",
         "superClass": 8,
         "containedFields": [
             45
@@ -304,8 +304,8 @@
         "id": 23,
         "name": "System",
         "modifiers": [
-            "Public",
-            "Final"
+            "Final",
+            "Public"
         ],
         "superClass": 0,
         "isExternal": true,
@@ -318,9 +318,9 @@
         "id": 24,
         "name": "err",
         "modifiers": [
-            "Static",
+            "Final",
             "Public",
-            "Final"
+            "Static"
         ],
         "container": 23,
         "class": 21,
@@ -474,8 +474,8 @@
         "id": 37,
         "name": "main",
         "modifiers": [
-            "Static",
-            "Public"
+            "Public",
+            "Static"
         ],
         "container": 1,
         "signature": "main(java.lang.String[])",
@@ -519,8 +519,8 @@
         "id": 41,
         "name": "String",
         "modifiers": [
-            "Public",
-            "Final"
+            "Final",
+            "Public"
         ],
         "superClass": 0,
         "isExternal": true,
@@ -545,7 +545,7 @@
         "containedClasses": [
             44
         ],
-        "fileName": "src/test/resources/org/radum/Client.java",
+        "fileName": "Client.java",
         "superClass": 0
     },
     {

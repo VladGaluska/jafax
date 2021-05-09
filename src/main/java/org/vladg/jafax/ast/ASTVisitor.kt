@@ -8,6 +8,7 @@ import org.vladg.jafax.ast.unwrapper.AttributeUnwrapper
 import org.vladg.jafax.ast.unwrapper.ClassUnwrapper
 import org.vladg.jafax.ast.unwrapper.MethodInvocationUnwrapper
 import org.vladg.jafax.ast.unwrapper.MethodUnwrapper
+import org.vladg.jafax.io.NamePrefixTrimmer
 import org.vladg.jafax.utils.extensions.logger
 
 class ASTVisitor : ASTVisitor() {
@@ -27,6 +28,10 @@ class ASTVisitor : ASTVisitor() {
     private lateinit var methodInvocationUnwrapper: MethodInvocationUnwrapper
 
     var currentFileName: String = ""
+        set(value) {
+            field = value
+            NamePrefixTrimmer.registerName(value)
+        }
 
     override fun visit(typeDeclaration: TypeDeclaration): Boolean {
         val binding = typeDeclaration.resolveBinding()
