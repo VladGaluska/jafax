@@ -4,6 +4,7 @@ public class ExtendedData extends DataObject {
     Provider providerObject;
 
     public ExtendedData() {
+        super.x = 2;
         providerObject = new Provider(3);
     }
     public void setProvider(Provider _p) {

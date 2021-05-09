@@ -16,8 +16,8 @@
             "Public"
         ],
         "containedMethods": [
-            35,
-            28,
+            32,
+            37,
             13,
             30
         ],
@@ -25,7 +25,7 @@
             6,
             12
         ],
-        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/org/radum/Client.java",
+        "fileName": "src/test/resources/org/radum/Client.java",
         "superClass": 0,
         "containedFields": [
             4,
@@ -37,6 +37,10 @@
         "type": "Class",
         "id": 2,
         "name": "IProvider",
+        "containedMethods": [
+            49
+        ],
+        "fileName": "src/test/resources/org/radum/IProvider.java",
         "isInterface": true
     },
     {
@@ -47,19 +51,19 @@
             "Public"
         ],
         "containedMethods": [
-            33,
-            24,
+            35,
             26,
-            44
+            28,
+            46
         ],
-        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/org/radum/Provider.java",
+        "fileName": "src/test/resources/org/radum/Provider.java",
         "superClass": 0,
         "interfaces": [
             2
         ],
         "containedFields": [
-            54,
-            55
+            56,
+            57
         ]
     },
     {
@@ -77,7 +81,7 @@
         "containedMethods": [
             6
         ],
-        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/org/radum/Provider.java",
+        "fileName": "src/test/resources/org/radum/Provider.java",
         "superClass": 0
     },
     {
@@ -85,11 +89,12 @@
         "id": 6,
         "name": "getProvider",
         "modifiers": [
+            "Static",
             "Public"
         ],
         "container": 5,
         "calledMethods": [
-            44
+            46
         ],
         "signature": "getProvider()",
         "returnType": 3
@@ -109,11 +114,11 @@
         "modifiers": [
             "Public"
         ],
-        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/org/radum/DataObject.java",
+        "fileName": "src/test/resources/org/radum/DataObject.java",
         "superClass": 0,
         "containedFields": [
-            25,
-            27
+            27,
+            29
         ]
     },
     {
@@ -125,12 +130,12 @@
         ],
         "containedMethods": [
             12,
-            45
+            47
         ],
-        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/org/radum/ExtendedData.java",
+        "fileName": "src/test/resources/org/radum/ExtendedData.java",
         "superClass": 8,
         "containedFields": [
-            43
+            45
         ]
     },
     {
@@ -155,8 +160,11 @@
             "Public"
         ],
         "container": 9,
+        "accessedFields": [
+            27
+        ],
         "calledMethods": [
-            44
+            46
         ],
         "signature": "ExtendedData()",
         "isConstructor": true,
@@ -171,13 +179,14 @@
         ],
         "container": 1,
         "accessedFields": [
-            25,
-            27
+            24,
+            27,
+            29
         ],
         "calledMethods": [
             22,
-            24,
-            26
+            26,
+            28
         ],
         "signature": "useObject(org.radum.Provider)",
         "returnType": 11,
@@ -231,7 +240,8 @@
         "id": 18,
         "name": "OutputStream",
         "modifiers": [
-            "Public"
+            "Public",
+            "Abstract"
         ],
         "superClass": 0,
         "isExternal": true,
@@ -268,7 +278,7 @@
             "Public"
         ],
         "containedMethods": [
-            34,
+            36,
             22
         ],
         "superClass": 19,
@@ -292,38 +302,65 @@
     {
         "type": "Class",
         "id": 23,
+        "name": "System",
+        "modifiers": [
+            "Public",
+            "Final"
+        ],
+        "superClass": 0,
+        "isExternal": true,
+        "containedFields": [
+            24
+        ]
+    },
+    {
+        "type": "Attribute",
+        "id": 24,
+        "name": "err",
+        "modifiers": [
+            "Static",
+            "Public",
+            "Final"
+        ],
+        "container": 23,
+        "class": 21,
+        "kind": "Field"
+    },
+    {
+        "type": "Class",
+        "id": 25,
         "name": "int",
         "isExternal": true
     },
     {
         "type": "Method",
-        "id": 24,
+        "id": 26,
         "name": "measureComplexity",
         "modifiers": [
             "Public"
         ],
         "container": 3,
         "signature": "measureComplexity(int, int)",
-        "returnType": 23,
+        "returnType": 25,
         "parameters": [
-            50,
-            51
+            52,
+            53
         ],
         "localVariables": [
-            52
+            54
         ]
     },
     {
         "type": "Attribute",
-        "id": 25,
+        "id": 27,
         "name": "x",
         "container": 8,
-        "class": 23,
+        "class": 25,
         "kind": "Field"
     },
     {
         "type": "Method",
-        "id": 26,
+        "id": 28,
         "name": "getData",
         "modifiers": [
             "Public"
@@ -334,89 +371,96 @@
     },
     {
         "type": "Attribute",
-        "id": 27,
+        "id": 29,
         "name": "y",
         "container": 8,
-        "class": 23,
+        "class": 25,
         "kind": "Field"
     },
     {
         "type": "Method",
-        "id": 28,
+        "id": 30,
         "name": "anotherFunction",
         "modifiers": [
             "Public"
         ],
         "container": 1,
         "calledMethods": [
-            24
+            26
         ],
         "signature": "anotherFunction(org.radum.ExtendedData)",
         "returnType": 11,
         "parameters": [
-            29
-        ]
-    },
-    {
-        "type": "Attribute",
-        "id": 29,
-        "name": "extendedData",
-        "container": 28,
-        "class": 9,
-        "kind": "Parameter"
-    },
-    {
-        "type": "Method",
-        "id": 30,
-        "name": "client",
-        "modifiers": [
-            "Public"
-        ],
-        "container": 1,
-        "calledMethods": [
-            33,
-            34
-        ],
-        "signature": "client()",
-        "returnType": 11,
-        "localVariables": [
-            32,
             31
         ]
     },
     {
         "type": "Attribute",
         "id": 31,
-        "name": "unused",
+        "name": "extendedData",
         "container": 30,
-        "class": 23,
+        "class": 9,
+        "kind": "Parameter"
+    },
+    {
+        "type": "Method",
+        "id": 32,
+        "name": "client",
+        "modifiers": [
+            "Public"
+        ],
+        "container": 1,
+        "accessedFields": [
+            24
+        ],
+        "calledMethods": [
+            35,
+            36
+        ],
+        "signature": "client()",
+        "returnType": 11,
+        "localVariables": [
+            33,
+            34
+        ]
+    },
+    {
+        "type": "Attribute",
+        "id": 33,
+        "name": "unused",
+        "container": 32,
+        "class": 25,
         "kind": "LocalVariable"
     },
     {
         "type": "Attribute",
-        "id": 32,
+        "id": 34,
         "name": "result",
-        "container": 30,
-        "class": 23,
+        "container": 32,
+        "class": 25,
         "kind": "LocalVariable"
     },
     {
         "type": "Method",
-        "id": 33,
+        "id": 35,
         "name": "anotherFunction",
         "modifiers": [
             "Public"
         ],
         "container": 3,
+        "accessedFields": [
+            27,
+            29
+        ],
         "signature": "anotherFunction()",
-        "returnType": 23,
+        "returnType": 25,
         "localVariables": [
-            53
+            55
         ]
     },
     {
         "type": "Method",
-        "id": 34,
+        "id": 36,
         "name": "println",
         "modifiers": [
             "Public"
@@ -427,21 +471,22 @@
     },
     {
         "type": "Method",
-        "id": 35,
+        "id": 37,
         "name": "main",
         "modifiers": [
+            "Static",
             "Public"
         ],
         "container": 1,
         "signature": "main(java.lang.String[])",
         "returnType": 11,
         "parameters": [
-            40
+            42
         ]
     },
     {
         "type": "Class",
-        "id": 36,
+        "id": 38,
         "name": "Serializable",
         "modifiers": [
             "Public"
@@ -451,7 +496,7 @@
     },
     {
         "type": "Class",
-        "id": 37,
+        "id": 39,
         "name": "Comparable<String>",
         "modifiers": [
             "Public"
@@ -461,7 +506,7 @@
     },
     {
         "type": "Class",
-        "id": 38,
+        "id": 40,
         "name": "CharSequence",
         "modifiers": [
             "Public"
@@ -471,47 +516,48 @@
     },
     {
         "type": "Class",
-        "id": 39,
+        "id": 41,
         "name": "String",
         "modifiers": [
-            "Public"
+            "Public",
+            "Final"
         ],
         "superClass": 0,
         "isExternal": true,
         "interfaces": [
-            36,
-            37,
-            38
+            38,
+            39,
+            40
         ]
     },
     {
         "type": "Attribute",
-        "id": 40,
+        "id": 42,
         "name": "args",
-        "container": 35,
-        "class": 39,
+        "container": 37,
+        "class": 41,
         "kind": "Parameter"
     },
     {
         "type": "Class",
-        "id": 41,
+        "id": 43,
         "name": "Empty",
         "containedClasses": [
-            42
+            44
         ],
-        "fileName": "C:/Users/Dragos/Desktop/School/licenta/jafax/src/test/resources/org/radum/Client.java",
+        "fileName": "src/test/resources/org/radum/Client.java",
         "superClass": 0
     },
     {
         "type": "Class",
-        "id": 42,
+        "id": 44,
         "name": "SubEmpty",
-        "container": 41,
+        "container": 43,
         "superClass": 0
     },
     {
         "type": "Attribute",
-        "id": 43,
+        "id": 45,
         "name": "providerObject",
         "container": 9,
         "class": 3,
@@ -519,7 +565,7 @@
     },
     {
         "type": "Method",
-        "id": 44,
+        "id": 46,
         "name": "Provider",
         "modifiers": [
             "Public"
@@ -529,15 +575,15 @@
         "isConstructor": true,
         "returnType": 11,
         "parameters": [
-            48
+            50
         ],
         "localVariables": [
-            49
+            51
         ]
     },
     {
         "type": "Method",
-        "id": 45,
+        "id": 47,
         "name": "setProvider",
         "modifiers": [
             "Public"
@@ -546,78 +592,80 @@
         "signature": "setProvider(org.radum.Provider)",
         "returnType": 11,
         "parameters": [
-            46
+            48
         ]
     },
     {
         "type": "Attribute",
-        "id": 46,
+        "id": 48,
         "name": "_p",
-        "container": 45,
+        "container": 47,
         "class": 3,
         "kind": "Parameter"
     },
     {
         "type": "Method",
-        "id": 47,
+        "id": 49,
         "name": "anotherFunction",
         "modifiers": [
-            "Public"
+            "Public",
+            "Abstract"
         ],
+        "container": 2,
         "signature": "anotherFunction()",
-        "returnType": 23
-    },
-    {
-        "type": "Attribute",
-        "id": 48,
-        "name": "a",
-        "container": 44,
-        "class": 23,
-        "kind": "Parameter"
-    },
-    {
-        "type": "Attribute",
-        "id": 49,
-        "name": "x",
-        "container": 44,
-        "class": 23,
-        "kind": "LocalVariable"
+        "returnType": 25
     },
     {
         "type": "Attribute",
         "id": 50,
-        "name": "i",
-        "container": 24,
-        "class": 23,
+        "name": "a",
+        "container": 46,
+        "class": 25,
         "kind": "Parameter"
     },
     {
         "type": "Attribute",
         "id": 51,
-        "name": "j",
-        "container": 24,
-        "class": 23,
-        "kind": "Parameter"
-    },
-    {
-        "type": "Attribute",
-        "id": 52,
-        "name": "result",
-        "container": 24,
-        "class": 23,
+        "name": "x",
+        "container": 46,
+        "class": 25,
         "kind": "LocalVariable"
     },
     {
         "type": "Attribute",
+        "id": 52,
+        "name": "i",
+        "container": 26,
+        "class": 25,
+        "kind": "Parameter"
+    },
+    {
+        "type": "Attribute",
         "id": 53,
+        "name": "j",
+        "container": 26,
+        "class": 25,
+        "kind": "Parameter"
+    },
+    {
+        "type": "Attribute",
+        "id": 54,
+        "name": "result",
+        "container": 26,
+        "class": 25,
+        "kind": "LocalVariable"
+    },
+    {
+        "type": "Attribute",
+        "id": 55,
         "name": "localData",
-        "container": 33,
+        "container": 35,
         "class": 8,
         "kind": "LocalVariable"
     },
     {
         "type": "Attribute",
-        "id": 54,
+        "id": 56,
         "name": "data",
         "modifiers": [
             "Public"
@@ -628,7 +676,7 @@
     },
     {
         "type": "Attribute",
-        "id": 55,
+        "id": 57,
         "name": "extendedData",
         "modifiers": [
             "Public"

@@ -1,7 +1,8 @@
 package jafax.utils
 
+import jafax.getComplexProjectPath
+import org.junit.Assert.assertEquals
 import org.junit.Test
-import org.junit.Assert.*
 import org.vladg.jafax.utils.filefinder.FileFinder.findFiles
 import java.nio.file.Paths
 import java.util.stream.Collectors
@@ -45,7 +46,7 @@ class FileFinderTest {
 
     @Test
     fun shouldFindJarFiles() {
-        val files = findFiles(Paths.get("src/test/resources/insider"))
+        val files = findFiles(getComplexProjectPath())
         assertEquals(2, files.jarFiles.size)
     }
 

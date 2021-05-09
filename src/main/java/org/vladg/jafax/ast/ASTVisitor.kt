@@ -35,10 +35,11 @@ class ASTVisitor : ASTVisitor() {
                         " in file: ${currentFileName}, will ignore...")
             return false
         }
-        if (!binding.isClass) return true
+        if (!binding.isClass && !binding.isInterface) return true
         val clazz = classUnwrapper.findOrCreateClassForBinding(binding, true)!!
         if (typeDeclaration.parent.nodeType == ASTNode.COMPILATION_UNIT) {
             clazz.fileName = currentFileName
+            ContainerStack.clearStack()
         }
         ContainerStack.addToStack(clazz)
         return true
@@ -87,10 +88,25 @@ class ASTVisitor : ASTVisitor() {
     }
 
     override fun visit(node: FieldAccess): Boolean {
-        val binding = node.resolveFieldBinding()
+        return visitVariableBinding(node.resolveFieldBinding(), node, node.name.fullyQualifiedName)
+    }
+
+    override fun visit(node: SuperFieldAccess): Boolean {
+        return visitVariableBinding(node.resolveFieldBinding(), node, node.name.fullyQualifiedName)
+    }
+
+    override fun visit(node: QualifiedName): Boolean {
+        val binding = node.resolveBinding()
+        if (binding !is IVariableBinding) {
+            return true
+        }
+        return visitVariableBinding(binding, node, node.name.fullyQualifiedName)
+    }
+
+    private fun visitVariableBinding(binding: IVariableBinding?, node: ASTNode, name: String): Boolean {
         if (binding == null) {
-            logger.warn("Could not resolve binding for field:  ${node.name}" +
-                    " in file:  ${currentFileName}, will ignore...")
+            logger.warn("Could not resolve binding for field:  $name" +
+                    " in file:  $currentFileName, will ignore...")
             return false
         }
         attributeUnwrapper.createFieldAccess(binding, node)

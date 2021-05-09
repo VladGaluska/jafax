@@ -11,6 +11,9 @@ abstract class NonPersistentRepository<K, V : ASTObject> {
         CommonRepository.addObject(obj)
     }
 
+    fun findByFilter(filter: (ASTObject) -> Boolean) =
+            objects.values.filter(filter)
+
     abstract fun objectIdentifier(obj: V): K
 
     fun findByIndex(index: K): V? {

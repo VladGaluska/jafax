@@ -35,4 +35,8 @@ object ContainerStack {
         containersSaved.push(container)
     }
 
+    fun clearStack() {
+        containersSaved.clear()
+    }
+
 }

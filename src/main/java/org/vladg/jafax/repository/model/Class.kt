@@ -22,6 +22,9 @@ class Class(
         containedFields.add(attribute)
     }
 
+    override fun isInternal(): Boolean =
+            container?.isInternal() ?: !isExternal
+
     fun addToInterfaces(clazz: Class) {
         superInterfaces.add(clazz)
     }

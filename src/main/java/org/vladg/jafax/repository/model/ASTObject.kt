@@ -20,6 +20,9 @@ abstract class ASTObject(
         }
     }
 
+    open fun isInternal(): Boolean =
+            container?.isInternal() ?: false
+
     open fun isSame(value: ASTObject) =
             name == value.name &&
             modifiers == value.modifiers &&

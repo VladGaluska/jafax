@@ -54,7 +54,8 @@ class MethodUnwrapper {
         return findByKey(binding.key)
             ?: createAndSaveMethod(binding) {
                 if (!useStack) containerService.getOrCreateContainerForBinding(binding.getParent())
-                else ContainerStack.popUntilBindingObject(binding.getParent())
+                else ContainerStack.popUntilBindingObject(binding.getParent()) ?:
+                     containerService.getOrCreateContainerForBinding(binding.getParent())
             }
     }
 

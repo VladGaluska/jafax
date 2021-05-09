@@ -9,6 +9,8 @@ import jafax.AttributeGenerator.generateEmptyAttribute
 import jafax.ClassGenerator.generateEmptyClass
 import jafax.MethodGenerator.generateEmptyMethod
 import org.vladg.jafax.repository.model.Attribute.AttributeKind
+import java.nio.file.Path
+import java.nio.file.Paths
 
 fun encodeAstObject(astObject: ASTObject) =
     LayoutFormat.format.encodeToJsonElement(astObject).jsonObject
@@ -22,3 +24,7 @@ fun fillContainer(container: Container): Container {
     container.addToContainedAttributes(generateEmptyAttribute(AttributeKind.LocalVariable))
     return container
 }
+
+fun getSimpleProjectPath(): Path = Paths.get("src/test/resources/org")
+
+fun getComplexProjectPath(): Path = Paths.get("src/test/resources/insider")

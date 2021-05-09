@@ -85,8 +85,9 @@ class AttributeUnwrapper {
         val parentBinding = getBindingForContainer(node.findParentOfType<MethodDeclaration>() ?: return null)
         return findAttributeByParentAndName(parentBinding?.key, node.getName()) ?:
                createAttribute(node) {
-                   if (useStack) ContainerStack.popUntilBindingObject(parentBinding)
-                   else containerService.getOrCreateContainerForBinding(parentBinding)
+                   if (!useStack) containerService.getOrCreateContainerForBinding(parentBinding)
+                   else ContainerStack.popUntilBindingObject(parentBinding) ?:
+                        containerService.getOrCreateContainerForBinding(parentBinding)
                }
     }
 
@@ -94,8 +95,9 @@ class AttributeUnwrapper {
         val parentBinding = getBindingForContainer(node.findParentOfType<TypeDeclaration>() ?: return null)
         return findAttributeByParentAndName(parentBinding?.key, node.getName()) ?:
                createAttribute(node) {
-                    if (useStack) ContainerStack.popUntilBindingObject(parentBinding)
-                    else containerService.getOrCreateContainerForBinding(parentBinding)
+                    if (!useStack) containerService.getOrCreateContainerForBinding(parentBinding)
+                    else ContainerStack.popUntilBindingObject(parentBinding) ?:
+                         containerService.getOrCreateContainerForBinding(parentBinding)
                }
     }
 
@@ -103,8 +105,9 @@ class AttributeUnwrapper {
         val parentBinding = getBindingForContainer(node.findParentOfType<MethodDeclaration>() ?: return null)
         return findAttributeByParentAndName(parentBinding?.key, node.name.fullyQualifiedName) ?:
                createAttribute(node) {
-                   if (useStack) ContainerStack.popUntilBindingObject(parentBinding)
-                   else containerService.getOrCreateContainerForBinding(parentBinding)
+                   if (!useStack) containerService.getOrCreateContainerForBinding(parentBinding)
+                   else ContainerStack.popUntilBindingObject(parentBinding) ?:
+                        containerService.getOrCreateContainerForBinding(parentBinding)
                }
     }
 
@@ -113,12 +116,12 @@ class AttributeUnwrapper {
                createAccessedField(fieldBinding)
     }
 
-    fun createFieldAccess(binding: IVariableBinding, node: FieldAccess) {
+    fun createFieldAccess(binding: IVariableBinding, node: ASTNode) {
         val field = findOrCreateFieldFromBinding(binding)
         addAccessedField(node, field)
     }
 
-    private fun addAccessedField(node: FieldAccess, field: Attribute) =
+    private fun addAccessedField(node: ASTNode, field: Attribute) =
         containerService.findContainer(node)?.addToAccessedFields(field)
 
     private fun getBindingForContainer(node: ASTNode?): IBinding? {
