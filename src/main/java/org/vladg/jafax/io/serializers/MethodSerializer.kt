@@ -25,14 +25,15 @@ class MethodSerializer : ContainerSerializer<Method>() {
         "signature" to 2,
         "isConstructor" to 3,
         "returnType" to 4,
-        "modifiers" to 5,
-        "container" to 6,
-        "parameters" to 7,
-        "localVariables" to 8,
-        "containedClasses" to 9,
-        "containedMethods" to 10,
-        "accessedFields" to 11,
-        "calledMethods" to 12
+        "cyclomaticComplexity" to 5,
+        "modifiers" to 6,
+        "container" to 7,
+        "parameters" to 8,
+        "localVariables" to 9,
+        "containedClasses" to 10,
+        "containedMethods" to 11,
+        "accessedFields" to 12,
+        "calledMethods" to 13
     )
 
     override val descriptor: SerialDescriptor =
@@ -44,6 +45,7 @@ class MethodSerializer : ContainerSerializer<Method>() {
                     "signature" -> element<String>("signature")
                     "isConstructor" -> element<Boolean>("isConstructor")
                     "returnType" -> element<Long>("returnType")
+                    "cyclomaticComplexity" -> element<Int>("cyclomaticComplexity")
                     "modifiers" -> element("modifiers", listSerialDescriptor<String>())
                     "container" -> element<Long>("container")
                     "parameters" -> element("parameters", listSerialDescriptor<Long>())
@@ -68,6 +70,7 @@ class MethodSerializer : ContainerSerializer<Method>() {
         if (value.isConstructor) {
             compositeEncoder.encodeBooleanElement(descriptor, getIndex("isConstructor"), true)
         }
+        compositeEncoder.encodeIntElement(descriptor, getIndex("cyclomaticComplexity"), value.cyclomaticComplexity)
         value.returnType?.let { compositeEncoder.encodeLongElement(descriptor, getIndex("returnType"), it.id) }
         collectionEncoder.encodeAstCollectionsByIndex(mapOf(
             getIndex("parameters") to value.parameters,
@@ -84,6 +87,7 @@ class MethodSerializer : ContainerSerializer<Method>() {
         when(index) {
             getIndex("signature") -> obj.signature = compositeDecoder.decodeStringElement(descriptor, index)
             getIndex("isConstructor") -> obj.isConstructor = compositeDecoder.decodeBooleanElement(descriptor, index)
+            getIndex("cyclomaticComplexity") -> obj.cyclomaticComplexity = compositeDecoder.decodeIntElement(descriptor, index)
             getIndex("returnType") -> AstDecoder.addObjectOrAddForUpdate(compositeDecoder.decodeLongElement(descriptor, 4)) {
                 obj.returnType = it as Class
             }

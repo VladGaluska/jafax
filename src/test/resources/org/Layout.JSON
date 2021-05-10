@@ -38,7 +38,7 @@
         "id": 2,
         "name": "IProvider",
         "containedMethods": [
-            49
+            52
         ],
         "fileName": "IProvider.java",
         "isInterface": true
@@ -62,8 +62,8 @@
             2
         ],
         "containedFields": [
-            56,
-            57
+            59,
+            60
         ]
     },
     {
@@ -97,6 +97,7 @@
             46
         ],
         "signature": "getProvider()",
+        "cyclomaticComplexity": 1,
         "returnType": 3
     },
     {
@@ -114,6 +115,9 @@
         "modifiers": [
             "Public"
         ],
+        "containedMethods": [
+            49
+        ],
         "fileName": "DataObject.java",
         "superClass": 0,
         "containedFields": [
@@ -129,6 +133,7 @@
             "Public"
         ],
         "containedMethods": [
+            50,
             12,
             47
         ],
@@ -160,14 +165,12 @@
             "Public"
         ],
         "container": 9,
-        "accessedFields": [
-            27
-        ],
         "calledMethods": [
             46
         ],
         "signature": "ExtendedData()",
         "isConstructor": true,
+        "cyclomaticComplexity": 1,
         "returnType": 11
     },
     {
@@ -189,6 +192,7 @@
             28
         ],
         "signature": "useObject(org.radum.Provider)",
+        "cyclomaticComplexity": 1,
         "returnType": 11,
         "parameters": [
             14
@@ -297,6 +301,7 @@
         ],
         "container": 21,
         "signature": "println(int)",
+        "cyclomaticComplexity": 1,
         "returnType": 11
     },
     {
@@ -341,13 +346,14 @@
         ],
         "container": 3,
         "signature": "measureComplexity(int, int)",
+        "cyclomaticComplexity": 3,
         "returnType": 25,
         "parameters": [
-            52,
-            53
+            55,
+            56
         ],
         "localVariables": [
-            54
+            57
         ]
     },
     {
@@ -367,6 +373,7 @@
         ],
         "container": 3,
         "signature": "getData()",
+        "cyclomaticComplexity": 1,
         "returnType": 8
     },
     {
@@ -389,6 +396,7 @@
             26
         ],
         "signature": "anotherFunction(org.radum.ExtendedData)",
+        "cyclomaticComplexity": 1,
         "returnType": 11,
         "parameters": [
             31
@@ -418,6 +426,7 @@
             36
         ],
         "signature": "client()",
+        "cyclomaticComplexity": 3,
         "returnType": 11,
         "localVariables": [
             33,
@@ -453,9 +462,10 @@
             29
         ],
         "signature": "anotherFunction()",
+        "cyclomaticComplexity": 1,
         "returnType": 25,
         "localVariables": [
-            55
+            58
         ]
     },
     {
@@ -467,6 +477,7 @@
         ],
         "container": 21,
         "signature": "println(java.lang.String)",
+        "cyclomaticComplexity": 1,
         "returnType": 11
     },
     {
@@ -479,6 +490,7 @@
         ],
         "container": 1,
         "signature": "main(java.lang.String[])",
+        "cyclomaticComplexity": 1,
         "returnType": 11,
         "parameters": [
             42
@@ -573,23 +585,32 @@
         "container": 3,
         "signature": "Provider(int)",
         "isConstructor": true,
+        "cyclomaticComplexity": 1,
         "returnType": 11,
         "parameters": [
-            50
+            53
         ],
         "localVariables": [
-            51
+            54
         ]
     },
     {
         "type": "Method",
         "id": 47,
-        "name": "setProvider",
+        "name": "ExtendedData",
         "modifiers": [
             "Public"
         ],
         "container": 9,
-        "signature": "setProvider(org.radum.Provider)",
+        "accessedFields": [
+            27
+        ],
+        "calledMethods": [
+            49
+        ],
+        "signature": "ExtendedData(int)",
+        "isConstructor": true,
+        "cyclomaticComplexity": 1,
         "returnType": 11,
         "parameters": [
             48
@@ -598,14 +619,50 @@
     {
         "type": "Attribute",
         "id": 48,
-        "name": "_p",
+        "name": "x",
         "container": 47,
-        "class": 3,
+        "class": 25,
         "kind": "Parameter"
     },
     {
         "type": "Method",
         "id": 49,
+        "name": "DataObject",
+        "modifiers": [
+            "Public"
+        ],
+        "container": 8,
+        "signature": "DataObject()",
+        "isConstructor": true,
+        "cyclomaticComplexity": 1,
+        "returnType": 11
+    },
+    {
+        "type": "Method",
+        "id": 50,
+        "name": "setProvider",
+        "modifiers": [
+            "Public"
+        ],
+        "container": 9,
+        "signature": "setProvider(org.radum.Provider)",
+        "cyclomaticComplexity": 1,
+        "returnType": 11,
+        "parameters": [
+            51
+        ]
+    },
+    {
+        "type": "Attribute",
+        "id": 51,
+        "name": "_p",
+        "container": 50,
+        "class": 3,
+        "kind": "Parameter"
+    },
+    {
+        "type": "Method",
+        "id": 52,
         "name": "anotherFunction",
         "modifiers": [
             "Public",
@@ -613,11 +670,12 @@
         ],
         "container": 2,
         "signature": "anotherFunction()",
+        "cyclomaticComplexity": 1,
         "returnType": 25
     },
     {
         "type": "Attribute",
-        "id": 50,
+        "id": 53,
         "name": "a",
         "container": 46,
         "class": 25,
@@ -625,7 +683,7 @@
     },
     {
         "type": "Attribute",
-        "id": 51,
+        "id": 54,
         "name": "x",
         "container": 46,
         "class": 25,
@@ -633,7 +691,7 @@
     },
     {
         "type": "Attribute",
-        "id": 52,
+        "id": 55,
         "name": "i",
         "container": 26,
         "class": 25,
@@ -641,7 +699,7 @@
     },
     {
         "type": "Attribute",
-        "id": 53,
+        "id": 56,
         "name": "j",
         "container": 26,
         "class": 25,
@@ -649,7 +707,7 @@
     },
     {
         "type": "Attribute",
-        "id": 54,
+        "id": 57,
         "name": "result",
         "container": 26,
         "class": 25,
@@ -657,7 +715,7 @@
     },
     {
         "type": "Attribute",
-        "id": 55,
+        "id": 58,
         "name": "localData",
         "container": 35,
         "class": 8,
@@ -665,7 +723,7 @@
     },
     {
         "type": "Attribute",
-        "id": 56,
+        "id": 59,
         "name": "data",
         "modifiers": [
             "Public"
@@ -676,7 +734,7 @@
     },
     {
         "type": "Attribute",
-        "id": 57,
+        "id": 60,
         "name": "extendedData",
         "modifiers": [
             "Public"

@@ -9,6 +9,7 @@ import org.vladg.jafax.ast.unwrapper.ClassUnwrapper
 import org.vladg.jafax.ast.unwrapper.MethodInvocationUnwrapper
 import org.vladg.jafax.ast.unwrapper.MethodUnwrapper
 import org.vladg.jafax.io.NamePrefixTrimmer
+import org.vladg.jafax.utils.extensions.ast.countsToComplexity
 import org.vladg.jafax.utils.extensions.logger
 
 class ASTVisitor : ASTVisitor() {
@@ -50,6 +51,19 @@ class ASTVisitor : ASTVisitor() {
         return true
     }
 
+    override fun visit(annonymousClassDeclaration: AnonymousClassDeclaration): Boolean {
+        val binding = annonymousClassDeclaration.resolveBinding()
+        if (binding == null) {
+            logger.warn("Could not resolve binding for anonymous type" +
+                    " in file: ${currentFileName}, will ignore...")
+            return false
+        }
+        if (!binding.isClass && !binding.isInterface) return true
+        val clazz = classUnwrapper.findOrCreateClassForBinding(binding, true)!!
+        ContainerStack.addToStack(clazz)
+        return true
+    }
+
     override fun visit(methodDeclaration: MethodDeclaration): Boolean {
         val binding = methodDeclaration.resolveBinding()
         if (binding == null) {
@@ -73,6 +87,11 @@ class ASTVisitor : ASTVisitor() {
     }
 
     override fun visit(node: ClassInstanceCreation): Boolean {
+        methodInvocationUnwrapper.registerInvocation(node)
+        return true
+    }
+
+    override fun visit(node: SuperConstructorInvocation): Boolean {
         methodInvocationUnwrapper.registerInvocation(node)
         return true
     }
@@ -106,6 +125,53 @@ class ASTVisitor : ASTVisitor() {
             return true
         }
         return visitVariableBinding(binding, node, node.name.fullyQualifiedName)
+    }
+
+    override fun visit(node: WhileStatement): Boolean {
+        methodUnwrapper.incrementCyclomaticComplexity(node)
+        return true
+    }
+
+    override fun visit(node: DoStatement): Boolean {
+        methodUnwrapper.incrementCyclomaticComplexity(node)
+        return true
+    }
+
+    override fun visit(node: IfStatement): Boolean {
+        methodUnwrapper.incrementCyclomaticComplexity(node)
+        return true
+    }
+
+    override fun visit(node: ForStatement): Boolean {
+        methodUnwrapper.incrementCyclomaticComplexity(node)
+        return true
+    }
+
+    override fun visit(node: EnhancedForStatement): Boolean {
+        methodUnwrapper.incrementCyclomaticComplexity(node)
+        return true
+    }
+
+    override fun visit(node: ConditionalExpression): Boolean {
+        methodUnwrapper.incrementCyclomaticComplexity(node)
+        return true
+    }
+
+    override fun visit(node: InfixExpression): Boolean {
+        if (node.operator.countsToComplexity()) {
+            methodUnwrapper.incrementCyclomaticComplexity(node)
+        }
+        return true
+    }
+
+    override fun visit(node: CatchClause): Boolean {
+        methodUnwrapper.incrementCyclomaticComplexity(node)
+        return true
+    }
+
+    override fun visit(node: SwitchCase): Boolean {
+        methodUnwrapper.incrementCyclomaticComplexity(node)
+        return true
     }
 
     private fun visitVariableBinding(binding: IVariableBinding?, node: ASTNode, name: String): Boolean {

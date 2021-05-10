@@ -1,9 +1,6 @@
 package org.vladg.jafax.utils.extensions.ast
 
-import org.eclipse.jdt.core.dom.ASTNode
-import org.eclipse.jdt.core.dom.IBinding
-import org.eclipse.jdt.core.dom.MethodDeclaration
-import org.eclipse.jdt.core.dom.TypeDeclaration
+import org.eclipse.jdt.core.dom.*
 
 fun bindingNameFromType(kind: Int): String {
     return when(kind) {
@@ -40,3 +37,6 @@ fun ASTNode.immediateContainerBinding(): Pair<IBinding?, Boolean> {
     }
     return Pair(null, false)
 }
+
+fun InfixExpression.Operator.countsToComplexity() =
+        this == InfixExpression.Operator.AND || this == InfixExpression.Operator.OR

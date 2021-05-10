@@ -52,30 +52,14 @@ class LayoutIT {
     private fun `classes should be correct`(classes: Collection<Class>) {
         classes.forEach {
             when(it.name) {
-                "Client" -> {
-                    verifyClient(it)
-                }
-                "DataObject" -> {
-                    verifyDataObject(it)
-                }
-                "ExtendedData" -> {
-                    verifyExtendedData(it)
-                }
-                "Provider" -> {
-                    verifyProvider(it)
-                }
-                "Empty" -> {
-                    verifyEmpty(it)
-                }
-                "SubEmpty" -> {
-                    verifySubEmpty(it)
-                }
-                "IProvider" -> {
-                    verifyIProvider(it)
-                }
-                "ProviderFactory"-> {
-                    verifyProviderFactory(it)
-                }
+                "Client" -> verifyClient(it)
+                "DataObject" -> verifyDataObject(it)
+                "ExtendedData" -> verifyExtendedData(it)
+                "Provider" -> verifyProvider(it)
+                "Empty" -> verifyEmpty(it)
+                "SubEmpty" -> verifySubEmpty(it)
+                "IProvider" -> verifyIProvider(it)
+                "ProviderFactory"-> verifyProviderFactory(it)
                 else -> assertTrue(it.isExternal, "Class ${it.name} should be set as external!")
             }
         }
@@ -124,7 +108,11 @@ class LayoutIT {
                 )
         )
         assertTrue(dataObject.containedClasses.isEmpty())
-        assertTrue(dataObject.containedMethods.isEmpty())
+        `objects should match names`(dataObject.containedMethods,
+                setOf(
+                        "DataObject"
+                )
+        )
         assertTrue(dataObject.calledMethods.isEmpty())
         assertTrue(dataObject.accessedFields.isEmpty())
         assertEquals("Object", dataObject.superClass?.name)
@@ -271,48 +259,43 @@ class LayoutIT {
         val methods = CommonRepository.findByFilter {
             it is Method && it.isInternal()
         }.map { it as Method }
-        assertEquals(12, methods.size)
+        assertEquals(14, methods.size)
         `methods should be correct`(methods)
     }
 
     private fun `methods should be correct`(methods: Collection<Method>) {
         methods.forEach {
             when(it.signature) {
-                "useObject(org.radum.Provider)" -> {
-                    checkUseObject(it)
-                }
-                "anotherFunction(org.radum.ExtendedData)" -> {
-                    checkAnotherFunction(it)
-                }
-                "client()" -> {
-                    checkClient(it)
-                }
-                "main(String[] args)" -> {
-                    checkMain(it)
-                }
-                "ExtendedData()" -> {
-                    checkExtendedData(it)
-                }
-                "setProvider(org.radum.Provider)" -> {
-                    checkSetProvider(it)
-                }
-                "anotherFunction()" -> {
-                    checkAnotherFunctionNoArgs(it)
-                }
-                "Provider(int)" -> {
-                    checkProvider(it)
-                }
-                "measureComplexity(int, int)" -> {
-                    checkMeasureComplexity(it)
-                }
-                "getData()" -> {
-                    checkGetData(it)
-                }
-                "getProvider()" -> {
-                    checkGetProvider(it)
-                }
+                "useObject(org.radum.Provider)" -> checkUseObject(it)
+                "anotherFunction(org.radum.ExtendedData)" -> checkAnotherFunction(it)
+                "client()" -> checkClient(it)
+                "main(java.lang.String[])" -> checkMain(it)
+                "ExtendedData()" -> checkExtendedData(it)
+                "ExtendedData(int)" -> checkExtendedDataWithInt(it)
+                "setProvider(org.radum.Provider)" -> checkSetProvider(it)
+                "anotherFunction()" -> checkAnotherFunctionNoArgs(it)
+                "Provider(int)" -> checkProvider(it)
+                "measureComplexity(int, int)" -> checkMeasureComplexity(it)
+                "getData()" -> checkGetData(it)
+                "getProvider()" -> checkGetProvider(it)
+                "DataObject()" -> checkDataObject(it)
+                else -> assertTrue(false, "Method with signature ${it.signature} should be external or handled!")
             }
         }
+    }
+
+    private fun checkDataObject(it: Method){
+        assertTrue(it.isConstructor)
+        assertTrue(it.calledMethods.isEmpty())
+        assertTrue(it.parameters.isEmpty())
+        assertTrue(it.localVariables.isEmpty())
+        assertTrue(it.accessedFields.isEmpty())
+        assertTrue(it.containedClasses.isEmpty())
+        assertTrue(it.containedMethods.isEmpty())
+        assertEquals(1, it.cyclomaticComplexity)
+        assertEquals(setOf(Modifier.Public), it.modifiers)
+        assertEquals("DataObject", it.container?.name)
+        assertEquals("void", it.returnType?.name)
     }
 
     private fun checkUseObject(it: Method) {
@@ -339,6 +322,7 @@ class LayoutIT {
         )
         assertTrue(it.containedClasses.isEmpty())
         assertTrue(it.containedMethods.isEmpty())
+        assertEquals(1, it.cyclomaticComplexity)
         assertEquals(setOf(Modifier.Public), it.modifiers)
         assertEquals("Client", it.container?.name)
         assertEquals("void", it.returnType?.name)
@@ -360,6 +344,7 @@ class LayoutIT {
         assertTrue(it.accessedFields.isEmpty())
         assertTrue(it.containedClasses.isEmpty())
         assertTrue(it.containedMethods.isEmpty())
+        assertEquals(1, it.cyclomaticComplexity)
         assertEquals(setOf(Modifier.Public), it.modifiers)
         assertEquals("Client", it.container?.name)
         assertEquals("void", it.returnType?.name)
@@ -387,6 +372,7 @@ class LayoutIT {
         )
         assertTrue(it.containedClasses.isEmpty())
         assertTrue(it.containedMethods.isEmpty())
+        assertEquals(3, it.cyclomaticComplexity)
         assertEquals(setOf(Modifier.Public), it.modifiers)
         assertEquals("Client", it.container?.name)
         assertEquals("void", it.returnType?.name)
@@ -404,6 +390,7 @@ class LayoutIT {
         assertTrue(it.accessedFields.isEmpty())
         assertTrue(it.containedClasses.isEmpty())
         assertTrue(it.containedMethods.isEmpty())
+        assertEquals(1, it.cyclomaticComplexity)
         assertEquals(setOf(Modifier.Public, Modifier.Static), it.modifiers)
         assertEquals("Client", it.container?.name)
         assertEquals("void", it.returnType?.name)
@@ -418,13 +405,10 @@ class LayoutIT {
         )
         assertTrue(it.parameters.isEmpty())
         assertTrue(it.localVariables.isEmpty())
-        `objects should match names`(it.accessedFields,
-                setOf(
-                        "x"
-                )
-        )
+        assertTrue(it.accessedFields.isEmpty())
         assertTrue(it.containedClasses.isEmpty())
         assertTrue(it.containedMethods.isEmpty())
+        assertEquals(1, it.cyclomaticComplexity)
         assertEquals(setOf(Modifier.Public), it.modifiers)
         assertEquals("ExtendedData", it.container?.name)
         assertEquals("void", it.returnType?.name)
@@ -442,6 +426,7 @@ class LayoutIT {
         assertTrue(it.accessedFields.isEmpty())
         assertTrue(it.containedClasses.isEmpty())
         assertTrue(it.containedMethods.isEmpty())
+        assertEquals(1, it.cyclomaticComplexity)
         assertEquals(setOf(Modifier.Public), it.modifiers)
         assertEquals("ExtendedData", it.container?.name)
         assertEquals("void", it.returnType?.name)
@@ -456,6 +441,7 @@ class LayoutIT {
             assertTrue(it.accessedFields.isEmpty())
             assertTrue(it.containedClasses.isEmpty())
             assertTrue(it.containedMethods.isEmpty())
+            assertEquals(1, it.cyclomaticComplexity)
             assertEquals(setOf(Modifier.Public, Modifier.Abstract), it.modifiers)
             assertEquals("int", it.returnType?.name)
         } else {
@@ -475,6 +461,7 @@ class LayoutIT {
             )
             assertTrue(it.containedClasses.isEmpty())
             assertTrue(it.containedMethods.isEmpty())
+            assertEquals(1, it.cyclomaticComplexity)
             assertEquals(setOf(Modifier.Public), it.modifiers)
             assertEquals("int", it.returnType?.name)
         }
@@ -496,6 +483,7 @@ class LayoutIT {
         assertTrue(it.accessedFields.isEmpty())
         assertTrue(it.containedClasses.isEmpty())
         assertTrue(it.containedMethods.isEmpty())
+        assertEquals(1, it.cyclomaticComplexity)
         assertEquals(setOf(Modifier.Public), it.modifiers)
         assertEquals("Provider", it.container?.name)
         assertEquals("void", it.returnType?.name)
@@ -518,6 +506,7 @@ class LayoutIT {
         assertTrue(it.accessedFields.isEmpty())
         assertTrue(it.containedClasses.isEmpty())
         assertTrue(it.containedMethods.isEmpty())
+        assertEquals(3, it.cyclomaticComplexity)
         assertEquals(setOf(Modifier.Public), it.modifiers)
         assertEquals("Provider", it.container?.name)
         assertEquals("int", it.returnType?.name)
@@ -531,6 +520,7 @@ class LayoutIT {
         assertTrue(it.accessedFields.isEmpty())
         assertTrue(it.containedClasses.isEmpty())
         assertTrue(it.containedMethods.isEmpty())
+        assertEquals(1, it.cyclomaticComplexity)
         assertEquals(setOf(Modifier.Public), it.modifiers)
         assertEquals("Provider", it.container?.name)
         assertEquals("DataObject", it.returnType?.name)
@@ -548,9 +538,36 @@ class LayoutIT {
         assertTrue(it.accessedFields.isEmpty())
         assertTrue(it.containedClasses.isEmpty())
         assertTrue(it.containedMethods.isEmpty())
+        assertEquals(1, it.cyclomaticComplexity)
         assertEquals(setOf(Modifier.Public, Modifier.Static), it.modifiers)
         assertEquals("ProviderFactory", it.container?.name)
         assertEquals("Provider", it.returnType?.name)
+    }
+
+    private fun checkExtendedDataWithInt(it: Method) {
+        assertTrue(it.isConstructor)
+        `objects should match names`(it.calledMethods,
+                setOf(
+                        "DataObject"
+                )
+        )
+        `objects should match names`(it.parameters,
+                setOf(
+                        "x"
+                )
+        )
+        assertTrue(it.localVariables.isEmpty())
+        `objects should match names`(it.accessedFields,
+                setOf(
+                        "x"
+                )
+        )
+        assertTrue(it.containedClasses.isEmpty())
+        assertTrue(it.containedMethods.isEmpty())
+        assertEquals(1, it.cyclomaticComplexity)
+        assertEquals(setOf(Modifier.Public), it.modifiers)
+        assertEquals("ExtendedData", it.container?.name)
+        assertEquals("void", it.returnType?.name)
     }
 
     private fun `should contain right attributes`() {
@@ -559,126 +576,154 @@ class LayoutIT {
         }.map {
             it as Attribute
         }
-        assertEquals(20, attributes.size)
+        assertEquals(21, attributes.size)
         `attributes should be correct`(attributes)
     }
 
     private fun `attributes should be correct`(attributes: Collection<Attribute>) {
         attributes.forEach {
             when(it.name) {
-                "dataMember", "providers" -> {
-                    assertEquals(AttributeKind.Field, it.kind)
-                    assertEquals("Provider", it.type?.name)
-                    assertTrue(it.modifiers.isEmpty())
-                    assertEquals("Client", it.container?.name)
-                }
-                "extendedData" -> {
-                    when (it.container?.name) {
-                        "Client" -> {
-                            assertEquals(AttributeKind.Field, it.kind)
-                            assertEquals("ExtendedData", it.type?.name)
-                            assertTrue(it.modifiers.isEmpty())
-                        }
-                        "anotherFunction" -> {
-                            assertEquals(AttributeKind.Parameter, it.kind)
-                            assertEquals("ExtendedData", it.type?.name)
-                            assertTrue(it.modifiers.isEmpty())
-                        }
-                        else -> {
-                            assertEquals(AttributeKind.Field, it.kind)
-                            assertEquals("ExtendedData", it.type?.name)
-                            assertEquals(setOf(Modifier.Public), it.modifiers)
-                            assertEquals("Provider", it.container?.name)
-                        }
-                    }
-                }
-                "dprovider" -> {
-                    assertEquals(AttributeKind.Parameter, it.kind)
-                    assertEquals("Provider", it.type?.name)
-                    assertTrue(it.modifiers.isEmpty())
-                    assertEquals("useObject", it.container?.name)
-                }
-                "unused" -> {
-                    assertEquals(AttributeKind.LocalVariable, it.kind)
-                    assertEquals("int", it.type?.name)
-                    assertTrue(it.modifiers.isEmpty())
-                    assertEquals("client", it.container?.name)
-                }
-                "result" -> {
-                    if (it.container?.name == "client") {
-                        assertEquals(AttributeKind.LocalVariable, it.kind)
-                        assertEquals("int", it.type?.name)
-                        assertTrue(it.modifiers.isEmpty())
-                    } else {
-                        assertEquals(AttributeKind.LocalVariable, it.kind)
-                        assertEquals("int", it.type?.name)
-                        assertTrue(it.modifiers.isEmpty())
-                        assertEquals("measureComplexity", it.container?.name)
-                    }
-                }
-                "args" -> {
-                    assertEquals(AttributeKind.Parameter, it.kind)
-                    assertEquals("String", it.type?.name)
-                    assertTrue(it.modifiers.isEmpty())
-                    assertEquals("main", it.container?.name)
-                }
-                "x" -> {
-                    if (it.container?.name == "DataObject") {
-                        assertEquals(AttributeKind.Field, it.kind)
-                        assertEquals("int", it.type?.name)
-                        assertTrue(it.modifiers.isEmpty())
-                    } else {
-                        assertEquals(AttributeKind.LocalVariable, it.kind)
-                        assertEquals("int", it.type?.name)
-                        assertTrue(it.modifiers.isEmpty())
-                        assertEquals("Provider", it.container?.name)
-                    }
-                }
-                "y" -> {
-                    assertEquals(AttributeKind.Field, it.kind)
-                    assertEquals("int", it.type?.name)
-                    assertTrue(it.modifiers.isEmpty())
-                    assertEquals("DataObject", it.container?.name)
-                }
-                "providerObject" -> {
-                    assertEquals(AttributeKind.Field, it.kind)
-                    assertEquals("Provider", it.type?.name)
-                    assertTrue(it.modifiers.isEmpty())
-                    assertEquals("ExtendedData", it.container?.name)
-                }
-                "_p" -> {
-                    assertEquals(AttributeKind.Parameter, it.kind)
-                    assertEquals("Provider", it.type?.name)
-                    assertTrue(it.modifiers.isEmpty())
-                    assertEquals("setProvider", it.container?.name)
-                }
-                "a" -> {
-                    assertEquals(AttributeKind.Parameter, it.kind)
-                    assertEquals("int", it.type?.name)
-                    assertTrue(it.modifiers.isEmpty())
-                    assertEquals("Provider", it.container?.name)
-                }
-                "i", "j" -> {
-                    assertEquals(AttributeKind.Parameter, it.kind)
-                    assertEquals("int", it.type?.name)
-                    assertTrue(it.modifiers.isEmpty())
-                    assertEquals("measureComplexity", it.container?.name)
-                }
-                "localData" -> {
-                    assertEquals(AttributeKind.LocalVariable, it.kind)
-                    assertEquals("DataObject", it.type?.name)
-                    assertTrue(it.modifiers.isEmpty())
-                    assertEquals("anotherFunction", it.container?.name)
-                }
-                "data" -> {
-                    assertEquals(AttributeKind.Field, it.kind)
-                    assertEquals("DataObject", it.type?.name)
-                    assertEquals(setOf(Modifier.Public), it.modifiers)
-                    assertEquals("Provider", it.container?.name)
-                }
+                "dataMember", "providers" -> checkDataMemberOrProviders(it)
+                "extendedData" -> checkExtendedData(it)
+                "dprovider" -> checkDProvider(it)
+                "unused" -> checkUnused(it)
+                "result" -> checkResult(it)
+                "args" -> checkArgs(it)
+                "x" -> checkX(it)
+                "y" -> checkY(it)
+                "providerObject" -> checkProviderObject(it)
+                "_p" -> check_p(it)
+                "a" -> checkA(it)
+                "i", "j" -> checkIOrJ(it)
+                "localData" -> checkLocalData(it)
+                "data" -> checkData(it)
                 else -> assertFalse(true, "Attribute ${it.name} was either missed or should be external")
             }
         }
+    }
+
+    private fun checkDataMemberOrProviders(it: Attribute) {
+        assertEquals(AttributeKind.Field, it.kind)
+        assertEquals("Provider", it.type?.name)
+        assertTrue(it.modifiers.isEmpty())
+        assertEquals("Client", it.container?.name)
+    }
+
+    private fun checkExtendedData(it: Attribute) {
+        when (it.container?.name) {
+            "Client" -> {
+                assertEquals(AttributeKind.Field, it.kind)
+                assertEquals("ExtendedData", it.type?.name)
+                assertTrue(it.modifiers.isEmpty())
+            }
+            "anotherFunction" -> {
+                assertEquals(AttributeKind.Parameter, it.kind)
+                assertEquals("ExtendedData", it.type?.name)
+                assertTrue(it.modifiers.isEmpty())
+            }
+            else -> {
+                assertEquals(AttributeKind.Field, it.kind)
+                assertEquals("ExtendedData", it.type?.name)
+                assertEquals(setOf(Modifier.Public), it.modifiers)
+                assertEquals("Provider", it.container?.name)
+            }
+        }
+    }
+
+    private fun checkDProvider(it: Attribute) {
+        assertEquals(AttributeKind.Parameter, it.kind)
+        assertEquals("Provider", it.type?.name)
+        assertTrue(it.modifiers.isEmpty())
+        assertEquals("useObject", it.container?.name)
+    }
+
+    private fun checkUnused(it: Attribute) {
+        assertEquals(AttributeKind.LocalVariable, it.kind)
+        assertEquals("int", it.type?.name)
+        assertTrue(it.modifiers.isEmpty())
+        assertEquals("client", it.container?.name)
+    }
+
+    private fun checkResult(it: Attribute) {
+        if (it.container?.name == "client") {
+            assertEquals(AttributeKind.LocalVariable, it.kind)
+            assertEquals("int", it.type?.name)
+            assertTrue(it.modifiers.isEmpty())
+        } else {
+            assertEquals(AttributeKind.LocalVariable, it.kind)
+            assertEquals("int", it.type?.name)
+            assertTrue(it.modifiers.isEmpty())
+            assertEquals("measureComplexity", it.container?.name)
+        }
+    }
+
+    private fun checkArgs(it: Attribute) {
+        assertEquals(AttributeKind.Parameter, it.kind)
+        assertEquals("String", it.type?.name)
+        assertTrue(it.modifiers.isEmpty())
+        assertEquals("main", it.container?.name)
+    }
+
+    private fun checkX(it: Attribute) {
+        assertEquals("int", it.type?.name)
+        assertTrue(it.modifiers.isEmpty())
+        when (it.container?.name) {
+            "DataObject" -> assertEquals(AttributeKind.Field, it.kind)
+            "Provider" -> assertEquals(AttributeKind.LocalVariable, it.kind)
+            else -> {
+                assertEquals(AttributeKind.Parameter, it.kind)
+                assertEquals("ExtendedData", it.container?.name)
+            }
+        }
+    }
+
+    private fun checkY(it: Attribute) {
+        assertEquals(AttributeKind.Field, it.kind)
+        assertEquals("int", it.type?.name)
+        assertTrue(it.modifiers.isEmpty())
+        assertEquals("DataObject", it.container?.name)
+    }
+
+    private fun checkProviderObject(it: Attribute) {
+        assertEquals(AttributeKind.Field, it.kind)
+        assertEquals("Provider", it.type?.name)
+        assertTrue(it.modifiers.isEmpty())
+        assertEquals("ExtendedData", it.container?.name)
+    }
+
+    private fun check_p(it: Attribute) {
+        assertEquals(AttributeKind.Parameter, it.kind)
+        assertEquals("Provider", it.type?.name)
+        assertTrue(it.modifiers.isEmpty())
+        assertEquals("setProvider", it.container?.name)
+    }
+
+    private fun checkA(it: Attribute) {
+        assertEquals(AttributeKind.Parameter, it.kind)
+        assertEquals("int", it.type?.name)
+        assertTrue(it.modifiers.isEmpty())
+        assertEquals("Provider", it.container?.name)
+    }
+
+    private fun checkIOrJ(it: Attribute) {
+        assertEquals(AttributeKind.Parameter, it.kind)
+        assertEquals("int", it.type?.name)
+        assertTrue(it.modifiers.isEmpty())
+        assertEquals("measureComplexity", it.container?.name)
+    }
+
+    private fun checkLocalData(it: Attribute) {
+        assertEquals(AttributeKind.LocalVariable, it.kind)
+        assertEquals("DataObject", it.type?.name)
+        assertTrue(it.modifiers.isEmpty())
+        assertEquals("anotherFunction", it.container?.name)
+    }
+
+    private fun checkData(it: Attribute) {
+        assertEquals(AttributeKind.Field, it.kind)
+        assertEquals("DataObject", it.type?.name)
+        assertEquals(setOf(Modifier.Public), it.modifiers)
+        assertEquals("Provider", it.container?.name)
     }
 
 }

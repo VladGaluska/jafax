@@ -10,6 +10,7 @@ class Method(
     var key: String = "",
     var isConstructor: Boolean = false,
     var returnType: Class? = null,
+    var cyclomaticComplexity: Int = 1,
     name: String = "",
     modifiers: Set<Modifier> = HashSet(),
     container: Container? = null
@@ -18,6 +19,10 @@ class Method(
     val parameters: MutableSet<Attribute> = HashSet()
 
     val localVariables: MutableSet<Attribute> = HashSet()
+
+    fun incrementComplexity() {
+        cyclomaticComplexity ++
+    }
 
     override fun isSame(value: ASTObject) =
             value is Method &&

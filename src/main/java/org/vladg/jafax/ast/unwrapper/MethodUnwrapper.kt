@@ -1,6 +1,7 @@
 package org.vladg.jafax.ast.unwrapper
 
 import com.google.inject.Inject
+import org.eclipse.jdt.core.dom.ASTNode
 import org.eclipse.jdt.core.dom.IMethodBinding
 import org.vladg.jafax.ast.repository.ContainerStack
 import org.vladg.jafax.ast.repository.indexed.KeyIndexedMethodRepository
@@ -54,9 +55,15 @@ class MethodUnwrapper {
         return findByKey(binding.key)
             ?: createAndSaveMethod(binding) {
                 if (!useStack) containerService.getOrCreateContainerForBinding(binding.getParent())
-                else ContainerStack.popUntilBindingObject(binding.getParent()) ?:
-                     containerService.getOrCreateContainerForBinding(binding.getParent())
+                else ContainerStack.popUntilBindingObject(binding.getParent())
             }
+    }
+
+    fun incrementCyclomaticComplexity(node: ASTNode) {
+        val container = containerService.findContainer(node)
+        if (container is Method) {
+            container.incrementComplexity()
+        }
     }
 
 }

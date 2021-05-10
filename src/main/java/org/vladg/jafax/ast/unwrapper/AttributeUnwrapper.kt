@@ -86,8 +86,7 @@ class AttributeUnwrapper {
         return findAttributeByParentAndName(parentBinding?.key, node.getName()) ?:
                createAttribute(node) {
                    if (!useStack) containerService.getOrCreateContainerForBinding(parentBinding)
-                   else ContainerStack.popUntilBindingObject(parentBinding) ?:
-                        containerService.getOrCreateContainerForBinding(parentBinding)
+                   else ContainerStack.popUntilBindingObject(parentBinding)
                }
     }
 
@@ -96,8 +95,7 @@ class AttributeUnwrapper {
         return findAttributeByParentAndName(parentBinding?.key, node.getName()) ?:
                createAttribute(node) {
                     if (!useStack) containerService.getOrCreateContainerForBinding(parentBinding)
-                    else ContainerStack.popUntilBindingObject(parentBinding) ?:
-                         containerService.getOrCreateContainerForBinding(parentBinding)
+                    else ContainerStack.popUntilBindingObject(parentBinding)
                }
     }
 
@@ -106,8 +104,7 @@ class AttributeUnwrapper {
         return findAttributeByParentAndName(parentBinding?.key, node.name.fullyQualifiedName) ?:
                createAttribute(node) {
                    if (!useStack) containerService.getOrCreateContainerForBinding(parentBinding)
-                   else ContainerStack.popUntilBindingObject(parentBinding) ?:
-                        containerService.getOrCreateContainerForBinding(parentBinding)
+                   else ContainerStack.popUntilBindingObject(parentBinding)
                }
     }
 

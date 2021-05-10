@@ -24,19 +24,26 @@ class MethodInvocationUnwrapper {
         setInvocationRelation(findCalledMethod(superMethodInvocation) ?: return, superMethodInvocation)
     }
 
+    fun registerInvocation(superConstructorInvocation: SuperConstructorInvocation) {
+        setInvocationRelation(findCalledMethod(superConstructorInvocation) ?: return, superConstructorInvocation)
+    }
+
     private fun setInvocationRelation(method: Method, node: ASTNode) =
         containerService.findContainer(node)?.addToCalledMethods(method)
 
-    private fun findCalledMethod(methodInvocation: MethodInvocation): Method? =
+    private fun findCalledMethod(methodInvocation: MethodInvocation) =
         getMethod(methodInvocation.resolveMethodBinding())
 
-    private fun findCalledMethod(classInstanceCreation: ClassInstanceCreation): Method? =
+    private fun findCalledMethod(superConstructorInvocation: SuperConstructorInvocation) =
+        getMethod(superConstructorInvocation.resolveConstructorBinding())
+
+    private fun findCalledMethod(classInstanceCreation: ClassInstanceCreation) =
         getMethod(classInstanceCreation.resolveConstructorBinding())
 
-    private fun findCalledMethod(superMethodInvocation: SuperMethodInvocation): Method? =
+    private fun findCalledMethod(superMethodInvocation: SuperMethodInvocation) =
         getMethod(superMethodInvocation.resolveMethodBinding())
 
-    private fun getMethod(methodBinding: IMethodBinding?): Method? =
+    private fun getMethod(methodBinding: IMethodBinding?) =
         methodUnwrapper.findOrCreateMethodForBinding(methodBinding)
 
 }

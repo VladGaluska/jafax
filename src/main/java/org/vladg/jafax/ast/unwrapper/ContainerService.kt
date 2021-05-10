@@ -36,9 +36,9 @@ class ContainerService {
         return binding
     }
 
-     fun findContainer(node: ASTNode): Container? {
+     fun findContainer(node: ASTNode, useStack: Boolean = true): Container? {
         val containerBinding = getContainerBindingForNode(node)
-        return getOrCreateContainerForBinding(containerBinding, true)
+        return getOrCreateContainerForBinding(containerBinding, useStack)
     }
 
 }

@@ -61,8 +61,7 @@ class ClassUnwrapper {
         return findByKey(arrayCheckedBinding.key)
             ?: createAndSaveClass(arrayCheckedBinding) {
                 if (!useStack) containerService.getOrCreateContainerForBinding(arrayCheckedBinding.getParent())
-                else ContainerStack.popUntilBindingObject(arrayCheckedBinding.getParent()) ?:
-                     containerService.getOrCreateContainerForBinding(arrayCheckedBinding.getParent())
+                else ContainerStack.popUntilBindingObject(arrayCheckedBinding.getParent())
             }
     }
 
