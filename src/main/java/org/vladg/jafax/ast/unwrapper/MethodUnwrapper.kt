@@ -23,41 +23,38 @@ class MethodUnwrapper {
         KeyIndexedMethodRepository.addObject(method)
     }
 
-    private fun findByKey(key: String): Method? {
-        return KeyIndexedMethodRepository.findByIndex(key)
-    }
+    private fun findByKey(key: String) =
+            KeyIndexedMethodRepository.findByIndex(key)
 
-    private fun createMethod(binding: IMethodBinding, containerSupplier: () -> Container?): Method {
-        val method = Method(
+    private fun createMethod(binding: IMethodBinding) =
+        Method(
             name = binding.name,
             signature = binding.signature(),
             key = binding.key,
             isConstructor = binding.isConstructor,
             modifiers = binding.modifierSet(),
-            container = containerSupplier(),
-            returnType = classUnwrapper.findOrCreateClassForBinding(binding.returnType)
         )
-        setMethodToItsContainer(method)
-        return method
-    }
 
     private fun setMethodToItsContainer(method: Method) =
-        method.container?.addToContainedMethods(method)
+            method.container?.addToContainedMethods(method)
 
-    private fun createAndSaveMethod(binding: IMethodBinding, containerSupplier: () -> Container?): Method {
-        val method = createMethod(binding, containerSupplier)
-        addMethod(method)
-        return method
-    }
+    private fun createAndSaveMethodWithRecursiveSafety(binding: IMethodBinding, containerSupplier: () -> Container?): Method =
+            createMethod(binding)
+                    .also {
+                        addMethod(it)
+                        it.container = containerSupplier()
+                        it.returnType = classUnwrapper.findOrCreateClassForBinding(binding.returnType)
+                        setMethodToItsContainer(it)
+                    }
 
-    fun findOrCreateMethodForBinding(binding: IMethodBinding?, useStack: Boolean = false): Method? {
-        binding ?: return null
-        return findByKey(binding.key)
-            ?: createAndSaveMethod(binding) {
-                if (!useStack) containerService.getOrCreateContainerForBinding(binding.getParent())
-                else ContainerStack.popUntilBindingObject(binding.getParent())
+    fun findOrCreateMethodForBinding(binding: IMethodBinding?, useStack: Boolean = false): Method? =
+            binding?.methodDeclaration?.let {
+                findByKey(it.key) ?:
+                createAndSaveMethodWithRecursiveSafety(it) {
+                    if (!useStack) containerService.getOrCreateContainerForBinding(it.getParent())
+                    else ContainerStack.popUntilBindingObject(it.getParent())
+                }
             }
-    }
 
     fun incrementCyclomaticComplexity(node: ASTNode) {
         val container = containerService.findContainer(node)

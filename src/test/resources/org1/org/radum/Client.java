@@ -1,5 +1,8 @@
 package org.radum;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Client {
 
     Provider dataMember = ProviderFactory.getProvider();
@@ -15,8 +18,13 @@ public class Client {
         dataMember.getData().y++;
     }
 
-    public void anotherFunction(ExtendedData extendedData ) {
+    public void anotherFunction(final ExtendedData extendedData ) {
         dataMember.measureComplexity(1,2);
+        List<String> values = new ArrayList<>();
+        values.add("asd");
+        values.add("sda");
+        values.stream()
+              .forEach(z -> z + extendedData.x);
     }
 
     public void client() {
@@ -30,6 +38,13 @@ public class Client {
             else System.err.println("low");
         }
     }
+
+    public <R extends Client> R something(R r) {
+        r.client();
+        return r;
+    }
+
+    public <? extends Client> something2;
 
     public static void main(String[] args) {
     }

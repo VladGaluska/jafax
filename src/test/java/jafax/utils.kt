@@ -25,6 +25,6 @@ fun fillContainer(container: Container): Container {
     return container
 }
 
-fun getSimpleProjectPath(): Path = Paths.get("src/test/resources/org")
+fun getSimpleProjectPath(): Path = Paths.get("org1/src/test/resources/org1")
 
-fun getComplexProjectPath(): Path = Paths.get("src/test/resources/insider")
+fun getComplexProjectPath(): Path = Paths.get("org1/src/test/resources/insider")

@@ -6,6 +6,7 @@ import org.vladg.jafax.ast.repository.ContainerStack
 import org.vladg.jafax.ast.repository.indexed.ContainerIndexedAttributeRepository
 import org.vladg.jafax.repository.model.Attribute
 import org.vladg.jafax.repository.model.Attribute.AttributeKind
+import org.vladg.jafax.repository.model.Class
 import org.vladg.jafax.repository.model.Container
 import org.vladg.jafax.utils.extensions.ast.findParentOfType
 import org.vladg.jafax.utils.extensions.ast.getAttributeKind
@@ -30,8 +31,10 @@ class AttributeUnwrapper {
         )
     }
 
-    private fun addAttribute(attribute: Attribute): Attribute {
+    private fun addAttributeWithRecursiveSafety(attribute: Attribute, typeSupplier: () -> Class?, containerSupplier: () -> Container?): Attribute {
         ContainerIndexedAttributeRepository.addAttribute(attribute)
+        attribute.type = typeSupplier()
+        attribute.container = containerSupplier()
         setAttributeToItsContainer(attribute)
         return attribute
     }
@@ -39,45 +42,56 @@ class AttributeUnwrapper {
     private fun setAttributeToItsContainer(attribute: Attribute) =
         attribute.container?.addToContainedAttributes(attribute)
 
-    private fun createAccessedField(fieldBinding: IVariableBinding): Attribute {
-        return addAttribute(Attribute(
-            name = fieldBinding.name,
-            type = classUnwrapper.findOrCreateClassForBinding(fieldBinding.type),
-            modifiers = fieldBinding.modifierSet(),
-            container = containerService.getOrCreateContainerForBinding(fieldBinding.declaringClass),
-            kind = AttributeKind.Field
-        ))
-    }
+    private fun createAccessedField(fieldBinding: IVariableBinding): Attribute =
+            addAttributeWithRecursiveSafety(
+                Attribute(
+                    name = fieldBinding.name,
+                    modifiers = fieldBinding.modifierSet(),
+                    kind = AttributeKind.Field
+                ),
+                { classUnwrapper.findOrCreateClassForBinding(fieldBinding.type) }
+            ) {
+                containerService.getOrCreateContainerForBinding(fieldBinding.declaringClass)
+            }
 
-    private fun createAttribute(node: VariableDeclarationStatement, containerSupplier: () -> Container?): Attribute {
-        return addAttribute(Attribute(
-            name = node.getName()!!,
-            type = findClass(node.type),
-            modifiers = node.modifierSet(),
-            container = containerSupplier(),
-            kind = AttributeKind.LocalVariable
-        ))
-    }
+    private fun createAttribute(node: VariableDeclarationStatement, containerSupplier: () -> Container?) =
+            addAttributeWithRecursiveSafety(
+                    Attribute(
+                        name = node.getName()!!,
+                        type = findClass(node.type),
+                        modifiers = node.modifierSet(),
+                        container = containerSupplier(),
+                        kind = AttributeKind.LocalVariable
+                    ),
+                    { findClass(node.type) },
+                    containerSupplier
+            )
 
-    private fun createAttribute(node: FieldDeclaration, containerSupplier: () -> Container?): Attribute {
-        return addAttribute(Attribute(
-            name = node.getName()!!,
-            type = findClass(node.type),
-            modifiers = node.modifierSet(),
-            container = containerSupplier(),
-            kind = AttributeKind.Field
-        ))
-    }
+    private fun createAttribute(node: FieldDeclaration, containerSupplier: () -> Container?) =
+            addAttributeWithRecursiveSafety(
+                    Attribute(
+                        name = node.getName()!!,
+                        type = findClass(node.type),
+                        modifiers = node.modifierSet(),
+                        container = containerSupplier(),
+                        kind = AttributeKind.Field
+                    ),
+                    { findClass(node.type) },
+                    containerSupplier
+            )
 
-    private fun createAttribute(node: SingleVariableDeclaration, containerSupplier: () -> Container?): Attribute {
-        return addAttribute(Attribute(
-            name = node.name.fullyQualifiedName,
-            type = findClass(node.type),
-            modifiers = node.modifierSet(),
-            container = containerSupplier(),
-            kind = node.getAttributeKind()
-        ))
-    }
+    private fun createAttribute(node: SingleVariableDeclaration, containerSupplier: () -> Container?) =
+            addAttributeWithRecursiveSafety(
+                    Attribute(
+                        name = node.name.fullyQualifiedName,
+                        type = findClass(node.type),
+                        modifiers = node.modifierSet(),
+                        container = containerSupplier(),
+                        kind = node.getAttributeKind()
+                    ),
+                    { findClass(node.type) },
+                    containerSupplier
+            )
 
     private fun findClass(type: Type) = classUnwrapper.findOrCreateClassForBinding(type.resolveBinding())
 
@@ -113,10 +127,8 @@ class AttributeUnwrapper {
                createAccessedField(fieldBinding)
     }
 
-    fun createFieldAccess(binding: IVariableBinding, node: ASTNode) {
-        val field = findOrCreateFieldFromBinding(binding)
-        addAccessedField(node, field)
-    }
+    fun createFieldAccess(binding: IVariableBinding, node: ASTNode) =
+        addAccessedField(node, findOrCreateFieldFromBinding(binding))
 
     private fun addAccessedField(node: ASTNode, field: Attribute) =
         containerService.findContainer(node)?.addToAccessedFields(field)

@@ -10,7 +10,7 @@ import org.vladg.jafax.utils.extensions.getLayoutFile
 import org.vladg.jafax.repository.model.Attribute.AttributeKind
 import kotlin.test.*
 
-class LayoutIT {
+class LayoutIT {//This is really bad but I did this when I was very tired and by the time I figures a better way to do it, I already did 1/4th :(
 
     private val projectPath = getSimpleProjectPath()
 
@@ -45,7 +45,7 @@ class LayoutIT {
 
     private fun `should contain right classes`() {
         val classes = ClassRepository.getAll()
-        assertEquals(8, classes.filter { !it.isExternal }.size)
+        assertEquals(9, classes.filter { !it.isExternal }.size)
         `classes should be correct`(classes)
     }
 
@@ -60,6 +60,7 @@ class LayoutIT {
                 "SubEmpty" -> verifySubEmpty(it)
                 "IProvider" -> verifyIProvider(it)
                 "ProviderFactory"-> verifyProviderFactory(it)
+                "" -> verifyAnonymousClass(it)
                 else -> assertTrue(it.isExternal, "Class ${it.name} should be set as external!")
             }
         }
@@ -150,11 +151,12 @@ class LayoutIT {
     }
 
     private fun verifyProvider(provider: Class) {
-        `class should have the proper amount of attributes`(provider, 2)
+        `class should have the proper amount of attributes`(provider, 3)
         `objects should match names`(provider.containedFields,
                 setOf(
                         "data",
-                        "extendedData"
+                        "extendedData",
+                        "anonymousProvider"
                 )
         )
         `objects should match names`(provider.containedMethods,
@@ -165,8 +167,16 @@ class LayoutIT {
                         "getData"
                 )
         )
-        assertTrue(provider.containedClasses.isEmpty())
-        assertTrue(provider.calledMethods.isEmpty())
+        `objects should match names`(provider.containedClasses,
+                setOf(
+                        ""
+                )
+        )
+        `objects should match names`(provider.calledMethods,
+                setOf(
+                        ""
+                )
+        )
         assertTrue(provider.accessedFields.isEmpty())
         assertEquals("Object", provider.superClass?.name)
         assertEquals(setOf(Modifier.Public), provider.modifiers)
@@ -245,6 +255,24 @@ class LayoutIT {
         assertNull(providerFactory.container)
     }
 
+    private fun verifyAnonymousClass(it: Class) {
+        `class should have the proper amount of attributes`(it, 0)
+        assertTrue(it.containedClasses.isEmpty())
+        assertTrue(it.calledMethods.isEmpty())
+        assertTrue(it.accessedFields.isEmpty())
+        assertEquals("Object", it.superClass?.name)
+        assertTrue(it.modifiers.isEmpty())
+        assertNull(it.fileName)
+        assertFalse(it.isInterface)
+        `objects should match names`(it.superInterfaces,
+                setOf(
+                        "IProvider"
+                )
+        )
+        assertFalse(it.isExternal)
+        assertEquals("Provider", it.container?.name)
+    }
+
     private fun `objects should match names`(objects: Collection<ASTObject>, names: Collection<String>) {
         val objectNames = objects.map { it.name }
         names.forEach {
@@ -259,7 +287,7 @@ class LayoutIT {
         val methods = CommonRepository.findByFilter {
             it is Method && it.isInternal()
         }.map { it as Method }
-        assertEquals(14, methods.size)
+        assertEquals(16, methods.size)
         `methods should be correct`(methods)
     }
 
@@ -279,6 +307,7 @@ class LayoutIT {
                 "getData()" -> checkGetData(it)
                 "getProvider()" -> checkGetProvider(it)
                 "DataObject()" -> checkDataObject(it)
+                "()" -> checkAnonymousMethod(it)
                 else -> assertTrue(false, "Method with signature ${it.signature} should be external or handled!")
             }
         }
@@ -332,7 +361,11 @@ class LayoutIT {
         assertFalse(it.isConstructor)
         `objects should match names`(it.calledMethods,
                 setOf(
-                        "measureComplexity"
+                        "measureComplexity",
+                        "add",
+                        "ArrayList<String>",
+                        "stream",
+                        "forEach"
                 )
         )
         `objects should match names`(it.parameters,
@@ -340,8 +373,16 @@ class LayoutIT {
                         "extendedData"
                 )
         )
-        assertTrue(it.localVariables.isEmpty())
-        assertTrue(it.accessedFields.isEmpty())
+        `objects should match names`(it.localVariables,
+                setOf(
+                        "values"
+                )
+        )
+        `objects should match names`(it.accessedFields,
+                setOf(
+                        "x"
+                )
+        )
         assertTrue(it.containedClasses.isEmpty())
         assertTrue(it.containedMethods.isEmpty())
         assertEquals(1, it.cyclomaticComplexity)
@@ -433,37 +474,58 @@ class LayoutIT {
     }
 
     private fun checkAnotherFunctionNoArgs(it: Method) {
-        if (it.container?.name == "IProvider") {
-            assertFalse(it.isConstructor)
-            assertTrue(it.calledMethods.isEmpty())
-            assertTrue(it.parameters.isEmpty())
-            assertTrue(it.localVariables.isEmpty())
-            assertTrue(it.accessedFields.isEmpty())
-            assertTrue(it.containedClasses.isEmpty())
-            assertTrue(it.containedMethods.isEmpty())
-            assertEquals(1, it.cyclomaticComplexity)
-            assertEquals(setOf(Modifier.Public, Modifier.Abstract), it.modifiers)
-            assertEquals("int", it.returnType?.name)
-        } else {
-            assertFalse(it.isConstructor)
-            assertTrue(it.calledMethods.isEmpty())
-            assertTrue(it.parameters.isEmpty())
-            `objects should match names`(it.localVariables,
-                    setOf(
-                            "localData"
-                    )
-            )
-            `objects should match names`(it.accessedFields,
-                    setOf(
-                            "x",
-                            "y"
-                    )
-            )
-            assertTrue(it.containedClasses.isEmpty())
-            assertTrue(it.containedMethods.isEmpty())
-            assertEquals(1, it.cyclomaticComplexity)
-            assertEquals(setOf(Modifier.Public), it.modifiers)
-            assertEquals("int", it.returnType?.name)
+        when (it.container?.name) {
+            "IProvider" -> {
+                assertFalse(it.isConstructor)
+                assertTrue(it.calledMethods.isEmpty())
+                assertTrue(it.parameters.isEmpty())
+                assertTrue(it.localVariables.isEmpty())
+                assertTrue(it.accessedFields.isEmpty())
+                assertTrue(it.containedClasses.isEmpty())
+                assertTrue(it.containedMethods.isEmpty())
+                assertEquals(1, it.cyclomaticComplexity)
+                assertEquals(setOf(Modifier.Public, Modifier.Abstract), it.modifiers)
+                assertEquals("int", it.returnType?.name)
+            }
+            "Provider" -> {
+                assertFalse(it.isConstructor)
+                assertTrue(it.calledMethods.isEmpty())
+                assertTrue(it.parameters.isEmpty())
+                `objects should match names`(it.localVariables,
+                        setOf(
+                                "localData"
+                        )
+                )
+                `objects should match names`(it.accessedFields,
+                        setOf(
+                                "x",
+                                "y"
+                        )
+                )
+                assertTrue(it.containedClasses.isEmpty())
+                assertTrue(it.containedMethods.isEmpty())
+                assertEquals(1, it.cyclomaticComplexity)
+                assertEquals(setOf(Modifier.Public), it.modifiers)
+                assertEquals("int", it.returnType?.name)
+            }
+            else -> {
+                assertFalse(it.isConstructor)
+                assertTrue(it.calledMethods.isEmpty())
+                assertTrue(it.parameters.isEmpty())
+                assertTrue(it.localVariables.isEmpty())
+                `objects should match names`(it.accessedFields,
+                        setOf(
+                                "x",
+                                "y"
+                        )
+                )
+                assertTrue(it.containedClasses.isEmpty())
+                assertTrue(it.containedMethods.isEmpty())
+                assertEquals(1, it.cyclomaticComplexity)
+                assertEquals(setOf(Modifier.Public), it.modifiers)
+                assertEquals("int", it.returnType?.name)
+                assertEquals("", it.container?.name)
+            }
         }
     }
 
@@ -570,13 +632,27 @@ class LayoutIT {
         assertEquals("void", it.returnType?.name)
     }
 
+    private fun checkAnonymousMethod(it: Method) {
+        assertTrue(it.isConstructor)
+        assertTrue(it.calledMethods.isEmpty())
+        assertTrue(it.parameters.isEmpty())
+        assertTrue(it.localVariables.isEmpty())
+        assertTrue(it.accessedFields.isEmpty())
+        assertTrue(it.containedClasses.isEmpty())
+        assertTrue(it.containedMethods.isEmpty())
+        assertEquals(1, it.cyclomaticComplexity)
+        assertTrue(it.modifiers.isEmpty())
+        assertEquals("", it.container?.name)
+        assertEquals("void", it.returnType?.name)
+    }
+
     private fun `should contain right attributes`() {
         val attributes = CommonRepository.findByFilter {
             it is Attribute && it.isInternal()
         }.map {
             it as Attribute
         }
-        assertEquals(21, attributes.size)
+        assertEquals(23, attributes.size)
         `attributes should be correct`(attributes)
     }
 
@@ -597,6 +673,9 @@ class LayoutIT {
                 "i", "j" -> checkIOrJ(it)
                 "localData" -> checkLocalData(it)
                 "data" -> checkData(it)
+                "anonymousProvider" -> checkAnonymousProvider(it)
+                "values" -> checkValues(it)
+                "z" -> checkZ(it)
                 else -> assertFalse(true, "Attribute ${it.name} was either missed or should be external")
             }
         }
@@ -619,7 +698,7 @@ class LayoutIT {
             "anotherFunction" -> {
                 assertEquals(AttributeKind.Parameter, it.kind)
                 assertEquals("ExtendedData", it.type?.name)
-                assertTrue(it.modifiers.isEmpty())
+                assertEquals(setOf(Modifier.Final), it.modifiers)
             }
             else -> {
                 assertEquals(AttributeKind.Field, it.kind)
@@ -724,6 +803,27 @@ class LayoutIT {
         assertEquals("DataObject", it.type?.name)
         assertEquals(setOf(Modifier.Public), it.modifiers)
         assertEquals("Provider", it.container?.name)
+    }
+
+    private fun checkAnonymousProvider(it: Attribute) {
+        assertEquals(AttributeKind.Field, it.kind)
+        assertEquals("IProvider", it.type?.name)
+        assertTrue(it.modifiers.isEmpty())
+        assertEquals("Provider", it.container?.name)
+    }
+
+    private fun checkZ(it: Attribute) {
+        assertEquals(AttributeKind.Parameter, it.kind)
+        assertEquals("String", it.type?.name)
+        assertTrue(it.modifiers.isEmpty())
+        assertEquals("lambda", it.container?.name)
+    }
+
+    private fun checkValues(it: Attribute) {
+        assertEquals(AttributeKind.LocalVariable, it.kind)
+        assertEquals("List<String>", it.type?.name)
+        assertTrue(it.modifiers.isEmpty())
+        assertEquals("anotherFunction", it.container?.name)
     }
 
 }

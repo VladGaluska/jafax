@@ -11,7 +11,7 @@ class FileFinderTest {
 
     @Test
     fun shouldFindJavaFiles() {
-        val files = findFiles(Paths.get("src/test/resources/org/radum"))
+        val files = findFiles(Paths.get("org1/src/test/resources/org/radum"))
         val javaFiles = files.javaFiles
         assertEquals(6, javaFiles.size)
         assertEquals(0, files.jarFiles.size)
@@ -21,7 +21,7 @@ class FileFinderTest {
 
     @Test
     fun shouldFindSingleJavaFile() {
-        val files = findFiles(Paths.get("src/test/resources/org/radum/empty/empty1"))
+        val files = findFiles(Paths.get("org1/src/test/resources/org/radum/empty/empty1"))
         val javaFiles = files.javaFiles
         assertEquals(1, javaFiles.size)
         assertEquals(0, files.jarFiles.size)
@@ -39,7 +39,7 @@ class FileFinderTest {
 
     @Test
     fun shouldNotFindAnything() {
-        val emptyFiles = findFiles(Paths.get("src/test/resources/org/radum/empty/empty2"))
+        val emptyFiles = findFiles(Paths.get("org1/src/test/resources/org/radum/empty/empty2"))
         assertEquals(0, emptyFiles.javaFiles.size)
         assertEquals(0, emptyFiles.jarFiles.size)
     }

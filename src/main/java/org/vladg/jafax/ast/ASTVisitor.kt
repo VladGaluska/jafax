@@ -55,7 +55,7 @@ class ASTVisitor : ASTVisitor() {
         val binding = annonymousClassDeclaration.resolveBinding()
         if (binding == null) {
             logger.warn("Could not resolve binding for anonymous type" +
-                    " in file: ${currentFileName}, will ignore...")
+                    " in file: $currentFileName, will ignore...")
             return false
         }
         if (!binding.isClass && !binding.isInterface) return true
@@ -65,15 +65,30 @@ class ASTVisitor : ASTVisitor() {
     }
 
     override fun visit(methodDeclaration: MethodDeclaration): Boolean {
-        val binding = methodDeclaration.resolveBinding()
+        return visitMethodBinding(methodDeclaration.resolveBinding(), methodDeclaration.name.fullyQualifiedName)
+    }
+
+    override fun visit(node: LambdaExpression): Boolean {
+        return visitMethodBinding(node.resolveMethodBinding(), "lambda", false)
+    }
+
+    private fun visitMethodBinding(binding: IMethodBinding?, name: String, useStack: Boolean = true): Boolean {
         if (binding == null) {
-            logger.warn("Could not resolve binding for method:  ${methodDeclaration.name.fullyQualifiedName}" +
-                        " in file:  ${currentFileName}, will ignore...")
+            logger.warn("Could not resolve binding for method:  $name" +
+                    " in file:  $currentFileName, will ignore...")
             return false
         }
-        val method = methodUnwrapper.findOrCreateMethodForBinding(binding, true)!!
+        val method = methodUnwrapper.findOrCreateMethodForBinding(binding, useStack)!!
         ContainerStack.addToStack(method)
         return true
+    }
+
+    override fun visit(node: TypeParameter?): Boolean {
+        return super.visit(node)
+    }
+
+    override fun visit(node: ParameterizedType?): Boolean {
+        return super.visit(node)
     }
 
     override fun visit(node: MethodInvocation): Boolean {

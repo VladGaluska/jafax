@@ -39,6 +39,7 @@ object ProjectScanner {
     }
 
     private fun scanFromFile(file: File) {
+        logger.info("Layout file found, using that instead of scanning...")
         LayoutFormat.format.decodeFromString<List<ASTObject>>(file.readText())
     }
 

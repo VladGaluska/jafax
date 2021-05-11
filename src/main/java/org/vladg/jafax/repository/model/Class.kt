@@ -4,13 +4,14 @@ import kotlinx.serialization.Serializable
 import org.vladg.jafax.io.serializers.ClassSerializer
 
 @Serializable(with = ClassSerializer::class)
-class Class(
+open class Class(
     var fileName: String? = null,
     var isInterface: Boolean = false,
     val key: String = "",
     var superClass: Class? = null,
     var superInterfaces: MutableSet<Class> = HashSet(),
     var isExternal: Boolean = false,
+    var parameterTypes: Any? = null,
     name: String = "",
     modifiers: Set<Modifier> = HashSet(),
     container: Container? = null

@@ -34,7 +34,17 @@ public class Provider implements IProvider {
     public DataObject data;
     public ExtendedData extendedData;
 
+    IProvider anonymousProvider = new IProvider() {
+
+        public int anotherFunction() {
+            return data.x + data.y;
+        }
+
+    };
+
     public DataObject getData() {
+        Parametrized<ExtendedData> parametrized = new Parametrized<>();
+        parametrized.doSomething();
         return data;
     }
 

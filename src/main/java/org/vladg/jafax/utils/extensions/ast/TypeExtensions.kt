@@ -20,3 +20,8 @@ fun ITypeBinding.getActualType(): ITypeBinding {
     return if(isArray) elementType
            else this
 }
+
+fun ITypeBinding.originalType(): ITypeBinding? {
+    return if (!isTypeVariable) erasure
+           else this
+}
