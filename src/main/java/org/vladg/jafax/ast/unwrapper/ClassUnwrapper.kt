@@ -22,23 +22,28 @@ class ClassUnwrapper {
                 isInterface = binding.isInterface,
                 modifiers = binding.modifierSet(),
                 key = binding.key,
-                isExternal = !binding.isFromSource
+                isExternal = !binding.isFromSource,
+                isTypeParameter = binding.isTypeVariable
             )
 
     private fun setClassToItsContainer(clazz: Class) =
         clazz.container?.addToContainedClasses(clazz)
 
-    private fun getInterfaces(binding: ITypeBinding): MutableSet<Class> =
-        binding.interfaces
-            .mapNotNull { findOrCreateClassForBinding(it) }
-            .toMutableSet()
+    private fun getClasses(bindings: Array<ITypeBinding>): MutableSet<Class> =
+            bindings.mapNotNull { findOrCreateClassForBinding(it) }
+                    .toMutableSet()
+
+    fun getOrderedClasses(bindings: Array<ITypeBinding>): MutableList<Class?> =
+            bindings.map { findOrCreateClassForBinding(it) }
+                    .toMutableList()
 
     private fun createAndSaveClassWithRecursiveSafety(binding: ITypeBinding, containerSupplier: () -> Container?): Class =
             createClass(binding).apply {
                 addClass(this)
                 this.container = containerSupplier()
                 this.superClass = findOrCreateClassForBinding(binding.superclass)
-                this.superInterfaces = getInterfaces(binding)
+                this.superInterfaces = getClasses(binding.interfaces)
+                this.typeParameters = getOrderedClasses(binding.typeParameters)
                 setClassToItsContainer(this)
             }
 
@@ -49,8 +54,6 @@ class ClassUnwrapper {
     private fun findByKey(key: String) =
          KeyIndexedClassRepository.findByIndex(key)
 
-    fun findAll() = KeyIndexedClassRepository.findAll()
-
     fun findOrCreateClassForBinding(binding: ITypeBinding?, useStack: Boolean = false) =
         binding?.getActualType()?.originalType()?.let {
             findByKey(it.key)
@@ -59,5 +62,11 @@ class ClassUnwrapper {
                         else ContainerStack.popUntilBindingObject(it.getParent())
                     }
         }
+
+    fun registerParameterInstance(binding: ITypeBinding) =
+            containerService.setParameterInstances(
+                    parameterizedContainer = findOrCreateClassForBinding(binding.erasure),
+                    typeInstances = getOrderedClasses(binding.typeArguments)
+            )
 
 }

@@ -13,6 +13,8 @@ public class Client {
 
 
     public void useObject(Provider dprovider) {
+        this.<Client>something(this);
+        this.something(this);
         System.err.println(dprovider.measureComplexity(2, 3));
         dprovider.getData().x++;
         dataMember.getData().y++;
@@ -24,7 +26,7 @@ public class Client {
         values.add("asd");
         values.add("sda");
         values.stream()
-              .forEach(z -> z + extendedData.x);
+              .forEach(z -> System.out.println(extendedData.x));
     }
 
     public void client() {
@@ -43,8 +45,6 @@ public class Client {
         r.client();
         return r;
     }
-
-    public <? extends Client> something2;
 
     public static void main(String[] args) {
     }

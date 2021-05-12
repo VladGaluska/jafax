@@ -33,7 +33,8 @@ class MethodSerializer : ContainerSerializer<Method>() {
         "containedClasses" to 10,
         "containedMethods" to 11,
         "accessedFields" to 12,
-        "calledMethods" to 13
+        "calledMethods" to 13,
+        "typeParameters" to 14
     )
 
     override val descriptor: SerialDescriptor =
@@ -54,6 +55,7 @@ class MethodSerializer : ContainerSerializer<Method>() {
                     "containedMethods" -> element("containedMethods", listSerialDescriptor<Long>())
                     "accessedFields" -> element("accessedFields", listSerialDescriptor<Long>())
                     "calledMethods" -> element("calledMethods", listSerialDescriptor<Long>())
+                    "typeParameters" -> element("typeParameters", listSerialDescriptor<Long>())
                 }
             }
         }

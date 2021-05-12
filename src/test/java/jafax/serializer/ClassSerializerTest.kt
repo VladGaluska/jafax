@@ -22,7 +22,10 @@ class ClassSerializerTest {
         "accessedFields",
         "containedClasses",
         "containedMethods",
-        "calledMethods"
+        "calledMethods",
+        "isTypeParameter",
+        "parameterInstances",
+        "typeParameters"
     )
 
     @Test

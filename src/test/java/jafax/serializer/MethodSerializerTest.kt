@@ -18,7 +18,8 @@ class MethodSerializerTest {
         "accessedFields",
         "containedClasses",
         "containedMethods",
-        "calledMethods"
+        "calledMethods",
+        "typeParameters"
     )
 
     @Test

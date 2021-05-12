@@ -43,7 +43,19 @@ class MethodInvocationUnwrapper {
     private fun findCalledMethod(superMethodInvocation: SuperMethodInvocation) =
         getMethod(superMethodInvocation.resolveMethodBinding())
 
-    private fun getMethod(methodBinding: IMethodBinding?) =
-        methodUnwrapper.findOrCreateMethodForBinding(methodBinding)
+    private fun getMethod(methodBinding: IMethodBinding?): Method? {
+        methodBinding ?: return null
+        return methodUnwrapper.findOrCreateMethodForBinding(methodBinding)
+                ?.apply { setParameterInstances(methodBinding, this) }
+    }
+
+    private fun setParameterInstances(binding: IMethodBinding, originalMethod: Method) {
+        if (originalMethod.typeParameters.isNotEmpty()) {
+            containerService.setParameterInstances(
+                    parameterizedContainer = originalMethod,
+                    typeInstances = methodUnwrapper.typeArgumentsForMethodBinding(binding)
+            )
+        }
+    }
 
 }

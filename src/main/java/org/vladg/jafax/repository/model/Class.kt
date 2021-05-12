@@ -11,13 +11,18 @@ open class Class(
     var superClass: Class? = null,
     var superInterfaces: MutableSet<Class> = HashSet(),
     var isExternal: Boolean = false,
-    var parameterTypes: Any? = null,
+    var parameterInstances: MutableSet<Class?> = HashSet(),
+    var isTypeParameter: Boolean = false,
+    typeParameters: MutableList<Class?> = ArrayList(),
     name: String = "",
     modifiers: Set<Modifier> = HashSet(),
     container: Container? = null
-) : Container(name, modifiers, container) {
+) : Container(typeParameters, name, modifiers, container) {
 
     val containedFields: MutableSet<Attribute> = HashSet()
+
+    fun addToParameterInstances(clazz: Class?) =
+        parameterInstances.add(clazz)
 
     override fun addToContainedAttributes(attribute: Attribute) {
         containedFields.add(attribute)
@@ -26,9 +31,8 @@ open class Class(
     override fun isInternal(): Boolean =
             container?.isInternal() ?: !isExternal
 
-    fun addToInterfaces(clazz: Class) {
+    fun addToInterfaces(clazz: Class) =
         superInterfaces.add(clazz)
-    }
 
     override fun isSame(value: ASTObject) =
         value is Class &&

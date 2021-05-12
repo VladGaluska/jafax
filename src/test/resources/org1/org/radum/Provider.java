@@ -1,6 +1,8 @@
 package org.radum;
 
-public class Provider implements IProvider {
+import java.io.Serializable;
+
+public class Provider implements IProvider, Serializable {
 
     public Provider(int a) {
         int x = 2;
@@ -43,8 +45,9 @@ public class Provider implements IProvider {
     };
 
     public DataObject getData() {
-        Parametrized<ExtendedData> parametrized = new Parametrized<>();
-        parametrized.doSomething();
+        Parameterized<ExtendedData> parameterized = new Parameterized<>();
+        ParameterizedPro<DataObject, Integer, String> value = new ParameterizedPro<>();
+        parameterized.doSomething((ExtendedData) data);
         return data;
     }
 

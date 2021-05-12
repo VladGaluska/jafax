@@ -11,10 +11,11 @@ class Method(
     var isConstructor: Boolean = false,
     var returnType: Class? = null,
     var cyclomaticComplexity: Int = 1,
+    typeParameters: MutableList<Class?> = ArrayList(),
     name: String = "",
     modifiers: Set<Modifier> = HashSet(),
     container: Container? = null
-) : Container(name, modifiers, container) {
+) : Container(typeParameters, name, modifiers, container) {
 
     val parameters: MutableSet<Attribute> = HashSet()
 

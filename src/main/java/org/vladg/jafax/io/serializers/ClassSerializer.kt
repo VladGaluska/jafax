@@ -33,7 +33,10 @@ class ClassSerializer : ContainerSerializer<Class>() {
         "containedClasses" to 10,
         "containedMethods" to 11,
         "accessedFields" to 12,
-        "calledMethods" to 13
+        "calledMethods" to 13,
+        "isTypeParameter" to 14,
+        "typeParameters" to 15,
+        "instances" to 16
     ).toList().sortedBy { (_, value) -> value }.toMap()
 
     override val descriptor: SerialDescriptor =
@@ -54,6 +57,9 @@ class ClassSerializer : ContainerSerializer<Class>() {
                     "containedMethods" -> element("containedMethods", listSerialDescriptor<Long>())
                     "accessedFields" -> element("accessedFields", listSerialDescriptor<Long>())
                     "calledMethods" -> element("calledMethods", listSerialDescriptor<Long>())
+                    "isTypeParameter" -> element<Boolean>("isTypeParameter")
+                    "typeParameters" -> element("typeParameters", listSerialDescriptor<Long>())
+                    "instances" -> element("instances", listSerialDescriptor<Long>())
                 }
             }
         }
@@ -79,9 +85,13 @@ class ClassSerializer : ContainerSerializer<Class>() {
         if (value.isExternal) {
             compositeEncoder.encodeBooleanElement(descriptor, getIndex("isExternal"), true)
         }
+        if (value.isTypeParameter) {
+            compositeEncoder.encodeBooleanElement(descriptor, getIndex("isTypeParameter"), true)
+        }
         collectionEncoder.encodeAstCollectionsByIndex(mapOf(
             getIndex("interfaces") to value.superInterfaces,
-            getIndex("containedFields") to value.containedFields
+            getIndex("containedFields") to value.containedFields,
+            getIndex("instances") to value.parameterInstances.filterNotNull()
         ))
     }
 
@@ -98,6 +108,10 @@ class ClassSerializer : ContainerSerializer<Class>() {
             getIndex("isExternal") -> obj.isExternal = compositeDecoder.decodeBooleanElement(descriptor, index)
             getIndex("containedFields") -> collectionDecoder.decodeAstCollection(index) {
                 obj.addToContainedAttributes(it as Attribute)
+            }
+            getIndex("isTypeParameter") -> obj.isTypeParameter = compositeDecoder.decodeBooleanElement(descriptor, index)
+            getIndex("instances") -> collectionDecoder.decodeAstCollection(index) {
+                obj.addToParameterInstances(it as Class)
             }
             else -> super.decodeIndex(index, compositeDecoder, collectionDecoder, obj)
         }

@@ -1,6 +1,7 @@
 package org.vladg.jafax.repository.model
 
 abstract class Container(
+    var typeParameters: MutableList<Class?> = ArrayList(),
     name: String,
     modifiers: Set<Modifier>,
     container: Container?
@@ -21,6 +22,8 @@ abstract class Container(
     fun addToCalledMethods(method: Method) = calledMethods.add(method)
 
     fun addToAccessedFields(attribute: Attribute) = accessedFields.add(attribute)
+
+    fun addToTypeParameters(parameterType: Class) = typeParameters.add(parameterType)
 
     abstract fun addToContainedAttributes(attribute: Attribute)
 

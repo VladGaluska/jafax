@@ -16,7 +16,10 @@ object ClassGenerator {
                 container = generateEmptyClass(),
                 superClass = generateEmptyClass(),
                 superInterfaces = mutableSetOf(generateEmptyClass(), generateEmptyClass()),
-                isExternal = true
+                isExternal = true,
+                isTypeParameter = true,
+                typeParameters = mutableListOf(generateEmptyClass()),
+                parameterInstances = mutableSetOf(generateEmptyClass())
             )
         )
 

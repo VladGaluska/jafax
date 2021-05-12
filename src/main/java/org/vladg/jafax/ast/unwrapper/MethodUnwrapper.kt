@@ -2,9 +2,11 @@ package org.vladg.jafax.ast.unwrapper
 
 import com.google.inject.Inject
 import org.eclipse.jdt.core.dom.ASTNode
+import org.eclipse.jdt.core.dom.IBinding
 import org.eclipse.jdt.core.dom.IMethodBinding
 import org.vladg.jafax.ast.repository.ContainerStack
 import org.vladg.jafax.ast.repository.indexed.KeyIndexedMethodRepository
+import org.vladg.jafax.repository.model.Class
 import org.vladg.jafax.repository.model.Container
 import org.vladg.jafax.repository.model.Method
 import org.vladg.jafax.utils.extensions.ast.getParent
@@ -44,15 +46,16 @@ class MethodUnwrapper {
                         addMethod(it)
                         it.container = containerSupplier()
                         it.returnType = classUnwrapper.findOrCreateClassForBinding(binding.returnType)
+                        it.typeParameters = classUnwrapper.getOrderedClasses(binding.typeParameters)
                         setMethodToItsContainer(it)
                     }
 
-    fun findOrCreateMethodForBinding(binding: IMethodBinding?, useStack: Boolean = false): Method? =
+    fun findOrCreateMethodForBinding(binding: IMethodBinding?, useStack: Boolean = false, parentBinding: IBinding? = null): Method? =
             binding?.methodDeclaration?.let {
                 findByKey(it.key) ?:
                 createAndSaveMethodWithRecursiveSafety(it) {
-                    if (!useStack) containerService.getOrCreateContainerForBinding(it.getParent())
-                    else ContainerStack.popUntilBindingObject(it.getParent())
+                    if (!useStack) containerService.getOrCreateContainerForBinding(parentBinding ?: it.getParent())
+                    else ContainerStack.popUntilBindingObject(parentBinding ?: it.getParent())
                 }
             }
 
@@ -62,5 +65,8 @@ class MethodUnwrapper {
             container.incrementComplexity()
         }
     }
+
+    fun typeArgumentsForMethodBinding(binding: IMethodBinding): MutableList<Class?> =
+            classUnwrapper.getOrderedClasses(binding.typeArguments)
 
 }

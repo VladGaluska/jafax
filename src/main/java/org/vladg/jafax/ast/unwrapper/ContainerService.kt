@@ -2,6 +2,7 @@ package org.vladg.jafax.ast.unwrapper
 
 import com.google.inject.Inject
 import org.eclipse.jdt.core.dom.*
+import org.vladg.jafax.repository.model.Class
 import org.vladg.jafax.repository.model.Container
 import org.vladg.jafax.utils.extensions.ast.bindingNameFromType
 import org.vladg.jafax.utils.extensions.ast.immediateContainerBinding
@@ -39,6 +40,17 @@ class ContainerService {
      fun findContainer(node: ASTNode, useStack: Boolean = true): Container? {
         val containerBinding = getContainerBindingForNode(node)
         return getOrCreateContainerForBinding(containerBinding, useStack)
+     }
+
+     private fun addToParameterInstance(parameterizedContainer: Container?, index: Int, classToAdd: Class?) {
+         parameterizedContainer?.typeParameters?.get(index)?.addToParameterInstances(classToAdd)
+     }
+
+    fun setParameterInstances(parameterizedContainer: Container?, typeInstances: List<Class?>) {
+        typeInstances.forEachIndexed { index, clazz ->
+            addToParameterInstance(parameterizedContainer, index, clazz)
+        }
     }
+
 
 }

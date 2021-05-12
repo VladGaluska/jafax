@@ -32,6 +32,7 @@ fun ASTNode.immediateContainerBinding(): Pair<IBinding?, Boolean> {
         when(iteratedParent) {
             is MethodDeclaration -> return Pair(iteratedParent.resolveBinding(), true)
             is TypeDeclaration -> return Pair(iteratedParent.resolveBinding(), true)
+            is LambdaExpression -> return Pair(iteratedParent.resolveMethodBinding(), true)
             else -> iteratedParent = iteratedParent.parent
         }
     }

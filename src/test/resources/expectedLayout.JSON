@@ -1,0 +1,1140 @@
+[
+  {
+    "type": "MockClass",
+    "name": "Client",
+    "containedFieldNames": [
+      "dataMember",
+      "providers",
+      "extendedData"
+    ],
+    "containedMethodSignatures": [
+      "useObject(org.radum.Provider)",
+      "anotherFunction(org.radum.ExtendedData)",
+      "client()",
+      "something(R)",
+      "main(java.lang.String[])"
+    ],
+    "calledMethodSignatures": [
+      "getProvider()",
+      "ExtendedData()"
+    ],
+    "accessedFieldNames": [],
+    "containedClassNames": [],
+    "typeParameterNames": [],
+    "isTypeParameter": false,
+    "parameterInstanceNames": [],
+    "superClassName": "Object",
+    "modifiers": [
+      "Public"
+    ],
+    "fileName": "org/radum/Client.java",
+    "isInterface": false,
+    "superInterfaceNames": [],
+    "isExternal": false
+  },
+  {
+    "type": "MockClass",
+    "name": "R",
+    "containedFieldNames": [],
+    "containedMethodSignatures": [],
+    "accessedFieldNames": [],
+    "containedClassNames": [],
+    "typeParameterNames": [],
+    "isTypeParameter": true,
+    "parameterInstanceNames": [
+      "Client"
+    ],
+    "superClassName": "Client",
+    "modifiers": [],
+    "isInterface": false,
+    "superInterfaceNames": [],
+    "isExternal": false,
+    "containerName": "something"
+  },
+  {
+    "type": "MockClass",
+    "name": "Empty",
+    "containedFieldNames": [],
+    "containedMethodSignatures": [],
+    "accessedFieldNames": [],
+    "containedClassNames": [
+      "SubEmpty"
+    ],
+    "typeParameterNames": [],
+    "isTypeParameter": false,
+    "parameterInstanceNames": [],
+    "superClassName": "Object",
+    "modifiers": [],
+    "fileName": "org/radum/Client.java",
+    "isInterface": false,
+    "superInterfaceNames": [],
+    "isExternal": false
+  },
+  {
+    "type": "MockClass",
+    "name": "SubEmpty",
+    "containedFieldNames": [],
+    "containedMethodSignatures": [],
+    "accessedFieldNames": [],
+    "containedClassNames": [],
+    "typeParameterNames": [],
+    "isTypeParameter": false,
+    "parameterInstanceNames": [],
+    "superClassName": "Object",
+    "modifiers": [],
+    "isInterface": false,
+    "superInterfaceNames": [],
+    "isExternal": false,
+    "containerName": "Empty"
+  },
+  {
+    "type": "MockClass",
+    "name": "DataObject",
+    "containedFieldNames": [
+      "x",
+      "y"
+    ],
+    "containedMethodSignatures": [
+      "DataObject()"
+    ],
+    "accessedFieldNames": [],
+    "containedClassNames": [],
+    "typeParameterNames": [],
+    "isTypeParameter": false,
+    "parameterInstanceNames": [],
+    "superClassName": "Object",
+    "modifiers": [
+      "Public"
+    ],
+    "fileName": "org/radum/DataObject.java",
+    "isInterface": false,
+    "superInterfaceNames": [],
+    "isExternal": false
+  },
+  {
+    "type": "MockClass",
+    "name": "ExtendedData",
+    "containedFieldNames": [
+      "providerObject"
+    ],
+    "containedMethodSignatures": [
+      "ExtendedData()",
+      "ExtendedData(int)",
+      "setProvider(org.radum.Provider)"
+    ],
+    "accessedFieldNames": [],
+    "containedClassNames": [],
+    "typeParameterNames": [],
+    "isTypeParameter": false,
+    "parameterInstanceNames": [],
+    "superClassName": "DataObject",
+    "modifiers": [
+      "Public"
+    ],
+    "fileName": "org/radum/ExtendedData.java",
+    "isInterface": false,
+    "superInterfaceNames": [],
+    "isExternal": false
+  },
+  {
+    "type": "MockClass",
+    "name": "IProvider",
+    "containedFieldNames": [],
+    "containedMethodSignatures": [
+      "anotherFunction()"
+    ],
+    "accessedFieldNames": [],
+    "containedClassNames": [],
+    "typeParameterNames": [],
+    "isTypeParameter": false,
+    "parameterInstanceNames": [],
+    "modifiers": [],
+    "fileName": "org/radum/IProvider.java",
+    "isInterface": true,
+    "superInterfaceNames": [],
+    "isExternal": false
+  },
+  {
+    "type": "MockClass",
+    "name": "Parameterized",
+    "containedFieldNames": [
+      "obj",
+      "parameterizedPro"
+    ],
+    "containedMethodSignatures": [
+      "doSomething(T)",
+      "Parameterized()"
+    ],
+    "accessedFieldNames": [],
+    "containedClassNames": [
+      "T"
+    ],
+    "typeParameterNames": [
+      "T"
+    ],
+    "isTypeParameter": false,
+    "parameterInstanceNames": [],
+    "superClassName": "Object",
+    "modifiers": [
+      "Public"
+    ],
+    "fileName": "org/radum/Parameterized.java",
+    "isInterface": false,
+    "superInterfaceNames": [],
+    "isExternal": false
+  },
+  {
+    "type": "MockClass",
+    "name": "T",
+    "containedFieldNames": [],
+    "containedMethodSignatures": [],
+    "accessedFieldNames": [],
+    "containedClassNames": [],
+    "typeParameterNames": [],
+    "isTypeParameter": true,
+    "parameterInstanceNames": [
+      "ExtendedData"
+    ],
+    "superClassName": "DataObject",
+    "modifiers": [],
+    "isInterface": false,
+    "superInterfaceNames": [],
+    "isExternal": false,
+    "containerName": "Parameterized"
+  },
+  {
+    "type": "MockClass",
+    "name": "ParameterizedExtension",
+    "containedFieldNames": [],
+    "containedMethodSignatures": [
+      "doSomething(org.radum.ExtendedData)"
+    ],
+    "accessedFieldNames": [],
+    "containedClassNames": [],
+    "typeParameterNames": [],
+    "isTypeParameter": false,
+    "parameterInstanceNames": [],
+    "superClassName": "Parameterized",
+    "modifiers": [
+      "Public"
+    ],
+    "fileName": "org/radum/ParameterizedExtension.java",
+    "isInterface": false,
+    "superInterfaceNames": [],
+    "isExternal": false
+  },
+  {
+    "type": "MockClass",
+    "name": "ParameterizedPro",
+    "containedFieldNames": [
+      "obj1",
+      "obj2",
+      "obj3"
+    ],
+    "containedMethodSignatures": [
+      "doSomething()",
+      "ParameterizedPro()"
+    ],
+    "accessedFieldNames": [],
+    "containedClassNames": [
+      "T",
+      "R",
+      "V"
+    ],
+    "typeParameterNames": [
+      "T",
+      "R",
+      "V"
+    ],
+    "isTypeParameter": false,
+    "parameterInstanceNames": [],
+    "superClassName": "Object",
+    "modifiers": [
+      "Public"
+    ],
+    "fileName": "org/radum/ParameterizedPro.java",
+    "isInterface": false,
+    "superInterfaceNames": [],
+    "isExternal": false
+  },
+  {
+    "type": "MockClass",
+    "name": "T",
+    "containedFieldNames": [],
+    "containedMethodSignatures": [],
+    "accessedFieldNames": [],
+    "containedClassNames": [],
+    "typeParameterNames": [],
+    "isTypeParameter": true,
+    "parameterInstanceNames": [
+      "T",
+      "DataObject"
+    ],
+    "superClassName": "DataObject",
+    "modifiers": [],
+    "isInterface": false,
+    "superInterfaceNames": [],
+    "isExternal": false,
+    "containerName": "ParameterizedPro"
+  },
+  {
+    "type": "MockClass",
+    "name": "R",
+    "containedFieldNames": [],
+    "containedMethodSignatures": [],
+    "accessedFieldNames": [],
+    "containedClassNames": [],
+    "typeParameterNames": [],
+    "isTypeParameter": true,
+    "parameterInstanceNames": [
+      "String",
+      "Integer"
+    ],
+    "superClassName": "Object",
+    "modifiers": [],
+    "isInterface": false,
+    "superInterfaceNames": [],
+    "isExternal": false,
+    "containerName": "ParameterizedPro"
+  },
+  {
+    "type": "MockClass",
+    "name": "V",
+    "containedFieldNames": [],
+    "containedMethodSignatures": [],
+    "accessedFieldNames": [],
+    "containedClassNames": [],
+    "typeParameterNames": [],
+    "isTypeParameter": true,
+    "parameterInstanceNames": [
+      "Long",
+      "String"
+    ],
+    "superClassName": "Object",
+    "modifiers": [],
+    "isInterface": false,
+    "superInterfaceNames": [],
+    "isExternal": false,
+    "containerName": "ParameterizedPro"
+  },
+  {
+    "type": "MockClass",
+    "name": "Provider",
+    "containedFieldNames": [
+      "data",
+      "extendedData",
+      "anonymousProvider"
+    ],
+    "containedMethodSignatures": [
+      "Provider(int)",
+      "measureComplexity(int, int)",
+      "anotherFunction()",
+      "getData()"
+    ],
+    "accessedFieldNames": [],
+    "containedClassNames": [
+      ""
+    ],
+    "calledMethodSignatures": [
+      "()"
+    ],
+    "typeParameterNames": [],
+    "isTypeParameter": false,
+    "parameterInstanceNames": [],
+    "superClassName": "Object",
+    "modifiers": [
+      "Public"
+    ],
+    "fileName": "org/radum/Provider.java",
+    "isInterface": false,
+    "superInterfaceNames": [
+      "IProvider",
+      "Serializable"
+    ],
+    "isExternal": false
+  },
+  {
+    "type": "MockClass",
+    "name": "",
+    "containedFieldNames": [],
+    "containedMethodSignatures": [
+      "anotherFunction()",
+      "()"
+    ],
+    "accessedFieldNames": [],
+    "containedClassNames": [],
+    "typeParameterNames": [],
+    "isTypeParameter": false,
+    "parameterInstanceNames": [],
+    "superClassName": "Object",
+    "modifiers": [],
+    "isInterface": false,
+    "superInterfaceNames": [
+      "IProvider"
+    ],
+    "isExternal": false,
+    "containerName": "Provider"
+  },
+  {
+    "type": "MockClass",
+    "name": "ProviderFactory",
+    "containedFieldNames": [],
+    "containedMethodSignatures": [
+      "getProvider()"
+    ],
+    "accessedFieldNames": [],
+    "containedClassNames": [],
+    "typeParameterNames": [],
+    "isTypeParameter": false,
+    "parameterInstanceNames": [],
+    "superClassName": "Object",
+    "modifiers": [],
+    "fileName": "org/radum/Provider.java",
+    "isInterface": false,
+    "superInterfaceNames": [],
+    "isExternal": false
+  },
+  {
+    "type": "MockMethod",
+    "name": "useObject",
+    "signature": "useObject(org.radum.Provider)",
+    "parameterNames": [
+      "dprovider"
+    ],
+    "localVariableNames": [],
+    "containedMethodSignatures": [],
+    "calledMethodSignatures": [
+      "something(R)",
+      "println(int)",
+      "getData()",
+      "measureComplexity(int, int)"
+    ],
+    "accessedFieldNames": [
+      "err",
+      "x",
+      "y"
+    ],
+    "modifiers": [
+      "Public"
+    ],
+    "containedClassNames": [],
+    "typeParameterNames": [],
+    "isConstructor": false,
+    "returnTypeName": "void",
+    "cyclomaticComplexity": 1,
+    "containerName": "Client"
+  },
+  {
+    "type": "MockMethod",
+    "name": "anotherFunction",
+    "signature": "anotherFunction(org.radum.ExtendedData)",
+    "parameterNames": [
+      "extendedData"
+    ],
+    "localVariableNames": [
+      "values"
+    ],
+    "containedMethodSignatures": [
+      "accept(java.lang.String)"
+    ],
+    "modifiers": [
+      "Public"
+    ],
+    "calledMethodSignatures": [
+      "measureComplexity(int, int)",
+      "ArrayList()",
+      "add(E)",
+      "stream()",
+      "forEach(java.util.function.Consumer<? super T>)"
+    ],
+    "accessedFieldNames": [],
+    "containedClassNames": [],
+    "typeParameterNames": [],
+    "isConstructor": false,
+    "returnTypeName": "void",
+    "cyclomaticComplexity": 1,
+    "containerName": "Client"
+  },
+  {
+    "type": "MockMethod",
+    "name": "accept",
+    "signature": "accept(java.lang.String)",
+    "parameterNames": [
+      "z"
+    ],
+    "localVariableNames": [],
+    "containedMethodSignatures": [],
+    "calledMethodSignatures": [
+      "println(int)"
+    ],
+    "accessedFieldNames": [
+      "x",
+      "out"
+    ],
+    "modifiers": [
+      "Public",
+      "Abstract"
+    ],
+    "containedClassNames": [],
+    "typeParameterNames": [],
+    "isConstructor": false,
+    "returnTypeName": "void",
+    "cyclomaticComplexity": 1,
+    "containerName": "anotherFunction"
+  },
+  {
+    "type": "MockMethod",
+    "name": "client",
+    "signature": "client()",
+    "parameterNames": [],
+    "localVariableNames": [
+      "unused",
+      "result"
+    ],
+    "containedMethodSignatures": [],
+    "calledMethodSignatures": [
+      "anotherFunction()",
+      "println(java.lang.String)"
+    ],
+    "modifiers": [
+      "Public"
+    ],
+    "accessedFieldNames": [
+      "err"
+    ],
+    "containedClassNames": [],
+    "typeParameterNames": [],
+    "isConstructor": false,
+    "returnTypeName": "void",
+    "cyclomaticComplexity": 3,
+    "containerName": "Client"
+  },
+  {
+    "type": "MockMethod",
+    "name": "something",
+    "signature": "something(R)",
+    "parameterNames": [
+      "r"
+    ],
+    "localVariableNames": [],
+    "containedMethodSignatures": [],
+    "calledMethodSignatures": [
+      "client()"
+    ],
+    "modifiers": [
+      "Public"
+    ],
+    "accessedFieldNames": [],
+    "containedClassNames": [
+      "R"
+    ],
+    "typeParameterNames": [
+      "R"
+    ],
+    "isConstructor": false,
+    "returnTypeName": "R",
+    "cyclomaticComplexity": 1,
+    "containerName": "Client"
+  },
+  {
+    "type": "MockMethod",
+    "name": "main",
+    "signature": "main(java.lang.String[])",
+    "parameterNames": [
+      "args"
+    ],
+    "modifiers": [
+      "Public", "Static"
+    ],
+    "localVariableNames": [],
+    "containedMethodSignatures": [],
+    "calledMethodSignatures": [],
+    "accessedFieldNames": [],
+    "containedClassNames": [],
+    "typeParameterNames": [],
+    "isConstructor": false,
+    "returnTypeName": "void",
+    "cyclomaticComplexity": 1,
+    "containerName": "Client"
+  },
+  {
+    "type": "MockMethod",
+    "name": "ExtendedData",
+    "signature": "ExtendedData()",
+    "parameterNames": [],
+    "localVariableNames": [],
+    "containedMethodSignatures": [],
+    "calledMethodSignatures": [
+      "Provider(int)"
+    ],
+    "modifiers": [
+      "Public"
+    ],
+    "accessedFieldNames": [],
+    "containedClassNames": [],
+    "typeParameterNames": [],
+    "isConstructor": true,
+    "returnTypeName": "void",
+    "cyclomaticComplexity": 1,
+    "containerName": "ExtendedData"
+  },
+  {
+    "type": "MockMethod",
+    "name": "ExtendedData",
+    "signature": "ExtendedData(int)",
+    "parameterNames": [
+      "x"
+    ],
+    "localVariableNames": [],
+    "modifiers": [
+      "Public"
+    ],
+    "containedMethodSignatures": [],
+    "calledMethodSignatures": [
+      "DataObject()"
+    ],
+    "accessedFieldNames": [
+      "x"
+    ],
+    "containedClassNames": [],
+    "typeParameterNames": [],
+    "isConstructor": true,
+    "returnTypeName": "void",
+    "cyclomaticComplexity": 1,
+    "containerName": "ExtendedData"
+  },
+  {
+    "type": "MockMethod",
+    "name": "setProvider",
+    "signature": "setProvider(org.radum.Provider)",
+    "parameterNames": [
+      "_p"
+    ],
+    "localVariableNames": [],
+    "containedMethodSignatures": [],
+    "calledMethodSignatures": [],
+    "accessedFieldNames": [],
+    "modifiers": [
+      "Public"
+    ],
+    "containedClassNames": [],
+    "typeParameterNames": [],
+    "isConstructor": false,
+    "returnTypeName": "void",
+    "cyclomaticComplexity": 1,
+    "containerName": "ExtendedData"
+  },
+  {
+    "type": "MockMethod",
+    "name": "anotherFunction",
+    "signature": "anotherFunction()",
+    "parameterNames": [],
+    "localVariableNames": [],
+    "modifiers": [
+      "Public",
+      "Abstract"
+    ],
+    "containedMethodSignatures": [],
+    "calledMethodSignatures": [],
+    "accessedFieldNames": [],
+    "containedClassNames": [],
+    "typeParameterNames": [],
+    "isConstructor": false,
+    "returnTypeName": "int",
+    "cyclomaticComplexity": 1,
+    "containerName": "IProvider"
+  },
+  {
+    "type": "MockMethod",
+    "name": "doSomething",
+    "signature": "doSomething(T)",
+    "parameterNames": [
+      "smt"
+    ],
+    "localVariableNames": [
+      "test"
+    ],
+    "modifiers": [
+      "Public"
+    ],
+    "containedMethodSignatures": [],
+    "calledMethodSignatures": [
+      "ParameterizedPro()"
+    ],
+    "accessedFieldNames": [
+      "x"
+    ],
+    "containedClassNames": [],
+    "typeParameterNames": [],
+    "isConstructor": false,
+    "returnTypeName": "void",
+    "cyclomaticComplexity": 1,
+    "containerName": "Parameterized"
+  },
+  {
+    "type": "MockMethod",
+    "name": "doSomething",
+    "signature": "doSomething(org.radum.ExtendedData)",
+    "parameterNames": [
+      "extension"
+    ],
+    "localVariableNames": [],
+    "modifiers": [
+      "Public"
+    ],
+    "containedMethodSignatures": [],
+    "calledMethodSignatures": [],
+    "accessedFieldNames": [
+      "x",
+      "y"
+    ],
+    "containedClassNames": [],
+    "typeParameterNames": [],
+    "isConstructor": false,
+    "returnTypeName": "void",
+    "cyclomaticComplexity": 1,
+    "containerName": "ParameterizedExtension"
+  },
+  {
+    "type": "MockMethod",
+    "name": "doSomething",
+    "signature": "doSomething()",
+    "parameterNames": [],
+    "localVariableNames": [
+      "test2"
+    ],
+    "modifiers": [
+      "Public"
+    ],
+    "containedMethodSignatures": [],
+    "calledMethodSignatures": [
+      "toString()"
+    ],
+    "accessedFieldNames": [
+      "x"
+    ],
+    "containedClassNames": [],
+    "typeParameterNames": [],
+    "isConstructor": false,
+    "returnTypeName": "void",
+    "cyclomaticComplexity": 1,
+    "containerName": "ParameterizedPro"
+  },
+  {
+    "type": "MockMethod",
+    "name": "Provider",
+    "signature": "Provider(int)",
+    "parameterNames": [
+      "a"
+    ],
+    "localVariableNames": [
+      "x"
+    ],
+    "modifiers": [
+      "Public"
+    ],
+    "containedMethodSignatures": [],
+    "calledMethodSignatures": [],
+    "accessedFieldNames": [],
+    "containedClassNames": [],
+    "typeParameterNames": [],
+    "isConstructor": true,
+    "returnTypeName": "void",
+    "cyclomaticComplexity": 1,
+    "containerName": "Provider"
+  },
+  {
+    "type": "MockMethod",
+    "name": "measureComplexity",
+    "signature": "measureComplexity(int, int)",
+    "parameterNames": [
+      "i",
+      "j"
+    ],
+    "localVariableNames": [
+      "result"
+    ],
+    "modifiers": [
+      "Public"
+    ],
+    "containedMethodSignatures": [],
+    "calledMethodSignatures": [],
+    "accessedFieldNames": [],
+    "containedClassNames": [],
+    "typeParameterNames": [],
+    "isConstructor": false,
+    "returnTypeName": "int",
+    "cyclomaticComplexity": 3,
+    "containerName": "Provider"
+  },
+  {
+    "type": "MockMethod",
+    "name": "anotherFunction",
+    "signature": "anotherFunction()",
+    "parameterNames": [],
+    "localVariableNames": [
+      "localData"
+    ],
+    "modifiers": [
+      "Public"
+    ],
+    "containedMethodSignatures": [],
+    "calledMethodSignatures": [],
+    "accessedFieldNames": [
+      "x",
+      "y"
+    ],
+    "containedClassNames": [],
+    "typeParameterNames": [],
+    "isConstructor": false,
+    "returnTypeName": "int",
+    "cyclomaticComplexity": 1,
+    "containerName": "Provider"
+  },
+  {
+    "type": "MockMethod",
+    "name": "anotherFunction",
+    "signature": "anotherFunction()",
+    "parameterNames": [],
+    "localVariableNames": [],
+    "modifiers": [
+      "Public"
+    ],
+    "containedMethodSignatures": [],
+    "calledMethodSignatures": [],
+    "accessedFieldNames": [
+      "x",
+      "y"
+    ],
+    "containedClassNames": [],
+    "typeParameterNames": [],
+    "isConstructor": false,
+    "returnTypeName": "int",
+    "cyclomaticComplexity": 1,
+    "containerName": ""
+  },
+  {
+    "type": "MockMethod",
+    "name": "getData",
+    "signature": "getData()",
+    "parameterNames": [],
+    "localVariableNames": [
+      "parameterized",
+      "value"
+    ],
+    "modifiers": [
+      "Public"
+    ],
+    "containedMethodSignatures": [],
+    "calledMethodSignatures": [
+      "Parameterized()",
+      "ParameterizedPro()",
+      "doSomething(T)"
+    ],
+    "accessedFieldNames": [],
+    "containedClassNames": [],
+    "typeParameterNames": [],
+    "isConstructor": false,
+    "returnTypeName": "DataObject",
+    "cyclomaticComplexity": 1,
+    "containerName": "Provider"
+  },
+  {
+    "type": "MockMethod",
+    "name": "getProvider",
+    "signature": "getProvider()",
+    "parameterNames": [],
+    "localVariableNames": [],
+    "modifiers": [
+      "Public",
+      "Static"
+    ],
+    "containedMethodSignatures": [],
+    "calledMethodSignatures": [
+      "Provider(int)"
+    ],
+    "accessedFieldNames": [],
+    "containedClassNames": [],
+    "typeParameterNames": [],
+    "isConstructor": false,
+    "returnTypeName": "Provider",
+    "cyclomaticComplexity": 1,
+    "containerName": "ProviderFactory"
+  },
+  {
+    "type": "MockAttribute",
+    "name": "dataMember",
+    "kind": "Field",
+    "typeName": "Provider",
+    "containerName": "Client"
+  },
+  {
+    "type": "MockAttribute",
+    "name": "providers",
+    "kind": "Field",
+    "typeName": "Provider",
+    "containerName": "Client"
+  },
+  {
+    "type": "MockAttribute",
+    "name": "extendedData",
+    "kind": "Field",
+    "typeName": "ExtendedData",
+    "containerName": "Client"
+  },
+  {
+    "type": "MockAttribute",
+    "name": "dprovider",
+    "kind": "Parameter",
+    "typeName": "Provider",
+    "containerName": "useObject"
+  },
+  {
+    "type": "MockAttribute",
+    "name": "extendedData",
+    "kind": "Parameter",
+    "typeName": "ExtendedData",
+    "modifiers": [
+      "Final"
+    ],
+    "containerName": "anotherFunction"
+  },
+  {
+    "type": "MockAttribute",
+    "name": "values",
+    "kind": "LocalVariable",
+    "typeName": "List",
+    "containerName": "anotherFunction"
+  },
+  {
+    "type": "MockAttribute",
+    "name": "z",
+    "kind": "Parameter",
+    "typeName": "String",
+    "containerName": "accept"
+  },
+  {
+    "type": "MockAttribute",
+    "name": "unused",
+    "kind": "LocalVariable",
+    "typeName": "int",
+    "containerName": "client"
+  },
+  {
+    "type": "MockAttribute",
+    "name": "result",
+    "kind": "LocalVariable",
+    "typeName": "int",
+    "containerName": "client"
+  },
+  {
+    "type": "MockAttribute",
+    "name": "r",
+    "kind": "Parameter",
+    "typeName": "R",
+    "containerName": "something"
+  },
+  {
+    "type": "MockAttribute",
+    "name": "args",
+    "kind": "Parameter",
+    "typeName": "String",
+    "containerName": "main"
+  },
+  {
+    "type": "MockAttribute",
+    "name": "x",
+    "kind": "Field",
+    "typeName": "int",
+    "containerName": "DataObject"
+  },
+  {
+    "type": "MockAttribute",
+    "name": "y",
+    "kind": "Field",
+    "typeName": "int",
+    "containerName": "DataObject"
+  },
+  {
+    "type": "MockAttribute",
+    "name": "providerObject",
+    "kind": "Field",
+    "typeName": "Provider",
+    "containerName": "ExtendedData"
+  },
+  {
+    "type": "MockAttribute",
+    "name": "x",
+    "kind": "Parameter",
+    "typeName": "int",
+    "containerName": "ExtendedData"
+  },
+  {
+    "type": "MockAttribute",
+    "name": "_p",
+    "kind": "Parameter",
+    "typeName": "Provider",
+    "containerName": "setProvider"
+  },
+  {
+    "type": "MockAttribute",
+    "name": "obj",
+    "kind": "Field",
+    "typeName": "T",
+    "modifiers": [
+      "Private"
+    ],
+    "containerName": "Parameterized"
+  },
+  {
+    "type": "MockAttribute",
+    "name": "parameterizedPro",
+    "kind": "Field",
+    "typeName": "ParameterizedPro",
+    "modifiers": [
+      "Private"
+    ],
+    "containerName": "Parameterized"
+  },
+  {
+    "type": "MockAttribute",
+    "name": "smt",
+    "kind": "Parameter",
+    "typeName": "T",
+    "containerName": "doSomething"
+  },
+  {
+    "type": "MockAttribute",
+    "name": "extension",
+    "kind": "Parameter",
+    "typeName": "ExtendedData",
+    "containerName": "doSomething"
+  },
+  {
+    "type": "MockAttribute",
+    "name": "obj1",
+    "kind": "Field",
+    "typeName": "T",
+    "modifiers": [
+      "Private"
+    ],
+    "containerName": "ParameterizedPro"
+  },
+  {
+    "type": "MockAttribute",
+    "name": "obj2",
+    "kind": "Field",
+    "typeName": "R",
+    "modifiers": [
+      "Private"
+    ],
+    "containerName": "ParameterizedPro"
+  },
+  {
+    "type": "MockAttribute",
+    "name": "obj3",
+    "kind": "Field",
+    "typeName": "V",
+    "modifiers": [
+      "Private"
+    ],
+    "containerName": "ParameterizedPro"
+  },
+  {
+    "type": "MockAttribute",
+    "name": "a",
+    "kind": "Parameter",
+    "typeName": "int",
+    "containerName": "Provider"
+  },
+  {
+    "type": "MockAttribute",
+    "name": "x",
+    "kind": "LocalVariable",
+    "typeName": "int",
+    "containerName": "Provider"
+  },
+  {
+    "type": "MockAttribute",
+    "name": "i",
+    "kind": "Parameter",
+    "typeName": "int",
+    "containerName": "measureComplexity"
+  },
+  {
+    "type": "MockAttribute",
+    "name": "j",
+    "kind": "Parameter",
+    "typeName": "int",
+    "containerName": "measureComplexity"
+  },
+  {
+    "type": "MockAttribute",
+    "name": "result",
+    "kind": "LocalVariable",
+    "typeName": "int",
+    "containerName": "measureComplexity"
+  },
+  {
+    "type": "MockAttribute",
+    "name": "localData",
+    "kind": "LocalVariable",
+    "typeName": "DataObject",
+    "containerName": "anotherFunction"
+  },
+  {
+    "type": "MockAttribute",
+    "name": "data",
+    "kind": "Field",
+    "typeName": "DataObject",
+    "modifiers": [
+      "Public"
+    ],
+    "containerName": "Provider"
+  },
+  {
+    "type": "MockAttribute",
+    "name": "extendedData",
+    "kind": "Field",
+    "modifiers": [
+      "Public"
+    ],
+    "typeName": "ExtendedData",
+    "containerName": "Provider"
+  },
+  {
+    "type": "MockAttribute",
+    "name": "anonymousProvider",
+    "kind": "Field",
+    "typeName": "IProvider",
+    "containerName": "Provider"
+  },
+  {
+    "type": "MockAttribute",
+    "name": "parameterized",
+    "kind": "LocalVariable",
+    "typeName": "Parameterized",
+    "containerName": "getData"
+  },
+  {
+    "type": "MockAttribute",
+    "name": "value",
+    "kind": "LocalVariable",
+    "typeName": "ParameterizedPro",
+    "containerName": "getData"
+  },
+  {
+    "type": "MockAttribute",
+    "name": "test",
+    "kind": "LocalVariable",
+    "typeName": "int",
+    "containerName": "doSomething"
+  },
+  {
+    "type": "MockAttribute",
+    "name": "test2",
+    "kind": "LocalVariable",
+    "typeName": "String",
+    "containerName": "doSomething"
+  }
+]

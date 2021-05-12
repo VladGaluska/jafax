@@ -10,6 +10,7 @@ import org.vladg.jafax.ast.unwrapper.MethodInvocationUnwrapper
 import org.vladg.jafax.ast.unwrapper.MethodUnwrapper
 import org.vladg.jafax.io.NamePrefixTrimmer
 import org.vladg.jafax.utils.extensions.ast.countsToComplexity
+import org.vladg.jafax.utils.extensions.ast.immediateContainerBinding
 import org.vladg.jafax.utils.extensions.logger
 
 class ASTVisitor : ASTVisitor() {
@@ -65,30 +66,40 @@ class ASTVisitor : ASTVisitor() {
     }
 
     override fun visit(methodDeclaration: MethodDeclaration): Boolean {
-        return visitMethodBinding(methodDeclaration.resolveBinding(), methodDeclaration.name.fullyQualifiedName)
-    }
-
-    override fun visit(node: LambdaExpression): Boolean {
-        return visitMethodBinding(node.resolveMethodBinding(), "lambda", false)
-    }
-
-    private fun visitMethodBinding(binding: IMethodBinding?, name: String, useStack: Boolean = true): Boolean {
+        val binding = methodDeclaration.resolveBinding()
+        methodDeclaration.parameters()
         if (binding == null) {
-            logger.warn("Could not resolve binding for method:  $name" +
+            logger.warn("Could not resolve binding for method:  ${methodDeclaration.name.fullyQualifiedName}" +
                     " in file:  $currentFileName, will ignore...")
             return false
         }
-        val method = methodUnwrapper.findOrCreateMethodForBinding(binding, useStack)!!
+        val method = methodUnwrapper.findOrCreateMethodForBinding(binding, true)!!
         ContainerStack.addToStack(method)
         return true
     }
 
-    override fun visit(node: TypeParameter?): Boolean {
-        return super.visit(node)
+    override fun visit(node: LambdaExpression): Boolean {
+        val binding = node.resolveMethodBinding()
+        if (binding == null) {
+            logger.warn("Could not resolve binding for lambda method in file: ${currentFileName}, " +
+                    "will ignore...")
+            return false
+        }
+        val method = methodUnwrapper.findOrCreateMethodForBinding(binding, true, node.immediateContainerBinding().first)!!
+        ContainerStack.addToStack(method)
+        attributeUnwrapper.setParametersToLambda(method, node.parameters())
+        return true
     }
 
-    override fun visit(node: ParameterizedType?): Boolean {
-        return super.visit(node)
+    override fun visit(node: ParameterizedType): Boolean {
+        val binding = node.resolveBinding()
+        if (binding == null) {
+            logger.warn("Could not resolve binding for parameterized type: ${node.type}" +
+                    " in file $currentFileName, will ignore...")
+            return false
+        }
+        classUnwrapper.registerParameterInstance(binding)
+        return true
     }
 
     override fun visit(node: MethodInvocation): Boolean {

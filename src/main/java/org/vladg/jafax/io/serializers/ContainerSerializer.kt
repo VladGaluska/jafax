@@ -21,7 +21,8 @@ abstract class ContainerSerializer<T: Container>: ASTSerializer<T>() {
                 getIndex("containedClasses") to value.containedClasses,
                 getIndex("containedMethods") to value.containedMethods,
                 getIndex("accessedFields") to value.accessedFields,
-                getIndex("calledMethods") to value.calledMethods
+                getIndex("calledMethods") to value.calledMethods,
+                getIndex("typeParameters") to value.typeParameters.filterNotNull()
             )
         )
     }
@@ -44,6 +45,9 @@ abstract class ContainerSerializer<T: Container>: ASTSerializer<T>() {
             }
             getIndex("calledMethods") -> collectionDecoder.decodeAstCollection(index) {
                 obj.addToCalledMethods(it as Method)
+            }
+            getIndex("typeParameters") -> collectionDecoder.decodeAstCollection(index) {
+                obj.addToTypeParameters(it as Class)
             }
         }
     }

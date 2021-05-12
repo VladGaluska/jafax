@@ -14,7 +14,8 @@ object MethodGenerator {
                 isConstructor = true,
                 returnType = ClassGenerator.generateEmptyClass(),
                 container = ClassGenerator.generateEmptyClass(),
-                modifiers = setOf(Modifier.Static)
+                modifiers = setOf(Modifier.Static),
+                typeParameters = mutableListOf(ClassGenerator.generateEmptyClass())
             )
         )
 
