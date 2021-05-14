@@ -5,7 +5,7 @@ import org.vladg.jafax.io.serializers.ClassSerializer
 
 @Serializable(with = ClassSerializer::class)
 open class Class(
-    var fileName: String? = null,
+    override var fileName: String? = null,
     var isInterface: Boolean = false,
     val key: String = "",
     var superClass: Class? = null,

@@ -3,11 +3,11 @@ package org.vladg.jafax.io.model
 data class Relations(
         val source: String,
         val target: String,
-        val extCalls: Int,
-        val extData: Int,
-        val hierarchy: Int,
-        val returns: Int,
-        val declarations: Int,
-        val extDataStrict: Int,
-        val all: Int
+        var extCalls: Int = 0,
+        var extData: Int = 0,
+        var hierarchy: Int = 0,
+        var returns: Int = 0,
+        var declarations: Int = 0,
+        var extDataStrict: Int = 0,
+        var all: Int = 0
 )

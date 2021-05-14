@@ -11,6 +11,7 @@ class Method(
     var isConstructor: Boolean = false,
     var returnType: Class? = null,
     var cyclomaticComplexity: Int = 1,
+    var isDefaultConstructor: Boolean = false,
     typeParameters: MutableList<Class?> = ArrayList(),
     name: String = "",
     modifiers: Set<Modifier> = HashSet(),
@@ -24,6 +25,20 @@ class Method(
     fun incrementComplexity() {
         cyclomaticComplexity ++
     }
+
+    fun isAccessor() =
+        isInternal() &&
+        nameMatchesAccessorConditions() &&
+        cyclomaticComplexity == 1 &&
+        calledMethods.size == 0 &&
+        hasAtMostOneAccessedAttributeOfSameClass()
+
+    private fun nameMatchesAccessorConditions() =
+            name.startsWith("get", true) || name.startsWith("set", true)
+
+    private fun hasAtMostOneAccessedAttributeOfSameClass() =
+         accessedFields.size == 0 ||
+        (accessedFields.size == 1 && accessedFields.first().getTopLevelClass() == this.getTopLevelClass())
 
     override fun isSame(value: ASTObject) =
             value is Method &&

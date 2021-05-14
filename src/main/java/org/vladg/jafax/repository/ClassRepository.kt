@@ -14,6 +14,9 @@ object ClassRepository {
     fun getAll(): List<Class> =
         this.classes
 
+    fun getTopLevelClasses(): List<Class> =
+            this.classes.filter { it.fileName != null }
+
     fun clear() = classes.clear()
 
 }

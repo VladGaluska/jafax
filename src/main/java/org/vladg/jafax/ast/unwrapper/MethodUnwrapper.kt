@@ -34,6 +34,7 @@ class MethodUnwrapper {
             signature = binding.signature(),
             key = binding.key,
             isConstructor = binding.isConstructor,
+            isDefaultConstructor = binding.isDefaultConstructor,
             modifiers = binding.modifierSet(),
         )
 

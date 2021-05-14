@@ -4,14 +4,12 @@ import kotlinx.serialization.decodeFromString
 import org.vladg.jafax.io.LayoutFormat
 import org.vladg.jafax.repository.model.ASTObject
 import org.vladg.jafax.utils.extensions.getLayoutFile
+import java.io.File
 import java.nio.file.Path
 
-class ProjectLayoutReader {
+object ProjectLayoutReader {
 
-    private val format = LayoutFormat.format
+    fun readLayout(file: File) =
+        LayoutFormat.format.decodeFromString<List<ASTObject>>(file.readText())
 
-    fun readLayout(path: Path) {
-        val file = getLayoutFile(path)
-        format.decodeFromString<List<ASTObject>>(file.readText())
-    }
 }

@@ -95,7 +95,8 @@
       "y"
     ],
     "containedMethodSignatures": [
-      "DataObject()"
+      "DataObject()",
+      "setX(int)"
     ],
     "accessedFieldNames": [],
     "containedClassNames": [],
@@ -423,6 +424,29 @@
     "returnTypeName": "void",
     "cyclomaticComplexity": 1,
     "containerName": "Client"
+  },
+  {
+    "type": "MockMethod",
+    "name": "setX",
+    "signature": "setX(int)",
+    "parameterNames": [
+      "x"
+    ],
+    "localVariableNames": [],
+    "containedMethodSignatures": [],
+    "calledMethodSignatures": [],
+    "accessedFieldNames": [
+      "x"
+    ],
+    "modifiers": [
+      "Public"
+    ],
+    "containedClassNames": [],
+    "typeParameterNames": [],
+    "isConstructor": false,
+    "returnTypeName": "void",
+    "cyclomaticComplexity": 1,
+    "containerName": "DataObject"
   },
   {
     "type": "MockMethod",

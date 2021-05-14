@@ -8,6 +8,7 @@ public class Parameterized<T extends DataObject> {
 
     public void doSomething(T smt) {
         parameterizedPro = new ParameterizedPro<>();
+        smt.a();
         int test = obj.x + obj.x;
     }
 

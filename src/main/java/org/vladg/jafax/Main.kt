@@ -1,6 +1,7 @@
 package org.vladg.jafax
 
 import org.vladg.jafax.io.scanner.ProjectScanner
+import org.vladg.jafax.relations.RelationsCalculator
 import java.nio.file.Path
 import java.nio.file.Paths
 

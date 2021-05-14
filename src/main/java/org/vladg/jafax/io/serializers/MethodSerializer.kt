@@ -24,17 +24,18 @@ class MethodSerializer : ContainerSerializer<Method>() {
         "name" to 1,
         "signature" to 2,
         "isConstructor" to 3,
-        "returnType" to 4,
-        "cyclomaticComplexity" to 5,
-        "modifiers" to 6,
-        "container" to 7,
-        "parameters" to 8,
-        "localVariables" to 9,
-        "containedClasses" to 10,
-        "containedMethods" to 11,
-        "accessedFields" to 12,
-        "calledMethods" to 13,
-        "typeParameters" to 14
+        "isDefaultConstructor" to 4,
+        "returnType" to 5,
+        "cyclomaticComplexity" to 6,
+        "modifiers" to 7,
+        "container" to 8,
+        "parameters" to 9,
+        "localVariables" to 10,
+        "containedClasses" to 11,
+        "containedMethods" to 12,
+        "accessedFields" to 13,
+        "calledMethods" to 14,
+        "typeParameters" to 15
     )
 
     override val descriptor: SerialDescriptor =
@@ -45,6 +46,7 @@ class MethodSerializer : ContainerSerializer<Method>() {
                     "name" -> element<String>("name")
                     "signature" -> element<String>("signature")
                     "isConstructor" -> element<Boolean>("isConstructor")
+                    "isDefaultConstructor" -> element<Boolean>("isDefaultConstructor")
                     "returnType" -> element<Long>("returnType")
                     "cyclomaticComplexity" -> element<Int>("cyclomaticComplexity")
                     "modifiers" -> element("modifiers", listSerialDescriptor<String>())
@@ -74,6 +76,9 @@ class MethodSerializer : ContainerSerializer<Method>() {
         }
         compositeEncoder.encodeIntElement(descriptor, getIndex("cyclomaticComplexity"), value.cyclomaticComplexity)
         value.returnType?.let { compositeEncoder.encodeLongElement(descriptor, getIndex("returnType"), it.id) }
+        if (value.isDefaultConstructor) {
+            compositeEncoder.encodeBooleanElement(descriptor, getIndex("isDefaultConstructor"), true)
+        }
         collectionEncoder.encodeAstCollectionsByIndex(mapOf(
             getIndex("parameters") to value.parameters,
             getIndex("localVariables") to value.localVariables,
@@ -89,6 +94,7 @@ class MethodSerializer : ContainerSerializer<Method>() {
         when(index) {
             getIndex("signature") -> obj.signature = compositeDecoder.decodeStringElement(descriptor, index)
             getIndex("isConstructor") -> obj.isConstructor = compositeDecoder.decodeBooleanElement(descriptor, index)
+            getIndex("isDefaultConstructor") -> obj.isDefaultConstructor = compositeDecoder.decodeBooleanElement(descriptor, index)
             getIndex("cyclomaticComplexity") -> obj.cyclomaticComplexity = compositeDecoder.decodeIntElement(descriptor, index)
             getIndex("returnType") -> AstDecoder.addObjectOrAddForUpdate(compositeDecoder.decodeLongElement(descriptor, 4)) {
                 obj.returnType = it as Class

@@ -27,6 +27,9 @@ projects.
 |**superClass**|`Long`|The id of its superClass|
 |**interfaces**|`List<Long>`|The list of ids of its interfaces|
 |**isExternal**|`Boolean`|A value representing if the class is from the source project or not, only appears if its value is true|
+|**isTypeParameter**|`Boolean`|A value representing if the class ia type parameter or not, only appears if its value is true|
+|**parameterInstances**|`List<Long>`|The list of ids of its parameter instances. Meaning that when you have `A<T>` and have an instance somewhere declared of `A<String>`, `T` will have `String` in its `parameterInstances`|
+|**typeParameters**|`List<Long>`|The list of ids of its type parameters|
 |**containedFields**|`List<Long>`|The list of ids of its directly contained fields|
 |**containedClasses**|`List<Long>`|The list of ids of its directly contained classes|
 |**containedMethods**|`List<Long>`|The list of ids of its directly contained methods|
@@ -41,11 +44,14 @@ projects.
 |**name**|`String`|The name of the method|
 |**signature**|`String`|The signature of the method|
 |**isConstructor**|`Boolean`|A value representing if the method is a constructor or not, only appears if its value is true|
+|**isDefaultConstructor**|`Boolean`|A value representing if the method is a default constructor or not, only appears if its value is true|
 |**returnType**|`Long`|The return type of the method|
 |**modifiers**|`List<String>`|The modifiers of the method|
 |**container**|`Long`|The id of its container (class or method)|
 |**parameters**|`List<Long>`|The list of ids of its parameters|
 |**localVariables**|`List<Long>`|The list of ids of its directly contained local variables|
+|**typeParameters**|`List<Long>`|The list of ids of its type parameters|
+|**cyclomaticComplexity**|`Long`|A value representing the method's cyclomatic complexity|
 |**containedClasses**|`List<Long>`|The list of ids of its directly contained classes|
 |**containedMethods**|`List<Long>`|The list of ids of its directly contained methods|
 |**accessedFields**|`List<Long>`|The list of ids of its directly accessed fields|

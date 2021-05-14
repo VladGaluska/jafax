@@ -5,6 +5,7 @@ import kotlinx.serialization.decodeFromString
 import org.vladg.jafax.ast.ASTCreator
 import org.vladg.jafax.io.LayoutFormat
 import org.vladg.jafax.io.NamePrefixTrimmer
+import org.vladg.jafax.io.reader.ProjectLayoutReader
 import org.vladg.jafax.io.writer.ProjectLayoutWriter
 import org.vladg.jafax.repository.ClassRepository
 import org.vladg.jafax.repository.model.ASTObject
@@ -40,7 +41,7 @@ object ProjectScanner {
 
     private fun scanFromFile(file: File) {
         logger.info("Layout file found, using that instead of scanning...")
-        LayoutFormat.format.decodeFromString<List<ASTObject>>(file.readText())
+        ProjectLayoutReader.readLayout(file)
     }
 
     private fun scanFromScratch(path: Path) {

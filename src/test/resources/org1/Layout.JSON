@@ -33,7 +33,7 @@
             "Public"
         ],
         "containedMethods": [
-            113
+            116
         ],
         "isExternal": true
     },
@@ -45,16 +45,16 @@
             "Public"
         ],
         "containedClasses": [
-            124
+            127
         ],
         "containedMethods": [
-            84,
             71,
+            87,
             28,
             31
         ],
         "calledMethods": [
-            123
+            126
         ],
         "fileName": "org/radum/Provider.java",
         "superClass": 1,
@@ -63,9 +63,9 @@
             4
         ],
         "containedFields": [
-            120,
-            121,
-            122
+            123,
+            124,
+            125
         ]
     },
     {
@@ -73,7 +73,7 @@
         "id": 3,
         "name": "IProvider",
         "containedMethods": [
-            90
+            93
         ],
         "fileName": "org/radum/IProvider.java",
         "isInterface": true
@@ -106,7 +106,7 @@
         ],
         "container": 7,
         "calledMethods": [
-            84
+            87
         ],
         "signature": "getProvider()",
         "cyclomaticComplexity": 1,
@@ -138,14 +138,14 @@
             "Public"
         ],
         "containedMethods": [
-            85,
             88,
+            91,
             12
         ],
         "fileName": "org/radum/ExtendedData.java",
         "superClass": 10,
         "containedFields": [
-            83
+            86
         ]
     },
     {
@@ -156,7 +156,9 @@
             "Public"
         ],
         "containedMethods": [
-            87
+            83,
+            85,
+            90
         ],
         "fileName": "org/radum/DataObject.java",
         "superClass": 1,
@@ -185,7 +187,7 @@
         ],
         "container": 9,
         "calledMethods": [
-            84
+            87
         ],
         "signature": "ExtendedData()",
         "isConstructor": true,
@@ -370,9 +372,9 @@
         "id": 26,
         "name": "err",
         "modifiers": [
-            "Final",
             "Public",
-            "Static"
+            "Static",
+            "Final"
         ],
         "container": 27,
         "class": 19,
@@ -383,8 +385,8 @@
         "id": 27,
         "name": "System",
         "modifiers": [
-            "Final",
-            "Public"
+            "Public",
+            "Final"
         ],
         "superClass": 1,
         "isExternal": true,
@@ -408,11 +410,11 @@
         "cyclomaticComplexity": 3,
         "returnType": 29,
         "parameters": [
-            116,
-            117
+            119,
+            120
         ],
         "localVariables": [
-            118
+            121
         ]
     },
     {
@@ -438,16 +440,16 @@
         ],
         "container": 2,
         "calledMethods": [
-            101,
-            103,
-            127
+            130,
+            104,
+            106
         ],
         "signature": "getData()",
         "cyclomaticComplexity": 1,
         "returnType": 10,
         "localVariables": [
-            128,
-            126
+            129,
+            131
         ]
     },
     {
@@ -600,8 +602,8 @@
         "id": 42,
         "name": "String",
         "modifiers": [
-            "Final",
-            "Public"
+            "Public",
+            "Final"
         ],
         "superClass": 1,
         "isExternal": true,
@@ -928,9 +930,9 @@
         "id": 66,
         "name": "out",
         "modifiers": [
-            "Final",
             "Public",
-            "Static"
+            "Static",
+            "Final"
         ],
         "container": 27,
         "class": 19,
@@ -1001,7 +1003,7 @@
         "cyclomaticComplexity": 1,
         "returnType": 29,
         "localVariables": [
-            119
+            122
         ]
     },
     {
@@ -1021,9 +1023,9 @@
         "id": 73,
         "name": "err",
         "modifiers": [
-            "Final",
             "Public",
-            "Static"
+            "Static",
+            "Final"
         ],
         "container": 27,
         "class": 19,
@@ -1034,9 +1036,9 @@
         "id": 74,
         "name": "err",
         "modifiers": [
-            "Final",
             "Public",
-            "Static"
+            "Static",
+            "Final"
         ],
         "container": 27,
         "class": 19,
@@ -1047,9 +1049,9 @@
         "id": 75,
         "name": "err",
         "modifiers": [
-            "Final",
             "Public",
-            "Static"
+            "Static",
+            "Final"
         ],
         "container": 27,
         "class": 19,
@@ -1121,8 +1123,46 @@
         "kind": "Field"
     },
     {
-        "type": "Attribute",
+        "type": "Method",
         "id": 83,
+        "name": "setX",
+        "modifiers": [
+            "Public"
+        ],
+        "container": 10,
+        "accessedFields": [
+            81
+        ],
+        "signature": "setX(int)",
+        "cyclomaticComplexity": 1,
+        "returnType": 13,
+        "parameters": [
+            84
+        ]
+    },
+    {
+        "type": "Attribute",
+        "id": 84,
+        "name": "x",
+        "container": 83,
+        "class": 29,
+        "kind": "Parameter"
+    },
+    {
+        "type": "Method",
+        "id": 85,
+        "name": "a",
+        "modifiers": [
+            "Public"
+        ],
+        "container": 10,
+        "signature": "a()",
+        "cyclomaticComplexity": 1,
+        "returnType": 13
+    },
+    {
+        "type": "Attribute",
+        "id": 86,
         "name": "providerObject",
         "container": 9,
         "class": 2,
@@ -1130,7 +1170,7 @@
     },
     {
         "type": "Method",
-        "id": 84,
+        "id": 87,
         "name": "Provider",
         "modifiers": [
             "Public"
@@ -1141,15 +1181,15 @@
         "cyclomaticComplexity": 1,
         "returnType": 13,
         "parameters": [
-            114
+            117
         ],
         "localVariables": [
-            115
+            118
         ]
     },
     {
         "type": "Method",
-        "id": 85,
+        "id": 88,
         "name": "ExtendedData",
         "modifiers": [
             "Public"
@@ -1159,46 +1199,10 @@
             81
         ],
         "calledMethods": [
-            87
+            90
         ],
         "signature": "ExtendedData(int)",
         "isConstructor": true,
-        "cyclomaticComplexity": 1,
-        "returnType": 13,
-        "parameters": [
-            86
-        ]
-    },
-    {
-        "type": "Attribute",
-        "id": 86,
-        "name": "x",
-        "container": 85,
-        "class": 29,
-        "kind": "Parameter"
-    },
-    {
-        "type": "Method",
-        "id": 87,
-        "name": "DataObject",
-        "modifiers": [
-            "Public"
-        ],
-        "container": 10,
-        "signature": "DataObject()",
-        "isConstructor": true,
-        "cyclomaticComplexity": 1,
-        "returnType": 13
-    },
-    {
-        "type": "Method",
-        "id": 88,
-        "name": "setProvider",
-        "modifiers": [
-            "Public"
-        ],
-        "container": 9,
-        "signature": "setProvider(org.radum.Provider)",
         "cyclomaticComplexity": 1,
         "returnType": 13,
         "parameters": [
@@ -1208,14 +1212,51 @@
     {
         "type": "Attribute",
         "id": 89,
-        "name": "_p",
+        "name": "x",
         "container": 88,
-        "class": 2,
+        "class": 29,
         "kind": "Parameter"
     },
     {
         "type": "Method",
         "id": 90,
+        "name": "DataObject",
+        "modifiers": [
+            "Public"
+        ],
+        "container": 10,
+        "signature": "DataObject()",
+        "isConstructor": true,
+        "cyclomaticComplexity": 1,
+        "returnType": 13,
+        "isDefaultConstructor": true
+    },
+    {
+        "type": "Method",
+        "id": 91,
+        "name": "setProvider",
+        "modifiers": [
+            "Public"
+        ],
+        "container": 9,
+        "signature": "setProvider(org.radum.Provider)",
+        "cyclomaticComplexity": 1,
+        "returnType": 13,
+        "parameters": [
+            92
+        ]
+    },
+    {
+        "type": "Attribute",
+        "id": 92,
+        "name": "_p",
+        "container": 91,
+        "class": 2,
+        "kind": "Parameter"
+    },
+    {
+        "type": "Method",
+        "id": 93,
         "name": "anotherFunction",
         "modifiers": [
             "Public",
@@ -1228,77 +1269,26 @@
     },
     {
         "type": "Class",
-        "id": 91,
+        "id": 94,
         "name": "Parameterized",
         "modifiers": [
             "Public"
         ],
         "containedClasses": [
-            92
+            95
         ],
         "containedMethods": [
-            101,
-            127
+            130,
+            104
         ],
         "typeParameters": [
-            92
+            95
         ],
         "fileName": "org/radum/Parameterized.java",
         "superClass": 1,
         "containedFields": [
-            98,
-            93
-        ]
-    },
-    {
-        "type": "Class",
-        "id": 92,
-        "name": "T",
-        "container": 91,
-        "superClass": 10,
-        "isTypeParameter": true,
-        "instances": [
-            9
-        ]
-    },
-    {
-        "type": "Attribute",
-        "id": 93,
-        "name": "obj",
-        "modifiers": [
-            "Private"
-        ],
-        "container": 91,
-        "class": 92,
-        "kind": "Field"
-    },
-    {
-        "type": "Class",
-        "id": 94,
-        "name": "ParameterizedPro",
-        "modifiers": [
-            "Public"
-        ],
-        "containedClasses": [
             96,
-            97,
-            95
-        ],
-        "containedMethods": [
-            103,
-            111
-        ],
-        "typeParameters": [
-            95,
-            96,
-            97
-        ],
-        "fileName": "org/radum/ParameterizedPro.java",
-        "superClass": 1,
-        "containedFields": [
-            108,
-            109,
-            110
+            101
         ]
     },
     {
@@ -1309,54 +1299,105 @@
         "superClass": 10,
         "isTypeParameter": true,
         "instances": [
-            10,
-            92
+            9
+        ]
+    },
+    {
+        "type": "Attribute",
+        "id": 96,
+        "name": "obj",
+        "modifiers": [
+            "Private"
+        ],
+        "container": 94,
+        "class": 95,
+        "kind": "Field"
+    },
+    {
+        "type": "Class",
+        "id": 97,
+        "name": "ParameterizedPro",
+        "modifiers": [
+            "Public"
+        ],
+        "containedClasses": [
+            98,
+            99,
+            100
+        ],
+        "containedMethods": [
+            114,
+            106
+        ],
+        "typeParameters": [
+            98,
+            99,
+            100
+        ],
+        "fileName": "org/radum/ParameterizedPro.java",
+        "superClass": 1,
+        "containedFields": [
+            112,
+            113,
+            111
         ]
     },
     {
         "type": "Class",
-        "id": 96,
+        "id": 98,
+        "name": "T",
+        "container": 97,
+        "superClass": 10,
+        "isTypeParameter": true,
+        "instances": [
+            10,
+            95
+        ]
+    },
+    {
+        "type": "Class",
+        "id": 99,
         "name": "R",
-        "container": 94,
+        "container": 97,
         "superClass": 1,
         "isTypeParameter": true,
         "instances": [
-            129,
+            132,
             42
         ]
     },
     {
         "type": "Class",
-        "id": 97,
+        "id": 100,
         "name": "V",
-        "container": 94,
+        "container": 97,
         "superClass": 1,
         "isTypeParameter": true,
         "instances": [
-            99,
+            102,
             42
         ]
     },
     {
         "type": "Attribute",
-        "id": 98,
+        "id": 101,
         "name": "parameterizedPro",
         "modifiers": [
             "Private"
         ],
-        "container": 91,
-        "class": 94,
+        "container": 94,
+        "class": 97,
         "kind": "Field"
     },
     {
         "type": "Class",
-        "id": 99,
+        "id": 102,
         "name": "Long",
         "modifiers": [
-            "Final",
-            "Public"
+            "Public",
+            "Final"
         ],
-        "superClass": 100,
+        "superClass": 103,
         "isExternal": true,
         "interfaces": [
             43
@@ -1364,7 +1405,7 @@
     },
     {
         "type": "Class",
-        "id": 100,
+        "id": 103,
         "name": "Number",
         "modifiers": [
             "Public",
@@ -1378,78 +1419,80 @@
     },
     {
         "type": "Method",
-        "id": 101,
+        "id": 104,
         "name": "doSomething",
         "modifiers": [
             "Public"
         ],
-        "container": 91,
+        "container": 94,
         "accessedFields": [
             81
         ],
         "calledMethods": [
-            103
+            85,
+            106
         ],
         "signature": "doSomething(T)",
         "cyclomaticComplexity": 1,
         "returnType": 13,
         "parameters": [
-            102
+            105
         ],
         "localVariables": [
-            104
+            107
         ]
     },
     {
         "type": "Attribute",
-        "id": 102,
+        "id": 105,
         "name": "smt",
-        "container": 101,
-        "class": 92,
+        "container": 104,
+        "class": 95,
         "kind": "Parameter"
     },
     {
         "type": "Method",
-        "id": 103,
+        "id": 106,
         "name": "ParameterizedPro",
         "modifiers": [
             "Public"
         ],
-        "container": 94,
+        "container": 97,
         "signature": "ParameterizedPro()",
         "isConstructor": true,
         "cyclomaticComplexity": 1,
-        "returnType": 13
+        "returnType": 13,
+        "isDefaultConstructor": true
     },
     {
         "type": "Attribute",
-        "id": 104,
+        "id": 107,
         "name": "test",
-        "container": 101,
+        "container": 104,
         "class": 29,
         "kind": "LocalVariable"
     },
     {
         "type": "Class",
-        "id": 105,
+        "id": 108,
         "name": "ParameterizedExtension",
         "modifiers": [
             "Public"
         ],
         "containedMethods": [
-            106
+            109
         ],
         "fileName": "org/radum/ParameterizedExtension.java",
-        "superClass": 91
+        "superClass": 94
     },
     {
         "type": "Method",
-        "id": 106,
+        "id": 109,
         "name": "doSomething",
         "modifiers": [
             "Public"
         ],
-        "container": 105,
+        "container": 108,
         "accessedFields": [
             81,
             82
@@ -1458,82 +1501,82 @@
         "cyclomaticComplexity": 1,
         "returnType": 13,
         "parameters": [
-            107
+            110
         ]
     },
     {
         "type": "Attribute",
-        "id": 107,
+        "id": 110,
         "name": "extension",
-        "container": 106,
+        "container": 109,
         "class": 9,
         "kind": "Parameter"
     },
     {
         "type": "Attribute",
-        "id": 108,
+        "id": 111,
         "name": "obj1",
         "modifiers": [
             "Private"
         ],
-        "container": 94,
-        "class": 95,
+        "container": 97,
+        "class": 98,
         "kind": "Field"
     },
     {
         "type": "Attribute",
-        "id": 109,
+        "id": 112,
         "name": "obj2",
         "modifiers": [
             "Private"
         ],
-        "container": 94,
-        "class": 96,
+        "container": 97,
+        "class": 99,
         "kind": "Field"
     },
     {
         "type": "Attribute",
-        "id": 110,
+        "id": 113,
         "name": "obj3",
         "modifiers": [
             "Private"
         ],
-        "container": 94,
-        "class": 97,
+        "container": 97,
+        "class": 100,
         "kind": "Field"
     },
     {
         "type": "Method",
-        "id": 111,
+        "id": 114,
         "name": "doSomething",
         "modifiers": [
             "Public"
         ],
-        "container": 94,
+        "container": 97,
         "accessedFields": [
             81
         ],
         "calledMethods": [
-            113
+            116
         ],
         "signature": "doSomething()",
         "cyclomaticComplexity": 1,
         "returnType": 13,
         "localVariables": [
-            112
+            115
         ]
     },
     {
         "type": "Attribute",
-        "id": 112,
+        "id": 115,
         "name": "test2",
-        "container": 111,
+        "container": 114,
         "class": 42,
         "kind": "LocalVariable"
     },
     {
         "type": "Method",
-        "id": 113,
+        "id": 116,
         "name": "toString",
         "modifiers": [
             "Public"
@@ -1545,23 +1588,23 @@
     },
     {
         "type": "Attribute",
-        "id": 114,
+        "id": 117,
         "name": "a",
-        "container": 84,
+        "container": 87,
         "class": 29,
         "kind": "Parameter"
     },
     {
         "type": "Attribute",
-        "id": 115,
+        "id": 118,
         "name": "x",
-        "container": 84,
+        "container": 87,
         "class": 29,
         "kind": "LocalVariable"
     },
     {
         "type": "Attribute",
-        "id": 116,
+        "id": 119,
         "name": "i",
         "container": 28,
         "class": 29,
@@ -1569,7 +1612,7 @@
     },
     {
         "type": "Attribute",
-        "id": 117,
+        "id": 120,
         "name": "j",
         "container": 28,
         "class": 29,
@@ -1577,7 +1620,7 @@
     },
     {
         "type": "Attribute",
-        "id": 118,
+        "id": 121,
         "name": "result",
         "container": 28,
         "class": 29,
@@ -1585,7 +1628,7 @@
     },
     {
         "type": "Attribute",
-        "id": 119,
+        "id": 122,
         "name": "localData",
         "container": 71,
         "class": 10,
@@ -1593,7 +1636,7 @@
     },
     {
         "type": "Attribute",
-        "id": 120,
+        "id": 123,
         "name": "data",
         "modifiers": [
             "Public"
@@ -1604,7 +1647,7 @@
     },
     {
         "type": "Attribute",
-        "id": 121,
+        "id": 124,
         "name": "extendedData",
         "modifiers": [
             "Public"
@@ -1615,7 +1658,7 @@
     },
     {
         "type": "Attribute",
-        "id": 122,
+        "id": 125,
         "name": "anonymousProvider",
         "container": 2,
         "class": 3,
@@ -1623,22 +1666,23 @@
     },
     {
         "type": "Method",
-        "id": 123,
+        "id": 126,
         "name": "",
-        "container": 124,
+        "container": 127,
         "signature": "()",
         "isConstructor": true,
         "cyclomaticComplexity": 1,
-        "returnType": 13
+        "returnType": 13,
+        "isDefaultConstructor": true
     },
     {
         "type": "Class",
-        "id": 124,
+        "id": 127,
         "name": "",
         "container": 2,
         "containedMethods": [
-            123,
-            125
+            128,
+            126
         ],
         "superClass": 1,
         "interfaces": [
@@ -1647,12 +1691,12 @@
     },
     {
         "type": "Method",
-        "id": 125,
+        "id": 128,
         "name": "anotherFunction",
         "modifiers": [
             "Public"
         ],
-        "container": 124,
+        "container": 127,
         "accessedFields": [
             81,
             82
@@ -1663,42 +1707,43 @@
     },
     {
         "type": "Attribute",
-        "id": 126,
+        "id": 129,
         "name": "parameterized",
-        "container": 31,
-        "class": 91,
-        "kind": "LocalVariable"
-    },
-    {
-        "type": "Method",
-        "id": 127,
-        "name": "Parameterized",
-        "modifiers": [
-            "Public"
-        ],
-        "container": 91,
-        "signature": "Parameterized()",
-        "isConstructor": true,
-        "cyclomaticComplexity": 1,
-        "returnType": 13
-    },
-    {
-        "type": "Attribute",
-        "id": 128,
-        "name": "value",
         "container": 31,
         "class": 94,
         "kind": "LocalVariable"
     },
     {
-        "type": "Class",
-        "id": 129,
-        "name": "Integer",
+        "type": "Method",
+        "id": 130,
+        "name": "Parameterized",
         "modifiers": [
-            "Final",
             "Public"
         ],
-        "superClass": 100,
+        "container": 94,
+        "signature": "Parameterized()",
+        "isConstructor": true,
+        "cyclomaticComplexity": 1,
+        "returnType": 13,
+        "isDefaultConstructor": true
+    },
+    {
+        "type": "Attribute",
+        "id": 131,
+        "name": "value",
+        "container": 31,
+        "class": 97,
+        "kind": "LocalVariable"
+    },
+    {
+        "type": "Class",
+        "id": 132,
+        "name": "Integer",
+        "modifiers": [
+            "Public",
+            "Final"
+        ],
+        "superClass": 103,
         "isExternal": true,
         "interfaces": [
             43

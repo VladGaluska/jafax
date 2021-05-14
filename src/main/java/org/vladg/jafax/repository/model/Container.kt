@@ -15,6 +15,20 @@ abstract class Container(
 
     val accessedFields: MutableSet<Attribute> = HashSet()
 
+    val allMethodCalls: MutableSet<Method> by lazy {
+        calledMethods.apply {
+            addAll(containedClasses.flatMap { it.allMethodCalls })
+            addAll(containedMethods.flatMap { it.allMethodCalls })
+        }
+    }
+
+    val allFieldAccesses: MutableSet<Attribute> by lazy {
+        accessedFields.apply {
+            addAll(containedClasses.flatMap { it.allFieldAccesses })
+            addAll(containedMethods.flatMap { it.allFieldAccesses })
+        }
+    }
+
     fun addToContainedClasses(clazz: Class) = containedClasses.add(clazz)
 
     fun addToContainedMethods(method: Method) = containedMethods.add(method)
