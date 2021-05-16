@@ -28,7 +28,7 @@ projects.
 |**interfaces**|`List<Long>`|The list of ids of its interfaces|
 |**isExternal**|`Boolean`|A value representing if the class is from the source project or not, only appears if its value is true|
 |**isTypeParameter**|`Boolean`|A value representing if the class ia type parameter or not, only appears if its value is true|
-|**parameterInstances**|`List<Long>`|The list of ids of its parameter instances. Meaning that when you have `A<T>` and have an instance somewhere declared of `A<String>`, `T` will have `String` in its `parameterInstances`|
+|**instances**|`List<Long>`|The list of ids of its parameter instances. Meaning that when you have `A<T>` and have an instance somewhere declared of `A<String>`, `T` will have `String` in its `parameterInstances`|
 |**typeParameters**|`List<Long>`|The list of ids of its type parameters|
 |**containedFields**|`List<Long>`|The list of ids of its directly contained fields|
 |**containedClasses**|`List<Long>`|The list of ids of its directly contained classes|

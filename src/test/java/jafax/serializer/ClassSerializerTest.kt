@@ -24,7 +24,7 @@ class ClassSerializerTest {
         "containedMethods",
         "calledMethods",
         "isTypeParameter",
-        "parameterInstances",
+        "instances",
         "typeParameters"
     )
 
