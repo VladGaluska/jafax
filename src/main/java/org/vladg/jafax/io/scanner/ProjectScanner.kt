@@ -3,6 +3,9 @@ package org.vladg.jafax.io.scanner
 import com.google.inject.Guice
 import kotlinx.serialization.decodeFromString
 import org.vladg.jafax.ast.ASTCreator
+import org.vladg.jafax.ast.repository.indexed.ContainerIndexedAttributeRepository
+import org.vladg.jafax.ast.repository.indexed.KeyIndexedClassRepository
+import org.vladg.jafax.ast.repository.indexed.KeyIndexedMethodRepository
 import org.vladg.jafax.io.LayoutFormat
 import org.vladg.jafax.io.NamePrefixTrimmer
 import org.vladg.jafax.io.reader.ProjectLayoutReader
@@ -52,6 +55,13 @@ object ProjectScanner {
         astCreator.createAst(javaFiles, jarFiles)
         trimFileNames()
         projectLayoutWriter.writeLayout(path)
+        clearParserRepos()
+    }
+
+    private fun clearParserRepos() {
+        KeyIndexedClassRepository.clear()
+        KeyIndexedMethodRepository.clear()
+        ContainerIndexedAttributeRepository.clear()
     }
 
     private fun trimFileNames() {

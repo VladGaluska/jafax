@@ -18,27 +18,47 @@ class Method(
     container: Container? = null
 ) : Container(typeParameters, name, modifiers, container) {
 
+    override val allContainedAttributes: Set<Attribute> by lazy {
+        parameters.union(localVariables)
+                  .union(containedMethods.flatMap { it.allContainedAttributes })
+                  .union(containedClasses.flatMap { it.allContainedAttributes })
+    }
+
     val parameters: MutableSet<Attribute> = HashSet()
 
     val localVariables: MutableSet<Attribute> = HashSet()
+
+    val accessorField: Attribute? by lazy {
+        if (isAccessor) {
+            firstContainerClass?.getFieldByName(name.replaceFirst("get", "", true))
+        } else {
+            null
+        }
+    }
+
+    val isAccessor: Boolean by lazy {
+        isInternal &&
+        (isGetter() || isSetter()) &&
+        cyclomaticComplexity == 1 &&
+        calledMethods.size == 0 &&
+        hasAtMostOneAccessedAttributeOfSameClass()
+    }
 
     fun incrementComplexity() {
         cyclomaticComplexity ++
     }
 
-    fun isAccessor() =
-        isInternal() &&
-        nameMatchesAccessorConditions() &&
-        cyclomaticComplexity == 1 &&
-        calledMethods.size == 0 &&
-        hasAtMostOneAccessedAttributeOfSameClass()
-
-    private fun nameMatchesAccessorConditions() =
-            name.startsWith("get", true) || name.startsWith("set", true)
-
     private fun hasAtMostOneAccessedAttributeOfSameClass() =
          accessedFields.size == 0 ||
         (accessedFields.size == 1 && accessedFields.first().getTopLevelClass() == this.getTopLevelClass())
+
+    private fun isGetter(): Boolean =
+        name.startsWith("get", true) &&
+        parameters.size == 0
+
+    private fun isSetter(): Boolean =
+        name.startsWith("set", true) &&
+        parameters.size == 1
 
     override fun isSame(value: ASTObject) =
             value is Method &&

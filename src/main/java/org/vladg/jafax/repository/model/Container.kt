@@ -1,5 +1,7 @@
 package org.vladg.jafax.repository.model
 
+import org.vladg.jafax.utils.GenericTypeService
+
 abstract class Container(
     var typeParameters: MutableList<Class?> = ArrayList(),
     name: String,
@@ -15,19 +17,35 @@ abstract class Container(
 
     val accessedFields: MutableSet<Attribute> = HashSet()
 
-    val allMethodCalls: MutableSet<Method> by lazy {
-        calledMethods.apply {
-            addAll(containedClasses.flatMap { it.allMethodCalls })
-            addAll(containedMethods.flatMap { it.allMethodCalls })
-        }
+    val allMethodCalls: Set<Method> by lazy {
+        calledMethods.union(containedClasses.flatMap { it.allMethodCalls })
+                     .union(containedMethods.flatMap { it.allMethodCalls })
     }
 
-    val allFieldAccesses: MutableSet<Attribute> by lazy {
-        accessedFields.apply {
-            addAll(containedClasses.flatMap { it.allFieldAccesses })
-            addAll(containedMethods.flatMap { it.allFieldAccesses })
-        }
+    val allFieldAccesses: Set<Attribute> by lazy {
+        accessedFields.union(containedClasses.flatMap { it.allFieldAccesses })
+                      .union(containedMethods.flatMap { it.allFieldAccesses })
+                      .union(calledMethods.filter { it.isAccessor }.mapNotNull { it.accessorField })
     }
+
+    val allContainedMethods: Set<Method> by lazy {
+        containedMethods.union(containedClasses.flatMap { it.allContainedMethods })
+                        .union(containedMethods.flatMap { it.allContainedMethods })
+    }
+
+    val allReturnTypes: List<Class> by lazy {
+        allInternalMethodCallReturnTypes +
+        allContainedMethods.filter { !it.isAccessor }
+                           .flatMap { GenericTypeService.getPossibleTypes(it.firstContainerClass, this) }
+    }
+
+    private val allInternalMethodCallReturnTypes: List<Class> by lazy {
+        allMethodCalls.filter { !it.isAccessor }
+                      .filter { it.isInternal }
+                      .flatMap { GenericTypeService.getPossibleTypes(it.firstContainerClass, this) }
+    }
+
+    abstract val allContainedAttributes: Set<Attribute>
 
     fun addToContainedClasses(clazz: Class) = containedClasses.add(clazz)
 

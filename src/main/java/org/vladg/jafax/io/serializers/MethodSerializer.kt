@@ -96,7 +96,7 @@ class MethodSerializer : ContainerSerializer<Method>() {
             getIndex("isConstructor") -> obj.isConstructor = compositeDecoder.decodeBooleanElement(descriptor, index)
             getIndex("isDefaultConstructor") -> obj.isDefaultConstructor = compositeDecoder.decodeBooleanElement(descriptor, index)
             getIndex("cyclomaticComplexity") -> obj.cyclomaticComplexity = compositeDecoder.decodeIntElement(descriptor, index)
-            getIndex("returnType") -> AstDecoder.addObjectOrAddForUpdate(compositeDecoder.decodeLongElement(descriptor, 4)) {
+            getIndex("returnType") -> AstDecoder.addObjectOrAddForUpdate(compositeDecoder.decodeLongElement(descriptor, index)) {
                 obj.returnType = it as Class
             }
             getIndex("parameters"), getIndex("localVariables") -> collectionDecoder.decodeAstCollection(index) {

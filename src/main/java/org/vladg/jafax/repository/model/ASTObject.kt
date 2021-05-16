@@ -15,7 +15,14 @@ abstract class ASTObject(
 
     open val fileName: String? by lazy { container?.fileName }
 
-    fun isProtected() = modifiers.contains(Modifier.Protected)
+    open val firstContainerClass: Class? by lazy { container?.firstContainerClass }
+
+    open val isInternal: Boolean by lazy { container?.isInternal ?: false }
+
+    fun isChildOf(parent: ASTObject): Boolean =
+            this == parent || container?.isChildOf(parent) == true
+
+    fun isProtected() = Modifier.Protected in modifiers
 
     override fun equals(other: Any?): Boolean {
         return when(other) {
@@ -29,8 +36,6 @@ abstract class ASTObject(
             if (this is Class) this
             else null
 
-    open fun isInternal(): Boolean =
-            container?.isInternal() ?: false
 
     open fun isSame(value: ASTObject) =
             name == value.name &&

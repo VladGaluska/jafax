@@ -1,7 +1,7 @@
 package org.vladg.jafax
 
 import org.vladg.jafax.io.scanner.ProjectScanner
-import org.vladg.jafax.relations.RelationsCalculator
+import org.vladg.jafax.relations.RelationsComputer
 import java.nio.file.Path
 import java.nio.file.Paths
 
@@ -12,5 +12,5 @@ fun getPathFromName(pathName: String): Path {
 fun main(args: Array<String>) {
     val path = if (args.isNotEmpty()) getPathFromName(args[0]) else getPathFromName(".")
     ProjectScanner.beginScan(path)
-    RelationsCalculator.calculateRelations()
+    RelationsComputer.computeRelations(path)
 }
