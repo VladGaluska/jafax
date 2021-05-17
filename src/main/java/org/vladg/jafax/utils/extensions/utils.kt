@@ -7,6 +7,7 @@ import java.io.File
 import java.nio.file.Path
 import java.util.*
 import java.util.stream.Stream
+import kotlin.math.roundToInt
 
 inline fun <reified T> T.logger(): Logger {
     if (T::class.isCompanion) {
@@ -25,4 +26,6 @@ fun stringToModifiers(toDecode: List<String>): Set<Modifier> =
 fun getLayoutFile(path: Path) =
     File("$path/Layout.JSON")
 
-infix fun Int.doubleDiv(i: Int): Double = this / i.toDouble();
+infix fun Int.doubleDiv(i: Int): Double = this / i.toDouble()
+
+fun Double.roundToTwoDecimals() = (this * 100.0).roundToInt() / 100.0

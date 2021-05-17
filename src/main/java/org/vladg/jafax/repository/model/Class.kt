@@ -21,6 +21,17 @@ class Class(
 
     private val cachedRelationToClasses: MutableMap<Class, Boolean> = HashMap()
 
+    val protectedMembers: Set<ASTObject> by lazy {
+        containedMethods.filter { it.isProtected() }
+                .filter { !it.isConstructor }
+                .union(containedFields.filter { it.isProtected() })
+                .toSet()
+    }
+
+    val DIT: Int by lazy {
+        1 + (superClass?.DIT ?: 0)
+    }
+
     val containedFields: MutableSet<Attribute> = HashSet()
 
     val functionalMethods: List<Method> by lazy {
@@ -63,6 +74,11 @@ class Class(
                 .associateWith { containedMethods }
                 .onEach { it.value.filter { m -> it.key.hasMethodWithSignature(m.signature) } }
                 .filter { it.value.isNotEmpty() }
+    }
+
+    val superClassOverridingMethods: Set<Method> by lazy {
+        containedMethods.filter { superClass?.hasMethodWithSignature(it.signature) == true }
+                .toSet()
     }
 
     override val topLevelClass: Class? by lazy {
