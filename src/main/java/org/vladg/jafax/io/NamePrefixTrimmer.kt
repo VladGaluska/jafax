@@ -2,18 +2,22 @@ package org.vladg.jafax.io
 
 object NamePrefixTrimmer {
 
-    private lateinit var commonPrefix: String
+    private var commonPrefix: String? = null
 
     fun registerName(name: String) {
-        commonPrefix = commonPrefix.commonPrefixWith(name)
+        if (commonPrefix == null) {
+            commonPrefix = name
+        }
+        commonPrefix = commonPrefix!!.commonPrefixWith(name)
     }
 
     fun trimString(value: String): String {
-        if (!commonPrefix.endsWith("/")) {
+        commonPrefix ?: return ""
+        if (!commonPrefix!!.endsWith("/")) {
             val lastIndex = value.lastIndexOf("/")
-            commonPrefix = commonPrefix.substring(0, lastIndex)
+            commonPrefix = commonPrefix!!.substring(0, lastIndex)
         }
-        return value.replaceFirst(commonPrefix, "")
+        return value.replaceFirst(commonPrefix!!, "")
     }
 
 }
