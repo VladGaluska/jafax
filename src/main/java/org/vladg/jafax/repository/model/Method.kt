@@ -24,6 +24,11 @@ class Method(
                   .union(containedClasses.flatMap { it.allContainedAttributes })
     }
 
+    override val topLevelMethod: Method? by lazy {
+        if (container?.container == null) this
+        else container.topLevelMethod
+    }
+
     val parameters: MutableSet<Attribute> = HashSet()
 
     val localVariables: MutableSet<Attribute> = HashSet()
@@ -44,13 +49,19 @@ class Method(
         hasAtMostOneAccessedAttributeOfSameClass()
     }
 
+    val totalCyclomaticComplexity: Int by lazy {
+        cyclomaticComplexity +
+        containedMethods.map { it.totalCyclomaticComplexity }.sum() +
+        containedClasses.map { it.totalCyclomaticComplexity }.sum()
+    }
+
     fun incrementComplexity() {
         cyclomaticComplexity ++
     }
 
     private fun hasAtMostOneAccessedAttributeOfSameClass() =
          accessedFields.size == 0 ||
-        (accessedFields.size == 1 && accessedFields.first().getTopLevelClass() == this.getTopLevelClass())
+        (accessedFields.size == 1 && accessedFields.first().firstContainerClass == this.firstContainerClass)
 
     private fun isGetter(): Boolean =
         name.startsWith("get", true) &&

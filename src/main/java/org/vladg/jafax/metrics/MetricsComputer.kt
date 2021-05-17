@@ -1,0 +1,111 @@
+package org.vladg.jafax.metrics
+
+import org.vladg.jafax.io.model.Metrics
+import org.vladg.jafax.io.writer.MetricsWriter
+import org.vladg.jafax.repository.ClassRepository
+import org.vladg.jafax.repository.model.Attribute
+import org.vladg.jafax.repository.model.Class
+import org.vladg.jafax.repository.model.Method
+import org.vladg.jafax.repository.model.Modifier
+import org.vladg.jafax.utils.extensions.doubleDiv
+import java.nio.file.Path
+
+object MetricsComputer {
+
+    private val changingClasses: MutableMap<Class, MutableSet<Class>> = HashMap()
+
+    private val changingMethods: MutableMap<Class, MutableSet<Method>> = HashMap()
+
+    fun computeMetrics(path: Path) {
+        MetricsWriter.writeMetricsToFile(
+                computeMetrics(getClassesForMetrics()),
+                path
+        )
+    }
+
+    private fun getClassesForMetrics() =
+            ClassRepository.topLevelClasses.filter { Modifier.Abstract !in it.modifiers }
+
+    private fun computeMetrics(classes: List<Class>): List<Metrics> {
+        cacheClasses(classes)
+        return classes.map { calculateMetricsForClass(it) }
+    }
+
+    private fun calculateMetricsForClass(clazz: Class): Metrics =
+        Metrics(file = clazz.fileName!!, type = clazz.name).apply {
+            AMW = clazz.totalCyclomaticComplexity doubleDiv clazz.containedMethods.size
+            WMC = clazz.totalCyclomaticComplexity
+            NOM = clazz.containedMethods.filter { !it.isDefaultConstructor }.size
+            NOPA = clazz.containedFields.filter{ attributeQualifiesForNopa(it) }.size
+            NProtM = calculateNProtM(clazz)
+            computeATFDRelatedMetrics(this, clazz)
+            WOC = calculateWOC(clazz)
+            CC = changingClasses[clazz]?.size ?: 0
+            CM = changingMethods[clazz]?.size ?: 0
+        }
+
+    private fun calculateWOC(clazz: Class) =
+            clazz.functionalMethods.size doubleDiv
+            clazz.allPublicMembers.size
+
+    private fun computeATFDRelatedMetrics(metrics: Metrics, clazz: Class) {
+        val atfdAttributes = computeATFDAttributes(clazz)
+        metrics.ATFD = atfdAttributes.size
+        metrics.FDP = calculateFDP(atfdAttributes)
+        metrics.ATFD2 = atfdAttributes.filter { it.type?.isInternal == true }.size
+    }
+
+    private fun calculateFDP(attributes: Collection<Attribute>) =
+            attributes.mapNotNull { it.topLevelClass }.distinct().size
+
+    private fun computeATFDAttributes(clazz: Class) =
+            clazz.allFieldAccesses
+                 .filter { attributeQualifiesForATFD(clazz, it) }
+
+    private fun attributeQualifiesForATFD(
+            clazz: Class,
+            accessedAttribute: Attribute
+    ): Boolean {
+        return accessedAttribute.container?.isInternal == true &&
+               accessedAttribute.firstContainerClass?.isRelatedTo(clazz) == false &&
+               accessedAttribute !in clazz.allContainedAttributes
+    }
+
+    private fun calculateNProtM(clazz: Class) =
+            clazz.containedMethods.filter { it.isProtected() }
+                    .filter { !it.isConstructor }
+                    .union(clazz.containedFields.filter { it.isProtected() })
+                    .size
+
+    private fun attributeQualifiesForNopa(attribute: Attribute) =
+            attribute.isPublic() && !attribute.isStatic() && !attribute.isFinal()
+
+    private fun cacheClasses(topLevelClasses: List<Class>) {
+        topLevelClasses.onEach { clazz ->
+            cacheClassForCC(clazz)
+            cacheClassForCM(clazz)
+        }
+    }
+
+    private fun cacheClassForCM(clazz: Class) =
+            clazz.containedMethods.filter { it.isInternal }
+                    .onEach { method ->
+                        method.allMethodCalls
+                                .filter { it.isInternal }
+                                .filter { it.topLevelClass != null }
+                                .onEach { changingMethods.computeIfAbsent(it.topLevelClass!!) {
+                                        HashSet()
+                                    }.add(method)
+                                }
+                    }
+
+    private fun cacheClassForCC(clazz: Class) =
+            (clazz.allFieldAccesses + clazz.allMethodCalls)
+                    .filter { it.isInternal }
+                    .mapNotNull { it.topLevelClass }
+                    .onEach { changingClasses.computeIfAbsent(it){
+                            HashSet()
+                        } .add(clazz)
+                    }
+
+}

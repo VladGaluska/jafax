@@ -27,7 +27,7 @@ object MethodFilterService {
     }
 
     fun filterMethods(
-            methods: List<Method>,
+            methods: Collection<Method>,
             excludeExternal: Boolean = true,
             excludeAccessors: Boolean = true,
             excludeImplicitConstructors: Boolean = true,

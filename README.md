@@ -75,6 +75,9 @@ projects.
 ## Metrics
 |name|calculation level|calculation formula|
 |----|-----------------|-------------------|
+|NOAV|NOT YET SUPPORTED|NOT YET SUPPORTED|
+|TCC|NOT YET SUPPORTED|NOT YET SUPPORTED|
+|LAA|NOT YET SUPPORTED|NOT YET SUPPORTED|
 
 ## Anti-Patterns
 |name|calculation level|calculation formula|

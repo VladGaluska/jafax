@@ -17,23 +17,22 @@ object RelationsComputer {
     fun computeRelations(path: Path) {
         logger.info("Beginning relations calculation...")
         RelationsWriter.writeRelationsToFile(
-            ClassRepository.getTopLevelClasses()
+            ClassRepository.topLevelClasses
                            .groupBy { it.fileName }
                            .flatMap { computeRelations(it.key!!, it.value) },
             path
         )
     }
 
-    private fun computeRelations(fileName: String, classesInFile: List<Class>): Collection<Relations> {
-        val relationsUpdater = RelationsUpdater(fileName)
-        calculateExtCalls(fileName, classesInFile, relationsUpdater)
-        calculateExtData(fileName, classesInFile, relationsUpdater)
-        HierarchyCalculator.calculateHierarchy(fileName, classesInFile, relationsUpdater)
-        calculateExtDataStrict(fileName, classesInFile, relationsUpdater)
-        calculateReturns(fileName, classesInFile, relationsUpdater)
-        calculateDeclarations(fileName, classesInFile, relationsUpdater)
-        return relationsUpdater.getRelations()
-    }
+    private fun computeRelations(fileName: String, classesInFile: List<Class>): Collection<Relations> =
+        RelationsUpdater(fileName).apply {
+            calculateExtCalls(fileName, classesInFile, this)
+            calculateExtData(fileName, classesInFile, this)
+            HierarchyCalculator.calculateHierarchy(fileName, classesInFile, this)
+            calculateExtDataStrict(fileName, classesInFile, this)
+            calculateReturns(fileName, classesInFile, this)
+            calculateDeclarations(fileName, classesInFile, this)
+        }.getRelations()
 
     private fun calculateExtCalls(omittedFileName: String, classesInFile: List<Class>, relationsUpdater: RelationsUpdater) =
             getCalledMethodsByTarget(omittedFileName, classesInFile).forEach { calledMethodsByTarget ->

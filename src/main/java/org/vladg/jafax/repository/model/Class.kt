@@ -19,11 +19,27 @@ class Class(
     container: Container? = null
 ) : Container(typeParameters, name, modifiers, container) {
 
+    private val cachedRelationToClasses: MutableMap<Class, Boolean> = HashMap()
+
     val containedFields: MutableSet<Attribute> = HashSet()
+
+    val functionalMethods: List<Method> by lazy {
+        containedMethods.filter { it.isPublic() && !it.isAccessor && !it.isDefaultConstructor }
+    }
+
+    val allPublicMembers: List<ASTObject> by lazy {
+        (containedMethods.filter { it.isPublic() && !it.isDefaultConstructor }
+        + containedFields.filter { it.isPublic() })
+    }
 
     val firstRealTypeSuperClass: Class? by lazy {
         if (superClass?.isFunctionalType == true) superClass
         else superInterfaces.find { it.isFunctionalType }
+    }
+
+    val totalCyclomaticComplexity: Int by lazy {
+        containedMethods.map { it.totalCyclomaticComplexity }.sum() +
+        containedClasses.map { it.totalCyclomaticComplexity }.sum()
     }
 
     private val isFunctionalType: Boolean by lazy {
@@ -49,6 +65,11 @@ class Class(
                 .filter { it.value.isNotEmpty() }
     }
 
+    override val topLevelClass: Class? by lazy {
+        if (container == null) this
+        else container.topLevelClass
+    }
+
     fun addToParameterInstances(clazz: Class?) =
         parameterInstances.add(clazz)
 
@@ -60,6 +81,23 @@ class Class(
 
     fun hasMethodWithSignature(signature: String): Boolean =
         containedMethods.find { it.signature == signature } != null
+
+    fun isRelatedTo(clazz: Class): Boolean {
+        if (clazz in cachedRelationToClasses) return cachedRelationToClasses[clazz]!!
+        if (searchForClassInHierarchyTree(clazz)) return true
+        cachedRelationToClasses[clazz] = false
+        return false
+    }
+
+    private fun searchForClassInHierarchyTree(clazz: Class): Boolean {
+        if (superClass?.isRelatedTo(clazz) == true ||
+                superInterfaces.any { it.isRelatedTo(clazz) } ||
+                this == clazz) {
+            cachedRelationToClasses[clazz] = true
+            return true
+        }
+        return false
+    }
 
     override fun addToContainedAttributes(attribute: Attribute) {
         containedFields.add(attribute)

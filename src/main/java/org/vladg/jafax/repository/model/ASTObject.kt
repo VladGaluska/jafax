@@ -24,6 +24,14 @@ abstract class ASTObject(
 
     fun isProtected() = Modifier.Protected in modifiers
 
+    fun isPublic() = Modifier.Public in modifiers
+
+    fun isAbstract() = Modifier.Abstract in modifiers
+
+    fun isStatic() = Modifier.Static in modifiers
+
+    fun isFinal() = Modifier.Final in modifiers
+
     override fun equals(other: Any?): Boolean {
         return when(other) {
             is ASTObject -> other.id == id
@@ -31,11 +39,13 @@ abstract class ASTObject(
         }
     }
 
-    fun getTopLevelClass(): Class? =
-            container?.getTopLevelClass() ?:
-            if (this is Class) this
-            else null
+    open val topLevelClass: Class? by lazy {
+        container?.topLevelClass
+    }
 
+    open val topLevelMethod: Method? by lazy {
+        container?.topLevelMethod
+    }
 
     open fun isSame(value: ASTObject) =
             name == value.name &&

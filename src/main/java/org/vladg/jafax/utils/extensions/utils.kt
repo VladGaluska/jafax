@@ -24,3 +24,5 @@ fun stringToModifiers(toDecode: List<String>): Set<Modifier> =
 
 fun getLayoutFile(path: Path) =
     File("$path/Layout.JSON")
+
+infix fun Int.doubleDiv(i: Int): Double = this / i.toDouble();

@@ -1,7 +1,24 @@
 package org.vladg.jafax.io.writer
 
-class MetricsWriter {
+import kotlinx.serialization.ExperimentalSerializationApi
+import kotlinx.serialization.csv.Csv
+import kotlinx.serialization.encodeToString
+import org.vladg.jafax.io.model.Metrics
+import java.io.File
+import java.nio.file.Path
+import kotlin.io.path.ExperimentalPathApi
+import kotlin.io.path.name
 
+@OptIn(ExperimentalSerializationApi::class, ExperimentalPathApi::class)
+object MetricsWriter {
 
+    private val csv = Csv { hasHeaderRecord = true }
+
+    fun writeMetricsToFile(metrics: List<Metrics>, path: Path) {
+        getRelationsFile(path).writeText(csv.encodeToString(metrics))
+    }
+
+    private fun getRelationsFile(path: Path) =
+            File("$path/${path.name}-metrics.csv")
 
 }
