@@ -13,6 +13,7 @@ import org.vladg.jafax.repository.model.Method
 import java.nio.file.Path
 import java.nio.file.Paths
 import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
 fun encodeAstObject(astObject: ASTObject) =
     LayoutFormat.format.encodeToJsonElement(astObject).jsonObject
@@ -31,15 +32,14 @@ fun getSimpleProjectPath(): Path = Paths.get("src/test/resources/org1")
 
 fun getComplexProjectPath(): Path = Paths.get("src/test/resources/insider")
 
-fun mapObjectsToNameSet(objects: Collection<ASTObject>)=
-        objects.map { it.name }.toSet()
+fun mapObjectsToNameList(objects: Collection<ASTObject>)=
+        objects.map { it.name }.toList()
 
-fun mapMethodsToSignatureSet(methods: Collection<Method>) =
-        methods.map { it.signature }.toSet()
+fun mapMethodsToSignatureList(methods: Collection<Method>) =
+        methods.map { it.signature }.toList()
 
-fun setEquals(set1: Set<String>, set2: Set<String>) {
-    val valuesInSet1NotInSet2 = set1.toList().filter { !set2.contains(it) }.count()
-    val valuesInSet2NotInSet1 = set2.toList().filter { !set1.contains(it) }.count()
-    assertEquals(0, valuesInSet1NotInSet2, "Sets $set1 and $set2 are not equal")
-    assertEquals(0, valuesInSet2NotInSet1, "Sets $set1 and $set2 are not equal")
+fun collectionEquals(collection1: Collection<*>, collection2: Collection<*>) {
+    assertEquals(collection1.size, collection2.size, "Expected: $collection1 actual: $collection2!")
+    assertTrue(collection1.containsAll(collection2), "Expected: $collection1 actual: $collection2!")
+    assertTrue(collection2.containsAll(collection1), "Expected: $collection1 actual: $collection2!")
 }

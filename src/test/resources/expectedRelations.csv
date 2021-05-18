@@ -1,13 +1,4 @@
 source,target,extCalls,extData,hierarchy,returns,declarations,extDataStrict,all
-org/radum/Client.java,org/radum/DataObject.java,0,3,0,0,0,3,0,
+org/radum/Client.java,org/radum/Provider.java,4,0,0,1,3,0,0
+org/radum/Client.java,org/radum/DataObject.java,0,2,0,1,0,0,0
 org/radum/Client.java,org/radum/ExtendedData.java,1,0,0,0,2,0,0
-org/radum/Client.java,org/radum/Provider.java,4,0,0,4,0,0,0
-org/radum/Provider.java,org/radum/DataObject.java,0,2,0,0,0,2,0
-org/radum/Provider.java,org/radum/IProvider.java,0,0,5,0,0,0,0
-org/radum/Provider.java,org/radum/Parameterized.java,1,0,0,0,0,0,0
-org/radum/ExtendedData.java,org/radum/DataObject.java,0,1,4,1,0,1,0
-org/radum/ExtendedData.java,org/radum/Provider.java,1,0,0,1,0,0,0
-org/radum/Parameterized.java,org/radum/DataObject.java,1,1,0,1,0,1,0
-org/radum/ParameterizedPro.java,org/radum/DataObject.java,0,1,0,0,0,1,0
-org/radum/ParameterizedExtension.java,org/radum/DataObject.java,0,2,0,0,0,2,0
-org/radum/ParameterizedExtension.java,org/radum/Parameterized.java,0,0,2,0,0,0,0

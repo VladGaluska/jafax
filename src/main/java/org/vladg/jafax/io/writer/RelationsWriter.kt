@@ -2,6 +2,7 @@ package org.vladg.jafax.io.writer
 
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.csv.Csv
+import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import org.vladg.jafax.io.model.Relations
 import java.io.File
@@ -17,6 +18,9 @@ object RelationsWriter {
     fun writeRelationsToFile(relations: List<Relations>, path: Path) {
         getRelationsFile(path).writeText(csv.encodeToString(relations))
     }
+
+    fun readRelationsFromFile(file: File): List<Relations> =
+            csv.decodeFromString(file.readText())
 
     private fun getRelationsFile(path: Path) =
             File("$path/${path.name}-relations.csv")

@@ -35,14 +35,12 @@ abstract class Container(
 
     val allReturnTypes: List<Class> by lazy {
         allInternalMethodCallReturnTypes +
-        allContainedMethods.filter { !it.isAccessor }
-                           .flatMap { GenericTypeService.getPossibleTypes(it.firstContainerClass, this) }
+        allContainedMethods.flatMap { GenericTypeService.getPossibleTypes(it.firstContainerClass, this) }
     }
 
     private val allInternalMethodCallReturnTypes: List<Class> by lazy {
-        allMethodCalls.filter { !it.isAccessor }
-                      .filter { it.isInternal }
-                      .flatMap { GenericTypeService.getPossibleTypes(it.firstContainerClass, this) }
+        allMethodCalls.filter { it.isInternal }
+                      .flatMap { GenericTypeService.getPossibleTypes(it.returnType, this) }
     }
 
     abstract val allContainedAttributes: Set<Attribute>

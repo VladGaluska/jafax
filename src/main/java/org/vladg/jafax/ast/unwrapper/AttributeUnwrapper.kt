@@ -33,9 +33,9 @@ class AttributeUnwrapper {
     }
 
     private fun addAttributeWithRecursiveSafety(attribute: Attribute, typeSupplier: () -> Class?, containerSupplier: () -> Container?): Attribute {
+        attribute.container = containerSupplier()
         ContainerIndexedAttributeRepository.addAttribute(attribute)
         attribute.type = typeSupplier()
-        attribute.container = containerSupplier()
         setAttributeToItsContainer(attribute)
         return attribute
     }

@@ -8,10 +8,13 @@ import org.vladg.jafax.repository.model.Class
 import org.vladg.jafax.repository.model.Method
 import org.vladg.jafax.repository.model.Modifier
 import org.vladg.jafax.utils.extensions.doubleDiv
+import org.vladg.jafax.utils.extensions.logger
 import org.vladg.jafax.utils.extensions.roundToTwoDecimals
 import java.nio.file.Path
 
 object MetricsComputer {
+
+    private val logger = logger()
 
     private val changingClasses: MutableMap<Class, MutableSet<Class>> = HashMap()
 
@@ -22,6 +25,7 @@ object MetricsComputer {
     private val cachedHits: MutableMap<Class, Int> = HashMap()
 
     fun computeMetrics(path: Path) {
+        logger.info("Beginning metrics calculation...")
         MetricsWriter.writeMetricsToFile(
                 computeMetrics(getClassesForMetrics()),
                 path

@@ -3,7 +3,7 @@ package org.vladg.jafax.io.model
 import kotlinx.serialization.Serializable
 
 @Serializable
-class Relations(
+data class Relations(
     val source: String,
     val target: String,
     var extCalls: Int = 0,

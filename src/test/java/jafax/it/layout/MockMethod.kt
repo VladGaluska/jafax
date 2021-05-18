@@ -1,8 +1,6 @@
 package jafax.it.layout
 
-import jafax.mapMethodsToSignatureSet
-import jafax.mapObjectsToNameSet
-import jafax.setEquals
+import jafax.*
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import org.vladg.jafax.repository.model.ASTObject
@@ -32,14 +30,14 @@ class MockMethod(
     fun verify(method: Method) {
         assertEquals(name, method.name)
         assertEquals(signature, method.signature)
-        setEquals(parameterNames, mapObjectsToNameSet(method.parameters))
-        setEquals(localVariableNames, mapObjectsToNameSet(method.localVariables))
-        setEquals(containedMethodSignatures, mapMethodsToSignatureSet(method.containedMethods))
+        collectionEquals(parameterNames, mapObjectsToNameList(method.parameters))
+        collectionEquals(localVariableNames, mapObjectsToNameList(method.localVariables))
+        collectionEquals(containedMethodSignatures, mapMethodsToSignatureList(method.containedMethods))
         assertEquals(modifiers.map { Modifier.valueOf(it) }.toSet(), method.modifiers)
-        setEquals(calledMethodSignatures, mapMethodsToSignatureSet(method.calledMethods))
-        setEquals(accessedFieldNames, mapObjectsToNameSet(method.accessedFields))
-        setEquals(containedClassNames, mapObjectsToNameSet(method.containedClasses))
-        setEquals(typeParameterNames, mapObjectsToNameSet(method.typeParameters.filterNotNull()))
+        collectionEquals(calledMethodSignatures, mapMethodsToSignatureList(method.calledMethods))
+        collectionEquals(accessedFieldNames, mapObjectsToNameList(method.accessedFields))
+        collectionEquals(containedClassNames, mapObjectsToNameList(method.containedClasses))
+        collectionEquals(typeParameterNames, mapObjectsToNameList(method.typeParameters.filterNotNull()))
         assertEquals(isConstructor, method.isConstructor)
         assertEquals(returnTypeName, method.returnType?.name)
         assertEquals(cyclomaticComplexity, method.cyclomaticComplexity)

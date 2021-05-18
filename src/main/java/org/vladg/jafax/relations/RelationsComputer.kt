@@ -70,33 +70,34 @@ object RelationsComputer {
             }
 
     private fun getDeclarationsByTarget(omittedFileName: String, classesInFile: List<Class>) =
-        getDeclarations(omittedFileName, classesInFile)
+        getDeclarations(classesInFile)
                 .mapNotNull { it.type }
                 .flatMap {
                     if (it.isTypeParameter) it.parameterInstances
                     else listOf(it)
                 }
                 .filterNotNull()
+                .filter { it.fileName != null && it.fileName != omittedFileName }
                 .groupBy { it.fileName!! }
 
-    private fun getDeclarations(omittedFileName: String, classesInFile: List<Class>) =
+    private fun getDeclarations(classesInFile: List<Class>) =
         AttributeFilterService.filterAttributes(
-                classesInFile.flatMap { it.allContainedAttributes },
-                omittedFileName = omittedFileName
+                classesInFile.flatMap { it.allContainedAttributes }
         )
 
-    private fun getAccessedFieldsByTarget(omittedFileName: String, excludeProtected: Boolean, classesInFile: List<Class>) =
-        getAccessedFields(omittedFileName, excludeProtected, classesInFile).groupBy { it.fileName!! }
+    private fun getAccessedFieldsByTarget(omittedFileName: String, excludeExternalType: Boolean, classesInFile: List<Class>) =
+        getAccessedFields(omittedFileName, excludeExternalType, classesInFile).groupBy { it.fileName!! }
 
-    private fun getAccessedFields(omittedFileName: String, excludeProtected: Boolean, classesInFile: List<Class>) =
+    private fun getAccessedFields(omittedFileName: String, excludeExternalType: Boolean, classesInFile: List<Class>) =
         AttributeFilterService.filterAttributes(
                 classesInFile.flatMap { it.allFieldAccesses },
-                excludeProtected = excludeProtected,
+                excludeExternalType = excludeExternalType,
                 omittedFileName = omittedFileName
         )
 
     private fun getReturnedTypesByTarget(omittedFileName: String, classesInFile: List<Class>) =
             classesInFile.flatMap { it.allReturnTypes }
+                         .filter { it.isInternal }
                          .filter { it.fileName != null && it.fileName != omittedFileName }
                          .groupBy { it.fileName!! }
 

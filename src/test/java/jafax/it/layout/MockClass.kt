@@ -1,8 +1,8 @@
 package jafax.it.layout
 
-import jafax.mapMethodsToSignatureSet
-import jafax.mapObjectsToNameSet
-import jafax.setEquals
+import jafax.collectionEquals
+import jafax.mapObjectsToNameList
+import jafax.mapMethodsToSignatureList
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import org.vladg.jafax.repository.model.ASTObject
@@ -33,19 +33,19 @@ class MockClass(
 
     fun verify(clazz: Class) {
         assertEquals(name, clazz.name)
-        setEquals(containedFieldNames, mapObjectsToNameSet(clazz.containedFields))
-        setEquals(containedMethodSignatures, mapMethodsToSignatureSet(clazz.containedMethods))
-        setEquals(calledMethodSignatures, mapMethodsToSignatureSet(clazz.calledMethods))
-        setEquals(accessedFieldNames, mapObjectsToNameSet(clazz.accessedFields))
-        setEquals(containedClassNames, mapObjectsToNameSet(clazz.containedClasses))
-        setEquals(typeParameterNames, mapObjectsToNameSet(clazz.typeParameters.filterNotNull()))
+        collectionEquals(containedFieldNames, mapObjectsToNameList(clazz.containedFields))
+        collectionEquals(containedMethodSignatures, mapMethodsToSignatureList(clazz.containedMethods))
+        collectionEquals(calledMethodSignatures, mapMethodsToSignatureList(clazz.calledMethods))
+        collectionEquals(accessedFieldNames, mapObjectsToNameList(clazz.accessedFields))
+        collectionEquals(containedClassNames, mapObjectsToNameList(clazz.containedClasses))
+        collectionEquals(typeParameterNames, mapObjectsToNameList(clazz.typeParameters.filterNotNull()))
         assertEquals(isTypeParameter, clazz.isTypeParameter)
-        setEquals(parameterInstanceNames, mapObjectsToNameSet(clazz.parameterInstances.filterNotNull()))
+        collectionEquals(parameterInstanceNames, mapObjectsToNameList(clazz.parameterInstances.filterNotNull()))
         assertEquals(superClassName, clazz.superClass?.name)
         assertEquals(fileName, clazz.fileName)
         assertEquals(modifiers.map { Modifier.valueOf(it) }.toSet(), clazz.modifiers)
         assertEquals(isInterface, clazz.isInterface)
-        setEquals(superInterfaceNames, mapObjectsToNameSet(clazz.superInterfaces))
+        collectionEquals(superInterfaceNames, mapObjectsToNameList(clazz.superInterfaces))
         assertEquals(isExternal, clazz.isExternal)
         assertEquals(containerName, clazz.container?.name)
     }
