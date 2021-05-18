@@ -44,13 +44,15 @@ class RelationsIT {
         )
     }
 
-    private fun `relations should be the same`(expectedRelations: List<Relations>, actualRelations: List<Relations>) =
+    private fun `relations should be the same`(expectedRelations: List<Relations>, actualRelations: List<Relations>) {
+        assertEquals(expectedRelations.size, actualRelations.size, "Expected: $expectedRelations actual: $actualRelations")
         expectedRelations.onEach { relationsToCheck ->
             assertEquals(
                     relationsToCheck,
                     actualRelations.find { it.source == relationsToCheck.source && it.target == relationsToCheck.target }
             )
         }
+    }
 
     private fun computeRelations() {
         ProjectScanner.beginScan(projectPath)

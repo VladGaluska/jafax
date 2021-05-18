@@ -1,0 +1,11 @@
+file,type,AMW,WMC,NOM,NOPA,NProtM,ATFD,ATFD2,FDP,WOC,BOvR,CC,CM,CINT,CDISP,BUR,HIT,DIT,NOC,RFC
+org/radum/Client.java,Client,1.6,8,5,0,0,2,0,1,1.0,0.0,0,0,5,0.6,1.0,0,2,0,10
+org/radum/Provider.java,Provider,2.0,8,4,2,0,2,0,1,0.67,0.0,3,5,4,0.75,1.0,0,2,0,5
+org/radum/IProvider.java,IProvider,1.0,1,1,0,0,0,0,0,1.0,0.0,0,0,0,0.0,1.0,0,1,0,1
+org/radum/Provider.java,ProviderFactory,1.0,1,1,0,0,0,0,0,1.0,0.0,1,0,1,1.0,1.0,0,2,0,2
+org/radum/ExtendedData.java,ExtendedData,1.0,3,3,0,0,1,0,1,0.67,0.0,1,0,2,1.0,1.0,0,3,0,3
+org/radum/DataObject.java,DataObject,1.5,3,2,0,0,0,0,0,0.5,0.0,2,2,0,0.0,1.0,1,2,1,1
+org/radum/Client.java,Empty,1.0,0,0,0,0,0,0,0,1.0,0.0,0,0,0,0.0,1.0,0,2,0,0
+org/radum/Parameterized.java,Parameterized,2.0,2,1,0,0,1,0,1,1.0,0.0,1,1,2,1.0,1.0,1,2,1,2
+org/radum/ParameterizedPro.java,ParameterizedPro,2.0,2,1,0,0,1,0,1,1.0,0.0,2,2,0,0.0,1.0,0,2,0,1
+org/radum/ParameterizedExtension.java,ParameterizedExtension,1.0,1,1,0,0,2,0,1,1.0,0.0,0,0,0,0.0,1.0,0,3,0,1

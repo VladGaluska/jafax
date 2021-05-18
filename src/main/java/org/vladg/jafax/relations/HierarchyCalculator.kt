@@ -45,14 +45,14 @@ object HierarchyCalculator {
 
     private fun getMethodsForHierarchy(omittedFileName: String, classes: List<Class>) =
         MethodFilterService.filterMethods(
-                classes.flatMap { it.calledMethods },
+                classes.flatMap { it.allMethodCalls },
                 onlyProtected = true,
                 fileNameToOmit = omittedFileName
         )
 
     private fun getAttributesForHierarchy(omittedFileName: String, classes: List<Class>) =
         AttributeFilterService.filterAttributes(
-                classes.flatMap { it.accessedFields },
+                classes.flatMap { it.allFieldAccesses },
                 onlyProtected = true,
                 omittedFileName = omittedFileName
         )

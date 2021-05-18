@@ -5,7 +5,6 @@ import org.vladg.jafax.io.serializers.ClassSerializer
 
 @Serializable(with = ClassSerializer::class)
 class Class(
-    override var fileName: String? = null,
     var isInterface: Boolean = false,
     val key: String = "",
     var superClass: Class? = null,
@@ -18,6 +17,16 @@ class Class(
     modifiers: Set<Modifier> = HashSet(),
     container: Container? = null
 ) : Container(typeParameters, name, modifiers, container) {
+
+    override var fileName: String? = null
+        get() {
+            if (field == null) {
+                if (container != null) {
+                    field = container?.fileName
+                }
+            }
+            return field
+        }
 
     private val cachedRelationToClasses: MutableMap<Class, Boolean> = HashMap()
 
@@ -53,6 +62,10 @@ class Class(
         containedClasses.map { it.totalCyclomaticComplexity }.sum()
     }
 
+    val isParameterizableType: Boolean by lazy {
+        typeParameters.filterNotNull().isNotEmpty()
+    }
+
     private val isFunctionalType: Boolean by lazy {
         isInternal && !isTypeParameter
     }
@@ -72,8 +85,7 @@ class Class(
         superInterfaces.union(setOf(superClass))
                 .filterNotNull()
                 .associateWith { containedMethods }
-                .onEach { it.value.filter { m -> it.key.hasMethodWithSignature(m.signature) } }
-                .filter { it.value.isNotEmpty() }
+                .mapValues { it.value.filter { m -> it.key.hasMethodWithSignature(m.signature) }.toSet() }
     }
 
     val superClassOverridingMethods: Set<Method> by lazy {
@@ -93,7 +105,7 @@ class Class(
         superInterfaces.add(clazz)
 
     fun getFieldByName(fieldName: String): Attribute? =
-        containedFields.find { fieldName.equals(name, true) }
+        containedFields.find { fieldName.equals(it.name, true) }
 
     fun hasMethodWithSignature(signature: String): Boolean =
         containedMethods.find { it.signature == signature } != null

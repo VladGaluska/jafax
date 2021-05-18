@@ -7,6 +7,7 @@ import org.vladg.jafax.repository.ClassRepository
 import org.vladg.jafax.repository.MethodFilterService
 import org.vladg.jafax.repository.model.Class
 import org.vladg.jafax.repository.model.Method
+import org.vladg.jafax.utils.GenericTypeService
 import org.vladg.jafax.utils.extensions.logger
 import java.nio.file.Path
 
@@ -72,17 +73,14 @@ object RelationsComputer {
     private fun getDeclarationsByTarget(omittedFileName: String, classesInFile: List<Class>) =
         getDeclarations(classesInFile)
                 .mapNotNull { it.type }
-                .flatMap {
-                    if (it.isTypeParameter) it.parameterInstances
-                    else listOf(it)
-                }
-                .filterNotNull()
+                .flatMap { GenericTypeService.getPossibleTypes(it, it) }
                 .filter { it.fileName != null && it.fileName != omittedFileName }
                 .groupBy { it.fileName!! }
 
     private fun getDeclarations(classesInFile: List<Class>) =
         AttributeFilterService.filterAttributes(
-                classesInFile.flatMap { it.allContainedAttributes }
+                classesInFile.flatMap { it.allContainedAttributes },
+                excludeProtected = false
         )
 
     private fun getAccessedFieldsByTarget(omittedFileName: String, excludeExternalType: Boolean, classesInFile: List<Class>) =

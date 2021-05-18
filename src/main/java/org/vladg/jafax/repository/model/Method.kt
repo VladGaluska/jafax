@@ -35,11 +35,16 @@ class Method(
 
     val accessorField: Attribute? by lazy {
         if (isAccessor) {
-            firstContainerClass?.getFieldByName(name.replaceFirst("get", "", true))
+            topLevelClass?.getFieldByName(fieldNameFromAccessorMethod(name))
         } else {
             null
         }
     }
+
+    private fun fieldNameFromAccessorMethod(name: String) =
+            name.replaceFirst("get", "", true)
+                .replaceFirst("set", "", true)
+                .replace(Regex("\\([a-zA-Z, ]*\\)"), "")
 
     val isAccessor: Boolean by lazy {
         isInternal &&
@@ -65,11 +70,13 @@ class Method(
 
     private fun isGetter(): Boolean =
         name.startsWith("get", true) &&
-        parameters.size == 0
+        parameters.size == 0 &&
+        localVariables.size == 0
 
     private fun isSetter(): Boolean =
         name.startsWith("set", true) &&
-        parameters.size == 1
+        parameters.size == 1 &&
+        localVariables.size == 0
 
     override fun isSame(value: ASTObject) =
             value is Method &&
