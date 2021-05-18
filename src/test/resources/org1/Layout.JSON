@@ -313,8 +313,8 @@
         "id": 21,
         "name": "OutputStream",
         "modifiers": [
-            "Abstract",
-            "Public"
+            "Public",
+            "Abstract"
         ],
         "superClass": 1,
         "isExternal": true,
@@ -687,8 +687,8 @@
         "id": 48,
         "name": "AbstractList",
         "modifiers": [
-            "Abstract",
-            "Public"
+            "Public",
+            "Abstract"
         ],
         "containedClasses": [
             51
@@ -707,8 +707,8 @@
         "id": 49,
         "name": "AbstractCollection",
         "modifiers": [
-            "Abstract",
-            "Public"
+            "Public",
+            "Abstract"
         ],
         "containedClasses": [
             50
@@ -777,8 +777,8 @@
         "id": 55,
         "name": "add",
         "modifiers": [
-            "Abstract",
-            "Public"
+            "Public",
+            "Abstract"
         ],
         "container": 35,
         "signature": "add(E)",
@@ -796,8 +796,8 @@
         "id": 57,
         "name": "forEach",
         "modifiers": [
-            "Abstract",
-            "Public"
+            "Public",
+            "Abstract"
         ],
         "container": 58,
         "signature": "forEach(java.util.function.Consumer<? super T>)",
@@ -882,8 +882,8 @@
         "id": 63,
         "name": "stream",
         "modifiers": [
-            "Public",
-            "Default"
+            "Default",
+            "Public"
         ],
         "container": 36,
         "signature": "stream()",
@@ -895,8 +895,8 @@
         "id": 64,
         "name": "accept",
         "modifiers": [
-            "Abstract",
-            "Public"
+            "Public",
+            "Abstract"
         ],
         "container": 33,
         "accessedFields": [
@@ -1191,8 +1191,8 @@
         "id": 87,
         "name": "anotherFunction",
         "modifiers": [
-            "Abstract",
-            "Public"
+            "Public",
+            "Abstract"
         ],
         "container": 3,
         "signature": "anotherFunction()",
@@ -1346,8 +1346,8 @@
         "id": 97,
         "name": "Number",
         "modifiers": [
-            "Abstract",
-            "Public"
+            "Public",
+            "Abstract"
         ],
         "superClass": 1,
         "isExternal": true,

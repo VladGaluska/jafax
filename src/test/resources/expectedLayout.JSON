@@ -12,7 +12,8 @@
       "anotherFunction(org.radum.ExtendedData)",
       "client()",
       "something(R)",
-      "main(java.lang.String[])"
+      "main(java.lang.String[])",
+      "Client()"
     ],
     "calledMethodSignatures": [
       "getProvider()",
@@ -290,7 +291,8 @@
     "isTypeParameter": true,
     "parameterInstanceNames": [
       "String",
-      "Integer"
+      "Integer",
+      "Client"
     ],
     "superClassName": "Object",
     "modifiers": [],
@@ -310,7 +312,8 @@
     "isTypeParameter": true,
     "parameterInstanceNames": [
       "Long",
-      "String"
+      "String",
+      "ParameterizedPro"
     ],
     "superClassName": "Object",
     "modifiers": [],

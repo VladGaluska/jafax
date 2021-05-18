@@ -42,7 +42,6 @@ class MockClass(
         assertEquals(isTypeParameter, clazz.isTypeParameter)
         collectionEquals(parameterInstanceNames, mapObjectsToNameList(clazz.parameterInstances.filterNotNull()))
         assertEquals(superClassName, clazz.superClass?.name)
-        assertEquals(fileName, clazz.fileName)
         assertEquals(modifiers.map { Modifier.valueOf(it) }.toSet(), clazz.modifiers)
         assertEquals(isInterface, clazz.isInterface)
         collectionEquals(superInterfaceNames, mapObjectsToNameList(clazz.superInterfaces))
