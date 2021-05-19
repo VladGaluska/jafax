@@ -73,11 +73,12 @@ projects.
 |----|-----------------|-------------------|
 
 ## Metrics
-|name|calculation level|calculation formula|
-|----|-----------------|-------------------|
-|NOAV|NOT YET SUPPORTED|NOT YET SUPPORTED|
-|TCC|NOT YET SUPPORTED|NOT YET SUPPORTED|
-|LAA|NOT YET SUPPORTED|NOT YET SUPPORTED|
+|name|calculation formula|
+|----|-------------------|
+|ATFD|The sum of all public accessed attributes (outside of constructors) from inside a class.
+|ATFD2|The sum of all public accessed attributes which have a user-defined type (outside of constructors) from inside a class.
+|CC|The sum of all classes that call methods from the measured class.
+|CM|The sum of all methods that call methods from the measured class.
 
 ## Anti-Patterns
 |name|calculation level|calculation formula|

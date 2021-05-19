@@ -4,9 +4,9 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-class Metrics(
+data class Metrics(
         var file: String = "",
-        @SerialName("type")
+        @SerialName("class")
         var type: String = "",
         var AMW: Double = 1.0,
         var WMC: Int = 0,
@@ -22,7 +22,7 @@ class Metrics(
         var CM: Int = 0,
         var CINT: Int = 0,
         var CDISP: Double = .0,
-        var BUR: Double = 1.0,
+        var BUR: Double = .0,
         var HIT: Int = 0,
         var DIT: Int = 0,
         var NOC: Int = 0,

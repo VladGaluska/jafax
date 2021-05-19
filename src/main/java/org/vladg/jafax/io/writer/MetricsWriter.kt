@@ -2,6 +2,7 @@ package org.vladg.jafax.io.writer
 
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.csv.Csv
+import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import org.vladg.jafax.io.model.Metrics
 import java.io.File
@@ -15,10 +16,13 @@ object MetricsWriter {
     private val csv = Csv { hasHeaderRecord = true }
 
     fun writeMetricsToFile(metrics: List<Metrics>, path: Path) {
-        getRelationsFile(path).writeText(csv.encodeToString(metrics))
+        getMetricsFile(path).writeText(csv.encodeToString(metrics))
     }
 
-    private fun getRelationsFile(path: Path) =
+    fun readMetricsFromFile(file: File):List<Metrics> =
+        csv.decodeFromString(file.readText())
+
+    private fun getMetricsFile(path: Path) =
             File("$path/${path.name}-metrics.csv")
 
 }
