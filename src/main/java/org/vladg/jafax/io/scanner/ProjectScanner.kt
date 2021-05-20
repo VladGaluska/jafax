@@ -1,23 +1,21 @@
 package org.vladg.jafax.io.scanner
 
 import com.google.inject.Guice
-import kotlinx.serialization.decodeFromString
 import org.vladg.jafax.ast.ASTCreator
 import org.vladg.jafax.ast.repository.indexed.ContainerIndexedAttributeRepository
 import org.vladg.jafax.ast.repository.indexed.KeyIndexedClassRepository
 import org.vladg.jafax.ast.repository.indexed.KeyIndexedMethodRepository
-import org.vladg.jafax.io.LayoutFormat
 import org.vladg.jafax.io.NamePrefixTrimmer
 import org.vladg.jafax.io.reader.ProjectLayoutReader
 import org.vladg.jafax.io.writer.ProjectLayoutWriter
 import org.vladg.jafax.repository.ClassRepository
-import org.vladg.jafax.repository.model.ASTObject
 import org.vladg.jafax.utils.extensions.getLayoutFile
 import org.vladg.jafax.utils.extensions.logger
 import org.vladg.jafax.utils.filefinder.FileFinder
 import org.vladg.jafax.utils.inject.DependencyManager
 import java.io.File
 import java.nio.file.Path
+import java.nio.file.Paths
 
 object ProjectScanner {
 
@@ -33,12 +31,12 @@ object ProjectScanner {
 
     private val logger = logger()
 
-    fun beginScan(path: Path) {
+    fun beginScan(path: Path, onlyLayout: Boolean) {
         val existentLayout = getLayout(path)
         if (existentLayout != null) {
             scanFromFile(existentLayout)
         } else {
-            scanFromScratch(path)
+            scanFromScratch(path, onlyLayout)
         }
     }
 
@@ -47,14 +45,14 @@ object ProjectScanner {
         ProjectLayoutReader.readLayout(file)
     }
 
-    private fun scanFromScratch(path: Path) {
+    private fun scanFromScratch(path: Path, onlyLayout: Boolean) {
         logger.info("Scanning for files...")
         val files = FileFinder.findFiles(path)
         val javaFiles = files.javaFiles.toTypedArray()
         val jarFiles = files.jarFiles.toTypedArray()
         astCreator.createAst(javaFiles, jarFiles)
         trimFileNames()
-        projectLayoutWriter.writeLayout(path)
+        projectLayoutWriter.writeLayout(if (onlyLayout) Paths.get(".") else path)
         clearParserRepos()
     }
 

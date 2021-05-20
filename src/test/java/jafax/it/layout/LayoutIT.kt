@@ -33,7 +33,7 @@ class LayoutIT {
     }
 
     private fun scanAndVerify() {
-        ProjectScanner.beginScan(projectPath)
+        ProjectScanner.beginScan(projectPath, false)
         verifyLayout(getExpectedLayout())
     }
 

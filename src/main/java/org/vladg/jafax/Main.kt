@@ -12,7 +12,11 @@ fun getPathFromName(pathName: String): Path {
 
 fun main(args: Array<String>) {
     val path = if (args.isNotEmpty()) getPathFromName(args[0]) else getPathFromName(".")
-    ProjectScanner.beginScan(path)
-    RelationsComputer.computeRelations(path)
-    MetricsComputer.computeMetrics(path)
+    val onlyLayout = if (args.size > 1) args[1] == "-OL"
+                     else false
+    ProjectScanner.beginScan(path, onlyLayout)
+    if (!onlyLayout) {
+        RelationsComputer.computeRelations(Paths.get("."))
+        MetricsComputer.computeMetrics(Paths.get("."))
+    }
 }

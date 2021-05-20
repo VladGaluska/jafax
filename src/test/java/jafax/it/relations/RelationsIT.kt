@@ -54,7 +54,7 @@ class RelationsIT {
     }
 
     private fun computeRelations() {
-        ProjectScanner.beginScan(projectPath)
+        ProjectScanner.beginScan(projectPath, false)
         RelationsComputer.computeRelations(projectPath)
     }
 

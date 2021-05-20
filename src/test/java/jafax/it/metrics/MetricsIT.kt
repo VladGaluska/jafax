@@ -55,7 +55,7 @@ class MetricsIT {
     }
 
     private fun computeMetrics() {
-        ProjectScanner.beginScan(projectPath)
+        ProjectScanner.beginScan(projectPath, false)
         MetricsComputer.computeMetrics(projectPath)
     }
 
