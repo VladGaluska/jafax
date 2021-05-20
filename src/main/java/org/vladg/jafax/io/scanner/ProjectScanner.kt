@@ -15,7 +15,6 @@ import org.vladg.jafax.utils.filefinder.FileFinder
 import org.vladg.jafax.utils.inject.DependencyManager
 import java.io.File
 import java.nio.file.Path
-import java.nio.file.Paths
 
 object ProjectScanner {
 
@@ -31,12 +30,12 @@ object ProjectScanner {
 
     private val logger = logger()
 
-    fun beginScan(path: Path, onlyLayout: Boolean) {
-        val existentLayout = getLayout(path)
+    fun beginScan(path: Path, name: String) {
+        val existentLayout = getLayout(name)
         if (existentLayout != null) {
             scanFromFile(existentLayout)
         } else {
-            scanFromScratch(path, onlyLayout)
+            scanFromScratch(path, name)
         }
     }
 
@@ -45,14 +44,14 @@ object ProjectScanner {
         ProjectLayoutReader.readLayout(file)
     }
 
-    private fun scanFromScratch(path: Path, onlyLayout: Boolean) {
+    private fun scanFromScratch(path: Path, name: String) {
         logger.info("Scanning for files...")
         val files = FileFinder.findFiles(path)
         val javaFiles = files.javaFiles.toTypedArray()
         val jarFiles = files.jarFiles.toTypedArray()
         astCreator.createAst(javaFiles, jarFiles)
         trimFileNames()
-        projectLayoutWriter.writeLayout(if (onlyLayout) Paths.get(".") else path)
+        projectLayoutWriter.writeLayout(name)
         clearParserRepos()
     }
 
@@ -67,8 +66,8 @@ object ProjectScanner {
                 .forEach { it.fileName = it.fileName?.let { name -> NamePrefixTrimmer.trimString(name) } }
     }
 
-    private fun getLayout(path: Path): File? {
-        val file = getLayoutFile(path)
+    private fun getLayout(name: String): File? {
+        val file = getLayoutFile(name)
         return if (file.exists()) file
                else null
     }

@@ -23,8 +23,8 @@ fun convertFilePathToUniversalPath(path: String): String = path.replace("\\", "/
 fun stringToModifiers(toDecode: List<String>): Set<Modifier> =
     toDecode.map { Modifier.valueOf(it) }.toSet()
 
-fun getLayoutFile(path: Path) =
-    File("$path/Layout.JSON")
+fun getLayoutFile(name: String) =
+    File("./$name-layout.JSON")
 
 infix fun Int.doubleDiv(i: Int): Double = this / i.toDouble()
 

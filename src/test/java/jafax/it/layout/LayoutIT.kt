@@ -22,7 +22,7 @@ class LayoutIT {
 
     @Test
     fun `should properly extract data without file`() {
-        val layoutFile = getLayoutFile(projectPath)
+        val layoutFile = getLayoutFile("Layout.JSON")
         layoutFile.delete()
         scanAndVerify()
     }
@@ -33,7 +33,7 @@ class LayoutIT {
     }
 
     private fun scanAndVerify() {
-        ProjectScanner.beginScan(projectPath, false)
+        ProjectScanner.beginScan(projectPath, "Layout.JSON")
         verifyLayout(getExpectedLayout())
     }
 

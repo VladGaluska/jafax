@@ -26,7 +26,7 @@ class RelationsIT {
 
     @Test
     fun `should properly compute relations when using the layout file`() {
-        val layoutFile = getLayoutFile(projectPath)
+        val layoutFile = getLayoutFile("Layout.JSON")
         layoutFile.delete()
         verifyRelations()
     }
@@ -54,8 +54,8 @@ class RelationsIT {
     }
 
     private fun computeRelations() {
-        ProjectScanner.beginScan(projectPath, false)
-        RelationsComputer.computeRelations(projectPath)
+        ProjectScanner.beginScan(projectPath, "Layout.JSON")
+        RelationsComputer.computeRelations(projectPath, "org1")
     }
 
     private fun getActualRelationsFile(path: Path) =

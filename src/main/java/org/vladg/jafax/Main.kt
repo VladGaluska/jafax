@@ -5,18 +5,29 @@ import org.vladg.jafax.metrics.MetricsComputer
 import org.vladg.jafax.relations.RelationsComputer
 import java.nio.file.Path
 import java.nio.file.Paths
+import kotlin.io.path.ExperimentalPathApi
+import kotlin.io.path.name
 
 fun getPathFromName(pathName: String): Path {
     return Paths.get(pathName).toAbsolutePath().normalize()
 }
 
+@ExperimentalPathApi
 fun main(args: Array<String>) {
-    val path = if (args.isNotEmpty()) getPathFromName(args[0]) else getPathFromName(".")
-    val onlyLayout = if (args.size > 1) args[1] == "-OL"
-                     else false
-    ProjectScanner.beginScan(path, onlyLayout)
+    var path = Paths.get(".")
+    var onlyLayout = false
+    if (args.isNotEmpty()) {
+        if (args.size > 1) {
+            path = Paths.get(args[0])
+            if (args[1] == "-OL") onlyLayout = true
+        } else {
+            if (args[0] == "-OL") onlyLayout = true
+            else path = Paths.get(args[0])
+        }
+    }
+    ProjectScanner.beginScan(path, path.name)
     if (!onlyLayout) {
-        RelationsComputer.computeRelations(Paths.get("."))
-        MetricsComputer.computeMetrics(Paths.get("."))
+        RelationsComputer.computeRelations(Paths.get("."), path.name)
+        MetricsComputer.computeMetrics(Paths.get("."), path.name)
     }
 }

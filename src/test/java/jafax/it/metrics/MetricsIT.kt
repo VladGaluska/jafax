@@ -26,7 +26,7 @@ class MetricsIT {
 
     @Test
     fun `should properly compute metrics when using the layout file`() {
-        val layoutFile = getLayoutFile(projectPath)
+        val layoutFile = getLayoutFile("Layout.JSON")
         layoutFile.delete()
         verifyMetrics()
     }
@@ -55,8 +55,8 @@ class MetricsIT {
     }
 
     private fun computeMetrics() {
-        ProjectScanner.beginScan(projectPath, false)
-        MetricsComputer.computeMetrics(projectPath)
+        ProjectScanner.beginScan(projectPath, "Layout.JSON")
+        MetricsComputer.computeMetrics(projectPath, "org1")
     }
 
     private fun getActualMetricsFile(path: Path) =

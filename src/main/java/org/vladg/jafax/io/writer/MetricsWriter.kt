@@ -15,14 +15,14 @@ object MetricsWriter {
 
     private val csv = Csv { hasHeaderRecord = true }
 
-    fun writeMetricsToFile(metrics: List<Metrics>, path: Path) {
-        getMetricsFile(path).writeText(csv.encodeToString(metrics))
+    fun writeMetricsToFile(metrics: List<Metrics>, path: Path, name: String) {
+        getMetricsFile(path, name).writeText(csv.encodeToString(metrics))
     }
 
     fun readMetricsFromFile(file: File):List<Metrics> =
         csv.decodeFromString(file.readText())
 
-    private fun getMetricsFile(path: Path) =
-            File("$path/${path.name}-metrics.csv")
+    private fun getMetricsFile(path: Path, name: String) =
+            File("$path/${name}-metrics.csv")
 
 }

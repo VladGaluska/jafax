@@ -18,14 +18,14 @@ object RelationsWriter {
         ignoreUnknownColumns = true
     }
 
-    fun writeRelationsToFile(relations: List<Relations>, path: Path) {
-        getRelationsFile(path).writeText(csv.encodeToString(relations))
+    fun writeRelationsToFile(relations: List<Relations>, path: Path, name: String) {
+        getRelationsFile(path, name).writeText(csv.encodeToString(relations))
     }
 
     fun readRelationsFromFile(file: File): List<Relations> =
             csv.decodeFromString(file.readText())
 
-    private fun getRelationsFile(path: Path) =
-            File("$path/${path.name}-relations.csv")
+    private fun getRelationsFile(path: Path, name: String) =
+            File("$path/$name-relations.csv")
 
 }
