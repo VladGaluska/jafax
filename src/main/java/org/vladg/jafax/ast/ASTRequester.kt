@@ -17,7 +17,11 @@ class ASTRequester : FileASTRequestor() {
         val universalPath = convertFilePathToUniversalPath(sourceFilePath)
         logger.info("Scanning file: $universalPath")
         astVisitor.currentFileName = universalPath
-        ast.accept(astVisitor)
+        try {
+            ast.accept(astVisitor)
+        } catch (ex: Exception) {
+            logger.error("There was an error while ast parsing, will skip that entry ...", ex)
+        }
     }
 
 }
