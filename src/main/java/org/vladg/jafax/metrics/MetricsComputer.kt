@@ -6,7 +6,6 @@ import org.vladg.jafax.repository.ClassRepository
 import org.vladg.jafax.repository.model.Attribute
 import org.vladg.jafax.repository.model.Class
 import org.vladg.jafax.repository.model.Method
-import org.vladg.jafax.repository.model.Modifier
 import org.vladg.jafax.utils.extensions.doubleDiv
 import org.vladg.jafax.utils.extensions.logger
 import org.vladg.jafax.utils.extensions.roundToTwoDecimals
@@ -33,7 +32,7 @@ object MetricsComputer {
     }
 
     private fun getClassesForMetrics() =
-            ClassRepository.topLevelClasses.filter { Modifier.Abstract !in it.modifiers }
+            ClassRepository.topLevelClasses
 
     private fun computeMetrics(classes: List<Class>): List<Metrics> {
         cacheClasses(classes)
@@ -67,11 +66,12 @@ object MetricsComputer {
     }
 
     private fun calculateRfc(clazz: Class) =
-            clazz.containedMethods.union(clazz.allMethodCalls)
-                    .filter { it.isInternal }
-                    .filter { !it.isAccessor }
-                    .filter { !it.isDefaultConstructor }
-                    .size
+            clazz.containedMethods
+                 .filter { !it.isDefaultConstructor }
+                 .union(clazz.allContainedMethodCalls.filter { it.topLevelClass != clazz.topLevelClass })
+                 .filter { it.isInternal && !it.isAccessor && !it.isDefaultConstructor }
+                 .distinct()
+                 .size
 
     private fun calculateNoc(clazz: Class) =
             if (clazz in superClassesByExtendingClasses) superClassesByExtendingClasses[clazz]!!.size
@@ -87,7 +87,8 @@ object MetricsComputer {
 
     private fun calculateBur(clazz: Class): Double {
         val amountOfMembers = membersQualifiedForBur(clazz).size
-        if (amountOfMembers == 0) return 1.0
+        if (amountOfMembers == 0) return .0
+        clazz.superClass ?: return 1.0
         return amountOfMembers doubleDiv clazz.superClass!!.protectedMembers.size
     }
 
@@ -112,12 +113,14 @@ object MetricsComputer {
     }
 
     private fun methodsForCINT(clazz: Class) =
-        clazz.allMethodCalls.filter { it.isInternal }
-                            .filter { !it.isAccessor }
-                            .filter { it.topLevelClass != null && it.topLevelClass != clazz }
+        clazz.allContainedMethodCalls
+             .filter { it.isInternal }
+             .filter { !it.isDefaultConstructor }
+             .filter { it.topLevelClass != null && it.topLevelClass != clazz }
+             .distinct()
 
     private fun calculateWOC(clazz: Class): Double {
-        val amountOfPublicMembers = clazz.allPublicMembers.size
+        val amountOfPublicMembers = clazz.allPublicMembers.filter { !it.isAbstract() }.size
         if (amountOfPublicMembers == 0) return 1.0
         return clazz.functionalMethods.size doubleDiv amountOfPublicMembers
     }
@@ -133,20 +136,18 @@ object MetricsComputer {
             attributes.mapNotNull { it.topLevelClass }.distinct().size
 
     private fun computeATFDAttributes(clazz: Class) =
-            clazz.allFieldAccesses
+            clazz.attributesForATFD
                  .filter { attributeQualifiesForATFD(clazz, it) }
 
     private fun attributeQualifiesForATFD(
             clazz: Class,
             accessedAttribute: Attribute
-    ): Boolean {
-        return accessedAttribute.container?.isInternal == true &&
-               accessedAttribute.firstContainerClass?.isRelatedTo(clazz) == false &&
-               accessedAttribute !in clazz.allContainedAttributes
-    }
+    ) = accessedAttribute.container?.isInternal == true &&
+        accessedAttribute.firstContainerClass?.isRelatedTo(clazz) == false &&
+        accessedAttribute !in clazz.allContainedAttributes
 
     private fun calculateNProtM(clazz: Class) =
-            clazz.protectedMembers.size
+            clazz.protectedMembers.filter { if (it is Method) !it.isConstructor else true }.size
 
     private fun attributeQualifiesForNopa(attribute: Attribute) =
             attribute.isPublic() && !attribute.isStatic() && !attribute.isFinal()
@@ -168,25 +169,28 @@ object MetricsComputer {
     }
 
     private fun cacheClassForCM(clazz: Class) =
-            clazz.containedMethods.filter { it.isInternal }
-                    .onEach { method ->
-                        method.allMethodCalls
-                                .filter { it.isInternal }
-                                .filter { it.topLevelClass != null && it.topLevelClass != clazz}
-                                .onEach { changingMethods.computeIfAbsent(it.topLevelClass!!) {
-                                        HashSet()
-                                    }.add(method)
-                                }
-                    }
+            clazz.containedMethods
+                 .union(clazz.containedClasses.flatMap { it.containedMethods })
+                 .onEach { method ->
+                     method.allMethodCalls
+                           .filter { !it.isDefaultConstructor && it.isInternal }
+                           .filter { it.topLevelClass != null && it.topLevelClass != clazz}
+                           .onEach { changingMethods.computeIfAbsent(it.topLevelClass!!) {
+                                   HashSet()
+                               }.add(method)
+                           }
+                 }
 
     private fun cacheClassForCC(clazz: Class) =
-            clazz.allMethodCalls
-                    .filter { it.isInternal }
-                    .mapNotNull { it.topLevelClass }
-                    .filter { it != clazz }
-                    .onEach { changingClasses.computeIfAbsent(it){
-                            HashSet()
-                        } .add(clazz)
-                    }
+            clazz.allContainedMethodCalls
+                 .asSequence()
+                 .filter { !it.isDefaultConstructor && it.isInternal }
+                 .mapNotNull { it.topLevelClass }
+                 .filter { it != clazz }
+                 .onEach { changingClasses.computeIfAbsent(it){
+                         HashSet()
+                    }.add(clazz)
+                 }
+                 .toList()
 
 }

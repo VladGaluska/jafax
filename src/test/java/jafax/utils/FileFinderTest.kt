@@ -13,7 +13,7 @@ class FileFinderTest {
     fun shouldFindJavaFiles() {
         val files = findFiles(Paths.get("src/test/resources/org1/org/radum"))
         val javaFiles = files.javaFiles
-        assertEquals(11, javaFiles.size)
+        assertEquals(16, javaFiles.size)
         assertEquals(0, files.jarFiles.size)
         val classNames = getSimpleFileNames(javaFiles)
         assertEquals(EXPECTED_FILE_NAMES, classNames)
@@ -62,7 +62,12 @@ class FileFinderTest {
             "Parameterized.java",
             "ParameterizedExtension.java",
             "Base.java",
-            "Extension.java"
+            "Extension.java",
+            "OtherBase.java",
+            "OtherExtension.java",
+            "OtherExtensionExtension.java",
+            "SomeOtherBase.java",
+            "SomeOtherOtherBase.java"
         )
         private val EXPECTED_SINGLE_FILE_NAME = setOf(
             "Empty.java"

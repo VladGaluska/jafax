@@ -10,8 +10,8 @@ fun ITypeBinding.modifierSet(): Set<Modifier> {
 
 fun ITypeBinding.getParent(): IBinding? {
     return when{
-        declaringClass != null -> declaringClass
         declaringMethod != null -> declaringMethod
+        declaringClass != null -> declaringClass
         else -> declaringMember
     }
 }

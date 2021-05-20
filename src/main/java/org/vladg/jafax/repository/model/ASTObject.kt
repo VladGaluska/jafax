@@ -39,12 +39,18 @@ abstract class ASTObject(
         }
     }
 
-    open val topLevelClass: Class? by lazy {
-        container?.topLevelClass
+    val topLevelClass: Class? by lazy {
+        if (container == null) {
+            if (this is Class) this
+            else null
+        } else container!!.topLevelClass
     }
 
-    open val topLevelMethod: Method? by lazy {
-        container?.topLevelMethod
+    val topLevelMethod: Method? by lazy {
+        if (container?.container == null) {
+            if (this is Method) this
+            else null
+        } else container!!.topLevelMethod
     }
 
     open fun isSame(value: ASTObject) =

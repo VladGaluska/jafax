@@ -13,7 +13,10 @@ import kotlin.io.path.name
 @OptIn(ExperimentalSerializationApi::class, ExperimentalPathApi::class)
 object RelationsWriter {
 
-    private val csv = Csv { hasHeaderRecord = true }
+    private val csv = Csv {
+        hasHeaderRecord = true
+        ignoreUnknownColumns = true
+    }
 
     fun writeRelationsToFile(relations: List<Relations>, path: Path) {
         getRelationsFile(path).writeText(csv.encodeToString(relations))

@@ -18,14 +18,25 @@ abstract class Container(
     val accessedFields: MutableSet<Attribute> = HashSet()
 
     val allMethodCalls: Set<Method> by lazy {
-        calledMethods.union(containedClasses.flatMap { it.allMethodCalls })
-                     .union(containedMethods.flatMap { it.allMethodCalls })
+        calledMethods.union(allContainedMethodCalls)
+    }
+
+    val allContainedMethodCalls: Set<Method> by lazy {
+        containedClasses.flatMap { it.allMethodCalls }
+                        .union(containedMethods.flatMap { it.allMethodCalls })
     }
 
     val allFieldAccesses: Set<Attribute> by lazy {
         accessedFields.union(containedClasses.flatMap { it.allFieldAccesses })
                       .union(containedMethods.flatMap { it.allFieldAccesses })
                       .union(calledMethods.filter { it.isAccessor }.mapNotNull { it.accessorField })
+    }
+
+    val attributesForATFD: Set<Attribute> by lazy {
+        accessedFields.filter { it.isPublic() }
+                      .union(containedClasses.flatMap { it.attributesForATFD })
+                      .union(containedMethods.filter { !it.isConstructor }.flatMap { it.attributesForATFD })
+                      .union(calledMethods.filter { it.isAccessor }.filter { it.isPublic() }.mapNotNull { it.accessorField })
     }
 
     val allContainedMethods: Set<Method> by lazy {

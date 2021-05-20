@@ -14,9 +14,8 @@ object ClassRepository {
     fun getAll(): List<Class> =
         this.classes
 
-    val topLevelClasses: List<Class> by lazy{
-        this.classes.filter { it.container == null && it.isInternal && it.fileName != null }
-    }
+    val topLevelClasses: List<Class>
+        get() = this.classes.filter { it.container == null && it.isInternal && it.fileName != null }
 
     fun clear() = classes.clear()
 

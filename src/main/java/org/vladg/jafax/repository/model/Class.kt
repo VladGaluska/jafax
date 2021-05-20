@@ -32,19 +32,19 @@ class Class(
 
     val protectedMembers: Set<ASTObject> by lazy {
         containedMethods.filter { it.isProtected() }
-                .filter { !it.isConstructor }
                 .union(containedFields.filter { it.isProtected() })
                 .toSet()
     }
 
     val DIT: Int by lazy {
-        1 + (superClass?.DIT ?: 0)
+        if (superClass?.isInternal == true) 1 + superClass!!.DIT
+        else 0
     }
 
     val containedFields: MutableSet<Attribute> = HashSet()
 
     val functionalMethods: List<Method> by lazy {
-        containedMethods.filter { it.isPublic() && !it.isAccessor && !it.isDefaultConstructor }
+        containedMethods.filter { it.isPublic() && !it.isAccessor && !it.isConstructor && !it.isAbstract() }
     }
 
     val allPublicMembers: List<ASTObject> by lazy {
@@ -58,7 +58,8 @@ class Class(
     }
 
     val totalCyclomaticComplexity: Int by lazy {
-        containedMethods.map { it.totalCyclomaticComplexity }.sum() +
+        containedMethods.filter { !it.isDefaultConstructor }
+                        .map { it.totalCyclomaticComplexity }.sum() +
         containedClasses.map { it.totalCyclomaticComplexity }.sum()
     }
 
@@ -93,11 +94,6 @@ class Class(
                 .toSet()
     }
 
-    override val topLevelClass: Class? by lazy {
-        if (container == null) this
-        else container.topLevelClass
-    }
-
     fun addToParameterInstances(clazz: Class?) =
         parameterInstances.add(clazz)
 
@@ -105,7 +101,7 @@ class Class(
         superInterfaces.add(clazz)
 
     fun getFieldByName(fieldName: String): Attribute? =
-        containedFields.find { fieldName.equals(it.name, true) }
+        containedFields.find { fieldName.toLowerCase().equals(it.name, true) }
 
     fun hasMethodWithSignature(signature: String): Boolean =
         containedMethods.find { it.signature == signature } != null

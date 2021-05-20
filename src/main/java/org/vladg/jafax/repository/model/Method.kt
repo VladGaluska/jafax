@@ -24,18 +24,13 @@ class Method(
                   .union(containedClasses.flatMap { it.allContainedAttributes })
     }
 
-    override val topLevelMethod: Method? by lazy {
-        if (container?.container == null) this
-        else container.topLevelMethod
-    }
-
     val parameters: MutableSet<Attribute> = HashSet()
 
     val localVariables: MutableSet<Attribute> = HashSet()
 
     val accessorField: Attribute? by lazy {
         if (isAccessor) {
-            topLevelClass?.getFieldByName(fieldNameFromAccessorMethod(name))
+            topLevelClass?.getFieldByName(fieldNameFromAccessorMethod(this.name))
         } else {
             null
         }

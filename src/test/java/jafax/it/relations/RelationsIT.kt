@@ -45,7 +45,6 @@ class RelationsIT {
     }
 
     private fun `relations should be the same`(expectedRelations: List<Relations>, actualRelations: List<Relations>) {
-        assertEquals(expectedRelations.size, actualRelations.size, "Expected: $expectedRelations actual: $actualRelations")
         expectedRelations.onEach { relationsToCheck ->
             assertEquals(
                     relationsToCheck,
