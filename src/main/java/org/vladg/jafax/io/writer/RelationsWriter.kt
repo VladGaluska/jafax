@@ -8,7 +8,6 @@ import org.vladg.jafax.io.model.Relations
 import java.io.File
 import java.nio.file.Path
 import kotlin.io.path.ExperimentalPathApi
-import kotlin.io.path.name
 
 @OptIn(ExperimentalSerializationApi::class, ExperimentalPathApi::class)
 object RelationsWriter {

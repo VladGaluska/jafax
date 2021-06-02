@@ -14,7 +14,7 @@ object NamePrefixTrimmer {
     fun trimString(value: String): String {
         commonPrefix ?: return ""
         if (!commonPrefix!!.endsWith("/")) {
-            val lastIndex = value.lastIndexOf("/")
+            val lastIndex = commonPrefix!!.lastIndexOf("/")
             commonPrefix = commonPrefix!!.substring(0, lastIndex)
         }
         return value.replaceFirst(commonPrefix!!, "")
