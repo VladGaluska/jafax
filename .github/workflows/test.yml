@@ -17,6 +17,5 @@ jobs:
       uses: actions/setup-java@v2
       with:
         java-version: '11'
-        distribution: 'adopt'
     - name: Unit and Integration Test
       run: mvn clean verify
