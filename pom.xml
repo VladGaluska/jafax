@@ -11,6 +11,7 @@
     <properties>
         <main.class>org.vladg.jafax.MainKt</main.class>
         <kotlin.version>1.4.32</kotlin.version>
+        <final.jar.name>jafax</final.jar.name>
         <serialization.version>1.1.0</serialization.version>
     </properties>
 
@@ -106,6 +107,7 @@
                             <mainClass>${main.class}</mainClass>
                         </manifest>
                     </archive>
+                    <finalName>${final.jar.name}</finalName>
                     <appendAssemblyId>false</appendAssemblyId>
                 </configuration>
                 <executions>

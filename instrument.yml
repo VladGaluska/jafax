@@ -1,0 +1,10 @@
+name: JaFaX
+run: once
+
+results:
+  - dir: ${instrument}/results
+
+commands:
+  - name: Mine Maven
+    win: java -jar jafax.jar ${repo} -OL
+    unix: java -jar jafax.jar ${repo} -OL

@@ -3,6 +3,7 @@ package org.vladg.jafax
 import org.vladg.jafax.io.scanner.ProjectScanner
 import org.vladg.jafax.metrics.MetricsComputer
 import org.vladg.jafax.relations.RelationsComputer
+import org.vladg.jafax.repository.ClassRepository
 import java.nio.file.Path
 import java.nio.file.Paths
 import kotlin.io.path.ExperimentalPathApi
@@ -27,7 +28,7 @@ fun main(args: Array<String>) {
     }
     ProjectScanner.beginScan(path, path.name)
     if (!onlyLayout) {
-        RelationsComputer.computeRelations(Paths.get("."), path.name)
-        MetricsComputer.computeMetrics(Paths.get("."), path.name)
+        RelationsComputer.computeRelations(Paths.get("results"), path.name)
+        MetricsComputer.computeMetrics(Paths.get("results"), path.name)
     }
 }

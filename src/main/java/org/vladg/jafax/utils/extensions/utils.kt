@@ -24,7 +24,7 @@ fun stringToModifiers(toDecode: List<String>): Set<Modifier> =
     toDecode.map { Modifier.valueOf(it) }.toSet()
 
 fun getLayoutFile(name: String) =
-    File("./$name-layout.JSON")
+    File("./results/$name-layout.json")
 
 infix fun Int.doubleDiv(i: Int): Double = this / i.toDouble()
 
