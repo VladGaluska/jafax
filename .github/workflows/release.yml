@@ -20,9 +20,10 @@ jobs:
           mkdir jafax/results
           cp README.md jafax/README.md
           cp target/jafax.jar jafax/jafax.jar
-          cp bin/mami.sh jafax/jafax.sh
-          cp bin/mami.bat jafax/jafax.bat
+          cp bin/jafax.sh jafax/jafax.sh
+          cp bin/jafax.bat jafax/jafax.bat
           cp instrument.yml jafax/instrument.yml
+          chmod +x jafax/jafax.sh
       - name: Create Archive
         run: zip -r jafax.zip jafax
       - name: Create Release
