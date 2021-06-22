@@ -12,11 +12,15 @@ class Class(
     var isExternal: Boolean = false,
     var parameterInstances: MutableSet<Class?> = HashSet(),
     var isTypeParameter: Boolean = false,
+    var pack: String = "",
     typeParameters: MutableList<Class?> = ArrayList(),
     name: String = "",
     modifiers: Set<Modifier> = HashSet(),
     container: Container? = null
 ) : Container(typeParameters, name, modifiers, container) {
+
+    val fullyQualifiedName: String
+        get() = if(pack.isNotBlank()) "$pack.$name" else name
 
     override var fileName: String? = null
         get() {

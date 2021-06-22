@@ -9,6 +9,9 @@ import org.vladg.jafax.ast.unwrapper.ClassUnwrapper
 import org.vladg.jafax.ast.unwrapper.MethodInvocationUnwrapper
 import org.vladg.jafax.ast.unwrapper.MethodUnwrapper
 import org.vladg.jafax.io.NamePrefixTrimmer
+import org.vladg.jafax.repository.CommonRepository
+import org.vladg.jafax.repository.FileRepository
+import org.vladg.jafax.repository.model.ImportStatement
 import org.vladg.jafax.utils.extensions.ast.countsToComplexity
 import org.vladg.jafax.utils.extensions.ast.immediateContainerBinding
 import org.vladg.jafax.utils.extensions.logger
@@ -38,8 +41,10 @@ class ASTVisitor : ASTVisitor() {
     override fun visit(typeDeclaration: TypeDeclaration): Boolean {
         val binding = typeDeclaration.resolveBinding()
         if (binding == null) {
-            logger.warn("Could not resolve binding for type: ${typeDeclaration.name.fullyQualifiedName}" +
-                        " in file: ${currentFileName}, will ignore...")
+            logger.warn(
+                "Could not resolve binding for type: ${typeDeclaration.name.fullyQualifiedName}" +
+                    " in file: ${currentFileName}, will ignore..."
+            )
             return false
         }
         if (!binding.isClass && !binding.isInterface) return true
@@ -55,8 +60,10 @@ class ASTVisitor : ASTVisitor() {
     override fun visit(annonymousClassDeclaration: AnonymousClassDeclaration): Boolean {
         val binding = annonymousClassDeclaration.resolveBinding()
         if (binding == null) {
-            logger.warn("Could not resolve binding for anonymous type" +
-                    " in file: $currentFileName, will ignore...")
+            logger.warn(
+                "Could not resolve binding for anonymous type" +
+                    " in file: $currentFileName, will ignore..."
+            )
             return false
         }
         if (!binding.isClass && !binding.isInterface) return true
@@ -69,8 +76,10 @@ class ASTVisitor : ASTVisitor() {
         val binding = methodDeclaration.resolveBinding()
         methodDeclaration.parameters()
         if (binding == null) {
-            logger.warn("Could not resolve binding for method:  ${methodDeclaration.name.fullyQualifiedName}" +
-                    " in file:  $currentFileName, will ignore...")
+            logger.warn(
+                "Could not resolve binding for method:  ${methodDeclaration.name.fullyQualifiedName}" +
+                    " in file:  $currentFileName, will ignore..."
+            )
             return false
         }
         val method = methodUnwrapper.findOrCreateMethodForBinding(binding, true)!!
@@ -81,11 +90,14 @@ class ASTVisitor : ASTVisitor() {
     override fun visit(node: LambdaExpression): Boolean {
         val binding = node.resolveMethodBinding()
         if (binding == null) {
-            logger.warn("Could not resolve binding for lambda method in file: ${currentFileName}, " +
-                    "will ignore...")
+            logger.warn(
+                "Could not resolve binding for lambda method in file: ${currentFileName}, " +
+                    "will ignore..."
+            )
             return false
         }
-        val method = methodUnwrapper.findOrCreateMethodForBinding(binding, true, node.immediateContainerBinding().first)!!
+        val method =
+            methodUnwrapper.findOrCreateMethodForBinding(binding, true, node.immediateContainerBinding().first)!!
         ContainerStack.addToStack(method)
         attributeUnwrapper.setParametersToLambda(method, node.parameters())
         return true
@@ -94,8 +106,10 @@ class ASTVisitor : ASTVisitor() {
     override fun visit(node: ParameterizedType): Boolean {
         val binding = node.resolveBinding()
         if (binding == null) {
-            logger.warn("Could not resolve binding for parameterized type: ${node.type}" +
-                    " in file $currentFileName, will ignore...")
+            logger.warn(
+                "Could not resolve binding for parameterized type: ${node.type}" +
+                    " in file $currentFileName, will ignore..."
+            )
             return false
         }
         classUnwrapper.registerParameterInstance(binding)
@@ -200,10 +214,25 @@ class ASTVisitor : ASTVisitor() {
         return true
     }
 
+    override fun visit(node: ImportDeclaration): Boolean {
+        val importStatement = ImportStatement(
+            importedClass = node.name.fullyQualifiedName,
+            static = node.isStatic,
+            onDemand = node.isOnDemand
+        )
+        CommonRepository.addObject(importStatement)
+        FileRepository.findOrCreate(currentFileName).addImport(
+            importStatement
+        )
+        return true
+    }
+
     private fun visitVariableBinding(binding: IVariableBinding?, node: ASTNode, name: String): Boolean {
         if (binding == null) {
-            logger.warn("Could not resolve binding for field:  $name" +
-                    " in file:  $currentFileName, will ignore...")
+            logger.warn(
+                "Could not resolve binding for field:  $name" +
+                    " in file:  $currentFileName, will ignore..."
+            )
             return false
         }
         attributeUnwrapper.createFieldAccess(binding, node)
