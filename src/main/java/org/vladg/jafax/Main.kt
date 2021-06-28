@@ -1,5 +1,6 @@
 package org.vladg.jafax
 
+import org.vladg.jafax.experimental.InterfaceComputer
 import org.vladg.jafax.imports.ImportsComputer
 import org.vladg.jafax.io.scanner.ProjectScanner
 import org.vladg.jafax.metrics.MetricsComputer
@@ -22,12 +23,14 @@ fun main(args: Array<String>) {
             else path = Paths.get(args[0])
         }
     }
+
     ProjectScanner.beginScan(path, path.name)
     if (!onlyLayout) {
         RelationsComputer.computeRelations(Paths.get("results"), path.name)
         ExternalRelationsComputer.computeRelations(Paths.get("results"), "${path.name}-external")
         MetricsComputer.computeMetrics(Paths.get("results"), path.name)
         ImportsComputer.computeImports(Paths.get("results"), path.name)
+        InterfaceComputer.computeImports(Paths.get("results"), path.name)
     }
 
 

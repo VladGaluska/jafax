@@ -33,10 +33,6 @@ class ASTVisitor : ASTVisitor() {
     private lateinit var methodInvocationUnwrapper: MethodInvocationUnwrapper
 
     var currentFileName: String = ""
-        set(value) {
-            field = value
-            NamePrefixTrimmer.registerName(value)
-        }
 
     override fun visit(typeDeclaration: TypeDeclaration): Boolean {
         val binding = typeDeclaration.resolveBinding()

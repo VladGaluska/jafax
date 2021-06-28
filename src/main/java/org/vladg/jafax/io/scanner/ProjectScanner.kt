@@ -9,12 +9,15 @@ import org.vladg.jafax.io.NamePrefixTrimmer
 import org.vladg.jafax.io.reader.ProjectLayoutReader
 import org.vladg.jafax.io.writer.ProjectLayoutWriter
 import org.vladg.jafax.repository.ClassRepository
+import org.vladg.jafax.repository.FileRepository
 import org.vladg.jafax.utils.extensions.getLayoutFile
 import org.vladg.jafax.utils.extensions.logger
 import org.vladg.jafax.utils.filefinder.FileFinder
 import org.vladg.jafax.utils.inject.DependencyManager
 import java.io.File
 import java.nio.file.Path
+import kotlin.io.path.ExperimentalPathApi
+import kotlin.io.path.isRegularFile
 
 object ProjectScanner {
 
@@ -30,11 +33,20 @@ object ProjectScanner {
 
     private val logger = logger()
 
+    private lateinit var namePrefixTrimmer: NamePrefixTrimmer
+
+    @OptIn(ExperimentalPathApi::class)
     fun beginScan(path: Path, name: String) {
-        val existentLayout = getLayout(name)
+        val existentLayout =
+            if (path.toFile().exists() && path.isRegularFile())
+                path.toFile()
+            else
+                getLayout(name)
         if (existentLayout != null) {
             scanFromFile(existentLayout)
         } else {
+            namePrefixTrimmer = NamePrefixTrimmer("$path/")
+            FileRepository.namePrefixTrimmer = namePrefixTrimmer
             scanFromScratch(path, name)
         }
     }
@@ -61,15 +73,16 @@ object ProjectScanner {
         ContainerIndexedAttributeRepository.clear()
     }
 
+
     private fun trimFileNames() {
         ClassRepository.getAll()
-                .forEach { it.fileName = it.fileName?.let { name -> NamePrefixTrimmer.trimString(name) } }
+            .forEach { it.fileName = it.fileName?.let { name -> namePrefixTrimmer.trimString(name) } }
     }
 
     private fun getLayout(name: String): File? {
         val file = getLayoutFile(name)
         return if (file.exists()) file
-               else null
+        else null
     }
 
 }
