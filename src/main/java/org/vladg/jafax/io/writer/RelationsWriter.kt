@@ -25,6 +25,6 @@ object RelationsWriter {
             csv.decodeFromString(file.readText())
 
     private fun getRelationsFile(path: Path, name: String) =
-            File("$path/$name-relations.csv")
+            File("$path/$name-internal-relations.csv")
 
 }
