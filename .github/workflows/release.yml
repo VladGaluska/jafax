@@ -47,7 +47,7 @@ jobs:
         id: create_release
         uses: softprops/action-gh-release@v1
         with:
-          name: JaFaX ${{ github.ref }}
+          name: JaFaX ${{ steps.semver_parser.outputs.semver }}
           body_path: ${{ github.workspace }}/releaseNotes/v${{ steps.semver_parser.outputs.semver }}.md
           body: ""
           prerelease: false
@@ -63,15 +63,15 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
           scope: '@dxworks'
 
-      - name: Setup Version
-        run: json -I -f package.json -e "this.version='$VERSION'"
-        env:
-          VERSION: ${{ steps.semver_parser.outputs.semver }}
-
       - name: Prepare Node App
         run: |
           npm install
           npm run build
+
+      - name: Setup Version
+        run: json -I -f package.json -e "this.version='$VERSION'"
+        env:
+          VERSION: ${{ steps.semver_parser.outputs.semver }}
 
       - name: Publish NPM
         run: npm publish
