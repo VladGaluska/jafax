@@ -1,17 +1,14 @@
 package org.vladg.jafax
 
+import org.vladg.jafax.experimental.InterfaceComputer
+import org.vladg.jafax.imports.ImportsComputer
 import org.vladg.jafax.io.scanner.ProjectScanner
 import org.vladg.jafax.metrics.MetricsComputer
+import org.vladg.jafax.relations.ExternalRelationsComputer
 import org.vladg.jafax.relations.RelationsComputer
-import org.vladg.jafax.repository.ClassRepository
-import java.nio.file.Path
 import java.nio.file.Paths
 import kotlin.io.path.ExperimentalPathApi
 import kotlin.io.path.name
-
-fun getPathFromName(pathName: String): Path {
-    return Paths.get(pathName).toAbsolutePath().normalize()
-}
 
 @ExperimentalPathApi
 fun main(args: Array<String>) {
@@ -26,9 +23,15 @@ fun main(args: Array<String>) {
             else path = Paths.get(args[0])
         }
     }
+
     ProjectScanner.beginScan(path, path.name)
     if (!onlyLayout) {
         RelationsComputer.computeRelations(Paths.get("results"), path.name)
+        ExternalRelationsComputer.computeRelations(Paths.get("results"), "${path.name}-external")
         MetricsComputer.computeMetrics(Paths.get("results"), path.name)
+        ImportsComputer.computeImports(Paths.get("results"), path.name)
+        InterfaceComputer.computeImports(Paths.get("results"), path.name)
     }
+
+
 }

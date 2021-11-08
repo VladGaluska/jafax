@@ -13,6 +13,8 @@ object LayoutFormat {
             subclass(Class::class)
             subclass(Method::class)
             subclass(Attribute::class)
+            subclass(File::class)
+            subclass(ImportStatement::class)
         }
         polymorphic(Container::class) {
             subclass(Class::class)

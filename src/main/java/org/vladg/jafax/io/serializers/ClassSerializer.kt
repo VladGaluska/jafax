@@ -36,13 +36,14 @@ class ClassSerializer : ContainerSerializer<Class>() {
         "calledMethods" to 13,
         "isTypeParameter" to 14,
         "typeParameters" to 15,
-        "instances" to 16
+        "instances" to 16,
+        "pack" to 17,
     ).toList().sortedBy { (_, value) -> value }.toMap()
 
     override val descriptor: SerialDescriptor =
         buildClassSerialDescriptor("Class") {
             layoutPositions.forEach { (name, _) ->
-                when(name) {
+                when (name) {
                     "id" -> element<Long>("id")
                     "name" -> element<String>("name")
                     "fileName" -> element<String>("fileName")
@@ -60,6 +61,7 @@ class ClassSerializer : ContainerSerializer<Class>() {
                     "isTypeParameter" -> element<Boolean>("isTypeParameter")
                     "typeParameters" -> element("typeParameters", listSerialDescriptor<Long>())
                     "instances" -> element("instances", listSerialDescriptor<Long>())
+                    "pack" -> element<String>("pack")
                 }
             }
         }
@@ -77,6 +79,7 @@ class ClassSerializer : ContainerSerializer<Class>() {
         value: Class
     ) {
         super.encodeExtraProperties(compositeEncoder, collectionEncoder, value)
+        compositeEncoder.encodeStringElement(descriptor, getIndex("pack"), value.pack)
         value.fileName?.let { compositeEncoder.encodeStringElement(descriptor, getIndex("fileName"), it) }
         if (value.isInterface) {
             compositeEncoder.encodeBooleanElement(descriptor, getIndex("isInterface"), true)
@@ -88,18 +91,31 @@ class ClassSerializer : ContainerSerializer<Class>() {
         if (value.isTypeParameter) {
             compositeEncoder.encodeBooleanElement(descriptor, getIndex("isTypeParameter"), true)
         }
-        collectionEncoder.encodeAstCollectionsByIndex(mapOf(
-            getIndex("interfaces") to value.superInterfaces,
-            getIndex("containedFields") to value.containedFields,
-            getIndex("instances") to value.parameterInstances.filterNotNull()
-        ))
+        collectionEncoder.encodeAstCollectionsByIndex(
+            mapOf(
+                getIndex("interfaces") to value.superInterfaces,
+                getIndex("containedFields") to value.containedFields,
+                getIndex("instances") to value.parameterInstances.filterNotNull()
+            )
+        )
     }
 
-    override fun decodeIndex(index: Int, compositeDecoder: CompositeDecoder, collectionDecoder: CollectionDecoder, obj: Class) {
-        when(index){
+    override fun decodeIndex(
+        index: Int,
+        compositeDecoder: CompositeDecoder,
+        collectionDecoder: CollectionDecoder,
+        obj: Class
+    ) {
+        when (index) {
+            getIndex("pack") -> obj.pack = compositeDecoder.decodeStringElement(descriptor, index)
             getIndex("fileName") -> obj.fileName = compositeDecoder.decodeStringElement(descriptor, index)
             getIndex("isInterface") -> obj.isInterface = compositeDecoder.decodeBooleanElement(descriptor, index)
-            getIndex("superClass") -> AstDecoder.addObjectOrAddForUpdate(compositeDecoder.decodeLongElement(descriptor, index)) {
+            getIndex("superClass") -> AstDecoder.addObjectOrAddForUpdate(
+                compositeDecoder.decodeLongElement(
+                    descriptor,
+                    index
+                )
+            ) {
                 obj.superClass = it as Class
             }
             getIndex("interfaces") -> collectionDecoder.decodeAstCollection(index) {
@@ -109,7 +125,8 @@ class ClassSerializer : ContainerSerializer<Class>() {
             getIndex("containedFields") -> collectionDecoder.decodeAstCollection(index) {
                 obj.addToContainedAttributes(it as Attribute)
             }
-            getIndex("isTypeParameter") -> obj.isTypeParameter = compositeDecoder.decodeBooleanElement(descriptor, index)
+            getIndex("isTypeParameter") -> obj.isTypeParameter =
+                compositeDecoder.decodeBooleanElement(descriptor, index)
             getIndex("instances") -> collectionDecoder.decodeAstCollection(index) {
                 obj.addToParameterInstances(it as Class)
             }

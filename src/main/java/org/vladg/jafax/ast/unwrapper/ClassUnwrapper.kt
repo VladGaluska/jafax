@@ -17,56 +17,60 @@ class ClassUnwrapper {
     private lateinit var containerService: ContainerService
 
     private fun createClass(binding: ITypeBinding) =
-            Class(
-                name = binding.name,
-                isInterface = binding.isInterface,
-                modifiers = binding.modifierSet(),
-                key = binding.key,
-                isExternal = !binding.isFromSource,
-                isTypeParameter = binding.isTypeVariable
-            )
+        Class(
+            name = binding.name,
+            isInterface = binding.isInterface,
+            modifiers = binding.modifierSet(),
+            key = binding.key,
+            isExternal = !binding.isFromSource,
+            isTypeParameter = binding.isTypeVariable,
+            pack = binding.`package`?.name ?: ""
+        )
 
     private fun setClassToItsContainer(clazz: Class) =
         clazz.container?.addToContainedClasses(clazz)
 
     private fun getClasses(bindings: Array<ITypeBinding>): MutableSet<Class> =
-            bindings.mapNotNull { findOrCreateClassForBinding(it) }
-                    .toMutableSet()
+        bindings.mapNotNull { findOrCreateClassForBinding(it) }
+            .toMutableSet()
 
     fun getOrderedClasses(bindings: Array<ITypeBinding>): MutableList<Class?> =
-            bindings.map { findOrCreateClassForBinding(it) }
-                    .toMutableList()
+        bindings.map { findOrCreateClassForBinding(it) }
+            .toMutableList()
 
-    private fun createAndSaveClassWithRecursiveSafety(binding: ITypeBinding, containerSupplier: () -> Container?): Class =
-            createClass(binding).apply {
-                addClass(this)
-                this.container = containerSupplier()
-                this.superClass = findOrCreateClassForBinding(binding.superclass)
-                this.superInterfaces = getClasses(binding.interfaces)
-                this.typeParameters = getOrderedClasses(binding.typeParameters)
-                setClassToItsContainer(this)
-            }
+    private fun createAndSaveClassWithRecursiveSafety(
+        binding: ITypeBinding,
+        containerSupplier: () -> Container?
+    ): Class =
+        createClass(binding).apply {
+            addClass(this)
+            this.container = containerSupplier()
+            this.superClass = findOrCreateClassForBinding(binding.superclass)
+            this.superInterfaces = getClasses(binding.interfaces)
+            this.typeParameters = getOrderedClasses(binding.typeParameters)
+            setClassToItsContainer(this)
+        }
 
     private fun addClass(clazz: Class) {
         KeyIndexedClassRepository.addObject(clazz)
     }
 
     private fun findByKey(key: String) =
-         KeyIndexedClassRepository.findByIndex(key)
+        KeyIndexedClassRepository.findByIndex(key)
 
     fun findOrCreateClassForBinding(binding: ITypeBinding?, useStack: Boolean = false) =
         binding?.getActualType()?.originalType()?.let {
             findByKey(it.key)
-                    ?: createAndSaveClassWithRecursiveSafety(it) {
-                        if (!useStack) containerService.getOrCreateContainerForBinding(it.getParent())
-                        else ContainerStack.popUntilBindingObject(it.getParent())
-                    }
+                ?: createAndSaveClassWithRecursiveSafety(it) {
+                    if (!useStack) containerService.getOrCreateContainerForBinding(it.getParent())
+                    else ContainerStack.popUntilBindingObject(it.getParent())
+                }
         }
 
     fun registerParameterInstance(binding: ITypeBinding) =
-            containerService.setParameterInstances(
-                    parameterizedContainer = findOrCreateClassForBinding(binding.erasure),
-                    typeInstances = getOrderedClasses(binding.typeArguments)
-            )
+        containerService.setParameterInstances(
+            parameterizedContainer = findOrCreateClassForBinding(binding.erasure),
+            typeInstances = getOrderedClasses(binding.typeArguments)
+        )
 
 }

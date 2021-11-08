@@ -24,7 +24,7 @@ fun IMethodBinding.modifierSet(): Set<Modifier> {
 }
 
 fun IMethodBinding.getParent(): IBinding? {
-    return when{
+    return when {
         declaringClass != null -> declaringClass
         else -> declaringMember
     }

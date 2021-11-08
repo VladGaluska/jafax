@@ -6,6 +6,7 @@ object AttributeFilterService {
 
     private fun getFilter(
             excludeExternal: Boolean,
+            excludeInternal: Boolean,
             excludeProtected: Boolean,
             excludeExternalType: Boolean,
             onlyProtected: Boolean,
@@ -13,6 +14,7 @@ object AttributeFilterService {
     ): (Attribute) -> Boolean {
         val filters = ArrayList<(Attribute) -> Boolean>()
         if (excludeExternal) filters.add { it.isInternal && it.fileName != null }
+        if (excludeInternal) filters.add { !it.isInternal }
         if (excludeProtected && !onlyProtected) filters.add { !it.isProtected() }
         if (onlyProtected) filters.add { it.isProtected() }
         if (omittedFileName != null) filters.add { it.fileName != omittedFileName }
@@ -25,12 +27,13 @@ object AttributeFilterService {
     fun filterAttributes(
             attributes: List<Attribute>,
             excludeExternal: Boolean = true,
+            excludeInternal: Boolean = false,
             excludeProtected: Boolean = true,
             excludeExternalType: Boolean = false,
             onlyProtected: Boolean = false,
             omittedFileName: String? = null
     ) = attributes.filter {
-        getFilter(excludeExternal, excludeProtected, excludeExternalType, onlyProtected, omittedFileName)(it)
+        getFilter(excludeExternal, excludeInternal, excludeProtected, excludeExternalType, onlyProtected, omittedFileName)(it)
     }
 
 }
