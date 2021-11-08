@@ -3,3 +3,4 @@ target
 *.iml
 results
 node_modules
+dist

@@ -1,0 +1,51 @@
+{
+  "name": "@dxworks/jafax",
+  "version": "0.3.1",
+  "description": "Java Fact Extractor (JaFaX) is a code analysis tool used to find irregularities with Java based software projects",
+  "keywords": [
+    "jafax",
+    "java",
+    "static analysis",
+    "jdt"
+  ],
+  "homepage": "https://github.com/dxworks/jafax#readme",
+  "bugs": {
+    "url": "https://github.com/dxworks/jafax/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dxworks/jafax.git"
+  },
+  "license": "Apache-2.0",
+  "author": "Vlad Galuska",
+  "main": "dist/index.js",
+  "bin": {
+    "jafax": "dist/jafax.js"
+  },
+  "scripts": {
+    "build": "npm run clean && mkdir dist && cp lib/*.js dist && cp target/jafax.jar dist",
+    "clean": "rimraf dist/",
+    "local": "npm run build && npm i"
+  },
+  "dependencies": {
+    "commander": "^8.3.0",
+    "java-caller": "^2.4.0"
+  },
+  "devDependencies": {
+    "json": "^11.0.0",
+    "rimraf": "^3.0.2",
+    "sort-package-json": "^1.52.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com"
+  },
+  "dxw": {
+    "commands": [
+      {
+        "file": "dist/index.js",
+        "command": "jafaxCommand"
+      }
+    ]
+  }
+}
