@@ -6,6 +6,7 @@ import org.vladg.jafax.io.scanner.ProjectScanner
 import org.vladg.jafax.metrics.MetricsComputer
 import org.vladg.jafax.relations.ExternalRelationsComputer
 import org.vladg.jafax.relations.RelationsComputer
+import java.nio.file.Files
 import java.nio.file.Paths
 import kotlin.io.path.ExperimentalPathApi
 import kotlin.io.path.name
@@ -24,14 +25,19 @@ fun main(args: Array<String>) {
         }
     }
 
+    val resultsPath = Paths.get("results")
+    if (!Files.exists(resultsPath))
+        resultsPath.toFile().mkdirs()
+
     ProjectScanner.beginScan(path, path.name)
     if (!onlyLayout) {
-        RelationsComputer.computeRelations(Paths.get("results"), path.name)
-        ExternalRelationsComputer.computeRelations(Paths.get("results"), "${path.name}-external")
-        MetricsComputer.computeMetrics(Paths.get("results"), path.name)
-        ImportsComputer.computeImports(Paths.get("results"), path.name)
-        InterfaceComputer.computeImports(Paths.get("results"), path.name)
+        RelationsComputer.computeRelations(resultsPath, path.name)
+        ExternalRelationsComputer.computeRelations(resultsPath, "${path.name}-external")
+        MetricsComputer.computeMetrics(resultsPath, path.name)
+        ImportsComputer.computeImports(resultsPath, path.name)
+        InterfaceComputer.computeImports(resultsPath, path.name)
     }
 
+    println("Results can be found at ${resultsPath.toAbsolutePath()}")
 
 }

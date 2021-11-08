@@ -12,8 +12,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+
       - name: Build
         run: mvn clean package -DskipTests
+
       - name: Prepare Assets
         run: |
           mkdir jafax
@@ -24,25 +26,55 @@ jobs:
           cp bin/jafax.bat jafax/jafax.bat
           cp instrument.yml jafax/instrument.yml
           chmod +x jafax/jafax.sh
+
       - name: Create Archive
         run: zip -r jafax.zip jafax
+
+      - name: Extract Semver
+        id: semver_parser
+        run: |
+          semver=${TAG#"refs/tags/v"}
+          semver=${semver%"-voyager"}
+
+          echo ::set-output name=semver::$semver
+        env:
+          TAG: ${{ github.ref }}
+
+      - name: Prepare Release Notes
+        run: touch ${{ github.workspace }}/releaseNotes/v${{ steps.semver_parser.outputs.semver }}.md
+
       - name: Create Release
         id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ github.ref }}
-          release_name: JaFaX ${{ github.ref }}
-          draft: false
+          name: JaFaX ${{ github.ref }}
+          body_path: ${{ github.workspace }}/releaseNotes/v${{ steps.semver_parser.outputs.semver }}.md
+          body: ""
           prerelease: false
-      - name: Upload Release Asset
-        id: upload-release-asset
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          draft: false
+          fail_on_unmatched_files: true
+          files: jafax.zip
+
+      - name: Setup Node
+        uses: actions/setup-node@v2
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./jafax.zip
-          asset_name: jafax.zip
-          asset_content_type: application/zip
+          node-version: '16.x'
+          cache: 'npm'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@dxworks'
+
+      - name: Setup Version
+        run: json -I -f package.json -e "this.version='$VERSION'"
+        env:
+          VERSION: ${{ steps.semver_parser.outputs.semver }}
+
+      - name: Prepare Node App
+        run: |
+          npm install
+          npm run build
+
+      - name: Publish NPM
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
