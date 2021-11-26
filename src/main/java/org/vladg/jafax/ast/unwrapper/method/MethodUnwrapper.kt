@@ -1,4 +1,4 @@
-package org.vladg.jafax.ast.unwrapper
+package org.vladg.jafax.ast.unwrapper.method
 
 import com.google.inject.Inject
 import org.eclipse.jdt.core.dom.ASTNode
@@ -6,9 +6,11 @@ import org.eclipse.jdt.core.dom.IBinding
 import org.eclipse.jdt.core.dom.IMethodBinding
 import org.vladg.jafax.ast.repository.ContainerStack
 import org.vladg.jafax.ast.repository.indexed.KeyIndexedMethodRepository
-import org.vladg.jafax.repository.model.Class
-import org.vladg.jafax.repository.model.Container
-import org.vladg.jafax.repository.model.Method
+import org.vladg.jafax.ast.unwrapper.ContainerService
+import org.vladg.jafax.ast.unwrapper.clazz.ClassUnwrapper
+import org.vladg.jafax.repository.model.container.Class
+import org.vladg.jafax.repository.model.container.Container
+import org.vladg.jafax.repository.model.container.Method
 import org.vladg.jafax.utils.extensions.ast.getParent
 import org.vladg.jafax.utils.extensions.ast.modifierSet
 import org.vladg.jafax.utils.extensions.ast.signature

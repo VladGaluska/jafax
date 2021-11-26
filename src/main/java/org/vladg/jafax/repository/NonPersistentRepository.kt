@@ -1,8 +1,8 @@
 package org.vladg.jafax.repository
 
-import org.vladg.jafax.repository.model.ASTObject
+import org.vladg.jafax.repository.model.id.IdObject
 
-abstract class NonPersistentRepository<K, V : ASTObject> {
+abstract class NonPersistentRepository<K, V : IdObject> {
 
     protected val objects: MutableMap<K, V> = HashMap()
 
@@ -11,7 +11,7 @@ abstract class NonPersistentRepository<K, V : ASTObject> {
         CommonRepository.addObject(obj)
     }
 
-    fun findByFilter(filter: (ASTObject) -> Boolean) =
+    fun findByFilter(filter: (IdObject) -> Boolean) =
             objects.values.filter(filter)
 
     abstract fun objectIdentifier(obj: V): K

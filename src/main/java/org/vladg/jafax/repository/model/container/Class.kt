@@ -1,21 +1,24 @@
-package org.vladg.jafax.repository.model
+package org.vladg.jafax.repository.model.container
 
 import kotlinx.serialization.Serializable
 import org.vladg.jafax.io.serializers.ClassSerializer
+import org.vladg.jafax.repository.model.ASTObject
+import org.vladg.jafax.repository.model.Attribute
+import org.vladg.jafax.repository.model.Modifier
 
 @Serializable(with = ClassSerializer::class)
 class Class(
-    var isInterface: Boolean = false,
-    val key: String = "",
-    var superClass: Class? = null,
-    var superInterfaces: MutableSet<Class> = HashSet(),
-    var isExternal: Boolean = false,
-    var parameterInstances: MutableSet<Class?> = HashSet(),
-    var isTypeParameter: Boolean = false,
-    typeParameters: MutableList<Class?> = ArrayList(),
-    name: String = "",
-    modifiers: Set<Modifier> = HashSet(),
-    container: Container? = null
+        var isInterface: Boolean = false,
+        val key: String = "",
+        var superClass: Class? = null,
+        var superInterfaces: MutableSet<Class> = HashSet(),
+        var isExternal: Boolean = false,
+        var parameterInstances: MutableSet<Class?> = HashSet(),
+        var isTypeParameter: Boolean = false,
+        typeParameters: MutableList<Class?> = ArrayList(),
+        name: String = "",
+        modifiers: Set<Modifier> = HashSet(),
+        container: Container? = null
 ) : Container(typeParameters, name, modifiers, container) {
 
     override var fileName: String? = null

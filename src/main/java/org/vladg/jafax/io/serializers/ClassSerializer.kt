@@ -13,7 +13,7 @@ import org.vladg.jafax.io.serializers.decoder.CollectionDecoder
 import org.vladg.jafax.io.serializers.encoder.CollectionEncoder
 import org.vladg.jafax.repository.ClassRepository
 import org.vladg.jafax.repository.model.Attribute
-import org.vladg.jafax.repository.model.Class
+import org.vladg.jafax.repository.model.container.Class
 
 @OptIn(ExperimentalSerializationApi::class)
 @Serializer(forClass = Class::class)

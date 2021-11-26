@@ -1,14 +1,14 @@
 package org.vladg.jafax.repository
 
-import org.vladg.jafax.repository.model.ASTObject
+import org.vladg.jafax.repository.model.id.IdObject
 
-object CommonRepository : NonPersistentRepository<Long, ASTObject>() {
+object CommonRepository : NonPersistentRepository<Long, IdObject>() {
 
-    override fun addObject(obj: ASTObject) {
+    override fun addObject(obj: IdObject) {
         objects[obj.id] = obj
     }
 
-    override fun objectIdentifier(obj: ASTObject): Long =
+    override fun objectIdentifier(obj: IdObject): Long =
         obj.id
 
 }

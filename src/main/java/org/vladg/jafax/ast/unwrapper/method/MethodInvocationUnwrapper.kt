@@ -1,8 +1,9 @@
-package org.vladg.jafax.ast.unwrapper
+package org.vladg.jafax.ast.unwrapper.method
 
 import com.google.inject.Inject
 import org.eclipse.jdt.core.dom.*
-import org.vladg.jafax.repository.model.Method
+import org.vladg.jafax.ast.unwrapper.ContainerService
+import org.vladg.jafax.repository.model.container.Method
 
 class MethodInvocationUnwrapper {
 
@@ -29,7 +30,7 @@ class MethodInvocationUnwrapper {
     }
 
     private fun setInvocationRelation(method: Method, node: ASTNode) =
-        containerService.findContainer(node)?.addToCalledMethods(method)
+        containerService.findContainer(node)?.addToInvocations(method)
 
     private fun findCalledMethod(methodInvocation: MethodInvocation) =
         getMethod(methodInvocation.resolveMethodBinding())

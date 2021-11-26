@@ -5,9 +5,9 @@ import kotlinx.serialization.encoding.CompositeEncoder
 import org.vladg.jafax.io.serializers.decoder.CollectionDecoder
 import org.vladg.jafax.io.serializers.encoder.CollectionEncoder
 import org.vladg.jafax.repository.model.Attribute
-import org.vladg.jafax.repository.model.Class
-import org.vladg.jafax.repository.model.Container
-import org.vladg.jafax.repository.model.Method
+import org.vladg.jafax.repository.model.container.Class
+import org.vladg.jafax.repository.model.container.Container
+import org.vladg.jafax.repository.model.container.Method
 
 abstract class ContainerSerializer<T: Container>: ASTSerializer<T>() {
 
@@ -20,8 +20,8 @@ abstract class ContainerSerializer<T: Container>: ASTSerializer<T>() {
             mapOf(
                 getIndex("containedClasses") to value.containedClasses,
                 getIndex("containedMethods") to value.containedMethods,
-                getIndex("accessedFields") to value.accessedFields,
-                getIndex("calledMethods") to value.calledMethods,
+                getIndex("accessedFields") to value.accesses,
+                getIndex("calledMethods") to value.invocations,
                 getIndex("typeParameters") to value.typeParameters.filterNotNull()
             )
         )
@@ -41,10 +41,10 @@ abstract class ContainerSerializer<T: Container>: ASTSerializer<T>() {
                 obj.addToContainedMethods(it as Method)
             }
             getIndex("accessedFields") -> collectionDecoder.decodeAstCollection(index) {
-                obj.addToAccessedFields(it as Attribute)
+                obj.addToAccesses(it as Attribute)
             }
             getIndex("calledMethods") -> collectionDecoder.decodeAstCollection(index) {
-                obj.addToCalledMethods(it as Method)
+                obj.addToInvocations(it as Method)
             }
             getIndex("typeParameters") -> collectionDecoder.decodeAstCollection(index) {
                 obj.addToTypeParameters(it as Class)

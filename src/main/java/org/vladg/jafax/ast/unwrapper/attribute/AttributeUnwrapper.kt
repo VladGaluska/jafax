@@ -1,14 +1,16 @@
-package org.vladg.jafax.ast.unwrapper
+package org.vladg.jafax.ast.unwrapper.attribute
 
 import com.google.inject.Inject
 import org.eclipse.jdt.core.dom.*
 import org.vladg.jafax.ast.repository.ContainerStack
 import org.vladg.jafax.ast.repository.indexed.ContainerIndexedAttributeRepository
+import org.vladg.jafax.ast.unwrapper.ContainerService
+import org.vladg.jafax.ast.unwrapper.clazz.ClassUnwrapper
 import org.vladg.jafax.repository.model.Attribute
 import org.vladg.jafax.repository.model.Attribute.AttributeKind
-import org.vladg.jafax.repository.model.Class
-import org.vladg.jafax.repository.model.Container
-import org.vladg.jafax.repository.model.Method
+import org.vladg.jafax.repository.model.container.Class
+import org.vladg.jafax.repository.model.container.Container
+import org.vladg.jafax.repository.model.container.Method
 import org.vladg.jafax.utils.extensions.ast.findParentOfType
 import org.vladg.jafax.utils.extensions.ast.getAttributeKind
 import org.vladg.jafax.utils.extensions.ast.getName
@@ -134,7 +136,7 @@ class AttributeUnwrapper {
             addAccessedField(node, findOrCreateFieldFromBinding(binding))
 
     private fun addAccessedField(node: ASTNode, field: Attribute) =
-            containerService.findContainer(node)?.addToAccessedFields(field)
+            containerService.findContainer(node)?.addToAccesses(field)
 
     private fun getBindingForContainer(node: ASTNode?): IBinding? {
         node ?: return null

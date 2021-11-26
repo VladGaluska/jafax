@@ -2,8 +2,10 @@ package org.vladg.jafax.ast.unwrapper
 
 import com.google.inject.Inject
 import org.eclipse.jdt.core.dom.*
-import org.vladg.jafax.repository.model.Class
-import org.vladg.jafax.repository.model.Container
+import org.vladg.jafax.ast.unwrapper.clazz.ClassUnwrapper
+import org.vladg.jafax.ast.unwrapper.method.MethodUnwrapper
+import org.vladg.jafax.repository.model.container.Class
+import org.vladg.jafax.repository.model.container.Container
 import org.vladg.jafax.utils.extensions.ast.bindingNameFromType
 import org.vladg.jafax.utils.extensions.ast.immediateContainerBinding
 import org.vladg.jafax.utils.extensions.logger

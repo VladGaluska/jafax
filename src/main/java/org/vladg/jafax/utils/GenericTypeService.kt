@@ -1,7 +1,7 @@
 package org.vladg.jafax.utils
 
 import org.vladg.jafax.repository.model.ASTObject
-import org.vladg.jafax.repository.model.Class
+import org.vladg.jafax.repository.model.container.Class
 
 object GenericTypeService {
 

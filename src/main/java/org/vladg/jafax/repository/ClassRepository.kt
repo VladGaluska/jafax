@@ -1,6 +1,6 @@
 package org.vladg.jafax.repository
 
-import org.vladg.jafax.repository.model.Class
+import org.vladg.jafax.repository.model.container.Class
 
 object ClassRepository {
 

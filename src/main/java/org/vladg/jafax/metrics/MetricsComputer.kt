@@ -4,8 +4,8 @@ import org.vladg.jafax.io.model.Metrics
 import org.vladg.jafax.io.writer.MetricsWriter
 import org.vladg.jafax.repository.ClassRepository
 import org.vladg.jafax.repository.model.Attribute
-import org.vladg.jafax.repository.model.Class
-import org.vladg.jafax.repository.model.Method
+import org.vladg.jafax.repository.model.container.Class
+import org.vladg.jafax.repository.model.container.Method
 import org.vladg.jafax.utils.extensions.doubleDiv
 import org.vladg.jafax.utils.extensions.logger
 import org.vladg.jafax.utils.extensions.roundToTwoDecimals
@@ -68,7 +68,7 @@ object MetricsComputer {
     private fun calculateRfc(clazz: Class) =
             clazz.containedMethods
                  .filter { !it.isDefaultConstructor }
-                 .union(clazz.allContainedMethodCalls.filter { it.topLevelClass != clazz.topLevelClass })
+                 .union(clazz.allContainerInvocations.filter { it.topLevelClass != clazz.topLevelClass })
                  .filter { it.isInternal && !it.isAccessor && !it.isDefaultConstructor }
                  .distinct()
                  .size
@@ -94,7 +94,7 @@ object MetricsComputer {
 
     private fun membersQualifiedForBur(clazz: Class) =
             clazz.allFieldAccesses
-                      .union(clazz.allMethodCalls)
+                      .union(clazz.allInvocations)
                       .filter { it.isInternal }
                       .filter { it.isProtected() }
                       .filter { clazz.superClass == it.topLevelClass }
@@ -113,7 +113,7 @@ object MetricsComputer {
     }
 
     private fun methodsForCINT(clazz: Class) =
-        clazz.allContainedMethodCalls
+        clazz.allContainerInvocations
              .filter { it.isInternal }
              .filter { !it.isDefaultConstructor }
              .filter { it.topLevelClass != null && it.topLevelClass != clazz }
@@ -172,7 +172,7 @@ object MetricsComputer {
             clazz.containedMethods
                  .union(clazz.containedClasses.flatMap { it.containedMethods })
                  .onEach { method ->
-                     method.allMethodCalls
+                     method.allInvocations
                            .filter { !it.isDefaultConstructor && it.isInternal }
                            .filter { it.topLevelClass != null && it.topLevelClass != clazz}
                            .onEach { changingMethods.computeIfAbsent(it.topLevelClass!!) {
@@ -182,7 +182,7 @@ object MetricsComputer {
                  }
 
     private fun cacheClassForCC(clazz: Class) =
-            clazz.allContainedMethodCalls
+            clazz.allContainerInvocations
                  .asSequence()
                  .filter { !it.isDefaultConstructor && it.isInternal }
                  .mapNotNull { it.topLevelClass }

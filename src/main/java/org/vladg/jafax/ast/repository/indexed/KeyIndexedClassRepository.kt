@@ -2,7 +2,7 @@ package org.vladg.jafax.ast.repository.indexed
 
 import org.vladg.jafax.repository.ClassRepository
 import org.vladg.jafax.repository.NonPersistentRepository
-import org.vladg.jafax.repository.model.Class
+import org.vladg.jafax.repository.model.container.Class
 
 object KeyIndexedClassRepository : NonPersistentRepository<String, Class>() {
 

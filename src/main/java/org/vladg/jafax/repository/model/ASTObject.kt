@@ -2,6 +2,11 @@ package org.vladg.jafax.repository.model
 
 import kotlinx.serialization.Contextual
 import kotlinx.serialization.Serializable
+import org.vladg.jafax.repository.model.id.IdManager.lastId
+import org.vladg.jafax.repository.model.container.Class
+import org.vladg.jafax.repository.model.container.Container
+import org.vladg.jafax.repository.model.container.Method
+import org.vladg.jafax.repository.model.id.IdObject
 
 @Serializable
 abstract class ASTObject(
@@ -9,9 +14,9 @@ abstract class ASTObject(
     var modifiers: Set<Modifier>,
     @Contextual
     var container: Container?
-) {
+): IdObject {
 
-    var id: Long = lastId++
+    override var id: Long = lastId++
 
     open val fileName: String? by lazy { container?.fileName }
 
@@ -62,7 +67,4 @@ abstract class ASTObject(
         return id.hashCode()
     }
 
-    companion object {
-        private var lastId: Long = 0
-    }
 }

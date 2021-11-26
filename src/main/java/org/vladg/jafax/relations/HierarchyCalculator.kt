@@ -2,7 +2,7 @@ package org.vladg.jafax.relations
 
 import org.vladg.jafax.repository.AttributeFilterService
 import org.vladg.jafax.repository.MethodFilterService
-import org.vladg.jafax.repository.model.Class
+import org.vladg.jafax.repository.model.container.Class
 
 object HierarchyCalculator {
 
@@ -45,7 +45,7 @@ object HierarchyCalculator {
 
     private fun getMethodsForHierarchy(omittedFileName: String, classes: List<Class>) =
         MethodFilterService.filterMethods(
-                classes.flatMap { it.allMethodCalls },
+                classes.flatMap { it.allInvocations },
                 onlyProtected = true,
                 fileNameToOmit = omittedFileName
         )

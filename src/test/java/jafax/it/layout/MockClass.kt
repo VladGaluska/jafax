@@ -6,7 +6,7 @@ import jafax.mapMethodsToSignatureList
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import org.vladg.jafax.repository.model.ASTObject
-import org.vladg.jafax.repository.model.Class
+import org.vladg.jafax.repository.model.container.Class
 import org.vladg.jafax.repository.model.Modifier
 import kotlin.test.assertEquals
 
@@ -35,8 +35,8 @@ class MockClass(
         assertEquals(name, clazz.name)
         collectionEquals(containedFieldNames, mapObjectsToNameList(clazz.containedFields))
         collectionEquals(containedMethodSignatures, mapMethodsToSignatureList(clazz.containedMethods))
-        collectionEquals(calledMethodSignatures, mapMethodsToSignatureList(clazz.calledMethods))
-        collectionEquals(accessedFieldNames, mapObjectsToNameList(clazz.accessedFields))
+        collectionEquals(calledMethodSignatures, mapMethodsToSignatureList(clazz.invocations))
+        collectionEquals(accessedFieldNames, mapObjectsToNameList(clazz.accesses))
         collectionEquals(containedClassNames, mapObjectsToNameList(clazz.containedClasses))
         collectionEquals(typeParameterNames, mapObjectsToNameList(clazz.typeParameters.filterNotNull()))
         assertEquals(isTypeParameter, clazz.isTypeParameter)

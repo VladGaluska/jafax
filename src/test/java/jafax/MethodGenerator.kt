@@ -1,6 +1,6 @@
 package jafax
 
-import org.vladg.jafax.repository.model.Method
+import org.vladg.jafax.repository.model.container.Method
 import org.vladg.jafax.repository.model.Modifier
 
 object MethodGenerator {

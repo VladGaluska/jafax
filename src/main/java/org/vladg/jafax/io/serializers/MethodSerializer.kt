@@ -12,8 +12,8 @@ import org.vladg.jafax.io.serializers.decoder.AstDecoder
 import org.vladg.jafax.io.serializers.decoder.CollectionDecoder
 import org.vladg.jafax.io.serializers.encoder.CollectionEncoder
 import org.vladg.jafax.repository.model.Attribute
-import org.vladg.jafax.repository.model.Class
-import org.vladg.jafax.repository.model.Method
+import org.vladg.jafax.repository.model.container.Class
+import org.vladg.jafax.repository.model.container.Method
 
 @OptIn(ExperimentalSerializationApi::class)
 @Serializer(forClass = Method::class)

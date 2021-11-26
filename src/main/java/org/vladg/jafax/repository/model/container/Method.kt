@@ -1,22 +1,26 @@
-package org.vladg.jafax.repository.model
+package org.vladg.jafax.repository.model.container
 
 import kotlinx.serialization.Serializable
 import org.vladg.jafax.io.serializers.MethodSerializer
+import org.vladg.jafax.repository.model.ASTObject
+import org.vladg.jafax.repository.model.Attribute
 import org.vladg.jafax.repository.model.Attribute.AttributeKind
+import org.vladg.jafax.repository.model.connection.Connectable
+import org.vladg.jafax.repository.model.Modifier
 
 @Serializable(with = MethodSerializer::class)
 class Method(
-    var signature: String = "",
-    var key: String = "",
-    var isConstructor: Boolean = false,
-    var returnType: Class? = null,
-    var cyclomaticComplexity: Int = 1,
-    var isDefaultConstructor: Boolean = false,
-    typeParameters: MutableList<Class?> = ArrayList(),
-    name: String = "",
-    modifiers: Set<Modifier> = HashSet(),
-    container: Container? = null
-) : Container(typeParameters, name, modifiers, container) {
+        var signature: String = "",
+        var key: String = "",
+        var isConstructor: Boolean = false,
+        var returnType: Class? = null,
+        var cyclomaticComplexity: Int = 1,
+        var isDefaultConstructor: Boolean = false,
+        typeParameters: MutableList<Class?> = ArrayList(),
+        name: String = "",
+        modifiers: Set<Modifier> = HashSet(),
+        container: Container? = null
+) : Container(typeParameters, name, modifiers, container), Connectable {
 
     override val allContainedAttributes: Set<Attribute> by lazy {
         parameters.union(localVariables)
@@ -45,7 +49,7 @@ class Method(
         isInternal &&
         (isGetter() || isSetter()) &&
         cyclomaticComplexity == 1 &&
-        calledMethods.size == 0 &&
+        invocations.size == 0 &&
         hasAtMostOneAccessedAttributeOfSameClass()
     }
 
@@ -60,8 +64,8 @@ class Method(
     }
 
     private fun hasAtMostOneAccessedAttributeOfSameClass() =
-         accessedFields.size == 0 ||
-        (accessedFields.size == 1 && accessedFields.first().firstContainerClass == this.firstContainerClass)
+         accesses.size == 0 ||
+        (accesses.size == 1 && accesses.first().target.firstContainerClass == this.firstContainerClass)
 
     private fun isGetter(): Boolean =
         name.startsWith("get", true) &&

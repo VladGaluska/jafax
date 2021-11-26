@@ -9,6 +9,9 @@ import org.vladg.jafax.io.LayoutFormat
 import org.vladg.jafax.repository.ClassRepository
 import org.vladg.jafax.repository.CommonRepository
 import org.vladg.jafax.repository.model.*
+import org.vladg.jafax.repository.model.container.Class
+import org.vladg.jafax.repository.model.container.Container
+import org.vladg.jafax.repository.model.container.Method
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertTrue
@@ -81,8 +84,8 @@ class DeserializerTest {
             values.forEach { encodeAndDecode(it) }
 
     private fun encodeAndDecodeContainerWithDependencies(container: Container) {
-        encodeAndDecodeCollection(container.accessedFields)
-        encodeAndDecodeCollection(container.calledMethods)
+        encodeAndDecodeCollection(container.accesses)
+        encodeAndDecodeCollection(container.invocations)
         encodeAndDecodeCollection(container.containedClasses)
         encodeAndDecodeCollection(container.containedMethods)
     }

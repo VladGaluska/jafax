@@ -4,7 +4,7 @@ import jafax.*
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import org.vladg.jafax.repository.model.ASTObject
-import org.vladg.jafax.repository.model.Method
+import org.vladg.jafax.repository.model.container.Method
 import org.vladg.jafax.repository.model.Modifier
 import kotlin.test.assertEquals
 
@@ -34,8 +34,8 @@ class MockMethod(
         collectionEquals(localVariableNames, mapObjectsToNameList(method.localVariables))
         collectionEquals(containedMethodSignatures, mapMethodsToSignatureList(method.containedMethods))
         assertEquals(modifiers.map { Modifier.valueOf(it) }.toSet(), method.modifiers)
-        collectionEquals(calledMethodSignatures, mapMethodsToSignatureList(method.calledMethods))
-        collectionEquals(accessedFieldNames, mapObjectsToNameList(method.accessedFields))
+        collectionEquals(calledMethodSignatures, mapMethodsToSignatureList(method.invocations))
+        collectionEquals(accessedFieldNames, mapObjectsToNameList(method.accesses))
         collectionEquals(containedClassNames, mapObjectsToNameList(method.containedClasses))
         collectionEquals(typeParameterNames, mapObjectsToNameList(method.typeParameters.filterNotNull()))
         assertEquals(isConstructor, method.isConstructor)

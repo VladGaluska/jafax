@@ -1,9 +1,9 @@
 package org.vladg.jafax.ast.repository
 
 import org.eclipse.jdt.core.dom.IBinding
-import org.vladg.jafax.repository.model.Class
-import org.vladg.jafax.repository.model.Container
-import org.vladg.jafax.repository.model.Method
+import org.vladg.jafax.repository.model.container.Class
+import org.vladg.jafax.repository.model.container.Container
+import org.vladg.jafax.repository.model.container.Method
 import org.vladg.jafax.utils.extensions.ast.bindingNameFromType
 import java.util.*
 

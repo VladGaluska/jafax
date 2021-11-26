@@ -5,8 +5,8 @@ import org.vladg.jafax.io.writer.RelationsWriter
 import org.vladg.jafax.repository.AttributeFilterService
 import org.vladg.jafax.repository.ClassRepository
 import org.vladg.jafax.repository.MethodFilterService
-import org.vladg.jafax.repository.model.Class
-import org.vladg.jafax.repository.model.Method
+import org.vladg.jafax.repository.model.container.Class
+import org.vladg.jafax.repository.model.container.Method
 import org.vladg.jafax.utils.GenericTypeService
 import org.vladg.jafax.utils.extensions.logger
 import java.nio.file.Path
@@ -103,7 +103,7 @@ object RelationsComputer {
         getCalledMethods(omittedFileName, classesInFile).groupBy { it.fileName!! }
 
     private fun getCalledMethods(omittedFileName: String, classesInFile: List<Class>) =
-        filterMethods(omittedFileName, classesInFile.flatMap { it.allMethodCalls })
+        filterMethods(omittedFileName, classesInFile.flatMap { it.allInvocations })
 
     private fun filterMethods(omittedFileName: String? = null, methods: List<Method>) =
         MethodFilterService.filterMethods(methods, fileNameToOmit = omittedFileName)

@@ -2,8 +2,8 @@ package jafax
 
 import org.vladg.jafax.ast.repository.indexed.ContainerIndexedAttributeRepository
 import org.vladg.jafax.repository.model.Attribute
-import org.vladg.jafax.repository.model.Class
-import org.vladg.jafax.repository.model.Container
+import org.vladg.jafax.repository.model.container.Class
+import org.vladg.jafax.repository.model.container.Container
 import org.vladg.jafax.repository.model.Modifier
 
 object AttributeGenerator {

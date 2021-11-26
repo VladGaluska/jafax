@@ -1,11 +1,12 @@
-package org.vladg.jafax.ast.unwrapper
+package org.vladg.jafax.ast.unwrapper.clazz
 
 import com.google.inject.Inject
 import org.eclipse.jdt.core.dom.ITypeBinding
 import org.vladg.jafax.ast.repository.ContainerStack
 import org.vladg.jafax.ast.repository.indexed.KeyIndexedClassRepository
-import org.vladg.jafax.repository.model.Class
-import org.vladg.jafax.repository.model.Container
+import org.vladg.jafax.ast.unwrapper.ContainerService
+import org.vladg.jafax.repository.model.container.Class
+import org.vladg.jafax.repository.model.container.Container
 import org.vladg.jafax.utils.extensions.ast.getActualType
 import org.vladg.jafax.utils.extensions.ast.getParent
 import org.vladg.jafax.utils.extensions.ast.modifierSet

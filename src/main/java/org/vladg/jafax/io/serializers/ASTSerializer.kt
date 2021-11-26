@@ -11,7 +11,7 @@ import org.vladg.jafax.io.serializers.decoder.CollectionDecoder
 import org.vladg.jafax.io.serializers.encoder.CollectionEncoder
 import org.vladg.jafax.repository.CommonRepository
 import org.vladg.jafax.repository.model.ASTObject
-import org.vladg.jafax.repository.model.Container
+import org.vladg.jafax.repository.model.container.Container
 
 abstract class ASTSerializer<T: ASTObject>: KSerializer<T> {
 

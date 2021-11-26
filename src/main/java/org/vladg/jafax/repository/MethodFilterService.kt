@@ -1,6 +1,6 @@
 package org.vladg.jafax.repository
 
-import org.vladg.jafax.repository.model.Method
+import org.vladg.jafax.repository.model.container.Method
 
 object MethodFilterService {
 

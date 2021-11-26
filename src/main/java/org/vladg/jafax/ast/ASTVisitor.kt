@@ -4,10 +4,10 @@ import com.google.inject.Inject
 import org.eclipse.jdt.core.dom.*
 import org.eclipse.jdt.core.dom.ASTVisitor
 import org.vladg.jafax.ast.repository.ContainerStack
-import org.vladg.jafax.ast.unwrapper.AttributeUnwrapper
-import org.vladg.jafax.ast.unwrapper.ClassUnwrapper
-import org.vladg.jafax.ast.unwrapper.MethodInvocationUnwrapper
-import org.vladg.jafax.ast.unwrapper.MethodUnwrapper
+import org.vladg.jafax.ast.unwrapper.attribute.AttributeUnwrapper
+import org.vladg.jafax.ast.unwrapper.clazz.ClassUnwrapper
+import org.vladg.jafax.ast.unwrapper.method.MethodInvocationUnwrapper
+import org.vladg.jafax.ast.unwrapper.method.MethodUnwrapper
 import org.vladg.jafax.io.NamePrefixTrimmer
 import org.vladg.jafax.utils.extensions.ast.countsToComplexity
 import org.vladg.jafax.utils.extensions.ast.immediateContainerBinding
@@ -34,6 +34,10 @@ class ASTVisitor : ASTVisitor() {
             field = value
             NamePrefixTrimmer.registerName(value)
         }
+
+    override fun visit(node: Assignment?): Boolean {
+        return super.visit(node)
+    }
 
     override fun visit(typeDeclaration: TypeDeclaration): Boolean {
         val binding = typeDeclaration.resolveBinding()

@@ -1,6 +1,6 @@
 package jafax
 
-import org.vladg.jafax.repository.model.Class
+import org.vladg.jafax.repository.model.container.Class
 import org.vladg.jafax.repository.model.Modifier
 
 object ClassGenerator {
