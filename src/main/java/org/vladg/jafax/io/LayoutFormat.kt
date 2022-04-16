@@ -28,4 +28,9 @@ object LayoutFormat {
         encodeDefaults = true
     }
 
+    val treeFormat = Json {
+        prettyPrint = true
+        encodeDefaults = true
+    }
+
 }

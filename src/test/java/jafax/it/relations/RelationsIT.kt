@@ -54,7 +54,7 @@ class RelationsIT {
     }
 
     private fun computeRelations() {
-        ProjectScanner.beginScan(projectPath, "Layout.JSON")
+        ProjectScanner.beginScan(projectPath, false, "Layout.JSON")
         RelationsComputer.computeRelations(projectPath, "org1")
     }
 

@@ -8,6 +8,7 @@ import org.vladg.jafax.ast.repository.indexed.KeyIndexedMethodRepository
 import org.vladg.jafax.io.NamePrefixTrimmer
 import org.vladg.jafax.io.reader.ProjectLayoutReader
 import org.vladg.jafax.io.writer.ProjectLayoutWriter
+import org.vladg.jafax.io.writer.TreeLayoutWriter
 import org.vladg.jafax.repository.ClassRepository
 import org.vladg.jafax.repository.FileRepository
 import org.vladg.jafax.utils.extensions.getLayoutFile
@@ -25,10 +26,13 @@ object ProjectScanner {
 
     private var projectLayoutWriter: ProjectLayoutWriter
 
+    private var treeLayoutWriter: TreeLayoutWriter
+
     init {
         val injector = Guice.createInjector(DependencyManager())
         astCreator = injector.getInstance(ASTCreator::class.java)
         projectLayoutWriter = injector.getInstance(ProjectLayoutWriter::class.java)
+        treeLayoutWriter = injector.getInstance(TreeLayoutWriter::class.java)
     }
 
     private val logger = logger()
@@ -36,7 +40,7 @@ object ProjectScanner {
     private lateinit var namePrefixTrimmer: NamePrefixTrimmer
 
     @OptIn(ExperimentalPathApi::class)
-    fun beginScan(path: Path, name: String) {
+    fun beginScan(path: Path, treeLayout: Boolean, name: String) {
         val existentLayout =
             if (path.toFile().exists() && path.isRegularFile())
                 path.toFile()
@@ -47,7 +51,7 @@ object ProjectScanner {
         } else {
             namePrefixTrimmer = NamePrefixTrimmer("$path/")
             FileRepository.namePrefixTrimmer = namePrefixTrimmer
-            scanFromScratch(path, name)
+            scanFromScratch(path, treeLayout, name)
         }
     }
 
@@ -56,7 +60,7 @@ object ProjectScanner {
         ProjectLayoutReader.readLayout(file)
     }
 
-    private fun scanFromScratch(path: Path, name: String) {
+    private fun scanFromScratch(path: Path, treeLayout: Boolean, name: String) {
         logger.info("Scanning for files...")
         val files = FileFinder.findFiles(path)
         val javaFiles = files.javaFiles.toTypedArray()
@@ -64,6 +68,9 @@ object ProjectScanner {
         astCreator.createAst(javaFiles, jarFiles)
         trimFileNames()
         projectLayoutWriter.writeLayout(name)
+        if (treeLayout) {
+            treeLayoutWriter.writeLayout(path.toString(), name)
+        }
         clearParserRepos()
     }
 
@@ -82,7 +89,7 @@ object ProjectScanner {
     private fun getLayout(name: String): File? {
         val file = getLayoutFile(name)
         return if (file.exists()) file
-        else null
+               else null
     }
 
 }

@@ -64,5 +64,9 @@ abstract class ASTObject(
 
     companion object {
         private var lastId: Long = 0
+
+        fun getAndIncrement() =
+            lastId++
+
     }
 }

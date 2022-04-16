@@ -55,7 +55,7 @@ class MetricsIT {
     }
 
     private fun computeMetrics() {
-        ProjectScanner.beginScan(projectPath, "Layout.JSON")
+        ProjectScanner.beginScan(projectPath, false, "Layout.JSON")
         MetricsComputer.computeMetrics(projectPath, "org1")
     }
 

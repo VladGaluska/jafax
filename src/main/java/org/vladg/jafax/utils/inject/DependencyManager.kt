@@ -6,6 +6,7 @@ import org.vladg.jafax.ast.ASTRequester
 import org.vladg.jafax.ast.ASTVisitor
 import org.vladg.jafax.ast.unwrapper.*
 import org.vladg.jafax.io.writer.ProjectLayoutWriter
+import org.vladg.jafax.io.writer.TreeLayoutWriter
 
 class DependencyManager : AbstractModule() {
 
@@ -18,6 +19,7 @@ class DependencyManager : AbstractModule() {
         bind(MethodInvocationUnwrapper::class.java).`in`(Scopes.SINGLETON)
         bind(ASTRequester::class.java).`in`(Scopes.SINGLETON)
         bind(ProjectLayoutWriter::class.java).`in`(Scopes.SINGLETON)
+        bind(TreeLayoutWriter::class.java).`in`(Scopes.SINGLETON)
     }
 
 }

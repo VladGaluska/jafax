@@ -12,7 +12,7 @@ object FileRepository : NonPersistentRepository<String, File>() {
     fun findOrCreate(name: String): File {
         val relativeName = namePrefixTrimmer.trimString(name)
         return if (objects.containsKey(relativeName)) objects[relativeName]!!
-        else File(relativeName).also { addObject(it) }
-
+               else File(relativeName).also { addObject(it) }
     }
+
 }

@@ -6,6 +6,7 @@ import org.vladg.jafax.io.scanner.ProjectScanner
 import org.vladg.jafax.metrics.MetricsComputer
 import org.vladg.jafax.relations.ExternalRelationsComputer
 import org.vladg.jafax.relations.RelationsComputer
+import org.vladg.jafax.utils.extensions.stream
 import java.nio.file.Paths
 import kotlin.io.path.ExperimentalPathApi
 import kotlin.io.path.name
@@ -14,17 +15,20 @@ import kotlin.io.path.name
 fun main(args: Array<String>) {
     var path = Paths.get(".")
     var onlyLayout = false
+    var treeLayout = false
     if (args.isNotEmpty()) {
-        if (args.size > 1) {
-            path = Paths.get(args[0])
-            if (args[1] == "-OL") onlyLayout = true
-        } else {
-            if (args[0] == "-OL") onlyLayout = true
-            else path = Paths.get(args[0])
-        }
+        args.stream()
+            .forEach {
+                when (it) {
+                    "-OL" -> onlyLayout = true
+                    "-TL" -> treeLayout = true
+                    else -> path = Paths.get(it)
+                }
+                if (it === "-OL") onlyLayout = true
+            }
     }
 
-    ProjectScanner.beginScan(path, path.name)
+    ProjectScanner.beginScan(path, treeLayout, path.name)
     if (!onlyLayout) {
         RelationsComputer.computeRelations(Paths.get("results"), path.name)
         ExternalRelationsComputer.computeRelations(Paths.get("results"), "${path.name}-external")
