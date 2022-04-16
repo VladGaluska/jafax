@@ -1,3 +1,4 @@
+/*
 package org.vladg.jafax.io
 
 import kotlinx.serialization.json.Json
@@ -29,4 +30,4 @@ object LayoutFormat {
         encodeDefaults = true
     }
 
-}
+}*/

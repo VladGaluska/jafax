@@ -10,4 +10,4 @@ import org.vladg.jafax.repository.model.container.Container
 @JsonIdentityInfo(generator = ObjectIdGenerators.None::class, property = "id")
 @JsonIdentityReference(alwaysAsId = true)
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
-class Access(source: Container, target: Attribute) : Connection<Attribute>(source, target)
+class Access(source: Container, target: Attribute, obj: Attribute? = null) : Connection<Attribute>(source, target, obj)

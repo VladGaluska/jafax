@@ -1,3 +1,4 @@
+/*
 package org.vladg.jafax.io.serializers
 
 import kotlinx.serialization.encoding.CompositeDecoder
@@ -52,4 +53,4 @@ abstract class ContainerSerializer<T: Container>: ASTSerializer<T>() {
         }
     }
 
-}
+}*/

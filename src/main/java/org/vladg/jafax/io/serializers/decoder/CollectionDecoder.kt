@@ -1,3 +1,4 @@
+/*
 package org.vladg.jafax.io.serializers.decoder
 
 import kotlinx.serialization.KSerializer
@@ -36,4 +37,4 @@ class CollectionDecoder(
             ListSerializer(deserializer)
         )
 
-}
+}*/

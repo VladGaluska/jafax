@@ -1,3 +1,4 @@
+/*
 package org.vladg.jafax.io.writer
 
 import kotlinx.serialization.encodeToString
@@ -18,4 +19,4 @@ class ProjectLayoutWriter {
     private fun encodeObjects(): String =
         format.encodeToString(CommonRepository.findAll().toList())
 
-}
+}*/

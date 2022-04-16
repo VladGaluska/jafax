@@ -1,3 +1,4 @@
+/*
 package org.vladg.jafax.io.reader
 
 import kotlinx.serialization.decodeFromString
@@ -12,4 +13,4 @@ object ProjectLayoutReader {
     fun readLayout(file: File) =
         LayoutFormat.format.decodeFromString<List<ASTObject>>(file.readText())
 
-}
+}*/

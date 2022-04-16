@@ -1,12 +1,9 @@
 package org.vladg.jafax.repository.model
 
-import kotlinx.serialization.Serializable
-import org.vladg.jafax.io.serializers.AttributeSerializer
 import org.vladg.jafax.repository.model.connection.Connectable
 import org.vladg.jafax.repository.model.container.Class
 import org.vladg.jafax.repository.model.container.Container
 
-@Serializable(with = AttributeSerializer::class)
 class Attribute(
         var kind: AttributeKind? = null,
         var type: Class? = null,

@@ -9,7 +9,6 @@ import org.vladg.jafax.ast.unwrapper.attribute.AttributeUnwrapper
 import org.vladg.jafax.ast.unwrapper.clazz.ClassUnwrapper
 import org.vladg.jafax.ast.unwrapper.method.MethodInvocationUnwrapper
 import org.vladg.jafax.ast.unwrapper.method.MethodUnwrapper
-import org.vladg.jafax.io.writer.ProjectLayoutWriter
 
 class DependencyManager : AbstractModule() {
 
@@ -21,7 +20,6 @@ class DependencyManager : AbstractModule() {
         bind(ContainerService::class.java).`in`(Scopes.SINGLETON)
         bind(MethodInvocationUnwrapper::class.java).`in`(Scopes.SINGLETON)
         bind(ASTRequester::class.java).`in`(Scopes.SINGLETON)
-        bind(ProjectLayoutWriter::class.java).`in`(Scopes.SINGLETON)
     }
 
 }

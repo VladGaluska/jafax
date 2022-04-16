@@ -1,3 +1,4 @@
+/*
 package org.vladg.jafax.io.serializers.decoder
 
 import org.vladg.jafax.repository.CommonRepository
@@ -24,4 +25,4 @@ object AstDecoder {
         this.linkUpdater.update(obj)
     }
 
-}
+}*/

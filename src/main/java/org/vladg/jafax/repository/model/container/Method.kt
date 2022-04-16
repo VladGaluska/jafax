@@ -1,14 +1,11 @@
 package org.vladg.jafax.repository.model.container
 
-import kotlinx.serialization.Serializable
-import org.vladg.jafax.io.serializers.MethodSerializer
 import org.vladg.jafax.repository.model.ASTObject
 import org.vladg.jafax.repository.model.Attribute
 import org.vladg.jafax.repository.model.Attribute.AttributeKind
 import org.vladg.jafax.repository.model.connection.Connectable
 import org.vladg.jafax.repository.model.Modifier
 
-@Serializable(with = MethodSerializer::class)
 class Method(
         var signature: String = "",
         var key: String = "",

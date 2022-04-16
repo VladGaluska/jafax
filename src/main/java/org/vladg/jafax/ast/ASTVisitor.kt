@@ -142,11 +142,15 @@ class ASTVisitor : ASTVisitor() {
     }
 
     override fun visit(node: FieldAccess): Boolean {
-        return visitVariableBinding(node.resolveFieldBinding(), node, node.name.fullyQualifiedName)
+        return visitVariableBinding(node.resolveFieldBinding(), node, node.name.fullyQualifiedName, node.expression)
     }
 
     override fun visit(node: SuperFieldAccess): Boolean {
-        return visitVariableBinding(node.resolveFieldBinding(), node, node.name.fullyQualifiedName)
+        return visitVariableBinding(node.resolveFieldBinding(), node, node.name.fullyQualifiedName, node.qualifier)
+    }
+
+    override fun visit(node: SimpleName?): Boolean {
+        return super.visit(node)
     }
 
     override fun visit(node: QualifiedName): Boolean {
@@ -154,7 +158,7 @@ class ASTVisitor : ASTVisitor() {
         if (binding !is IVariableBinding) {
             return true
         }
-        return visitVariableBinding(binding, node, node.name.fullyQualifiedName)
+        return visitVariableBinding(binding, node, node.name.fullyQualifiedName, node.qualifier)
     }
 
     override fun visit(node: WhileStatement): Boolean {
@@ -204,13 +208,18 @@ class ASTVisitor : ASTVisitor() {
         return true
     }
 
-    private fun visitVariableBinding(binding: IVariableBinding?, node: ASTNode, name: String): Boolean {
+    // obj=ThisExpression (this.field) |
+    // MethodInvocation (this.method().field) |
+    // ClassInstanceCreation (new Class().field)|
+    // Simple Name (base.field) |
+    // null (super.field)
+    private fun visitVariableBinding(binding: IVariableBinding?, node: ASTNode, name: String, obj: ASTNode?): Boolean {
         if (binding == null) {
             logger.warn("Could not resolve binding for field:  $name" +
                     " in file:  $currentFileName, will ignore...")
             return false
         }
-        attributeUnwrapper.createFieldAccess(binding, node)
+        attributeUnwrapper.createFieldAccess(binding, node, obj)
         return true
     }
 

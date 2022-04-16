@@ -64,10 +64,9 @@ abstract class Container(
     }
 
     private val accessesFromInvocations: Collection<Access> by lazy {
-        invocations.map{ it.target }
-                   .filter { it.isAccessor }
-                   .mapNotNull { it.accessorField }
-                   .map{ AccessHandler.findOrCreateAccess(this, it) }
+        invocations.filter { it.target.isAccessor }
+                   .filter { it.target.accessorField != null }
+                   .map{ AccessHandler.findOrCreateAccess(this, it.target.accessorField!!, it.obj) }
     }
 
     abstract val allContainedAttributes: Set<Attribute>
@@ -76,12 +75,12 @@ abstract class Container(
 
     fun addToContainedMethods(method: Method) = containedMethods.add(method)
 
-    fun addToInvocations(method: Method) =
-        InvocationHandler.add(this, method)
+    fun addToInvocations(method: Method, obj: Attribute?) =
+        InvocationHandler.add(this, method, obj)
             .also { this.invocations.add(it) }
 
-    fun addToAccesses(attribute: Attribute) =
-        AccessHandler.add(this, attribute)
+    fun addToAccesses(attribute: Attribute, obj: Attribute?) =
+        AccessHandler.add(this, attribute, obj)
             .also { this.accesses.add(it) }
 
     fun addToTypeParameters(parameterType: Class) = typeParameters.add(parameterType)

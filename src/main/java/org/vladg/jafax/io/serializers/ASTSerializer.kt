@@ -1,3 +1,4 @@
+/*
 package org.vladg.jafax.io.serializers
 
 import kotlinx.serialization.KSerializer
@@ -87,4 +88,4 @@ abstract class ASTSerializer<T: ASTObject>: KSerializer<T> {
     protected fun getIndex(name: String) =
         layoutPositions[name]!!
 
-}
+}*/

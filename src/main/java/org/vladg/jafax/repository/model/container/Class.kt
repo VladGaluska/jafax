@@ -1,12 +1,10 @@
 package org.vladg.jafax.repository.model.container
 
 import kotlinx.serialization.Serializable
-import org.vladg.jafax.io.serializers.ClassSerializer
 import org.vladg.jafax.repository.model.ASTObject
 import org.vladg.jafax.repository.model.Attribute
 import org.vladg.jafax.repository.model.Modifier
 
-@Serializable(with = ClassSerializer::class)
 class Class(
         var isInterface: Boolean = false,
         val key: String = "",

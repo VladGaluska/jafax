@@ -1,3 +1,4 @@
+/*
 package org.vladg.jafax.io.serializers
 
 import kotlinx.serialization.ExperimentalSerializationApi
@@ -106,4 +107,4 @@ class MethodSerializer : ContainerSerializer<Method>() {
         }
     }
 
-}
+}*/

@@ -1,3 +1,4 @@
+/*
 package org.vladg.jafax.io.serializers
 
 import kotlinx.serialization.ExperimentalSerializationApi
@@ -67,4 +68,4 @@ class AttributeSerializer : ASTSerializer<Attribute>() {
         }
     }
 
-}
+}*/

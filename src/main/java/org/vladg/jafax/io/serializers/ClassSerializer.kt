@@ -1,3 +1,4 @@
+/*
 package org.vladg.jafax.io.serializers
 
 import kotlinx.serialization.ExperimentalSerializationApi
@@ -116,4 +117,4 @@ class ClassSerializer : ContainerSerializer<Class>() {
             else -> super.decodeIndex(index, compositeDecoder, collectionDecoder, obj)
         }
     }
-}
+}*/

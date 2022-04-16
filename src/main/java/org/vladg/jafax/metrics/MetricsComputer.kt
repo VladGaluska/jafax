@@ -1,3 +1,4 @@
+/*
 package org.vladg.jafax.metrics
 
 import org.vladg.jafax.io.model.Metrics
@@ -193,4 +194,4 @@ object MetricsComputer {
                  }
                  .toList()
 
-}
+}*/

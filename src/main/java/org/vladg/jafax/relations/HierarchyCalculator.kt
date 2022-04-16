@@ -1,3 +1,4 @@
+/*
 package org.vladg.jafax.relations
 
 import org.vladg.jafax.repository.AttributeFilterService
@@ -57,4 +58,4 @@ object HierarchyCalculator {
                 omittedFileName = omittedFileName
         )
 
-}
+}*/

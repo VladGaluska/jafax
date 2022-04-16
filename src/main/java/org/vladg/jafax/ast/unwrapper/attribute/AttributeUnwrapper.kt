@@ -132,11 +132,11 @@ class AttributeUnwrapper {
                 ?: createAccessedField(fieldBinding)
     }
 
-    fun createFieldAccess(binding: IVariableBinding, node: ASTNode) =
-            addAccessedField(node, findOrCreateFieldFromBinding(binding))
+    fun createFieldAccess(binding: IVariableBinding, node: ASTNode, obj: ASTNode?) =
+            addAccessedField(node, findOrCreateFieldFromBinding(binding), obj)
 
-    private fun addAccessedField(node: ASTNode, field: Attribute) =
-            containerService.findContainer(node)?.addToAccesses(field)
+    private fun addAccessedField(node: ASTNode, field: Attribute, obj: ASTNode?) =
+            containerService.findContainer(node)?.addToAccesses(field, findAttributeForConnection(obj))
 
     private fun getBindingForContainer(node: ASTNode?): IBinding? {
         node ?: return null
@@ -172,5 +172,11 @@ class AttributeUnwrapper {
     private fun createLambdaParameter(lambda: Method, fragment: VariableDeclarationFragment) =
             findAttributeByParentAndName(lambda.key, fragment.name.fullyQualifiedName)
                     ?: createAttribute(fragment.resolveBinding(), AttributeKind.Parameter) { lambda }
+
+    fun findAttributeForConnection(node: ASTNode?): Attribute? =
+        when(node) {
+            is SimpleName -> null
+            else -> null
+        }
 
 }

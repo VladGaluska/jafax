@@ -1,3 +1,4 @@
+/*
 package org.vladg.jafax.relations
 
 import org.vladg.jafax.io.model.Relations
@@ -108,4 +109,4 @@ object RelationsComputer {
     private fun filterMethods(omittedFileName: String? = null, methods: List<Method>) =
         MethodFilterService.filterMethods(methods, fileNameToOmit = omittedFileName)
 
-}
+}*/
